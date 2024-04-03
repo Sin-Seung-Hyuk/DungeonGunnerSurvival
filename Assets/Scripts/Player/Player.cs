@@ -13,17 +13,27 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(SortingGroup))]
 [RequireComponent(typeof(PlayerCtrl))]
+[RequireComponent(typeof(IdleEvent))]
+[RequireComponent(typeof(Idle))]
+[RequireComponent(typeof(PlayerAnimate))]
+[RequireComponent(typeof(MovementEvent))]
+[RequireComponent(typeof(Movement))]
 #endregion
 public class Player : MonoBehaviour
 {
     [HideInInspector] public Animator animator;
     [HideInInspector] public PlayerDetailsSO playerDetails;
     [HideInInspector] public SpriteRenderer spriteRenderer;
-    [HideInInspector] public CircleCollider2D circleRange;
+    [HideInInspector] public CircleCollider2D circleRange; // 자석범위
+    [HideInInspector] public PlayerStat stat; // 캐릭터 스탯
 
-    [HideInInspector] public PlayerStat stat;
+    // 플레이어가 가지는 이벤트
+    [HideInInspector] public IdleEvent idleEvent;
+    [HideInInspector] public MovementEvent movementEvent;
+
 
     private PlayerInventoryHolder playerInventory; // 플레이어 인벤토리
+
 
     private void Awake()
     {
@@ -31,6 +41,8 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         circleRange = GetComponent<CircleCollider2D>();
+        idleEvent = GetComponent<IdleEvent>();
+        movementEvent = GetComponent<MovementEvent>();
     }
 
     private void Start()
@@ -43,6 +55,9 @@ public class Player : MonoBehaviour
         this.playerDetails = playerDetails;
 
         spriteRenderer.sprite = playerDetails.playerSprite;
+        animator.runtimeAnimatorController = playerDetails.runtimeAnimatorController;
+
+        // SetHP(playerDetails.maxHp);
 
         stat.BaseDamage = playerDetails.baseDamage;
         stat.CriticChance = playerDetails.criticChance;

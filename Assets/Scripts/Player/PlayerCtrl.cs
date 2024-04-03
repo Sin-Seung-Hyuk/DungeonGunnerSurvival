@@ -42,5 +42,9 @@ public class PlayerCtrl : MonoBehaviour
     private void Move()
     {
         rigid.velocity = moveDirection * moveSpeed;
+
+        if (moveDirection != Vector3.zero)
+            player.movementEvent.CallPlayerMovement();
+        else player.idleEvent.CallIdle();
     }
 }

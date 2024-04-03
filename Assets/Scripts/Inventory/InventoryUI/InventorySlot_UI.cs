@@ -33,19 +33,19 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
         ParentDisplay = transform.parent.GetComponent<InventoryDisplay>();
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnPointerEnter(PointerEventData eventData) // 슬롯UI에 마우스오버
     {
-        if (assignedInventorySlot.ItemData == null) return;
+        if (assignedInventorySlot.ItemData == null) return; // 빈슬롯 넘기기
 
-        MouseOverUI.gameObject.SetActive(true);
+        MouseOverUI.gameObject.SetActive(true); // 마우스오버UI 활성화
         MouseOverDisplayName.text = assignedInventorySlot.ItemData.DisplayName;
         MouseOverDisplayName.color = assignedInventorySlot.ItemData.gradeColor;
         MouseOverDescription.text = assignedInventorySlot.ItemData.Description;
         MouseOverUI.transform.position = new Vector3(eventData.position.x, eventData.position.y + 50f,0);
     }
-    public void OnPointerExit(PointerEventData eventData)
+    public void OnPointerExit(PointerEventData eventData) // 슬롯UI에 마우스 떼기
     {
-        MouseOverUI.gameObject.SetActive(false);
+        MouseOverUI.gameObject.SetActive(false); // 마우스오버UI 비활성화
     }
 
     public void ClearSlot() // 이 슬롯UI의 슬롯정보 포함 전부 초기화
