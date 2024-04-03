@@ -13,14 +13,13 @@ MonoBehaviour:
   m_Name: JuckItem_2
   m_EditorClassIdentifier: 
   ID: 1
-  ItemSprite: {fileID: 3641686006095517685, guid: 1a59e6589a702274ca77ec6b61130abd, type: 3}
   DisplayName: JuckItem_2
   Description: 'JunkItem_2.- Rare
 
 '
-  Icon: {fileID: 3641686006095517685, guid: 1a59e6589a702274ca77ec6b61130abd, type: 3}
+  ItemSprite: {fileID: 3641686006095517685, guid: 1a59e6589a702274ca77ec6b61130abd, type: 3}
   MaxStackSize: 1
   GoldValue: 1000
-  itemGrade: 1
-  itemColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}
+  itemGrade: 2
+  gradeColor: {r: 0.60784316, g: 0.23921569, b: 0.8509804, a: 1}
   itemType: 1

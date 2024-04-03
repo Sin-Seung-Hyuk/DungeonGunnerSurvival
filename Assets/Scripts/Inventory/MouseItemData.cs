@@ -27,7 +27,7 @@ public class MouseItemData : MonoBehaviour  // 마우스로 슬롯UI 클릭하여 아이템 �
     {
         // 클릭한 슬롯의 슬롯데이터 가져오기
         AssignedInventorySlot.AssignItem(invSlot);
-        ItemSprite.sprite = invSlot.ItemData.Icon;
+        ItemSprite.sprite = invSlot.ItemData.ItemSprite;
         ItemCount.text = invSlot.StackSize.ToString();
         ItemSprite.color = Color.white;
     }

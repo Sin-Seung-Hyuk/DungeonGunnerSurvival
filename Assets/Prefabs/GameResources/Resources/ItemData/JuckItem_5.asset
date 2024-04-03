@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: JuckItem_5
   m_EditorClassIdentifier: 
   ID: 4
-  ItemSprite: {fileID: 21300000, guid: ce8512fa3a7a5474da3d0f626a57b806, type: 3}
   DisplayName: ammo
   Description: ammo
-  Icon: {fileID: 21300000, guid: ce8512fa3a7a5474da3d0f626a57b806, type: 3}
+  ItemSprite: {fileID: 21300000, guid: ce8512fa3a7a5474da3d0f626a57b806, type: 3}
   MaxStackSize: 1
   GoldValue: 30
   itemGrade: 1
-  itemColor: {r: 1, g: 1, b: 1, a: 1}
+  gradeColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}
   itemType: 1

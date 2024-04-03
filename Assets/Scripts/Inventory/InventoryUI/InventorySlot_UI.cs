@@ -39,7 +39,7 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
         MouseOverUI.gameObject.SetActive(true);
         MouseOverDisplayName.text = assignedInventorySlot.ItemData.DisplayName;
-        MouseOverDisplayName.color = assignedInventorySlot.ItemData.itemColor;
+        MouseOverDisplayName.color = assignedInventorySlot.ItemData.gradeColor;
         MouseOverDescription.text = assignedInventorySlot.ItemData.Description;
         MouseOverUI.transform.position = new Vector3(eventData.position.x, eventData.position.y + 50f,0);
     }
@@ -66,7 +66,7 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         if (slot.ItemData != null)
         {
-            itemSprite.sprite = slot.ItemData.Icon;
+            itemSprite.sprite = slot.ItemData.ItemSprite;
             itemSprite.color = Color.white;
 
             if (slot.StackSize > 1) itemCount.text = slot.StackSize.ToString();
