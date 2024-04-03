@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 833cfa3ec8cb74f4db41d1eb15926f92, type: 3}
+  m_Name: ShopItemList_1 1
+  m_EditorClassIdentifier: 
+  _items:
+  - ItemData: {fileID: 11400000, guid: 7e62ab87baee6b8429b892d5f9d376f3, type: 2}
+    Amount: 50
+  - ItemData: {fileID: 11400000, guid: aa91d301142f72145ae3ff898f905170, type: 2}
+    Amount: 30
+  - ItemData: {fileID: 11400000, guid: 35e82c5b920fc8644a4f85fceb4722b4, type: 2}
+    Amount: 5
+  _maxAllowedGold: 2000
+  _sellMarkUp: 0.2
+  _buyMarkUp: 0.4

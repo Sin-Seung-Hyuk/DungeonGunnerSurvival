@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19314069c2756dc4abd8b782715e2ad1, type: 3}
+  m_Name: Player_TheScientist
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 5975701987863624188, guid: aceb2353af12f8f47b64f70c0e9e08f4, type: 3}
+  characterName: TheScientist
+  runtimeAnimatorController: {fileID: 9100000, guid: e52ed9234b488b0449570da9e57ce474, type: 2}
+  minimapIcon: {fileID: 21300000, guid: da88e4a191f22674e9aab239e652640a, type: 3}
+  playerSprite: {fileID: 2887896937163043261, guid: ffa25ab59b41d9d4abbfe10d88fea3d7, type: 3}
+  maxHp: 150
+  baseDamage: 50
+  criticChance: 15
+  criticDamage: 150
+  reloadSpeed: 0
+  fireRateSpeed: 0
+  moveSpeed: 6
+  circleRange: 0.8
+  dodgeChance: 0
+  expGain: 0

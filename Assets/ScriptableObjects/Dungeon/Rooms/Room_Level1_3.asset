@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3219becdae0357e47aaee7920d257ac8, type: 3}
+  m_Name: Room_Level1_3
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4327421925113694216, guid: 141f51d0b3eb42c42aa196a721650e96, type: 3}
+  lowerBounds: {x: -8, y: 1}
+  upperBounds: {x: 54, y: 62}
+  playerSpawnPos: {x: -23, y: -22, z: 0}
+  spawnPositionArray: []

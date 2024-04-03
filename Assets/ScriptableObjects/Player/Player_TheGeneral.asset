@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19314069c2756dc4abd8b782715e2ad1, type: 3}
+  m_Name: Player_TheGeneral
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 5975701987863624188, guid: 55fdb6d0ae51a454c88cd4b2d2e8e195, type: 3}
+  characterName: TheGeneral
+  runtimeAnimatorController: {fileID: 9100000, guid: e87ce176a15556c459b355908992b930, type: 2}
+  minimapIcon: {fileID: 21300000, guid: 709f49100a0267f419aa33d571fb9d25, type: 3}
+  playerSprite: {fileID: -892881270494569320, guid: 788b52df224c1d14594c1176892c7ab3, type: 3}
+  maxHp: 150
+  baseDamage: 50
+  criticChance: 15
+  criticDamage: 150
+  reloadSpeed: 0
+  fireRateSpeed: 0
+  moveSpeed: 6
+  circleRange: 0.8
+  dodgeChance: 0
+  expGain: 0

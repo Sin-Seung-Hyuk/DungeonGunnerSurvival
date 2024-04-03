@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - grid
+  - collisionTimemap
+  - minimapTilemap
+  - groundTilemap
+  - decoration1Tilemap
+  - decoration2Tilemap
+  - frontTilemap
+  - roomTilemap
+  - minimapPlayer
+  - playerWeapon
+  - collisionTilemap
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Interactable
+  - IgnoreAmmo
+  - Camera1
+  - Camera2
+  - Player
+  - Minimap
+  - Room
+  - Wall
+  - PlayerAmmo
+  - Enemy
+  - EnemyAmmo
+  - Environment
+  - PlayerWeapon
+  - EnemyWeapon
+  - Camera3
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 34697109
+    locked: 0
+  - name: Ground Decoration1
+    uniqueID: 3571937947
+    locked: 0
+  - name: Ground Decoration2
+    uniqueID: 3008036141
+    locked: 0
+  - name: Instance
+    uniqueID: 105275597
+    locked: 0
+  - name: Front
+    uniqueID: 2928185679
+    locked: 0
+  - name: Collision
+    uniqueID: 3193442499
+    locked: 0
+  - name: Minimap
+    uniqueID: 2493471141
+    locked: 0
