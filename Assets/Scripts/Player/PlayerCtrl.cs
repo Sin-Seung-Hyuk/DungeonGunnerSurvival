@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerCtrl : MonoBehaviour
 {
+    [SerializeField] private Transform weaponShootPoint;
     private Player player;
     private PlayerStat playerStat;
     private Rigidbody2D rigid;
@@ -25,13 +27,16 @@ public class PlayerCtrl : MonoBehaviour
 
     void Update()
     {
-        
+        PlayerWeaponAim(); // 무기 조준, 사격
     }
+
+
+    // ======================= Player Movement ==================================
+    #region Player Movement
     private void FixedUpdate()
     {
         Move();
     }
-
 
     public void OnMove(InputValue value)
     {
@@ -47,4 +52,35 @@ public class PlayerCtrl : MonoBehaviour
             player.movementEvent.CallPlayerMovement();
         else player.idleEvent.CallIdle();
     }
+    #endregion
+
+    // ======================= Weapon ==================================
+    #region Weapon
+    private void PlayerWeaponAim()
+    {
+        AimDirection playerAimDirection;
+        float playerAimAngle;
+        Vector3 playerAimDirectionVector;
+
+        AimWeapon(out playerAimDirection, out playerAimAngle, out playerAimDirectionVector);
+        FireWeapon(playerAimDirection, playerAimAngle, playerAimDirectionVector);
+        
+    }
+
+    private void AimWeapon(out AimDirection playerAimDirection, out float playerAimAngle, out Vector3 playerAimDirectionVector)
+    {
+        Vector3 mousePos = Utilities.GetMouseCursorPos();
+
+        playerAimDirectionVector = mousePos - weaponShootPoint.position;
+        playerAimAngle = Utilities.GetAngleFromVector(playerAimDirectionVector);
+        playerAimDirection = Utilities.GetAimDirectionFromAngle(playerAimAngle);
+
+        player.weaponAimEvent.CallWeaponAim(playerAimDirection, playerAimAngle, playerAimDirectionVector);
+    }
+
+    private void FireWeapon(AimDirection playerAimDirection, float playerAimAngle, Vector3 playerAimDirectionVector)
+    {
+        
+    }
+    #endregion
 }

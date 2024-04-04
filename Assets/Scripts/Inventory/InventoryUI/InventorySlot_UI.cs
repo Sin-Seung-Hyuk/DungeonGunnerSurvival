@@ -41,7 +41,12 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
         MouseOverDisplayName.text = assignedInventorySlot.ItemData.DisplayName;
         MouseOverDisplayName.color = assignedInventorySlot.ItemData.gradeColor;
         MouseOverDescription.text = assignedInventorySlot.ItemData.Description;
-        MouseOverUI.transform.position = new Vector3(eventData.position.x, eventData.position.y + 50f,0);
+
+        Vector3 pos = new Vector3();
+        pos.y = eventData.position.y + 50f;
+        if (pos.y >= Screen.height - 150f) pos.y = Screen.height - 150f;
+        pos.x = eventData.position.x;
+        MouseOverUI.transform.position = pos;
     }
     public void OnPointerExit(PointerEventData eventData) // ½½·ÔUI¿¡ ¸¶¿ì½º ¶¼±â
     {

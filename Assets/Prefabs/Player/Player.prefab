@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: -6510809136585393483}
   - component: {fileID: 6569375043322734680}
   - component: {fileID: -6392739092250846071}
+  - component: {fileID: 7195640302073368946}
+  - component: {fileID: 701463401187254223}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -66,6 +68,7 @@ MonoBehaviour:
   circleRange: {fileID: 0}
   idleEvent: {fileID: 0}
   movementEvent: {fileID: 0}
+  weaponAimEvent: {fileID: 0}
 --- !u!212 &5197409163352979792
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -314,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ad256ec70d2684fae014ff6015acac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponShootPoint: {fileID: 1905810204942890318}
 --- !u!114 &-7447359093335275865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,6 +401,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6d8a4f859c2a84bb946d1ff11ec958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7195640302073368946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2148578077218841453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c432fd3528b21cc438b39f9dfa00f38a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &701463401187254223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2148578077218841453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a154527724a9a448936919636783f7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponShootPoint: {fileID: 1905810204942890318}
 --- !u!1 &6588465340913994189
 GameObject:
   m_ObjectHideFlags: 0

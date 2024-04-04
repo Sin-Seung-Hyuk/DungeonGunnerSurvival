@@ -17,8 +17,8 @@ MonoBehaviour:
   Description: 'Slime King''s Blood.
 
 '
-  ItemSprite: {fileID: 2622213409082645890, guid: ce9b0fcd06c36d541912c391dbdef096, type: 3}
-  MaxStackSize: 1
+  ItemSprite: {fileID: 21300000, guid: 736aaa2362f97f14a9d71d0640d4686c, type: 3}
+  MaxStackSize: 3
   GoldValue: 7550
   itemGrade: 3
   gradeColor: {r: 0.8862745, g: 0.49019608, b: 0.07450981, a: 1}
