@@ -264,7 +264,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f5c510c0579ca44ab2a15bd20f68469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolArray: []
+  poolArray:
+  - poolSize: 30
+    prefab: {fileID: 4454987432227277477, guid: 1a90ddc6ccc56e04e8ddcd467c2a5d5e, type: 3}
+    componentType: IFireable
+  - poolSize: 30
+    prefab: {fileID: 4454987432227277477, guid: 38d4030fb725ae148afda2f7320083b6, type: 3}
+    componentType: IFireable
 --- !u!4 &345247726
 Transform:
   m_ObjectHideFlags: 0
@@ -273,7 +279,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345247724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7231303, y: 1.8226724, z: -2.703046}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

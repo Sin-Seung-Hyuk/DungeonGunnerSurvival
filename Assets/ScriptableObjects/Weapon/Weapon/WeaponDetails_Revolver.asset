@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02991bfe6698f87479f61e7e4fe03907, type: 3}
-  m_Name: WeaponDetails_Pistol
+  m_Name: WeaponDetails_Revolver
   m_EditorClassIdentifier: 
-  weaponName: Pistol
-  weaponSprite: {fileID: 21300000, guid: abbe40c4d6a803f42a7c4f53404a484d, type: 3}
-  weaponBaseDamage: 20
-  weaponAmmoCapacity: 17
-  weaponFireRate: 0.3
-  weaponReloadTime: 1
-  weaponRange: 12
+  weaponName: Revolver
+  weaponSprite: {fileID: 21300000, guid: 29bc0107bc11191468ed7d175994fb5b, type: 3}
+  weaponBaseDamage: 65
+  weaponAmmoCapacity: 6
+  weaponFireRate: 0.5
+  weaponReloadTime: 1.7
+  weaponRange: 20
   weaponAmmo:
-  - {fileID: 5095676534177190529, guid: 1a90ddc6ccc56e04e8ddcd467c2a5d5e, type: 3}
+  - {fileID: 5095676534177190529, guid: 38d4030fb725ae148afda2f7320083b6, type: 3}

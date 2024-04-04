@@ -80,7 +80,10 @@ public class PlayerCtrl : MonoBehaviour
 
     private void FireWeapon(AimDirection playerAimDirection, float playerAimAngle, Vector3 playerAimDirectionVector)
     {
-        
+        foreach (Weapon weapon in player.weaponList)
+        {
+            player.fireWeaponEvent.CallFireWeaponEvent(weapon, playerAimDirection, playerAimAngle, playerAimDirectionVector);
+        }
     }
     #endregion
 }

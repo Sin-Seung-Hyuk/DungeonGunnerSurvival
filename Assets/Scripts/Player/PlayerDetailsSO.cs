@@ -11,7 +11,7 @@ public class PlayerDetailsSO : ScriptableObject
     public RuntimeAnimatorController runtimeAnimatorController;
     public Sprite minimapIcon;
     public Sprite playerSprite;
-    public WeaponDetailsSO playerStartingWeapon;
+    public List<WeaponDetailsSO> playerStartingWeapon;
 
     [Space(10)]
     [Header("Character Stat")]

@@ -14,6 +14,10 @@ public class WeaponDetailsSO : ScriptableObject
     public int weaponAmmoCapacity = 30; // 탄창
     public float weaponFireRate = 0.5f; // 연사속도
     public float weaponReloadTime = 0f; // 재장전 속도
+    public int weaponRange = 0; // 사거리
 
-
+    [Header("weapon configuration")]
+    public List<Ammo> weaponAmmo;
+    //public SoundEffectSO weaponFiringSoundEffect;
+    //public SoundEffectSO weaponReloadingSoundEffect;
 }

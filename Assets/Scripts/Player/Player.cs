@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public IdleEvent idleEvent;
     [HideInInspector] public MovementEvent movementEvent;
     [HideInInspector] public WeaponAimEvent weaponAimEvent;
+    [HideInInspector] public FireWeaponEvent fireWeaponEvent;
 
 
     private PlayerInventoryHolder playerInventory; // 플레이어 인벤토리
@@ -47,15 +48,12 @@ public class Player : MonoBehaviour
         idleEvent = GetComponent<IdleEvent>();
         movementEvent = GetComponent<MovementEvent>();
         weaponAimEvent = GetComponent<WeaponAimEvent>();
+        fireWeaponEvent = GetComponent<FireWeaponEvent>();
     }
 
     private void Start()
     {
-        Debug.Log(weaponList[0].weaponName);
-        Debug.Log(weaponList[0].weaponBaseDamage);
-        Debug.Log(weaponList[0].weaponAmmoCapacity);
-        Debug.Log(weaponList[0].weaponFireRate);
-        Debug.Log(weaponList[0].weaponReloadTime);
+
     }
 
     public void InitializePlayer(PlayerDetailsSO playerDetails)
@@ -79,8 +77,13 @@ public class Player : MonoBehaviour
 
         circleRange.radius = stat.circleRange;
 
-        Weapon weapon = gameObject.AddComponent<Weapon>();
-        weapon.InitializeWeapon(playerDetails.playerStartingWeapon);
-        weaponList.Add(weapon);
+        foreach (var weapon in playerDetails.playerStartingWeapon)
+        {
+            Weapon playerWeapon = gameObject.AddComponent<Weapon>();
+            playerWeapon.InitializeWeapon(weapon);
+
+            weaponList.Add(playerWeapon);
+        }
+
     }
 }

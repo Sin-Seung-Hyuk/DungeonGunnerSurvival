@@ -52,6 +52,13 @@ public static class Utilities
         return degrees;
     }
 
+    // 각도로부터 벡터 구하기  ===========================================================
+    public static Vector3 GetDirectionVectorFromAngle(float angle)
+    {
+        Vector3 direction = new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle), 0f);
+        return direction;
+    }
+
     // 현재 마우스 각도에 따라 AimDirection 설정  ===========================================================
     public static AimDirection GetAimDirectionFromAngle(float angle)
     {
