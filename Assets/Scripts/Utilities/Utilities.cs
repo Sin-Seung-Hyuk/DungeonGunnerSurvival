@@ -36,6 +36,13 @@ public static class Utilities
         return value + increase;
     }
 
+    // 확률 계산하기  ===========================================================
+    public static bool isSuccess(int percent)
+    {
+        int chance = Random.Range(0, 101);
+        return percent >= chance; // 성공하면 true
+    }
+
     // 벡터로부터 각도 구하기  ===========================================================
     public static float GetAngleFromVector(Vector3 vector)
     {

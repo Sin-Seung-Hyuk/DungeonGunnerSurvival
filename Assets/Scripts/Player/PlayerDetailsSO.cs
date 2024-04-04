@@ -11,11 +11,12 @@ public class PlayerDetailsSO : ScriptableObject
     public RuntimeAnimatorController runtimeAnimatorController;
     public Sprite minimapIcon;
     public Sprite playerSprite;
+    public WeaponDetailsSO playerStartingWeapon;
 
     [Space(10)]
     [Header("Character Stat")]
     [Range(80, 150)] public int maxHp;
-    [Range(10, 100)] public int baseDamage;
+    [Range(0, 100)] public int baseDamage;
     [Range(0, 100)] public int criticChance;
     [Range(100, 200)] public int criticDamage;
     [Range(0, 100)] public int reloadSpeed;

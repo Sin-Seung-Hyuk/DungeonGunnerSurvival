@@ -17,6 +17,7 @@ MonoBehaviour:
   runtimeAnimatorController: {fileID: 9100000, guid: e52ed9234b488b0449570da9e57ce474, type: 2}
   minimapIcon: {fileID: 21300000, guid: da88e4a191f22674e9aab239e652640a, type: 3}
   playerSprite: {fileID: 2887896937163043261, guid: ffa25ab59b41d9d4abbfe10d88fea3d7, type: 3}
+  playerStartingWeapon: {fileID: 11400000, guid: b4683f4ff6d55f64493c4f6533138766, type: 2}
   maxHp: 150
   baseDamage: 50
   criticChance: 15

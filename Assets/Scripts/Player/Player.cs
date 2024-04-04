@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
 
     private PlayerInventoryHolder playerInventory; // 플레이어 인벤토리
 
+    public List<Weapon> weaponList = new List<Weapon>(); // 무기 리스트
+
 
     private void Awake()
     {
@@ -49,7 +51,11 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-
+        Debug.Log(weaponList[0].weaponName);
+        Debug.Log(weaponList[0].weaponBaseDamage);
+        Debug.Log(weaponList[0].weaponAmmoCapacity);
+        Debug.Log(weaponList[0].weaponFireRate);
+        Debug.Log(weaponList[0].weaponReloadTime);
     }
 
     public void InitializePlayer(PlayerDetailsSO playerDetails)
@@ -61,16 +67,20 @@ public class Player : MonoBehaviour
 
         // SetHP(playerDetails.maxHp);
 
-        stat.BaseDamage = playerDetails.baseDamage;
-        stat.CriticChance = playerDetails.criticChance;
-        stat.CriticDamage = playerDetails.criticDamage;
-        stat.ReloadSpeed = playerDetails.reloadSpeed;
-        stat.FireRateSpeed = playerDetails.fireRateSpeed;
-        stat.MoveSpeed = playerDetails.moveSpeed;
-        stat.CircleRange  = playerDetails.circleRange;
-        stat.DodgeChance = playerDetails.dodgeChance;
-        stat.ExpGain = playerDetails.expGain;
+        stat.baseDamage = playerDetails.baseDamage;
+        stat.criticChance = playerDetails.criticChance;
+        stat.criticDamage = playerDetails.criticDamage;
+        stat.reloadSpeed = playerDetails.reloadSpeed;
+        stat.fireRateSpeed = playerDetails.fireRateSpeed;
+        stat.moveSpeed = playerDetails.moveSpeed;
+        stat.circleRange  = playerDetails.circleRange;
+        stat.dodgeChance = playerDetails.dodgeChance;
+        stat.expGain = playerDetails.expGain;
 
-        circleRange.radius = stat.CircleRange;
+        circleRange.radius = stat.circleRange;
+
+        Weapon weapon = gameObject.AddComponent<Weapon>();
+        weapon.InitializeWeapon(playerDetails.playerStartingWeapon);
+        weaponList.Add(weapon);
     }
 }

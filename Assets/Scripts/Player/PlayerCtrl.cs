@@ -22,7 +22,7 @@ public class PlayerCtrl : MonoBehaviour
     void Start()
     {
         playerStat = player.stat;
-        moveSpeed = playerStat.MoveSpeed;
+        moveSpeed = playerStat.moveSpeed;
     }
 
     void Update()
