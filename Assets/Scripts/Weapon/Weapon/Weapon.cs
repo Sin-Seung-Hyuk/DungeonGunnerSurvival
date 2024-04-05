@@ -23,7 +23,7 @@ public class Weapon : MonoBehaviour
     // 실시간으로 인게임에서 사격하면서 바뀌는 변수들
     public int weaponAmmoRemaining; // 남은 탄약
     public bool isWeaponReloading;  // 재장전 여부
-    public float weaponReloadTimer; // 재장전 남은시간
+    public float weaponReloadTimer = 0f; // 재장전 남은시간
     public float weaponFireRateTimer; // 사격 남은시간
 
 
@@ -43,7 +43,6 @@ public class Weapon : MonoBehaviour
         weaponAmmoList = weaponDetails.weaponAmmo;
 
         weaponAmmoRemaining = weaponDetails.weaponAmmoCapacity;
-        weaponReloadTimer = weaponDetails.weaponReloadTime;
         weaponFireRateTimer = weaponDetails.weaponFireRate;
     }
 
@@ -53,6 +52,13 @@ public class Weapon : MonoBehaviour
         if (weaponFireRateTimer > 0f)
             weaponFireRateTimer -= Time.deltaTime;
         else weaponFireRateTimer = weaponFireRate;
+
+
+        // 테스트 
+        if (Keyboard.current.rKey.wasPressedThisFrame)
+        {
+            //weaponReloadTime -= 1f;
+        }
     }
 
     public Ammo GetCurrentAmmo(int level)

@@ -7,11 +7,15 @@ public class FireWeapon : MonoBehaviour
 {
     [SerializeField] Transform weaponShootPosition; // 사격 포인트
     private FireWeaponEvent fireWeaponEvent;
+    private WeaponFiredEvent weaponFiredEvent;
+    private ReloadWeaponEvent reloadWeaponEvent;
 
     private void Awake()
     {
         fireWeaponEvent = GetComponent<FireWeaponEvent>();
-        
+        weaponFiredEvent = GetComponent<WeaponFiredEvent>();
+        reloadWeaponEvent = GetComponent<ReloadWeaponEvent>();
+
     }
     private void OnEnable()
     {
@@ -31,17 +35,20 @@ public class FireWeapon : MonoBehaviour
 
     private void WeaponFire(FireWeaponEventArgs fireWeaponEventArgs)
     {
-        if (IsWeaponReadyToFire(fireWeaponEventArgs.weapon))
+        if (IsWeaponReadyToFire(fireWeaponEventArgs.weapon, fireWeaponEventArgs.weaponIndex))
         {
-            FireAmmo(fireWeaponEventArgs.weapon,fireWeaponEventArgs.aimAngle, fireWeaponEventArgs.weaponAimDirectionVector);
+            FireAmmo(fireWeaponEventArgs.weapon,fireWeaponEventArgs.aimAngle, fireWeaponEventArgs.weaponAimDirectionVector, fireWeaponEventArgs.weaponIndex);
         }
     }
 
-    private bool IsWeaponReadyToFire(Weapon weapon)
+    private bool IsWeaponReadyToFire(Weapon weapon, int weaponIndex)
     {
         // 탄약이 남아있는지
         if (weapon.weaponAmmoRemaining <= 0)
+        {
+            reloadWeaponEvent.CallReloadWeaponEvent(weapon, weaponIndex); // 장전이벤트 호출
             return false;
+        }
         // 지금 장전중이 아닐때
         if (weapon.isWeaponReloading)
             return false;
@@ -52,7 +59,7 @@ public class FireWeapon : MonoBehaviour
         return true;
     }
 
-    private void FireAmmo(Weapon weapon, float aimAngle, Vector3 weaponAimDirectionVector)
+    private void FireAmmo(Weapon weapon, float aimAngle, Vector3 weaponAimDirectionVector, int weaponIndex)
     {
         Ammo currentAmmo = weapon.GetCurrentAmmo(weapon.weaponLevel); // 현재 무기의 탄
 
@@ -67,7 +74,7 @@ public class FireWeapon : MonoBehaviour
 
             weapon.weaponAmmoRemaining--; // 남은 탄 감소
 
-            //weaponFiredEvent.CallWeaponFiredEvent(activeWeapon.GetCurrentWeapon()); // 사격했음을 알리는 이벤트 호출
+            weaponFiredEvent.CallWeaponFiredEvent(weapon, weaponIndex); // 사격했음을 알리는 이벤트 호출
 
             //WeaponSoundEffect(); // 사격 사운드
         }

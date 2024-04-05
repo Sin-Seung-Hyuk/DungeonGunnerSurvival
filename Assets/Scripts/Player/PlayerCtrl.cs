@@ -80,10 +80,13 @@ public class PlayerCtrl : MonoBehaviour
 
     private void FireWeapon(float playerAimAngle, Vector3 playerAimDirectionVector)
     {
-        foreach (Weapon weapon in player.weaponList) // 플레이어의 무기 리스트 각각 사격이벤트 호출
+        for (int i=0;i< player.weaponList.Count; ++i) // 플레이어의 무기 리스트 각각 사격이벤트 호출
         {
-            player.fireWeaponEvent.CallFireWeaponEvent(weapon, playerAimAngle, playerAimDirectionVector);
+            player.fireWeaponEvent.CallFireWeaponEvent(player.weaponList[i], playerAimAngle, playerAimDirectionVector, i);
         }
+
+        //player.fireWeaponEvent.CallFireWeaponEvent(player.weaponList[1], playerAimAngle, playerAimDirectionVector);
+
     }
     #endregion
 }

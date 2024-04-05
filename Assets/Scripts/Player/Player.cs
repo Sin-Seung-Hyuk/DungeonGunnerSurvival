@@ -32,6 +32,10 @@ public class Player : MonoBehaviour
     [HideInInspector] public MovementEvent movementEvent;
     [HideInInspector] public WeaponAimEvent weaponAimEvent;
     [HideInInspector] public FireWeaponEvent fireWeaponEvent;
+    [HideInInspector] public WeaponFiredEvent weaponFiredEvent;
+    [HideInInspector] public WeaponReloadedEvent weaponReloadedEvent;
+    [HideInInspector] public ReloadWeaponEvent reloadWeaponEvent;
+    [HideInInspector] public ActiveWeaponEvent activeWeaponEvent;
 
 
     private PlayerInventoryHolder playerInventory; // 플레이어 인벤토리
@@ -49,12 +53,12 @@ public class Player : MonoBehaviour
         movementEvent = GetComponent<MovementEvent>();
         weaponAimEvent = GetComponent<WeaponAimEvent>();
         fireWeaponEvent = GetComponent<FireWeaponEvent>();
+        weaponFiredEvent = GetComponent<WeaponFiredEvent>();
+        weaponReloadedEvent = GetComponent<WeaponReloadedEvent>();
+        reloadWeaponEvent = GetComponent<ReloadWeaponEvent>();
+        activeWeaponEvent = GetComponent<ActiveWeaponEvent>();
     }
 
-    private void Start()
-    {
-
-    }
 
     public void InitializePlayer(PlayerDetailsSO playerDetails)
     {
@@ -71,19 +75,31 @@ public class Player : MonoBehaviour
         stat.reloadSpeed = playerDetails.reloadSpeed;
         stat.fireRateSpeed = playerDetails.fireRateSpeed;
         stat.moveSpeed = playerDetails.moveSpeed;
-        stat.circleRange  = playerDetails.circleRange;
+        stat.circleRange = playerDetails.circleRange;
         stat.dodgeChance = playerDetails.dodgeChance;
         stat.expGain = playerDetails.expGain;
 
         circleRange.radius = stat.circleRange;
+    }
 
+    private void Start()
+    {
         foreach (var weapon in playerDetails.playerStartingWeapon)
         {
-            Weapon playerWeapon = gameObject.AddComponent<Weapon>();
-            playerWeapon.InitializeWeapon(weapon);
-
-            weaponList.Add(playerWeapon);
+            AddWeaponToPlayer(weapon);
         }
 
+    }
+
+    public Weapon AddWeaponToPlayer(WeaponDetailsSO weaponDetails)
+    {
+        // 추가할 무기 초기화
+        Weapon playerWeapon = gameObject.AddComponent<Weapon>();
+        playerWeapon.InitializeWeapon(weaponDetails);
+
+        weaponList.Add(playerWeapon); // 무기 리스트에 추가
+        activeWeaponEvent.CallActiveWeaponEvent(playerWeapon, weaponList.Count-1); // 무기 UI 추가
+
+        return playerWeapon;
     }
 }
