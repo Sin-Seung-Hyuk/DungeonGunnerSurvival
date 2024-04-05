@@ -6,7 +6,6 @@ using UnityEngine.Events;
 
 
 // 인벤토리 디스플레이 추상클래스 : 인벤토리 UI에 등록하여 화면에 보여주는 부분을 관리
-
 public abstract class InventoryDisplay : MonoBehaviour 
 {
     [SerializeField] MouseItemData mouseInventoryItem;

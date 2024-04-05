@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FireWeapon : MonoBehaviour
 {
-    [SerializeField] Transform weaponShootPosition;
+    [SerializeField] Transform weaponShootPosition; // 사격 포인트
     private FireWeaponEvent fireWeaponEvent;
 
     private void Awake()
@@ -60,17 +60,15 @@ public class FireWeapon : MonoBehaviour
         {
             GameObject ammoPrefab = currentAmmo.gameObject;
 
-            float ammoSpeed = 15f;
             // ammo에 오브젝트 풀에 등록된 Ammo프리팹이 가지고있는 IFireable 컴포넌트가 반환됨
             IFireable ammo = (IFireable)ObjectPoolManager.Instance.Release(ammoPrefab, weaponShootPosition.position, Quaternion.identity);
 
-            ammo.InitializeAmmo(aimAngle, weaponAimDirectionVector, weapon.weaponRange, ammoSpeed, 10);
+            ammo.InitializeAmmo(aimAngle, weaponAimDirectionVector, weapon.weaponRange, weapon.weaponAmmoSpeed, weapon.weaponBaseDamage);
 
             weapon.weaponAmmoRemaining--; // 남은 탄 감소
 
             //weaponFiredEvent.CallWeaponFiredEvent(activeWeapon.GetCurrentWeapon()); // 사격했음을 알리는 이벤트 호출
 
-            //WeaponShootEffect(aimAngle); // 사격 효과
             //WeaponSoundEffect(); // 사격 사운드
         }
     }

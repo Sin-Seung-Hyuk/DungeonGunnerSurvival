@@ -108,12 +108,16 @@ public class InventorySystem    // 인벤토리의 슬롯들을 관리하는 인벤토리 시스템
         return true;
     }
 
-    public void SpendGold(int basketTotal)
+    public void GainGold(int price) // 골드 획득
+    {
+        gold += price;
+    }
+    public void SpendGold(int basketTotal) // 골드 소모
     {
         gold -= basketTotal;
     }
 
-    public Dictionary<InventoryItemData, int> GetAllItem()
+    public Dictionary<InventoryItemData, int> GetAllItem() // 인벤의 모든 아이템 반환
     {
         var distinctItems = new Dictionary<InventoryItemData, int>();
 
@@ -129,7 +133,7 @@ public class InventorySystem    // 인벤토리의 슬롯들을 관리하는 인벤토리 시스템
         return distinctItems;
     }
 
-    public void RemoveItemsFromInventory(InventoryItemData data, int amount)
+    public void RemoveItemsFromInventory(InventoryItemData data, int amount) // 인벤에서 아이템 감소
     {
         if (ContainsItem(data, out List<InventorySlot> invSlot))
         {
@@ -137,20 +141,15 @@ public class InventorySystem    // 인벤토리의 슬롯들을 관리하는 인벤토리 시스템
             {
                 int stackSize = slot.StackSize;
 
-                if (stackSize > amount) slot.RemoveFromStack(amount);
+                if (stackSize > amount) slot.RemoveFromStack(amount); // 스택만 감소
                 else
                 {
-                    slot.RemoveFromStack(stackSize);
+                    slot.RemoveFromStack(stackSize); // RemoveFromStack 내부에서 ClearSlot() 호출
                     amount -= stackSize;
 
                     OnInventorySlotChanged?.Invoke(slot);
                 }
             }
         }
-    }
-
-    public void GainGold(int price)
-    {
-        gold += price;
     }
 }

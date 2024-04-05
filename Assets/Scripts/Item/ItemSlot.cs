@@ -9,8 +9,7 @@ public class ItemSlot : ISerializationCallbackReceiver
     [SerializeField] protected int stackSize; // 이 슬롯의 현재스택
     [SerializeField] protected int itemID = -1; // 이 슬롯에 들어간 아이템ID
 
-    //public InventoryItemData Data { get { return itemData; } }
-    public InventoryItemData ItemData => itemData;  // 위와 같은 표현
+    public InventoryItemData ItemData => itemData; 
     public int StackSize => stackSize;
 
     public void ClearSlot() // 슬롯 비우기

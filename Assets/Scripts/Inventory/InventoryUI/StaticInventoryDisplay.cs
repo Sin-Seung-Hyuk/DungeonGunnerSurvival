@@ -33,7 +33,7 @@ public class StaticInventoryDisplay : InventoryDisplay
     protected override void Start()
     {
         base.Start();
-        RefreshStaticDisplay();
+        RefreshStaticDisplay(); // 게임시작시 인벤토리 업데이트
     }
 
     // 인벤토리 시스템의 인벤토리 슬롯 리스트를 슬롯UI에 옮기는 작업

@@ -52,7 +52,7 @@ public static class Utilities
         return degrees;
     }
 
-    // 각도로부터 벡터 구하기  ===========================================================
+    // 각도로부터 방향벡터 구하기  ===========================================================
     public static Vector3 GetDirectionVectorFromAngle(float angle)
     {
         Vector3 direction = new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle), 0f);

@@ -33,6 +33,6 @@ public class Movement : MonoBehaviour
 
     private void MoveRigidbody(Vector2 moveDirection, float moveSpeed)
     {
-        rigidBody2D.velocity = moveSpeed * moveDirection;
+        rigidBody2D.velocity = moveSpeed * moveDirection; // 리지드바디 velocity 이동
     }
 }

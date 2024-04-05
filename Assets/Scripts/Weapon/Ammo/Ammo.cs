@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Ammo : MonoBehaviour, IFireable
+public class Ammo : MonoBehaviour, IFireable // 사격 인터페이스
 {
     private float ammoRange;
     private float ammoSpeed;
+    private int ammoDamage;
     private Vector3 fireDirectionVector;
     private float fireDirectionAngle;
-    private int ammoDamage;
     private bool isColliding = false;
 
     
@@ -24,7 +24,7 @@ public class Ammo : MonoBehaviour, IFireable
 
         if (ammoRange < 0f)
         {
-            gameObject.SetActive(false);
+            gameObject.SetActive(false); // 유효거리 벗어남
         }
     }
 
@@ -32,13 +32,13 @@ public class Ammo : MonoBehaviour, IFireable
     {
         isColliding = false;
 
-        SetFireDirection(aimAngle, aimDirectionVector);
+        SetFireDirection(aimAngle, aimDirectionVector); // 탄 진행방향
 
         this.ammoRange = ammoRange;
         this.ammoSpeed = ammoSpeed;
         this.ammoDamage = ammoDamage;
 
-        gameObject.SetActive(true);
+        gameObject.SetActive(true); // 탄 초기화 후 활성화
     }
 
     private void SetFireDirection(float aimAngle, Vector3 aimDirectionVector)

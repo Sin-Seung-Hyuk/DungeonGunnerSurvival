@@ -58,31 +58,31 @@ public class PlayerCtrl : MonoBehaviour
     #region Weapon
     private void PlayerWeaponAim()
     {
-        AimDirection playerAimDirection;
-        float playerAimAngle;
-        Vector3 playerAimDirectionVector;
+        AimDirection playerAimDirection; // 에임 방향
+        float playerAimAngle;            // 에임 각도
+        Vector3 playerAimDirectionVector;// 에임 방향벡터
 
-        AimWeapon(out playerAimDirection, out playerAimAngle, out playerAimDirectionVector);
-        FireWeapon(playerAimDirection, playerAimAngle, playerAimDirectionVector);
+        AimWeapon(out playerAimDirection, out playerAimAngle, out playerAimDirectionVector); 
+        FireWeapon( playerAimAngle, playerAimDirectionVector);
         
     }
 
     private void AimWeapon(out AimDirection playerAimDirection, out float playerAimAngle, out Vector3 playerAimDirectionVector)
     {
-        Vector3 mousePos = Utilities.GetMouseCursorPos();
+        Vector3 mousePos = Utilities.GetMouseCursorPos(); // 마우스 위치 구하기
 
-        playerAimDirectionVector = mousePos - weaponShootPoint.position;
-        playerAimAngle = Utilities.GetAngleFromVector(playerAimDirectionVector);
-        playerAimDirection = Utilities.GetAimDirectionFromAngle(playerAimAngle);
+        playerAimDirectionVector = mousePos - weaponShootPoint.position; // 캐릭터->마우스 방향벡터 구하기
+        playerAimAngle = Utilities.GetAngleFromVector(playerAimDirectionVector); // 방향벡터로 에임각도 구하기
+        playerAimDirection = Utilities.GetAimDirectionFromAngle(playerAimAngle); // 에임각도로 에임방향 구하기
 
-        player.weaponAimEvent.CallWeaponAim(playerAimDirection, playerAimAngle, playerAimDirectionVector);
+        player.weaponAimEvent.CallWeaponAim(playerAimDirection, playerAimAngle, playerAimDirectionVector); // 해당 위치로 조준
     }
 
-    private void FireWeapon(AimDirection playerAimDirection, float playerAimAngle, Vector3 playerAimDirectionVector)
+    private void FireWeapon(float playerAimAngle, Vector3 playerAimDirectionVector)
     {
-        foreach (Weapon weapon in player.weaponList)
+        foreach (Weapon weapon in player.weaponList) // 플레이어의 무기 리스트 각각 사격이벤트 호출
         {
-            player.fireWeaponEvent.CallFireWeaponEvent(weapon, playerAimDirection, playerAimAngle, playerAimDirectionVector);
+            player.fireWeaponEvent.CallFireWeaponEvent(weapon, playerAimAngle, playerAimDirectionVector);
         }
     }
     #endregion

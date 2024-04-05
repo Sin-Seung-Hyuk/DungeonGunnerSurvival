@@ -1980,6 +1980,7 @@ GameObject:
   - component: {fileID: 8454736726214450278}
   - component: {fileID: 8349577635039674394}
   - component: {fileID: 9107159239964144495}
+  - component: {fileID: 2700208971114528155}
   m_Layer: 0
   m_Name: TestItem 5
   m_TagString: Untagged
@@ -1987,6 +1988,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2700208971114528155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2700208971114528154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5cb02ac297ee3e4db677d3a3acecd35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickUpRadius: 1
+  itemData: {fileID: 11400000, guid: 7e62ab87baee6b8429b892d5f9d376f3, type: 2}
 --- !u!4 &7871528559554075921
 Transform:
   m_ObjectHideFlags: 0

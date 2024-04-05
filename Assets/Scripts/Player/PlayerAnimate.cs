@@ -76,6 +76,7 @@ public class PlayerAnimate : MonoBehaviour
         player.animator.SetBool(Settings.aimDown, false);
     }
 
+    // AimDirection 으로 애니메이터 파라미터 변경
     private void SetWeaponAimParameter(AimDirection aimDirection)
     {
         switch (aimDirection)
