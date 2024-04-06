@@ -18,7 +18,7 @@ public class PlayerInventoryHolder : InventoryHolder
         SaveLoad.OnSaveGame += SaveFile;
     }
 
-    public void SaveFile()
+    private void SaveFile()
     {
         SaveGameManager.data.playerInventory = new InventorySaveData(primaryInventorySystem);
     }

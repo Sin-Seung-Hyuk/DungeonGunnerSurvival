@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
     [SerializeField] private Image MouseOverUI; // 슬롯UI 마우스오버 UI
     [SerializeField] private TextMeshProUGUI MouseOverDisplayName;
     [SerializeField] private TextMeshProUGUI MouseOverDescription;
+    private Coroutine mouseOverCoroutine;
 
     // 이 슬롯UI에 할당될 인벤토리 슬롯 데이터 (슬롯UI는 이 인벤토리 슬롯의 정보를 '출력'하는 장치)
     [SerializeField] private InventorySlot assignedInventorySlot;
@@ -37,6 +39,20 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         if (assignedInventorySlot.ItemData == null) return; // 빈슬롯 넘기기
 
+        if (mouseOverCoroutine != null)
+            StopCoroutine(mouseOverCoroutine);
+        mouseOverCoroutine = StartCoroutine(mouseOverRoutine(eventData));
+    }
+
+    private IEnumerator mouseOverRoutine(PointerEventData eventData)
+    {
+        float timer = 0f;
+        while (timer < 1.5f) // 슬롯에 1.5초 이상 마우스를 갖다대면 활성화
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
         MouseOverUI.gameObject.SetActive(true); // 마우스오버UI 활성화
         MouseOverDisplayName.text = assignedInventorySlot.ItemData.DisplayName;
         MouseOverDisplayName.color = assignedInventorySlot.ItemData.gradeColor;
@@ -48,9 +64,13 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
         pos.x = eventData.position.x;
         MouseOverUI.transform.position = pos;
     }
+
     public void OnPointerExit(PointerEventData eventData) // 슬롯UI에 마우스 떼기
     {
-        MouseOverUI.gameObject.SetActive(false); // 마우스오버UI 비활성화
+        if (mouseOverCoroutine != null)
+            StopCoroutine(mouseOverCoroutine);
+        if (MouseOverUI.gameObject.activeSelf)
+            MouseOverUI.gameObject.SetActive(false); // 마우스오버UI 비활성화
     }
 
     public void ClearSlot() // 이 슬롯UI의 슬롯정보 포함 전부 초기화
@@ -92,6 +112,8 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void OnUIISlotClick()
     {
         // 부모오브젝트에 클릭이벤트로 이 슬롯을 넘겨줌
-        ParentDisplay?.SlotClicked(this);
+        if (assignedInventorySlot.isEquipmentSlot == true)
+            ParentDisplay?.SlotClicked(this, assignedInventorySlot.isEquipmentSlot);
+        else ParentDisplay?.SlotClicked(this);
     }
 }

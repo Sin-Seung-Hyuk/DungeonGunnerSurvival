@@ -34,12 +34,13 @@ public abstract class InventoryDisplay : MonoBehaviour
         }
     }
 
+
     public void SlotClicked(InventorySlot_UI clickedSlotUI)
     {
         bool isAltPressed = Keyboard.current.leftAltKey.isPressed; // Alt키 입력감지
 
         // 클릭한 슬롯UI에 아이템데이터 있어야하고 && 마우스가 이미 클릭해서 가진 아이템정보가 null이여야함
-        if (clickedSlotUI.AssignedInventorySlot.ItemData != null && 
+        if (clickedSlotUI.AssignedInventorySlot.ItemData != null &&
             mouseInventoryItem.AssignedInventorySlot.ItemData == null)
         {
             if (isAltPressed && clickedSlotUI.AssignedInventorySlot.SplitStack(out InventorySlot splitStack))
@@ -54,7 +55,7 @@ public abstract class InventoryDisplay : MonoBehaviour
                 clickedSlotUI.ClearSlot();
                 return;
             }
-         } 
+        }
 
         // 비어있는 슬롯에 마우스 데이터가 있는 상태에서 클릭한다면 (템옮기기)
         if (clickedSlotUI.AssignedInventorySlot.ItemData == null && mouseInventoryItem.AssignedInventorySlot.ItemData != null)
@@ -103,8 +104,14 @@ public abstract class InventoryDisplay : MonoBehaviour
                 SwapSlot(clickedSlotUI);
                 return;
             }
-            
+
         }
+    }
+
+
+    public void SlotClicked(InventorySlot_UI clickedSlotUI, bool isEquip)
+    {
+        
     }
 
     // 클릭한 슬롯과 아이템 데이터 교체하기
@@ -121,4 +128,5 @@ public abstract class InventoryDisplay : MonoBehaviour
         clickedSlot.AssignedInventorySlot.AssignItem(newSlot);
         clickedSlot.UpdateUISlot();
     }
+
 }

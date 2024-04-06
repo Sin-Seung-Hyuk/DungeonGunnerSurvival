@@ -25,6 +25,7 @@ public class UIController : MonoBehaviour // 최상위 UI 컨트롤러
     {
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
             shopKeeperDisplay.gameObject.SetActive(false);
+
     }
 
     private void DisplayShopWindow(ShopSystem shopSystem, PlayerInventoryHolder playerInventory)

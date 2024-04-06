@@ -17,6 +17,16 @@ public class InventorySystem    // 인벤토리의 슬롯들을 관리하는 인벤토리 시스템
     public UnityAction<InventorySlot> OnInventorySlotChanged;
 
 
+    public InventorySystem(InventorySlot_UI[] Slots)
+    {
+        inventorySlots = new List<InventorySlot>(Slots.Length);
+
+        foreach (var slots in Slots)
+        {
+            slots.Init(new InventorySlot(true));
+            inventorySlots.Add(slots.AssignedInventorySlot);
+        }
+    }
     public InventorySystem(int size) // 돈 0원 생성자
     {
         gold = 0;
@@ -33,7 +43,7 @@ public class InventorySystem    // 인벤토리의 슬롯들을 관리하는 인벤토리 시스템
 
         for (int i = 0; i < size; ++i)
         {
-            inventorySlots.Add(new InventorySlot()); // 빈 슬롯으로 초기화
+            inventorySlots.Add(new InventorySlot(false)); // 빈 슬롯으로 초기화
         }
     }
 

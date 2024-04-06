@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]    
+[System.Serializable]
 public class InventorySlot : ItemSlot
 {
     public InventorySlot(InventoryItemData source, int amount) // 생성자
@@ -13,11 +13,10 @@ public class InventorySlot : ItemSlot
         stackSize = amount;
     }
 
-    public InventorySlot() // 기본 생성자
+    public InventorySlot(bool isEquip) // 기본 생성자
     {
-        ClearSlot();
+        ClearSlot(isEquip);
     }
-
 
 
     public void UpdateInventorySlot(InventoryItemData data, int amount ) // 슬롯 업데이트

@@ -8,15 +8,18 @@ public class ItemSlot : ISerializationCallbackReceiver
     [SerializeField] protected InventoryItemData itemData; // 슬롯에 들어갈 아이템데이터
     [SerializeField] protected int stackSize; // 이 슬롯의 현재스택
     [SerializeField] protected int itemID = -1; // 이 슬롯에 들어간 아이템ID
+    [SerializeField] public bool isEquipmentSlot = false; // 이 슬롯에 들어간 아이템ID
+    
 
     public InventoryItemData ItemData => itemData; 
     public int StackSize => stackSize;
 
-    public void ClearSlot() // 슬롯 비우기
+    public void ClearSlot(bool isEquipment) // 슬롯 비우기
     {
         itemData = null;
         stackSize = -1;
         itemID = -1;
+        isEquipmentSlot = isEquipment;
     }
 
     // 이 슬롯을 매개변수로 들어온 슬롯으로 초기화

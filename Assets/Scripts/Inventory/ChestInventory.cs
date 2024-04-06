@@ -25,7 +25,7 @@ public class ChestInventory : InventoryHolder, IInteractable
         SaveLoad.OnSaveGame -= SaveFile;
     }
 
-    public void SaveFile()
+    private void SaveFile()
     {
         // 현재 상자의 정보 저장하기
         var chestData = new InventorySaveData(primaryInventorySystem, transform.position, transform.rotation);
