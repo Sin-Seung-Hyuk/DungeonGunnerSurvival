@@ -34,7 +34,7 @@ public class DungeonBuilder : Singleton<DungeonBuilder>
         roomObject.transform.SetParent(this.transform,false); // 던전빌더 자식오브젝트로 던전 생성
 
         Room instantiatedRoom = GetComponentInChildren<Room>();
-        instantiatedRoom.InitializedRoom(roomTemplate);
+        instantiatedRoom.InitializedRoom(roomTemplate, roomObject);
 
         StaticEventHandler.CallRoomChanged(instantiatedRoom); // 방 변경 이벤트 호출
     }

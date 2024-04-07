@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c87455de393bbf44ac52bbf37c7a401, type: 3}
+  m_Name: JunkItem_10
+  m_EditorClassIdentifier: 
+  ID: 9
+  DisplayName: 'Celestial Beryl '
+  Description: A beryl that seems to shimmer with the light of distant stars, its
+    surface cool to the touch.
+  ItemSprite: {fileID: 21300000, guid: 0332de190583c664184310f6e0f4dbc1, type: 3}
+  MaxStackSize: 50
+  GoldValue: 110
+  itemGrade: 1
+  gradeColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}
+  itemType: 1
+  equipmentType: 7

@@ -17,4 +17,5 @@ MonoBehaviour:
   lowerBounds: {x: -11, y: -7}
   upperBounds: {x: 12, y: 8}
   playerSpawnPos: {x: -1, y: -4, z: 0}
-  spawnPositionArray: []
+  spawnPositionArray:
+  - {x: 2, y: 2}

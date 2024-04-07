@@ -28,6 +28,22 @@ public class Ammo : MonoBehaviour, IFireable // 사격 인터페이스
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (isColliding) return;
+
+        Health health = collision.GetComponent<Health>();
+
+        if (health != null)
+        {
+            isColliding = true; // 충돌 중
+            health.TakeDamage(ammoDamage);
+            Debug.Log(collision.name);
+        }
+
+        gameObject.SetActive(false);
+    }
+
     public void InitializeAmmo(float aimAngle, Vector3 aimDirectionVector, float ammoRange, float ammoSpeed, int ammoDamage)
     {
         isColliding = false;

@@ -96,6 +96,7 @@ public class WeaponStatusUI : MonoBehaviour
 
         barImage[weaponIndex].color = Color.green;
         reloadBar[weaponIndex].transform.localScale = new Vector3(1f, 1f, 1f);
+        ammoRemainingText[weaponIndex].text = weapon.weaponAmmoCapacity.ToString() + " / " + weapon.weaponAmmoCapacity.ToString();
     }
 
     private void StopReloadWeaponCoroutine()

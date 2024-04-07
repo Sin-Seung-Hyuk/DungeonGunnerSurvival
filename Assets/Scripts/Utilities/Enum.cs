@@ -6,10 +6,6 @@ public enum PlayerCharacter
     TheScientist
 }
 
-public enum Enemy
-{
-
-}
 
 public enum GameState
 {

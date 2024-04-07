@@ -51,12 +51,9 @@ public class PlayerEquipmentHolder : InventoryDisplay
         {
             SlotDictionary.Add(slots[i], invToDisplay.InventorySlots[i]);
             slots[i].Init(invToDisplay.InventorySlots[i]);
-            slots[i].itemNumPad.text = "";
             slots[i].UpdateUISlot();
         }
     }
-
-
 }
 
 [System.Serializable]

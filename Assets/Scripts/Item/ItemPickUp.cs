@@ -8,8 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(UniqueID))]
 public class ItemPickUp : MonoBehaviour  // 아이템에 연결할 클래스
 {
-    public float pickUpRadius = 1f;
-    public InventoryItemData itemData; // 아이템이 가지고 있는 아이템데이터
+    [SerializeField] private InventoryItemData itemData; // 아이템이 가지고 있는 아이템데이터
 
     private CircleCollider2D myCollider;
     private SpriteRenderer spriteRenderer;
@@ -22,7 +21,6 @@ public class ItemPickUp : MonoBehaviour  // 아이템에 연결할 클래스
 
         myCollider = GetComponent<CircleCollider2D>();
         myCollider.isTrigger = true;
-        myCollider.radius = pickUpRadius;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = itemData.ItemSprite;
@@ -38,21 +36,5 @@ public class ItemPickUp : MonoBehaviour  // 아이템에 연결할 클래스
         {
             Destroy(this.gameObject);
         }
-    }
-}
-
-
-[System.Serializable] 
-public struct ItemPickUpSaveData
-{
-    public InventoryItemData ItemData;
-    public Vector3 position;
-    public Quaternion rotation;
-    
-    public ItemPickUpSaveData(InventoryItemData data,Vector3 pos, Quaternion rot)
-    {
-        ItemData = data;
-        position = pos;
-        rotation = rot;
     }
 }

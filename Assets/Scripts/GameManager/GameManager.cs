@@ -7,6 +7,7 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private List<DungeonLevelSO> dungeonLevelList; // 던전의 레벨이 들어갈 리스트
     private int currentDungeonLevel = 0; // 플레이어가 입장할 던전의 레벨
+    private Room instantiatedRoom; // 지금 생성된 던전의 방
 
     [SerializeField] private Player player;
     private PlayerDetailsSO playerDetails;
@@ -21,6 +22,7 @@ public class GameManager : Singleton<GameManager>
 
         InstantiatePlayer();
     }
+
     private void OnEnable()
     {
         StaticEventHandler.OnRoomChanged += StaticEventHandler_OnRoomChanged;
@@ -148,6 +150,8 @@ public class GameManager : Singleton<GameManager>
 
     private void StaticEventHandler_OnRoomChanged(RoomChangedArgs args)
     {
+        instantiatedRoom = args.room;
+
         if (args.room.isEntrance) // 변경된 방 입구
         {
             prevGameState = gameState;
@@ -173,9 +177,25 @@ public class GameManager : Singleton<GameManager>
     {
         return player.transform.position;
     }
+    public Vector3Int GetPlayerCellPosition(Room currentRoom)
+    {
+        return currentRoom.grid.WorldToCell(player.transform.position);
+    }
+    public Sprite GetPlayerMinimapIcon()
+    {
+        return playerDetails.minimapIcon;
+    }
     public int GetCurrentDungeonLevel()
     {
         return currentDungeonLevel;
+    }
+    public DungeonLevelSO GetCurrentDungeonLevelSO()
+    {
+        return dungeonLevelList[currentDungeonLevel];
+    }
+    public Room GetCurrentRoom()
+    {
+        return instantiatedRoom;
     }
 
 }

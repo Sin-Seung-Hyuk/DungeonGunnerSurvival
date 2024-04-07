@@ -109,11 +109,9 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
             UpdateUISlot(assignedInventorySlot);
     }
 
-    public void OnUIISlotClick()
+    public virtual void OnUIISlotClick()
     {
         // 부모오브젝트에 클릭이벤트로 이 슬롯을 넘겨줌
-        if (assignedInventorySlot.isEquipmentSlot == true)
-            ParentDisplay?.SlotClicked(this, assignedInventorySlot.isEquipmentSlot);
-        else ParentDisplay?.SlotClicked(this);
+         ParentDisplay?.SlotClicked(this);
     }
 }

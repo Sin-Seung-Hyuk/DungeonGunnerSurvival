@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using System;
 
 
 // 인벤토리 디스플레이 추상클래스 : 인벤토리 UI에 등록하여 화면에 보여주는 부분을 관리
@@ -34,7 +35,7 @@ public abstract class InventoryDisplay : MonoBehaviour
         }
     }
 
-
+    // 인벤토리 슬롯 클릭 함수 ================================================================================================
     public void SlotClicked(InventorySlot_UI clickedSlotUI)
     {
         bool isAltPressed = Keyboard.current.leftAltKey.isPressed; // Alt키 입력감지
@@ -109,10 +110,52 @@ public abstract class InventoryDisplay : MonoBehaviour
     }
 
 
-    public void SlotClicked(InventorySlot_UI clickedSlotUI, bool isEquip)
+    // 장비창 슬롯 클릭 함수 ================================================================================================
+    public void SlotClicked(EquipmentSlot_UI clickedSlotUI, EquipmentType slotType)
     {
-        
+        // 0. 아이템을 장착/해제 할때에 호출되는 이벤트는 동일하게 하나의 이벤트로 장착/해제 여부에 따라 반영만 다르게 하면됨
+
+        // 1. 슬롯이 비어있고 마우스 아이템이 '장비'타입인지 확인
+        // 1-1. '장비'타입이면 해당 슬롯에 맞는 '부위'인지 확인
+        // 1-2. 모두 통과되면 장착하고 이벤트 호출 (장비이벤트->스탯반영)
+        if (clickedSlotUI.AssignedInventorySlot.ItemData == null &&
+            mouseInventoryItem.AssignedInventorySlot.ItemData.itemType == ItemType.Equipment)
+        {
+            if (mouseInventoryItem.AssignedInventorySlot.ItemData.equipmentType == slotType)
+            {
+                clickedSlotUI.AssignedInventorySlot.AssignItem(mouseInventoryItem.AssignedInventorySlot);
+                clickedSlotUI.UpdateUISlot();
+
+                mouseInventoryItem.ClearSlot();
+                return;
+            }
+        }
+
+        // 2. 슬롯에 장비가 장착되어 있고 마우스가 비어있는지 확인
+        // 2-1. 슬롯을 비우고 장비 이벤트 호출 (장비이벤트->스탯반영)
+        // 2-2. 마우스에 해당 장비의 아이템으로 초기화
+        if (clickedSlotUI.AssignedInventorySlot.ItemData != null &&
+            mouseInventoryItem.AssignedInventorySlot.ItemData == null)
+        {
+            // 이벤트 호출
+            mouseInventoryItem.UpdateMouseSlot(clickedSlotUI.AssignedInventorySlot);
+            clickedSlotUI.ClearSlot();
+            return;
+        }
+
+        // 3. 슬롯에 장비가 장착되어 있고 마우스에 아이템이 들려있는 경우
+        // 3-1. 슬롯 장비와 마우스 장비의 타입을 비교
+        if (clickedSlotUI.AssignedInventorySlot.ItemData != null && mouseInventoryItem.AssignedInventorySlot.ItemData != null)
+        {
+            if (mouseInventoryItem.AssignedInventorySlot.ItemData.equipmentType == slotType)
+
+            {
+                SwapSlot(clickedSlotUI);
+                return;
+            }
+        }
     }
+
 
     // 클릭한 슬롯과 아이템 데이터 교체하기
     private void SwapSlot(InventorySlot_UI clickedSlot)

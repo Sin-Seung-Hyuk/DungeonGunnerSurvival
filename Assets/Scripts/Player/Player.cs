@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public CircleCollider2D circleRange; // 자석범위
     [HideInInspector] public PlayerStat stat; // 캐릭터 스탯
+    [HideInInspector] public Health health;
 
     // 플레이어가 가지는 이벤트
     [HideInInspector] public IdleEvent idleEvent;
@@ -36,6 +37,8 @@ public class Player : MonoBehaviour
     [HideInInspector] public WeaponReloadedEvent weaponReloadedEvent;
     [HideInInspector] public ReloadWeaponEvent reloadWeaponEvent;
     [HideInInspector] public ActiveWeaponEvent activeWeaponEvent;
+    [HideInInspector] public HealthEvent healthEvent;
+    [HideInInspector] public DestroyedEvent destroyedEvent;
 
 
     private PlayerInventoryHolder playerInventory; // 플레이어 인벤토리
@@ -49,6 +52,8 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         circleRange = GetComponent<CircleCollider2D>();
+        health = GetComponent<Health>();
+
         idleEvent = GetComponent<IdleEvent>();
         movementEvent = GetComponent<MovementEvent>();
         weaponAimEvent = GetComponent<WeaponAimEvent>();
@@ -57,8 +62,26 @@ public class Player : MonoBehaviour
         weaponReloadedEvent = GetComponent<WeaponReloadedEvent>();
         reloadWeaponEvent = GetComponent<ReloadWeaponEvent>();
         activeWeaponEvent = GetComponent<ActiveWeaponEvent>();
+        healthEvent = GetComponent<HealthEvent>();
+        destroyedEvent = GetComponent<DestroyedEvent>();
     }
 
+    private void OnEnable()
+    {
+        healthEvent.OnHealthChanged += HealthEvent_OnHealthChanged;
+    }
+    private void OnDisable()
+    {
+        healthEvent.OnHealthChanged -= HealthEvent_OnHealthChanged;
+    }
+
+    private void HealthEvent_OnHealthChanged(HealthEvent healthEvent, HealthEventArgs args)
+    {
+        if (args.healthAmount <= 0f)
+        {
+            destroyedEvent.CallDestroyedEvent(true, 0);
+        }
+    }
 
     public void InitializePlayer(PlayerDetailsSO playerDetails)
     {
@@ -67,7 +90,7 @@ public class Player : MonoBehaviour
         spriteRenderer.sprite = playerDetails.playerSprite;
         animator.runtimeAnimatorController = playerDetails.runtimeAnimatorController;
 
-        // SetHP(playerDetails.maxHp);
+        SetPlayerHealth(playerDetails.maxHp);
 
         stat.baseDamage = playerDetails.baseDamage;
         stat.criticChance = playerDetails.criticChance;
@@ -101,5 +124,11 @@ public class Player : MonoBehaviour
         activeWeaponEvent.CallActiveWeaponEvent(playerWeapon, weaponList.Count-1); // 무기 UI 추가
 
         return playerWeapon;
+    }
+
+    private void SetPlayerHealth(int hp)
+    {
+        // playerDeatilsSO 에서 설정한 최대체력으로 스타팅체력 설정
+        health.SetStartingHealth(hp);
     }
 }

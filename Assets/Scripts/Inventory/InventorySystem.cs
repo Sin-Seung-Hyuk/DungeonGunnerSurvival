@@ -23,7 +23,7 @@ public class InventorySystem    // 인벤토리의 슬롯들을 관리하는 인벤토리 시스템
 
         foreach (var slots in Slots)
         {
-            slots.Init(new InventorySlot(true));
+            slots.Init(new InventorySlot());
             inventorySlots.Add(slots.AssignedInventorySlot);
         }
     }
@@ -43,7 +43,7 @@ public class InventorySystem    // 인벤토리의 슬롯들을 관리하는 인벤토리 시스템
 
         for (int i = 0; i < size; ++i)
         {
-            inventorySlots.Add(new InventorySlot(false)); // 빈 슬롯으로 초기화
+            inventorySlots.Add(new InventorySlot()); // 빈 슬롯으로 초기화
         }
     }
 

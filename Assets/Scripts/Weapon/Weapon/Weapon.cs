@@ -57,7 +57,7 @@ public class Weapon : MonoBehaviour
         // Å×½ºÆ® 
         if (Keyboard.current.rKey.wasPressedThisFrame)
         {
-            //weaponReloadTime -= 1f;
+            //weaponFireRateTimer -= 0.5f;
         }
     }
 

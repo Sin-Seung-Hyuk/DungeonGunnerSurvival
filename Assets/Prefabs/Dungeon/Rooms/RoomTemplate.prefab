@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 5208564943861231287}
   m_Layer: 13
   m_Name: Tilemap5_Collision
-  m_TagString: collisionTimemap
+  m_TagString: collisionTilemap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -545,6 +545,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56521de3a48d5c34a8082708e329c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grid: {fileID: 0}
+  groundTilemap: {fileID: 0}
+  decoration1Tilemap: {fileID: 0}
+  decoration2Tilemap: {fileID: 0}
+  frontTilemap: {fileID: 0}
+  collisionTilemap: {fileID: 0}
+  minimapTilemap: {fileID: 0}
+  isEntrance: 0
+  lowerBounds: {x: 0, y: 0}
+  upperBounds: {x: 0, y: 0}
+  playerSpawnPos: {x: 0, y: 0, z: 0}
+  spawnPositionArray: []
 --- !u!1 &7536125106563123724
 GameObject:
   m_ObjectHideFlags: 0

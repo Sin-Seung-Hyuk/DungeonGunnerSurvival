@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c87455de393bbf44ac52bbf37c7a401, type: 3}
+  m_Name: JunkItem_11
+  m_EditorClassIdentifier: 
+  ID: 10
+  DisplayName: Lava Granite
+  Description: ' A rugged granite infused with the heat of the earth''s molten core,
+    its surface glowing with an inner fire.'
+  ItemSprite: {fileID: 21300000, guid: 51f145f0a74fc3d429e39d97a721774a, type: 3}
+  MaxStackSize: 50
+  GoldValue: 115
+  itemGrade: 1
+  gradeColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}
+  itemType: 1
+  equipmentType: 7

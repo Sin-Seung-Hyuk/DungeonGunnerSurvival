@@ -13,9 +13,9 @@ public class InventorySlot : ItemSlot
         stackSize = amount;
     }
 
-    public InventorySlot(bool isEquip) // 기본 생성자
+    public InventorySlot() // 기본 생성자
     {
-        ClearSlot(isEquip);
+        ClearSlot();
     }
 
 

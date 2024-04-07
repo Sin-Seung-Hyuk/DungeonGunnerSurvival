@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+using UnityEngine.Audio;
 
 public class GameResources : MonoBehaviour
 {
@@ -22,5 +24,10 @@ public class GameResources : MonoBehaviour
     [Space(10)]
     [Header("Player")]
     public CurrentPlayerSO currentPlayer;
+
+    [Space(10)]
+    [Header("Tilemap Tiles for AStar")]
+    public TileBase[] enemyUnwalkableTilesArray; // 적이 못가는 타일 배열
+    public TileBase preferredEnemyPathTile; // 적이 선호하는 타일
 
 }

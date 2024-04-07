@@ -16,6 +16,7 @@ public class InventoryItemData : ScriptableObject
     public ItemGrade itemGrade; // 등급
     public Color gradeColor; // 등급별 색상
     public ItemType itemType; // 타입
+    public EquipmentType equipmentType; // 타입
 }
 
 public enum ItemType
@@ -23,6 +24,18 @@ public enum ItemType
     Potion,
     JunkItem, // 잡템
     Equipment
+}
+
+public enum EquipmentType
+{
+    Helmet,
+    Necklaces,
+    Ring,
+    Glove,
+    Belt,
+    Boots,
+    Armor,
+    None
 }
 
 public enum ItemGrade
