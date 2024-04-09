@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02991bfe6698f87479f61e7e4fe03907, type: 3}
+  m_Name: WeaponDetails_Revolver
+  m_EditorClassIdentifier: 
+  weaponName: Revolver
+  weaponSprite: {fileID: 21300000, guid: 29bc0107bc11191468ed7d175994fb5b, type: 3}
+  weaponBaseDamage: 65
+  weaponAmmoCapacity: 6
+  weaponFireRate: 1
+  weaponReloadTime: 2.3
+  weaponRange: 20
+  weaponAmmoSpeed: 16
+  weaponAmmo:
+  - {fileID: 4454987432227277477, guid: 38d4030fb725ae148afda2f7320083b6, type: 3}
+  isTrail: 0
+  ammoTrailMaterial: {fileID: 0}
+  ammoTrailStartWidth: 0
+  ammoTrailEndWidth: 0
+  ammoTrailTime: 0
+  weaponFiringSoundEffect: {fileID: 11400000, guid: 83d2910f4cf8316498fbce8cd636eb13, type: 2}
+  weaponReloadingSoundEffect: {fileID: 11400000, guid: e3ebbc083611ac246823f65c46678093, type: 2}

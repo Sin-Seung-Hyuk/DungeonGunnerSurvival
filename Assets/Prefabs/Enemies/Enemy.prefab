@@ -155,9 +155,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.01}
+  m_Offset: {x: 0, y: 0.5}
   serializedVersion: 2
-  m_Radius: 0.01
+  m_Radius: 0.25
 --- !u!60 &7697408492666851500
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ MonoBehaviour:
   enemyDetails: {fileID: 0}
   movementToPositionEvent: {fileID: 0}
   idleEvent: {fileID: 0}
-  spriteRendererArray: []
+  spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
   weaponAimEvent: {fileID: 0}
   fireWeaponEvent: {fileID: 0}
@@ -373,7 +373,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1be9ff5fb6659724d98e9975b4efb2d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
   updateFrameNumber: 1
 --- !u!114 &83080581590133181
 MonoBehaviour:

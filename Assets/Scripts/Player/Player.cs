@@ -34,16 +34,15 @@ public class Player : MonoBehaviour
     [HideInInspector] public WeaponAimEvent weaponAimEvent;
     [HideInInspector] public FireWeaponEvent fireWeaponEvent;
     [HideInInspector] public WeaponFiredEvent weaponFiredEvent;
-    [HideInInspector] public WeaponReloadedEvent weaponReloadedEvent;
     [HideInInspector] public ReloadWeaponEvent reloadWeaponEvent;
     [HideInInspector] public ActiveWeaponEvent activeWeaponEvent;
     [HideInInspector] public HealthEvent healthEvent;
     [HideInInspector] public DestroyedEvent destroyedEvent;
 
+    [HideInInspector] public List<Weapon> weaponList = new List<Weapon>(); // 무기 리스트
 
     private PlayerInventoryHolder playerInventory; // 플레이어 인벤토리
 
-    public List<Weapon> weaponList = new List<Weapon>(); // 무기 리스트
 
 
     private void Awake()
@@ -59,7 +58,6 @@ public class Player : MonoBehaviour
         weaponAimEvent = GetComponent<WeaponAimEvent>();
         fireWeaponEvent = GetComponent<FireWeaponEvent>();
         weaponFiredEvent = GetComponent<WeaponFiredEvent>();
-        weaponReloadedEvent = GetComponent<WeaponReloadedEvent>();
         reloadWeaponEvent = GetComponent<ReloadWeaponEvent>();
         activeWeaponEvent = GetComponent<ActiveWeaponEvent>();
         healthEvent = GetComponent<HealthEvent>();

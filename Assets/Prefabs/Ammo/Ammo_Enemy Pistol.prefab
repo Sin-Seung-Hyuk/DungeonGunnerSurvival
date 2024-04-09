@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 42c61dd66eb4e8c4a916ce83d7fbd680, type: 2}
+  - {fileID: 2100000, guid: a8f373dc317a30d40a68b73a78ce1d09, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 105275597
   m_SortingLayer: 4
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: c3be09077243891458bdbf46a57d2e8a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4df9cc7131cd27f4288bca5e76c82034, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8e889857021ac74787974643864496c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trailRenderer: {fileID: 0}
 --- !u!61 &5899520392345972832
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -115,7 +116,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.25, y: 0.25}
+    oldSize: {x: 0.375, y: 0.375}
     newSize: {x: 0.125, y: 0.125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

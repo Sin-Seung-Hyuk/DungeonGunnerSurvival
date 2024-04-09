@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02991bfe6698f87479f61e7e4fe03907, type: 3}
+  m_Name: WeaponDetails_QBZ95SMG
+  m_EditorClassIdentifier: 
+  weaponName: QBZ95SMG
+  weaponSprite: {fileID: 21300000, guid: dff74299f2cf7674eb05930ed6b07f8e, type: 3}
+  weaponBaseDamage: 20
+  weaponAmmoCapacity: 17
+  weaponFireRate: 0.7
+  weaponReloadTime: 1.5
+  weaponRange: 12
+  weaponAmmoSpeed: 13
+  weaponAmmo:
+  - {fileID: 4454987432227277477, guid: a63d5773f98b2c84aade89e10aafcdb2, type: 3}
+  isTrail: 0
+  ammoTrailMaterial: {fileID: 0}
+  ammoTrailStartWidth: 0
+  ammoTrailEndWidth: 0
+  ammoTrailTime: 0
+  weaponFiringSoundEffect: {fileID: 11400000, guid: 4225ce0c0a9f94048a0a296bb37af070, type: 2}
+  weaponReloadingSoundEffect: {fileID: 11400000, guid: d08f2238c0a3e1f4eb5516b75f2337d1, type: 2}

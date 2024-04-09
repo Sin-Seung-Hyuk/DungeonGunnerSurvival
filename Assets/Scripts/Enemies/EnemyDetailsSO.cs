@@ -9,6 +9,8 @@ public class EnemyDetailsSO : ScriptableObject
     [Header("Base Enemy Details")]
     public string enemyName;
     public GameObject enemyPrefab;
+    public Sprite sprite;
+    public RuntimeAnimatorController runtimeAnimatorController;
 
     public int speed; // 이동속도
     public float chaseDistance = 50f; // 플레이어와의 최대 간격

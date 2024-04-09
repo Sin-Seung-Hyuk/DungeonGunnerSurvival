@@ -18,7 +18,12 @@ public class WeaponDetailsSO : ScriptableObject
     public int weaponAmmoSpeed = 0; // Åº ¼Óµµ
 
     [Header("weapon configuration")]
-    public List<Ammo> weaponAmmo;
-    //public SoundEffectSO weaponFiringSoundEffect;
-    //public SoundEffectSO weaponReloadingSoundEffect;
+    public List<GameObject> weaponAmmo;
+    public bool isTrail; // Trail ·»´õ·¯ ¿©ºÎ
+    public Material ammoTrailMaterial;
+    public float ammoTrailStartWidth;
+    public float ammoTrailEndWidth;
+    public float ammoTrailTime;
+    public SoundEffectSO weaponFiringSoundEffect;
+    public SoundEffectSO weaponReloadingSoundEffect;
 }

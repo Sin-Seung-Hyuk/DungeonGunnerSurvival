@@ -13,7 +13,17 @@ MonoBehaviour:
   m_Name: Room_Level1_1
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 8094615767779393151, guid: 7e84fe8d332adc241b8411986e0a3024, type: 3}
+  isEntrance: 0
   lowerBounds: {x: -42, y: -30}
   upperBounds: {x: 32, y: 26}
   playerSpawnPos: {x: 0, y: 0, z: 0}
-  spawnPositionArray: []
+  spawnPositionArray:
+  - {x: -37, y: -25}
+  - {x: -37, y: -3}
+  - {x: -37, y: 22}
+  - {x: -21, y: 22}
+  - {x: -9, y: 8}
+  - {x: 10, y: 8}
+  - {x: 2, y: -25}
+  - {x: 18, y: -21}
+  - {x: 9, y: -11}

@@ -161,7 +161,6 @@ public class GameManager : Singleton<GameManager>
             prevGameState = gameState;
             gameState = GameState.InDungeon; // 입구 아니면 던전밖에 없음
         }
-        Debug.Log(gameState.ToString());
     }
     #endregion
 
@@ -177,9 +176,9 @@ public class GameManager : Singleton<GameManager>
     {
         return player.transform.position;
     }
-    public Vector3Int GetPlayerCellPosition(Room currentRoom)
+    public Vector3Int GetPlayerCellPosition()
     {
-        return currentRoom.grid.WorldToCell(player.transform.position);
+        return instantiatedRoom.grid.WorldToCell(player.transform.position);
     }
     public Sprite GetPlayerMinimapIcon()
     {

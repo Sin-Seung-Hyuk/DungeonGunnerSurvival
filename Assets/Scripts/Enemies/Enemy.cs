@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
 using TMPro;
+using System.Collections.Generic;
 
 #region REQUIRE COMPONENTS
 //[RequireComponent(typeof(DealContactDamage))]
@@ -42,7 +43,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public EnemyDetailsSO enemyDetails;
     [HideInInspector] public MovementToPositionEvent movementToPositionEvent;
     [HideInInspector] public IdleEvent idleEvent;
-    [HideInInspector] public SpriteRenderer[] spriteRendererArray;
+    [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public Animator animator;
     [HideInInspector] public WeaponAimEvent weaponAimEvent;
     [HideInInspector] public FireWeaponEvent fireWeaponEvent;
@@ -64,7 +65,7 @@ public class Enemy : MonoBehaviour
         idleEvent = GetComponent<IdleEvent>();
         circleCollider2D = GetComponent<CircleCollider2D>();
         polygonCollider2D = GetComponent<PolygonCollider2D>();
-        spriteRendererArray = GetComponentsInChildren<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         //materializeEffect = GetComponent<MaterializeEffect>();
         weaponAimEvent = GetComponent<WeaponAimEvent>();
@@ -87,7 +88,7 @@ public class Enemy : MonoBehaviour
     {
         if (healthEventArgs.damageAmount == 0) return;
         Debug.Log(healthEventArgs.healthAmount);
-        if (healthEventArgs.healthAmount <= 0) EnemyDestroyed();
+        if (healthEventArgs.healthAmount <= 0) gameObject.SetActive(false); // 풀에 반환
     }
 
     private void EnemyDestroyed()
@@ -106,6 +107,18 @@ public class Enemy : MonoBehaviour
         SetEnemyStartingHealth(dungeonLevel);
 
         SetEnemyStartingWeapon();
+
+        spriteRenderer.sprite = enemyDetails.sprite;
+
+        List<Vector2> spritePhysicsShapePointsList = new List<Vector2>(); 
+
+        spriteRenderer.sprite.GetPhysicsShape(0, spritePhysicsShapePointsList); // 스프라이트 테두리 따오기
+
+        polygonCollider2D.points = spritePhysicsShapePointsList.ToArray(); // 피격판정 충돌체 그리기
+
+        animator.runtimeAnimatorController = enemyDetails.runtimeAnimatorController;
+
+        gameObject.SetActive(true);
 
         //StartCoroutine(MaterializeEnemy());
     }

@@ -18,8 +18,7 @@ MonoBehaviour:
   minimapIcon: {fileID: 21300000, guid: 709f49100a0267f419aa33d571fb9d25, type: 3}
   playerSprite: {fileID: -892881270494569320, guid: 788b52df224c1d14594c1176892c7ab3, type: 3}
   playerStartingWeapon:
-  - {fileID: 11400000, guid: b4683f4ff6d55f64493c4f6533138766, type: 2}
-  - {fileID: 11400000, guid: be654f3fe3fb8f84c8bdc0df859aba03, type: 2}
+  - {fileID: 11400000, guid: a89988e84fae6c84787c25702f5c4458, type: 2}
   maxHp: 150
   baseDamage: 50
   criticChance: 15

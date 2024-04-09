@@ -4,17 +4,14 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(ReloadWeaponEvent))]
-[RequireComponent(typeof(WeaponReloadedEvent))]
 public class ReloadWeapon : MonoBehaviour
 {
     ReloadWeaponEvent reloadWeaponEvent;
-    WeaponReloadedEvent weaponReloadedEvent;
     Coroutine reloadWeaponCoroutine;
 
     private void Awake()
     {
         reloadWeaponEvent = GetComponent<ReloadWeaponEvent>();
-        weaponReloadedEvent = GetComponent<WeaponReloadedEvent>();
     }
     private void OnEnable()
     {
@@ -42,10 +39,11 @@ public class ReloadWeapon : MonoBehaviour
 
     private IEnumerator ReloadWeaponRoutine(Weapon weapon)
     {
-        //if (weapon.weaponDetails.weaponReloadSound != null)
+        // ====================== 무기를 많이들면 소리가 어지러워서 재장전 사운드는 빼기 ========================
+        //if (reloadWeaponArgs.weapon.weaponDetail.weaponReloadingSoundEffect != null)
         //{  // 재장전 사운드 
         //    SoundEffectManager.Instance.PlaySoundEffect(
-        //        weapon.weaponDetails.weaponReloadSound);
+        //        reloadWeaponArgs.weapon.weaponDetail.weaponReloadingSoundEffect);
         //}
 
         weapon.isWeaponReloading = true; // 재장전 중으로 변경
@@ -60,6 +58,5 @@ public class ReloadWeapon : MonoBehaviour
 
         weapon.weaponReloadTimer = 0f; // 재장전 완료
         weapon.isWeaponReloading = false;
-        //weaponReloadedEvent.CallWeaponReloadedEvent(weapon);
     }
 }

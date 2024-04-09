@@ -14,7 +14,6 @@ public class EnemyMovementAI : MonoBehaviour
     private WaitForFixedUpdate waitForFixedUpdate;
     private float moveSpeed; //movementDetail에서 받아온 이속
     private float chaseDistance; //movementDetail에서 받아온 플레이어와의 간격 (플레이어를 어디까지 쫓아올지)
-    private bool chasePlayer = false; // 플레이어 추격상태
     private List<Vector2Int> surroundPosList = new List<Vector2Int>(); // 플레이어 주위 포지션
 
     [HideInInspector] public int updateFrameNumber = 1; // 업데이트 프레임
@@ -83,7 +82,7 @@ public class EnemyMovementAI : MonoBehaviour
         {
             Vector3 nextPos = movementSteps.Pop();
 
-            while (Vector3.Distance(nextPos, transform.position) > chaseDistance)
+            while (Vector3.Distance(nextPos, transform.position) > chaseDistance) // chaseDistance까지만 쫓아옴
             {
                 // 1.도착위치 2.현재위치 3.속도 4.이동방향벡터
                 enemy.movementToPositionEvent.CallMovementToPositionEvent(
@@ -100,12 +99,11 @@ public class EnemyMovementAI : MonoBehaviour
 
     private void CreatePath() // A* 사용하여 경로 만들기
     {
-        Room currentRoom = GameManager.Instance.GetCurrentRoom();
-
-        Grid grid = currentRoom.grid;
+        Room currentRoom = GameManager.Instance.GetCurrentRoom(); // 현재 생성되어 있는 방 가져오기
+        Grid grid = currentRoom.grid; // 현재 방의 Grid 컴포넌트 가져오기 
 
         // 그리드에서 플레이어 포지션 얻기
-        Vector3Int playerGridPos = GameManager.instance.GetPlayerCellPosition(currentRoom);
+        Vector3Int playerGridPos = GameManager.Instance.GetPlayerCellPosition();
         // 그리드에서 적 포지션 얻기
         Vector3Int enemyGridPos = grid.WorldToCell(transform.position);
 

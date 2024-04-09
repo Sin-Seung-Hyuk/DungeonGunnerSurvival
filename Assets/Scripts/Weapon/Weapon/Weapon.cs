@@ -15,9 +15,7 @@ public class Weapon : MonoBehaviour
     public int weaponAmmoCapacity; // 탄창
     public float weaponFireRate; // 연사속도
     public float weaponReloadTime; // 재장전 속도
-    public List<Ammo> weaponAmmoList; // 무기 탄
-    public int weaponRange { get; private set; } // 사거리 (수정불가능)
-    public int weaponAmmoSpeed { get; private set; } // 탄 속도 (수정불가능)
+    public List<GameObject> weaponAmmoList; // 무기 탄
 
 
     // 실시간으로 인게임에서 사격하면서 바뀌는 변수들
@@ -38,8 +36,6 @@ public class Weapon : MonoBehaviour
         weaponAmmoCapacity = weaponDetails.weaponAmmoCapacity;
         weaponFireRate = weaponDetails.weaponFireRate;
         weaponReloadTime = weaponDetails.weaponReloadTime;
-        weaponRange = weaponDetails.weaponRange;
-        weaponAmmoSpeed = weaponDetails.weaponAmmoSpeed;
         weaponAmmoList = weaponDetails.weaponAmmo;
 
         weaponAmmoRemaining = weaponDetails.weaponAmmoCapacity;
@@ -61,7 +57,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public Ammo GetCurrentAmmo(int level)
+    public GameObject GetCurrentAmmo(int level)
     {
         int idx = level / 10; // 무기 10레벨 찍으면 탄 업그레이드
         return weaponAmmoList[idx];

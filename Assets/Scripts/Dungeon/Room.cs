@@ -24,19 +24,24 @@ public class Room : MonoBehaviour
     [HideInInspector] public int[,] aStarMovementPenalty; // 벽은 G값이 낮음
     [HideInInspector] public int[,] aStarItemObstacles; // 움직이는 장애물 위치 저장
 
+    private Dictionary<EnemyDetailsSO, int> RoomEnemySpawnParameters; // <스폰될 적 종류, 확률>
+
 
     public void InitializedRoom(RoomTemplateSO roomTemplate, GameObject roomObject)
     {
-        grid = GetComponentInChildren<Grid>();
+        grid = roomObject.GetComponentInChildren<Grid>(); // 던전빌더에서 생성된 방 프리팹의 그리드 가져오기
 
         isEntrance = roomTemplate.isEntrance;
         lowerBounds = roomTemplate.lowerBounds;
         upperBounds = roomTemplate.upperBounds;
         playerSpawnPos = roomTemplate.playerSpawnPos;
         spawnPositionArray = roomTemplate.spawnPositionArray;
+        RoomEnemySpawnParameters = roomTemplate.RoomEnemySpawnParameters;
 
         PopulateTilemapMemberVariables(roomObject); // 타일맵 초기화
         AddObstaclesAndPreferredPaths(); // A* 그리드별 G값 초기화
+
+        StaticEventHandler.CallRoomChanged(this); // 방 초기화가 모두 진행된 후에 방변경 이벤트 호출
     }
 
     private void PopulateTilemapMemberVariables(GameObject roomGameobject)

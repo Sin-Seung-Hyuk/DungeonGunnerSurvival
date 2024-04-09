@@ -17,13 +17,23 @@ public class ItemPickUp : MonoBehaviour  // 아이템에 연결할 클래스
 
     private void Awake()
     {
-        id = GetComponent<UniqueID>().ID;
+        //id = GetComponent<UniqueID>().ID;
 
-        myCollider = GetComponent<CircleCollider2D>();
-        myCollider.isTrigger = true;
+        //myCollider = GetComponent<CircleCollider2D>();
+        //myCollider.isTrigger = true;
+
+        //spriteRenderer = GetComponent<SpriteRenderer>();
+        //spriteRenderer.sprite = itemData.ItemSprite;
+    }
+
+    public void InitializeItem(InventoryItemData data)
+    {
+        itemData = data;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = itemData.ItemSprite;
+
+        gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -34,7 +44,7 @@ public class ItemPickUp : MonoBehaviour  // 아이템에 연결할 클래스
 
         if (inventoryHolder.AddToInventory(itemData,1))
         {
-            Destroy(this.gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

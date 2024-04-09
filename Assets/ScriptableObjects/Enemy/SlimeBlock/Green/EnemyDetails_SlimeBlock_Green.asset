@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Slime Block Green
   enemyPrefab: {fileID: 4190316793189156971, guid: bce0b613311d65f4992107ba655c2b85, type: 3}
-  moveSpeed: 4
-  chaseDistance: 50
+  speed: 4
+  chaseDistance: 0.2
   enemyStandardMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   enemyMaterializeTime: 3
   enemyMaterializeShader: {fileID: -6465566751694194690, guid: 5fec8f8e6ea244648a3c6ede24a56288, type: 3}

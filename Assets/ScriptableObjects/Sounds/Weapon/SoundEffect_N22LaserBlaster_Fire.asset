@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20f0d97d71498a64a9440f57c75e217e, type: 3}
+  m_Name: SoundEffect_N22LaserBlaster_Fire
+  m_EditorClassIdentifier: 
+  soundEffectName: SoundEffect_N22LaserBlaster_Fire
+  soundPrefab: {fileID: 3569315727940573030, guid: 711bf167bff05cf488be307e23f0d0e5, type: 3}
+  soundEffectClip: {fileID: 8300000, guid: de229ff6f23dad645a8f50a8ed868b27, type: 3}
+  soundEffectPitchVariationMin: 0.8
+  soundEffectPitchVariationMax: 0.9
+  soundEffectVolume: 0.5

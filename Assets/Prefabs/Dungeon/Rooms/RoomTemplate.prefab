@@ -545,7 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56521de3a48d5c34a8082708e329c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 0}
+  grid: {fileID: 918693431733412629}
   groundTilemap: {fileID: 0}
   decoration1Tilemap: {fileID: 0}
   decoration2Tilemap: {fileID: 0}

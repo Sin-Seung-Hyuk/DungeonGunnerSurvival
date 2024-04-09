@@ -61,22 +61,31 @@ public class FireWeapon : MonoBehaviour
 
     private void FireAmmo(Weapon weapon, float aimAngle, Vector3 weaponAimDirectionVector, int weaponIndex)
     {
-        Ammo currentAmmo = weapon.GetCurrentAmmo(weapon.weaponLevel); // 현재 무기의 탄
-
-        if (currentAmmo != null)
+        //Ammo currentAmmo = weapon.GetCurrentAmmo(weapon.weaponLevel); // 현재 무기의 탄
+        GameObject ammoPrefab = weapon.GetCurrentAmmo(weapon.weaponLevel);
+        if (ammoPrefab != null)
         {
-            GameObject ammoPrefab = currentAmmo.gameObject;
+
 
             // ammo에 오브젝트 풀에 등록된 Ammo프리팹이 가지고있는 IFireable 컴포넌트가 반환됨
             IFireable ammo = (IFireable)ObjectPoolManager.Instance.Release(ammoPrefab, weaponShootPosition.position, Quaternion.identity);
 
-            ammo.InitializeAmmo(aimAngle, weaponAimDirectionVector, weapon.weaponRange, weapon.weaponAmmoSpeed, weapon.weaponBaseDamage);
+            ammo.InitializeAmmo(aimAngle, weaponAimDirectionVector, weapon);
 
             weapon.weaponAmmoRemaining--; // 남은 탄 감소
 
             weaponFiredEvent.CallWeaponFiredEvent(weapon, weaponIndex); // 사격했음을 알리는 이벤트 호출
 
-            //WeaponSoundEffect(); // 사격 사운드
+            WeaponSoundEffect(weapon); // 사격 사운드
+        }
+    }
+
+    private void WeaponSoundEffect(Weapon weapon)
+    {
+        if (weapon.weaponDetail.weaponFiringSoundEffect != null)
+        {
+            SoundEffectManager.Instance.PlaySoundEffect(
+                weapon.weaponDetail.weaponFiringSoundEffect);
         }
     }
 }

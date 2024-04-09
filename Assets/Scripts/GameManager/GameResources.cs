@@ -26,8 +26,23 @@ public class GameResources : MonoBehaviour
     public CurrentPlayerSO currentPlayer;
 
     [Space(10)]
+    [Header("Music")]
+    public AudioMixerGroup musicMasterMixerGroup;
+    public AudioMixerSnapshot musicOnFullSnapshot;
+    public AudioMixerSnapshot musicLowSnapshot;
+    public AudioMixerSnapshot musicOffSnapshot;
+    //public MusicTrackSO mainMusic;
+
+    [Space(10)]
+    [Header("Sounds")]
+    public AudioMixerGroup soundsMasterMixerGroup;
+    public SoundEffectSO chestOpen;
+    public SoundEffectSO healthPickUp;
+    public SoundEffectSO weaponPickUp;
+    public SoundEffectSO ammoPickUp;
+
+    [Space(10)]
     [Header("Tilemap Tiles for AStar")]
     public TileBase[] enemyUnwalkableTilesArray; // 적이 못가는 타일 배열
     public TileBase preferredEnemyPathTile; // 적이 선호하는 타일
-
 }
