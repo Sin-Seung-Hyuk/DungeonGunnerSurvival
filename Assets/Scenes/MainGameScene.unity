@@ -575,15 +575,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e746b8adf3373a647bcf26cac5d08fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyDetails: {fileID: 11400000, guid: 454715ef913d9c742bc14faffb0e61bb, type: 2}
-  enemy: {fileID: 5045320335855835643, guid: 7d9bf5c8e5746c642a787fa527ac3292, type: 3}
-  inventoryItemData:
-  - {fileID: 11400000, guid: 5549aae5aa2f42443aabbbdc9d300ed7, type: 2}
-  - {fileID: 11400000, guid: cf1b3f1b899b6db448a4cf3854e9303d, type: 2}
-  - {fileID: 11400000, guid: 422bbe7d21fba38469ce2aac8688077e, type: 2}
-  - {fileID: 11400000, guid: 6e63293d2089abc4e85fb2062341359f, type: 2}
-  - {fileID: 11400000, guid: cd97f0b412ce52444874261c38507138, type: 2}
-  item: {fileID: 2700208970764977922, guid: e94de283d9474c748b17cda2cbb8aa6f, type: 3}
+  enemyPrefab: {fileID: 5045320335855835643, guid: 7d9bf5c8e5746c642a787fa527ac3292, type: 3}
+  itemPrefab: {fileID: 2700208970764977922, guid: e94de283d9474c748b17cda2cbb8aa6f, type: 3}
 --- !u!4 &528140053
 Transform:
   m_ObjectHideFlags: 0
@@ -645,7 +638,7 @@ MonoBehaviour:
     ModeOverride: 1
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.479452, y: 1}
+    m_SensorSize: {x: 1.3333334, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Plasma Blaster
   weaponSprite: {fileID: 21300000, guid: a9d9372b640a67a4dae1cdbb59e3b919, type: 3}
-  weaponBaseDamage: 65
-  weaponAmmoCapacity: 6
-  weaponFireRate: 1
+  weaponBaseDamage: 35
+  weaponAmmoCapacity: 15
+  weaponFireRate: 1.1
   weaponReloadTime: 2.3
-  weaponRange: 20
-  weaponAmmoSpeed: 16
+  weaponRange: 30
+  weaponAmmoSpeed: 20
   weaponAmmo:
   - {fileID: 4454987432227277477, guid: 435a147f85de6a545a08edc231b4a140, type: 3}
   isTrail: 1

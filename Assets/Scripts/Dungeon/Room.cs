@@ -21,10 +21,12 @@ public class Room : MonoBehaviour
     [HideInInspector] public Vector3Int playerSpawnPos;
     [HideInInspector] public List<Vector2Int> spawnPositionArray; // 적 스폰 좌표
 
+    [HideInInspector] public List<SpawnableObjectRatio<EnemyDetailsSO>> spawnableEnemyList; // 스폰될 적 종류
+    [HideInInspector] public List<SpawnableObjectRatio<InventoryItemData>> spawnableItemList; // 스폰될 아이템 종류
+
     [HideInInspector] public int[,] aStarMovementPenalty; // 벽은 G값이 낮음
     [HideInInspector] public int[,] aStarItemObstacles; // 움직이는 장애물 위치 저장
 
-    private Dictionary<EnemyDetailsSO, int> RoomEnemySpawnParameters; // <스폰될 적 종류, 확률>
 
 
     public void InitializedRoom(RoomTemplateSO roomTemplate, GameObject roomObject)
@@ -36,7 +38,8 @@ public class Room : MonoBehaviour
         upperBounds = roomTemplate.upperBounds;
         playerSpawnPos = roomTemplate.playerSpawnPos;
         spawnPositionArray = roomTemplate.spawnPositionArray;
-        RoomEnemySpawnParameters = roomTemplate.RoomEnemySpawnParameters;
+        spawnableEnemyList = roomTemplate.spawnableEnemyList;
+        spawnableItemList = roomTemplate.spawnableItemList;
 
         PopulateTilemapMemberVariables(roomObject); // 타일맵 초기화
         AddObstaclesAndPreferredPaths(); // A* 그리드별 G값 초기화

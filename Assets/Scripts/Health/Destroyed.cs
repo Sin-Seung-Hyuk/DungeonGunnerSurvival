@@ -25,7 +25,7 @@ public class Destroyed : MonoBehaviour
 
     private void DestroyedEvent_OnDestroyed(DestroyedEvent obj, DestroyedEventArgs args)
     {
-        if (args.isPlayerDie)
+        if (args.isPooling)
         {
             gameObject.SetActive(false);
         }

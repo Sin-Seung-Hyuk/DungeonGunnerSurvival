@@ -78,12 +78,12 @@ MonoBehaviour:
   playerDetails: {fileID: 11400000, guid: 608f39f2e3fdd87439833cff6399725b, type: 2}
   spriteRenderer: {fileID: 0}
   circleRange: {fileID: 0}
+  health: {fileID: 0}
   idleEvent: {fileID: 0}
   movementEvent: {fileID: 0}
   weaponAimEvent: {fileID: 0}
   fireWeaponEvent: {fileID: 0}
   weaponFiredEvent: {fileID: 0}
-  weaponReloadedEvent: {fileID: 0}
   reloadWeaponEvent: {fileID: 0}
   activeWeaponEvent: {fileID: 0}
   healthEvent: {fileID: 0}
@@ -152,8 +152,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 2.7606194
+  m_UseAutoMass: 0
+  m_Mass: 0.1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0

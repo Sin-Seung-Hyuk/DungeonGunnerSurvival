@@ -14,9 +14,9 @@ public class RoomTemplateSO : ScriptableObject
 
     public Vector3Int playerSpawnPos;
     public List<Vector2Int> spawnPositionArray; // 적 스폰 좌표
-    public Dictionary<EnemyDetailsSO, int> RoomEnemySpawnParameters; // <스폰될 적 종류, 확률>
 
-    public Dictionary<string, int> myDictionary = new Dictionary<string, int>();
+    public List<SpawnableObjectRatio<EnemyDetailsSO>> spawnableEnemyList; // 스폰될 적 종류
+    public List<SpawnableObjectRatio<InventoryItemData>> spawnableItemList; // 스폰될 아이템 종류
 
-    
+
 }

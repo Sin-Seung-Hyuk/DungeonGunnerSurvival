@@ -87,14 +87,14 @@ public class Enemy : MonoBehaviour
     private void HealthEvent_OnHealthLost(HealthEvent healthEvent, HealthEventArgs healthEventArgs)
     {
         if (healthEventArgs.damageAmount == 0) return;
-        Debug.Log(healthEventArgs.healthAmount);
-        if (healthEventArgs.healthAmount <= 0) gameObject.SetActive(false); // 풀에 반환
+
+        if (healthEventArgs.healthAmount <= 0) EnemyDestroyed(); // 풀에 반환
     }
 
     private void EnemyDestroyed()
     {
         DestroyedEvent destroyedEvent = GetComponent<DestroyedEvent>();
-        destroyedEvent.CallDestroyedEvent(false, health.GetStartingHealth()); // 플레이어가 아니므로 false
+        destroyedEvent.CallDestroyedEvent(true, this.transform.position); // 풀에 반환해야하므로 true
     }
 
     public void EnemyInitialization(EnemyDetailsSO enemyDetails, DungeonLevelSO dungeonLevel)
