@@ -49,8 +49,6 @@ MonoBehaviour:
   musicLowSnapshot: {fileID: 8893122114324796974, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   musicOffSnapshot: {fileID: -3084740370723268673, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   soundsMasterMixerGroup: {fileID: -4734643798044506327, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
-  doorOpenCloseSoundEffect: {fileID: 0}
-  tableFlip: {fileID: 0}
   chestOpen: {fileID: 0}
   healthPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
@@ -59,3 +57,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 37e2c9e0227bfbc409cd632b9bd0c81f, type: 2}
   - {fileID: 11400000, guid: 98f177f8276c38b429705e6720c48672, type: 2}
   preferredEnemyPathTile: {fileID: 11400000, guid: 3ce5fb260af53d24887b55c3d50041e2, type: 2}
+  ammoHitEffect: {fileID: 7853615770937549561, guid: a67a9f991dc97ed46b3202ca3f58f2df, type: 3}
+  ammoHitText: {fileID: 7337716550809129691, guid: 18c7cabe3bfab8c4ba2287fb856633e2, type: 3}

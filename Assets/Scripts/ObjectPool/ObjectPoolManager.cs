@@ -34,11 +34,11 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         GameObject poolContainer = new GameObject(prefab.name);
         poolContainer.transform.SetParent(objPoolTransform);
 
-        if (!poolDictionary.TryGetValue(poolKey,out _))
+        if (!poolDictionary.TryGetValue(poolKey, out _))
         {
             poolDictionary.Add(poolKey, new Queue<Component>()); // 풀 등록
 
-            for (int i=0;i<poolSize; ++i)
+            for (int i = 0; i < poolSize; ++i)
             {
                 GameObject newObj = Instantiate(prefab, poolContainer.transform); // as GameObject;
 
@@ -57,7 +57,17 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         if (poolDictionary.TryGetValue(poolKey, out _))
         {
             // 해당 풀의 큐에서 새거 꺼내오기
-            Component componentToReuse = GetComponentFromPool(poolKey);
+            Component componentToReuse = poolDictionary[poolKey].Dequeue();
+            poolDictionary[poolKey].Enqueue(componentToReuse);
+
+            if (componentToReuse.gameObject.activeSelf == true)
+            {
+                GameObject newObj = Instantiate(prefab, componentToReuse.gameObject.transform.parent);
+                newObj.transform.position = position;
+                newObj.transform.rotation = rotation;
+                newObj.AddComponent(componentToReuse.GetType());
+                componentToReuse = newObj.GetComponent(componentToReuse.GetType());
+            }
 
             // 생성될 오브젝트의 속성 초기화
             ResetObject(position, rotation, componentToReuse, prefab);
@@ -67,20 +77,6 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         else return null;
     }
 
-    private Component GetComponentFromPool(int poolKey)
-    {
-        // 컴포넌트 큐에 집어넣고 새로 꺼내오기
-        Component componentToReuse = poolDictionary[poolKey].Dequeue();
-        poolDictionary[poolKey].Enqueue(componentToReuse);
-
-        if (componentToReuse.gameObject.activeSelf == true)
-        {
-            componentToReuse.gameObject.SetActive(false); 
-        }
-
-        return componentToReuse;
-    }
-
     private void ResetObject(Vector3 position, Quaternion rotation, Component componentToReuse, GameObject prefab)
     {
         componentToReuse.transform.position = position;
@@ -88,3 +84,5 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         componentToReuse.gameObject.transform.localScale = prefab.transform.localScale;
     }
 }
+
+

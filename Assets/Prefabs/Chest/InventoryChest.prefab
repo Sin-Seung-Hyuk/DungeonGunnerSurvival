@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3233635120078414064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05, y: 5.75, z: 0}
-  m_LocalScale: {x: 2.725, y: 1.325, z: 1}
+  m_LocalPosition: {x: -0.6782, y: 5.75, z: 0}
+  m_LocalScale: {x: 2.0968876, y: 1.325, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,11 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fa9e20fa3b6258408a535e2b9706163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySize: 20
+  inventorySize: 30
   primaryInventorySystem:
     inventorySlots: []
     gold: 0
-  offset: 10
+  offset: 0
   _gold: 0
 --- !u!61 &711838173877633346
 BoxCollider2D:
@@ -169,4 +169,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f613a1ca2cce440af945deb2ac95bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 8137bec9-0432-4c15-a7db-0cce09d31e8d
+  id: 9ec34ccb-28c6-439b-8d4a-e2c53f840dc5

@@ -28,12 +28,22 @@ public static class Utilities
     public static int IncreaseByPercent(int value, float percent)
     {
         float increase = value * (percent / 100);
-        return Mathf.RoundToInt(value + increase);
+        return value + (int)increase;
     }
     public static float IncreaseByPercent(float value, float percent)
     {
         float increase = value * (percent / 100);
         return value + increase;
+    }
+    public static int DecreaseByPercent(int value, float percent)
+    {
+        float increase = value * (percent / 100);
+        return Mathf.RoundToInt(value - increase);
+    }
+    public static float DecreaseByPercent(float value, float percent)
+    {
+        float increase = value * (percent / 100);
+        return value - increase;
     }
 
     // 확률 계산하기  ===========================================================

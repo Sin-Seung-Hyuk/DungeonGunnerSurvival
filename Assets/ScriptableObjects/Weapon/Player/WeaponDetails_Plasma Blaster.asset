@@ -15,6 +15,8 @@ MonoBehaviour:
   weaponName: Plasma Blaster
   weaponSprite: {fileID: 21300000, guid: a9d9372b640a67a4dae1cdbb59e3b919, type: 3}
   weaponBaseDamage: 35
+  weaponCriticChance: 25
+  weaponCriticDamage: 50
   weaponAmmoCapacity: 15
   weaponFireRate: 1.1
   weaponReloadTime: 2.3

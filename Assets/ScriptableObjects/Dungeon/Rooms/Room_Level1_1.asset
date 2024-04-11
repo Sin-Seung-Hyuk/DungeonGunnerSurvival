@@ -30,14 +30,10 @@ MonoBehaviour:
   spawnableEnemyList:
   - dungeonObject: {fileID: 11400000, guid: 0a31fc3c160b7b640816155832deb468, type: 2}
     ratio: 5
-  - dungeonObject: {fileID: 11400000, guid: 63fa46fca0a2aff498fcee125f0e85f0, type: 2}
-    ratio: 5
   spawnableItemList:
-  - dungeonObject: {fileID: 0}
+  - dungeonObject: {fileID: 11400000, guid: 368b5f79a1cf9fc4799ce376338ccc0d, type: 2}
     ratio: 20
-  - dungeonObject: {fileID: 11400000, guid: 7e62ab87baee6b8429b892d5f9d376f3, type: 2}
-    ratio: 5
-  - dungeonObject: {fileID: 11400000, guid: 3887cf86c20a8ef479b9967d51d36b96, type: 2}
-    ratio: 3
-  - dungeonObject: {fileID: 11400000, guid: e369893ceea1fc14db0c064eb7927217, type: 2}
-    ratio: 2
+  - dungeonObject: {fileID: 11400000, guid: 634b7a547ee78584797e6115e805c1ac, type: 2}
+    ratio: 20
+  - dungeonObject: {fileID: 11400000, guid: 411ab2b955234694c83e152f7b8dc239, type: 2}
+    ratio: 20

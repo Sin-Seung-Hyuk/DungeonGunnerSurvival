@@ -12,6 +12,8 @@ public class Weapon : MonoBehaviour
     // 무기의 스탯 (레벨업하여 스탯 상승 가능)
     public int weaponLevel; // 무기 레벨
     public int weaponBaseDamage; // 기본데미지
+    public int weaponCriticChance; // 치명타 확률 (%)
+    public int weaponCriticDamage; // 치명타 피해 (%)
     public int weaponAmmoCapacity; // 탄창
     public float weaponFireRate; // 연사속도
     public float weaponReloadTime; // 재장전 속도
@@ -33,6 +35,8 @@ public class Weapon : MonoBehaviour
 
         weaponLevel = 1;
         weaponBaseDamage = weaponDetails.weaponBaseDamage;
+        weaponCriticChance = weaponDetails.weaponCriticChance;
+        weaponCriticDamage = weaponDetails.weaponCriticDamage;
         weaponAmmoCapacity = weaponDetails.weaponAmmoCapacity;
         weaponFireRate = weaponDetails.weaponFireRate;
         weaponReloadTime = weaponDetails.weaponReloadTime;

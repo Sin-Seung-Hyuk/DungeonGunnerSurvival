@@ -156,10 +156,12 @@ public class GameManager : Singleton<GameManager>
         {
             prevGameState = gameState;
             gameState = GameState.InEntrance;
+            player.fireWeapon.enabled = false;
         } else
         {
             prevGameState = gameState;
             gameState = GameState.InDungeon; // 입구 아니면 던전밖에 없음
+            player.fireWeapon.enabled = true;
         }
     }
     #endregion

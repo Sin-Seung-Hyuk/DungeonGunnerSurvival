@@ -11,6 +11,8 @@ public class WeaponDetailsSO : ScriptableObject
 
     [Header("weapon operating values")]
     public int weaponBaseDamage = 20;   // 기본데미지
+    public int weaponCriticChance = 10; // 치명타 확률 (%)
+    public int weaponCriticDamage = 150; // 치명타 피해 (%)
     public int weaponAmmoCapacity = 30; // 탄창
     public float weaponFireRate = 0.5f; // 연사속도
     public float weaponReloadTime = 0f; // 재장전 속도

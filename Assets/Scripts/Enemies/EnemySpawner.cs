@@ -75,7 +75,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
             // 적의 파괴 이벤트 구독
             enemyObj.GetComponent<DestroyedEvent>().OnDestroyed += Enemy_OnDestroyed;
 
-            yield return new WaitForSeconds(2.0f); // 스폰파라미터에서 스폰간격 구해오기
+            yield return new WaitForSeconds(2f); // 스폰파라미터에서 스폰간격 구해오기
         }
 
     }

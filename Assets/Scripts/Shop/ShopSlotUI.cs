@@ -56,7 +56,7 @@ public class ShopSlotUI : MonoBehaviour // ªÛ¡°ΩΩ∑‘ UI
             _itemCount.text = _assignedItemSlot.StackSize.ToString();
             _itemName.color = AssignedItemSlot.ItemData.gradeColor;
             int price = ShopKeeperDisplay.GetModifiedPrice(_assignedItemSlot.ItemData, 1, MarkUp);
-            _itemName.text = _assignedItemSlot.ItemData.DisplayName + " - " + price + "G";
+            _itemName.text = _assignedItemSlot.ItemData.DisplayName + " (" + price + "G)";
         } else
         {
             _itemSprite.sprite = null;

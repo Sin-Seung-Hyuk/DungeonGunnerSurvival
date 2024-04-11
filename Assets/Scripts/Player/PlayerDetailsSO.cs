@@ -17,8 +17,6 @@ public class PlayerDetailsSO : ScriptableObject
     [Header("Character Stat")]
     [Range(80, 150)] public int maxHp;
     [Range(0, 100)] public int baseDamage;
-    [Range(0, 100)] public int criticChance;
-    [Range(100, 200)] public int criticDamage;
     [Range(0, 100)] public int reloadSpeed;
     [Range(0, 100)] public int fireRateSpeed;
     [Range(5f, 20f)] public float moveSpeed;

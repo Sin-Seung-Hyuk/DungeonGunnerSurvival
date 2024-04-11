@@ -45,4 +45,9 @@ public class GameResources : MonoBehaviour
     [Header("Tilemap Tiles for AStar")]
     public TileBase[] enemyUnwalkableTilesArray; // 적이 못가는 타일 배열
     public TileBase preferredEnemyPathTile; // 적이 선호하는 타일
+
+    [Space(10)]
+    [Header("Ammo Hit Effect/Text")]
+    public GameObject ammoHitEffect;
+    public GameObject ammoHitText;
 }

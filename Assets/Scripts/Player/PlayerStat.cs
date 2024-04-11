@@ -6,8 +6,6 @@ using UnityEngine;
 public class PlayerStat
 {
     public int baseDamage    {get;set;}
-    public int criticChance  {get;set;}
-    public int criticDamage  {get;set;}
     public int reloadSpeed   {get;set;}
     public int fireRateSpeed {get;set;}
     public float moveSpeed   {get;set;}

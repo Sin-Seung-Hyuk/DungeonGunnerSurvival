@@ -15,6 +15,13 @@ public class ItemPickUp : MonoBehaviour  // 아이템에 연결할 클래스
     private string id;
 
 
+    //private void Awake() // 테스트를 위한 Awake (지워줘야함)
+    //{
+
+    //    spriteRenderer = GetComponent<SpriteRenderer>();
+    //    spriteRenderer.sprite = itemData.ItemSprite;
+    //}
+
     public void InitializeItem(InventoryItemData data)
     {
         if (data == null) return; // 아무런 데이터가 들어오지 않았을 경우 (EnemySpawn 클래스 참고)

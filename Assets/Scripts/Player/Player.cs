@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public IdleEvent idleEvent;
     [HideInInspector] public MovementEvent movementEvent;
     [HideInInspector] public WeaponAimEvent weaponAimEvent;
+    [HideInInspector] public FireWeapon fireWeapon;
     [HideInInspector] public FireWeaponEvent fireWeaponEvent;
     [HideInInspector] public WeaponFiredEvent weaponFiredEvent;
     [HideInInspector] public ReloadWeaponEvent reloadWeaponEvent;
@@ -57,6 +58,7 @@ public class Player : MonoBehaviour
         movementEvent = GetComponent<MovementEvent>();
         weaponAimEvent = GetComponent<WeaponAimEvent>();
         fireWeaponEvent = GetComponent<FireWeaponEvent>();
+        fireWeapon = GetComponent<FireWeapon>();
         weaponFiredEvent = GetComponent<WeaponFiredEvent>();
         reloadWeaponEvent = GetComponent<ReloadWeaponEvent>();
         activeWeaponEvent = GetComponent<ActiveWeaponEvent>();
@@ -91,8 +93,6 @@ public class Player : MonoBehaviour
         SetPlayerHealth(playerDetails.maxHp);
 
         stat.baseDamage = playerDetails.baseDamage;
-        stat.criticChance = playerDetails.criticChance;
-        stat.criticDamage = playerDetails.criticDamage;
         stat.reloadSpeed = playerDetails.reloadSpeed;
         stat.fireRateSpeed = playerDetails.fireRateSpeed;
         stat.moveSpeed = playerDetails.moveSpeed;
@@ -109,8 +109,8 @@ public class Player : MonoBehaviour
         {
             AddWeaponToPlayer(weapon);
         }
-
     }
+
 
     public Weapon AddWeaponToPlayer(WeaponDetailsSO weaponDetails)
     {
