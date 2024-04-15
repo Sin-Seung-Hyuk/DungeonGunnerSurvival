@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemySpawner : Singleton<EnemySpawner>
 {
+    private Player player;
     private int enemiesToSpawn;
     private int currentEnemyCount;
     private int enemiesSpawnedSoFar;
@@ -35,6 +36,8 @@ public class EnemySpawner : Singleton<EnemySpawner>
     {
         currentRoom = args.room;
         if (args.room.spawnPositionArray.Count < 1) return; // 스폰지점이 없는 방은 리턴
+
+        player = GameManager.Instance.GetPlayer(); // 플레이어 받아오기
 
         SetRandomNumberList(); // 스폰할 랜덤오브젝트 미리 정해두기
          
@@ -70,7 +73,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
             Enemy enemyObj = (Enemy)ObjectPoolManager.Instance.Release(enemyPrefab, cellPos, Quaternion.identity);
 
             // 랜덤으로 뽑은 숫자 100개 중에서 한개를 골라 해당 범위의 적 생성
-            enemyObj.GetComponent<Enemy>().EnemyInitialization(enemySpawnable.GetItem(randomEnemy[i%100]), GameManager.instance.GetCurrentDungeonLevelSO());
+            enemyObj.GetComponent<Enemy>().EnemyInitialization(enemySpawnable.GetItem(randomEnemy[i%100]), GameManager.Instance.GetCurrentDungeonLevelSO());
 
             // 적의 파괴 이벤트 구독
             enemyObj.GetComponent<DestroyedEvent>().OnDestroyed += Enemy_OnDestroyed;

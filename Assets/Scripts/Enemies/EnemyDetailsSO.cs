@@ -17,8 +17,6 @@ public class EnemyDetailsSO : ScriptableObject
 
     [Header("Material")]
     public Material enemyStandardMaterial;
-
-    [Header("Materialize setting")]
     public float enemyMaterializeTime;
     public Shader enemyMaterializeShader;
     public Color enemyMaterializeColor;

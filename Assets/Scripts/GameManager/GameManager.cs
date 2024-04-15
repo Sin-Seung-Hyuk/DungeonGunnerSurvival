@@ -50,7 +50,7 @@ public class GameManager : Singleton<GameManager>
     #region DUNGEON
     public void CreateDungeonLevel(int currentDungeonLevel)
     {
-        DungeonBuilder.instance.CreateDungeonRoom(dungeonLevelList[currentDungeonLevel]);
+        DungeonBuilder.Instance.CreateDungeonRoom(dungeonLevelList[currentDungeonLevel]);
 
         player.transform.position = new Vector3Int(0, 0, 0);
     }

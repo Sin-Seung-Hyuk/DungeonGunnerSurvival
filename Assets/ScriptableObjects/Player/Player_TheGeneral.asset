@@ -18,12 +18,14 @@ MonoBehaviour:
   minimapIcon: {fileID: 21300000, guid: 709f49100a0267f419aa33d571fb9d25, type: 3}
   playerSprite: {fileID: -892881270494569320, guid: 788b52df224c1d14594c1176892c7ab3, type: 3}
   playerStartingWeapon:
-  - {fileID: 11400000, guid: 36d37135570d1f9408f842b635db8ba1, type: 2}
+  - {fileID: 11400000, guid: a89988e84fae6c84787c25702f5c4458, type: 2}
+  - {fileID: 11400000, guid: 0798b4103f9b3e34d8b0f2202da3f46d, type: 2}
   maxHp: 150
   baseDamage: 50
   reloadSpeed: 0
   fireRateSpeed: 0
   moveSpeed: 6
   circleRange: 0.8
+  baseArmor: 10
   dodgeChance: 0
   expGain: 0

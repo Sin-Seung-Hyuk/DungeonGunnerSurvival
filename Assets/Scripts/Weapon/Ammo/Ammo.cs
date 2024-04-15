@@ -30,11 +30,12 @@ public class Ammo : MonoBehaviour, IFireable // 사격 인터페이스
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+
         if (isColliding) return;
 
-        Health health = collision.GetComponent<Health>();
+        Health health = collision.gameObject.GetComponent<Health>();
 
         if (health != null)
         {
@@ -51,14 +52,14 @@ public class Ammo : MonoBehaviour, IFireable // 사격 인터페이스
 
     private void AmmoHitText(int damageAmount, bool isCritic)
     {
-        DamageTextUI hitText = (DamageTextUI)ObjectPoolManager.instance.Release(GameResources.Instance.ammoHitText, transform.position, Quaternion.identity);
+        DamageTextUI hitText = (DamageTextUI)ObjectPoolManager.Instance.Release(GameResources.Instance.ammoHitText, transform.position, Quaternion.identity);
 
         hitText.InitializeDamageText(damageAmount, isCritic, transform.position.y);
     }
 
     private void AmmoHitEffect()
     {
-        AmmoHitEffect hitEffect = (AmmoHitEffect)ObjectPoolManager.instance.Release(GameResources.Instance.ammoHitEffect, transform.position,Quaternion.identity);
+        AmmoHitEffect hitEffect = (AmmoHitEffect)ObjectPoolManager.Instance.Release(GameResources.Instance.ammoHitEffect, transform.position,Quaternion.identity);
 
         hitEffect.gameObject.SetActive(true);
     }

@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
     private CircleCollider2D circleCollider2D;
     private PolygonCollider2D polygonCollider2D;
     private EnemyMovementAI enemyMovementAI;
-    //private MaterializeEffect materializeEffect;
+    private MaterializeEffect materializeEffect;
     private FireWeapon fireWeapon;
     private Health health;
     private Weapon weapon;
@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
         polygonCollider2D = GetComponent<PolygonCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        //materializeEffect = GetComponent<MaterializeEffect>();
+        materializeEffect = GetComponent<MaterializeEffect>();
         weaponAimEvent = GetComponent<WeaponAimEvent>();
         fireWeaponEvent = GetComponent<FireWeaponEvent>();
         fireWeapon = GetComponent<FireWeapon>();
@@ -81,31 +81,23 @@ public class Enemy : MonoBehaviour
 
     private void OnDisable()
     {
-       healthEvent.OnHealthChanged -= HealthEvent_OnHealthLost;
+        healthEvent.OnHealthChanged -= HealthEvent_OnHealthLost;
     }
 
     private void HealthEvent_OnHealthLost(HealthEvent healthEvent, HealthEventArgs healthEventArgs)
     {
         if (healthEventArgs.damageAmount == 0) return;
 
-        if (healthEventArgs.healthAmount <= 0) EnemyDestroyed(); // 풀에 반환
-    }
-
-    private void EnemyDestroyed()
-    {
-        DestroyedEvent destroyedEvent = GetComponent<DestroyedEvent>();
-        destroyedEvent.CallDestroyedEvent(true, this.transform.position); // 풀에 반환해야하므로 true
+        if (healthEventArgs.healthAmount <= 0) StartCoroutine(EnemyDestroyed()); // 파괴 코루틴
     }
 
     public void EnemyInitialization(EnemyDetailsSO enemyDetails, DungeonLevelSO dungeonLevel)
     {
         this.enemyDetails = enemyDetails;
+
         SetEnemyAnimateSpeed();
-
         SetEnemyMovementUpdateFrame();
-
         SetEnemyStartingHealth(dungeonLevel);
-
         SetEnemyStartingWeapon();
 
         spriteRenderer.sprite = enemyDetails.sprite;
@@ -113,26 +105,27 @@ public class Enemy : MonoBehaviour
         List<Vector2> spritePhysicsShapePointsList = new List<Vector2>(); 
 
         spriteRenderer.sprite.GetPhysicsShape(0, spritePhysicsShapePointsList); // 스프라이트 테두리 따오기
-
         polygonCollider2D.points = spritePhysicsShapePointsList.ToArray(); // 피격판정 충돌체 그리기
 
         animator.runtimeAnimatorController = enemyDetails.runtimeAnimatorController;
 
         gameObject.SetActive(true);
-
-        //StartCoroutine(MaterializeEnemy());
     }
 
-    //private IEnumerator MaterializeEnemy()
-    //{
-    //    EnemyEnable(false);
-    //    // MaterializeRoutine 코루틴이 끝날때까지 기다림 (중첩 코루틴)
-    //    yield return StartCoroutine(materializeEffect.MaterializeRoutine(
-    //        enemyDetails.enemyMaterializeShader, enemyDetails.enemyMaterializeColor,
-    //        enemyDetails.enemyMaterializeTime, spriteRendererArray, enemyDetails.enemyStandardMaterial));
+    private IEnumerator EnemyDestroyed()
+    {
+        // 적 비활성화, 속도 0
+        EnemyEnable(false);
+        enemyMovementAI.moveSpeed = 0f;
 
-    //    EnemyEnable(true);
-    //}
+        // MaterializeRoutine 코루틴이 끝날때까지 기다림 (중첩 코루틴)
+        yield return StartCoroutine(materializeEffect.MaterializeRoutine( // 머테리얼 DissolveAmount 속성 코루틴
+            enemyDetails.enemyMaterializeShader, enemyDetails.enemyMaterializeColor,
+            enemyDetails.enemyMaterializeTime, spriteRenderer, enemyDetails.enemyStandardMaterial));
+
+        DestroyedEvent destroyedEvent = GetComponent<DestroyedEvent>();
+        destroyedEvent.CallDestroyedEvent(true, this.transform.position); // 풀에 반환해야하므로 true
+    }
 
     private void EnemyEnable(bool isEnable) // 적 활성화/비활성화 (콜라이더,움직임,사격)
     {

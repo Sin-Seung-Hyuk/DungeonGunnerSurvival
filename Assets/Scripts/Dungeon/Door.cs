@@ -7,8 +7,8 @@ public class Door : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        int level = GameManager.instance.GetCurrentDungeonLevel(); // 현재 레벨 구하기
+        int level = GameManager.Instance.GetCurrentDungeonLevel(); // 현재 레벨 구하기
         
-        GameManager.instance.CreateDungeonLevel(level);
+        GameManager.Instance.CreateDungeonLevel(level);
     }
 }

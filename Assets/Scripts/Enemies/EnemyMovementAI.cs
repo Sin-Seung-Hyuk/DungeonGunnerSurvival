@@ -12,7 +12,7 @@ public class EnemyMovementAI : MonoBehaviour
     private Coroutine moveEnemyRoutine;
     private float currentEnemyPathRebuildCooldown; // 경로 재설정 쿨타임
     private WaitForFixedUpdate waitForFixedUpdate;
-    private float moveSpeed; //movementDetail에서 받아온 이속
+    public float moveSpeed; //movementDetail에서 받아온 이속
     private float chaseDistance; //movementDetail에서 받아온 플레이어와의 간격 (플레이어를 어디까지 쫓아올지)
     private List<Vector2Int> surroundPosList = new List<Vector2Int>(); // 플레이어 주위 포지션
 
@@ -40,12 +40,6 @@ public class EnemyMovementAI : MonoBehaviour
     {
         // 이동 쿨다운 타이머
         currentEnemyPathRebuildCooldown -= Time.deltaTime;
-
-        //if (!chasePlayer &&  // 플레이어와 적 사이의 거리 비교
-        //    Vector3.Distance(transform.position, GameManager.Instance.GetPlayerPosition()) < enemy.enemyDetails.chaseDistance)
-        //    chasePlayer = true;
-
-        //if (!chasePlayer) return; // 적의 추격상태 false
 
         // 부하를 분산시키기 위해 특정 프레임에서만 경로를 재구축
         if (Time.frameCount % Settings.targetFrameRateToSpreadPathFindingOver != updateFrameNumber) return;

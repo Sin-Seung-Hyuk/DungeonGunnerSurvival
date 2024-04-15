@@ -16,7 +16,7 @@ MonoBehaviour:
   weaponSprite: {fileID: 21300000, guid: abbe40c4d6a803f42a7c4f53404a484d, type: 3}
   weaponBaseDamage: 20
   weaponCriticChance: 10
-  weaponCriticDamage: 150
+  weaponCriticDamage: 50
   weaponAmmoCapacity: 17
   weaponFireRate: 1
   weaponReloadTime: 1.5

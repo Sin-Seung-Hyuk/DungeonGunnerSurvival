@@ -25,8 +25,10 @@ public class Player : MonoBehaviour
     [HideInInspector] public PlayerDetailsSO playerDetails;
     [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public CircleCollider2D circleRange; // 자석범위
+    [HideInInspector] public PolygonCollider2D test; // 자석범위
     [HideInInspector] public PlayerStat stat; // 캐릭터 스탯
     [HideInInspector] public Health health;
+    [HideInInspector] public PlayerExp playerExp;
 
     // 플레이어가 가지는 이벤트
     [HideInInspector] public IdleEvent idleEvent;
@@ -39,10 +41,11 @@ public class Player : MonoBehaviour
     [HideInInspector] public ActiveWeaponEvent activeWeaponEvent;
     [HideInInspector] public HealthEvent healthEvent;
     [HideInInspector] public DestroyedEvent destroyedEvent;
+    [HideInInspector] public PlayerStatChangedEvent playerStatChangedEvent;
 
     [HideInInspector] public List<Weapon> weaponList = new List<Weapon>(); // 무기 리스트
 
-    private PlayerInventoryHolder playerInventory; // 플레이어 인벤토리
+    [HideInInspector] public PlayerInventoryHolder playerInventory; // 플레이어 인벤토리
 
 
 
@@ -52,7 +55,9 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         circleRange = GetComponent<CircleCollider2D>();
+        test = GetComponent<PolygonCollider2D>();
         health = GetComponent<Health>();
+        playerExp = GetComponent<PlayerExp>();
 
         idleEvent = GetComponent<IdleEvent>();
         movementEvent = GetComponent<MovementEvent>();
@@ -64,23 +69,7 @@ public class Player : MonoBehaviour
         activeWeaponEvent = GetComponent<ActiveWeaponEvent>();
         healthEvent = GetComponent<HealthEvent>();
         destroyedEvent = GetComponent<DestroyedEvent>();
-    }
-
-    private void OnEnable()
-    {
-        healthEvent.OnHealthChanged += HealthEvent_OnHealthChanged;
-    }
-    private void OnDisable()
-    {
-        healthEvent.OnHealthChanged -= HealthEvent_OnHealthChanged;
-    }
-
-    private void HealthEvent_OnHealthChanged(HealthEvent healthEvent, HealthEventArgs args)
-    {
-        if (args.healthAmount <= 0f)
-        {
-            destroyedEvent.CallDestroyedEvent(true, this.transform.position);
-        }
+        playerStatChangedEvent = GetComponent<PlayerStatChangedEvent>();
     }
 
     public void InitializePlayer(PlayerDetailsSO playerDetails)
@@ -92,13 +81,15 @@ public class Player : MonoBehaviour
 
         SetPlayerHealth(playerDetails.maxHp);
 
-        stat.baseDamage = playerDetails.baseDamage;
-        stat.reloadSpeed = playerDetails.reloadSpeed;
-        stat.fireRateSpeed = playerDetails.fireRateSpeed;
-        stat.moveSpeed = playerDetails.moveSpeed;
-        stat.circleRange = playerDetails.circleRange;
-        stat.dodgeChance = playerDetails.dodgeChance;
-        stat.expGain = playerDetails.expGain;
+        stat.SetPlayerStat(PlayerStatType.MaxHP, playerDetails.maxHp);
+        stat.SetPlayerStat(PlayerStatType.BaseDamage, playerDetails.baseDamage);
+        stat.SetPlayerStat(PlayerStatType.BaseArmor, playerDetails.baseArmor);
+        stat.SetPlayerStat(PlayerStatType.Dodge, playerDetails.dodgeChance);
+        stat.SetPlayerStat(PlayerStatType.ReloadSpeed, playerDetails.reloadSpeed);
+        stat.SetPlayerStat(PlayerStatType.FireRate, playerDetails.fireRateSpeed);
+        stat.SetPlayerStat(PlayerStatType.MoveSpeed, playerDetails.moveSpeed);
+        stat.SetPlayerStat(PlayerStatType.CircleRadius, playerDetails.circleRange);
+        stat.SetPlayerStat(PlayerStatType.ExpGain, playerDetails.expGain);
 
         circleRange.radius = stat.circleRange;
     }
@@ -111,6 +102,38 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        healthEvent.OnHealthChanged += HealthEvent_OnHealthChanged;
+        playerStatChangedEvent.OnPlayerStatChanged += PlayerStatChangedEvent_OnPlayerStatChanged;
+    }
+
+    private void OnDisable()
+    {
+        healthEvent.OnHealthChanged -= HealthEvent_OnHealthChanged;
+        playerStatChangedEvent.OnPlayerStatChanged -= PlayerStatChangedEvent_OnPlayerStatChanged;
+    }
+
+    private void HealthEvent_OnHealthChanged(HealthEvent healthEvent, HealthEventArgs args)
+    {
+        if (args.healthAmount <= 0f)
+        {
+            destroyedEvent.CallDestroyedEvent(true, this.transform.position);
+        }
+    }
+
+    private void PlayerStatChangedEvent_OnPlayerStatChanged(PlayerStatChangedEvent arg1, PlayerStatChangedEventArgs args)
+    {
+        stat.ChangePlayerStat(args.statType, args.changeValue);
+
+        circleRange.radius = stat.circleRange;
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+      Debug.Log("player : " + collision.transform.position);
+    }
 
     public Weapon AddWeaponToPlayer(WeaponDetailsSO weaponDetails)
     {

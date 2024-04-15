@@ -11,16 +11,10 @@ public class ItemPickUp : MonoBehaviour  // 아이템에 연결할 클래스
     [SerializeField] private InventoryItemData itemData; // 아이템이 가지고 있는 아이템데이터
 
     private SpriteRenderer spriteRenderer;
+    private ParticleSystem particle;
+    private int gainExp;
 
     private string id;
-
-
-    //private void Awake() // 테스트를 위한 Awake (지워줘야함)
-    //{
-
-    //    spriteRenderer = GetComponent<SpriteRenderer>();
-    //    spriteRenderer.sprite = itemData.ItemSprite;
-    //}
 
     public void InitializeItem(InventoryItemData data)
     {
@@ -31,17 +25,25 @@ public class ItemPickUp : MonoBehaviour  // 아이템에 연결할 클래스
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = itemData.ItemSprite;
 
+        particle = GetComponent<ParticleSystem>();
+        ParticleSystem.MainModule main = particle.main; // 파티클 시스템의 MainModule로 색상변경 가능
+        main.startColor = itemData.gradeColor;
+
+        gainExp = (int)itemData.itemGrade; // 해당 등급에 맞는 경험치 획득 (등급마다 경험치 정해져있음)
+
         gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var inventoryHolder = collision.transform.GetComponent<PlayerInventoryHolder>();
+        Player inventoryHolder = collision.transform.GetComponent<Player>();
 
         if (!inventoryHolder) return; // 인벤토리 보유여부
 
-        if (inventoryHolder.AddToInventory(itemData,1))
+        if (inventoryHolder.playerInventory.AddToInventory(itemData,1))
         {
+            gainExp += inventoryHolder.stat.expGain;
+            inventoryHolder.playerExp.TakeExp(gainExp);
             gameObject.SetActive(false);
         }
     }

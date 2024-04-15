@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
 
@@ -9,7 +10,8 @@ public class PlayerEquipmentHolder : InventoryDisplay
 {
     public static UnityAction OnPlayerEquipmentDisplayRequested;
 
-    [SerializeField] private InventorySlot_UI[] slots;
+    [SerializeField] private EquipmentSlot_UI[] slots;
+    [SerializeField] private Image playerSprite;
 
 
     private void Awake()
@@ -23,6 +25,8 @@ public class PlayerEquipmentHolder : InventoryDisplay
     {
         base.Start();
         SaveLoad.OnSaveGame += SaveFile;
+
+        playerSprite.sprite = GameManager.Instance.GetPlayer().playerDetails.playerSprite;
     }
 
     private void SaveFile()
@@ -52,6 +56,11 @@ public class PlayerEquipmentHolder : InventoryDisplay
             SlotDictionary.Add(slots[i], invToDisplay.InventorySlots[i]);
             slots[i].Init(invToDisplay.InventorySlots[i]);
             slots[i].UpdateUISlot();
+
+            if (invToDisplay.InventorySlots[i].ItemData != null)
+            {   // 게임 시작시 장착되어 있는 장비 적용
+                slots[i].EquipItem(invToDisplay.InventorySlots[i].ItemData.playerStatChangeList);
+            }
         }
     }
 }

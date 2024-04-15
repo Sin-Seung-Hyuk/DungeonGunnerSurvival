@@ -6,10 +6,9 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class Health : MonoBehaviour
 {
-    //[SerializeField] private HealthBar healthBar;
-
+    [SerializeField] private HealthBarUI healthBar;
     private int startingHealth;
-    public int currentHealth { get; private set; }
+    private int currentHealth;
     private HealthEvent healthEvent;
     private Player player;
 
@@ -40,8 +39,8 @@ public class Health : MonoBehaviour
             currentHealth -= damageAmount;
             CallHealthEvent(damageAmount);
 
-            //if (healthBar != null)
-            //    healthBar.SetHealthBar((float)currentHealth / (float)startingHealth);
+            if (healthBar != null)
+                healthBar.SetHealthBar((float)currentHealth / (float)startingHealth);
         }
     }
     private void CallHealthEvent(int damageAmount)
@@ -60,6 +59,10 @@ public class Health : MonoBehaviour
     public int GetStartingHealth()
     {
         return startingHealth;
+    }   
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
     }
 
     public void AddHealth(int healthPercent)

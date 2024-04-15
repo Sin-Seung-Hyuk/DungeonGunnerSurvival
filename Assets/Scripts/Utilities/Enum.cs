@@ -6,6 +6,18 @@ public enum PlayerCharacter
     TheScientist
 }
 
+public enum PlayerStatType
+{
+    MaxHP,
+    BaseDamage,
+    BaseArmor,
+    Dodge,
+    ReloadSpeed,
+    FireRate,
+    MoveSpeed,
+    CircleRadius,
+    ExpGain
+}
 
 public enum GameState
 {

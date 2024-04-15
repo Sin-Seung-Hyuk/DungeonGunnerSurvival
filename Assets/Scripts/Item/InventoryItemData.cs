@@ -17,6 +17,8 @@ public class InventoryItemData : ScriptableObject
     public Color gradeColor; // 등급별 색상
     public ItemType itemType; // 타입
     public EquipmentType equipmentType; // 타입
+
+    public List<PlayerStatChangeList> playerStatChangeList; // 장비템 스탯
 }
 
 public enum ItemType
@@ -40,8 +42,8 @@ public enum EquipmentType
 
 public enum ItemGrade
 {
-    Normal,
-    Rare,
-    Unique,
-    Legend
+    Normal = 5,
+    Rare = 8,
+    Unique = 10,
+    Legend = 20
 }

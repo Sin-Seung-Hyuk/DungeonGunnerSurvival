@@ -13,4 +13,24 @@ public class EquipmentSlot_UI : InventorySlot_UI // 기존 슬롯UI 상속
 
         ParentDisplay?.SlotClicked(this, slotType);
     }
+
+    // 장비 착용
+    public void EquipItem(List<PlayerStatChangeList> playerStatChangeList)
+    {
+        foreach (var statChangeList in playerStatChangeList)
+        {
+            GameManager.Instance.GetPlayer().playerStatChangedEvent
+                .CallPlayerStatChangedEvent(statChangeList.statType, statChangeList.changeValue);
+        }
+    }
+
+    // 장비 해제
+    public void UnequipItem(List<PlayerStatChangeList> playerStatChangeList)
+    {
+        foreach (var statChangeList in playerStatChangeList)
+        {
+            GameManager.Instance.GetPlayer().playerStatChangedEvent
+                .CallPlayerStatChangedEvent(statChangeList.statType, -statChangeList.changeValue);
+        }
+    }
 }

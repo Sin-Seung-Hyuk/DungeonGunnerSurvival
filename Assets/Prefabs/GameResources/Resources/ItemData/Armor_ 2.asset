@@ -18,7 +18,7 @@ MonoBehaviour:
   ItemSprite: {fileID: -4870078373614549535, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
   GoldValue: 600
-  itemGrade: 0
+  itemGrade: 1
   gradeColor: {r: 1, g: 1, b: 1, a: 1}
   itemType: 2
   equipmentType: 6

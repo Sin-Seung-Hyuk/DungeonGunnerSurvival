@@ -84,9 +84,6 @@ public class PlayerCtrl : MonoBehaviour
         {
             player.fireWeaponEvent.CallFireWeaponEvent(player.weaponList[i], playerAimAngle, playerAimDirectionVector, i);
         }
-
-        //player.fireWeaponEvent.CallFireWeaponEvent(player.weaponList[1], playerAimAngle, playerAimDirectionVector);
-
     }
     #endregion
 }

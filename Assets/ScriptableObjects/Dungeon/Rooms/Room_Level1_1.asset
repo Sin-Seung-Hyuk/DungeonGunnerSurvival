@@ -30,6 +30,8 @@ MonoBehaviour:
   spawnableEnemyList:
   - dungeonObject: {fileID: 11400000, guid: 0a31fc3c160b7b640816155832deb468, type: 2}
     ratio: 5
+  - dungeonObject: {fileID: 11400000, guid: 63fa46fca0a2aff498fcee125f0e85f0, type: 2}
+    ratio: 5
   spawnableItemList:
   - dungeonObject: {fileID: 11400000, guid: 368b5f79a1cf9fc4799ce376338ccc0d, type: 2}
     ratio: 20

@@ -25,8 +25,8 @@ MonoBehaviour:
   weaponAmmo:
   - {fileID: 4454987432227277477, guid: 435a147f85de6a545a08edc231b4a140, type: 3}
   isTrail: 1
-  ammoTrailMaterial: {fileID: 2100000, guid: f40d05d451e2ae24f91e9e3314c280da, type: 2}
-  ammoTrailStartWidth: 0.079
+  ammoTrailMaterial: {fileID: 2100000, guid: c92da765fb7cca448a71d99956fe00bd, type: 2}
+  ammoTrailStartWidth: 0.15
   ammoTrailEndWidth: 0.15
   ammoTrailTime: 0.07
   weaponFiringSoundEffect: {fileID: 11400000, guid: adc256dc6549d48469d55561d03b0de1, type: 2}

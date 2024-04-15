@@ -126,6 +126,8 @@ public abstract class InventoryDisplay : MonoBehaviour
                 clickedSlotUI.AssignedInventorySlot.AssignItem(mouseInventoryItem.AssignedInventorySlot);
                 clickedSlotUI.UpdateUISlot();
 
+                clickedSlotUI.EquipItem(clickedSlotUI.AssignedInventorySlot.ItemData.playerStatChangeList);
+
                 mouseInventoryItem.ClearSlot();
                 return;
             }
@@ -138,6 +140,8 @@ public abstract class InventoryDisplay : MonoBehaviour
             mouseInventoryItem.AssignedInventorySlot.ItemData == null)
         {
             // 이벤트 호출
+            clickedSlotUI.UnequipItem(clickedSlotUI.AssignedInventorySlot.ItemData.playerStatChangeList);
+
             mouseInventoryItem.UpdateMouseSlot(clickedSlotUI.AssignedInventorySlot);
             clickedSlotUI.ClearSlot();
             return;
@@ -150,6 +154,9 @@ public abstract class InventoryDisplay : MonoBehaviour
             if (mouseInventoryItem.AssignedInventorySlot.ItemData.equipmentType == slotType)
 
             {
+                clickedSlotUI.UnequipItem(clickedSlotUI.AssignedInventorySlot.ItemData.playerStatChangeList);
+                clickedSlotUI.EquipItem(mouseInventoryItem.AssignedInventorySlot.ItemData.playerStatChangeList);
+
                 SwapSlot(clickedSlotUI);
                 return;
             }
