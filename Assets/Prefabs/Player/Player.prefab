@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 4159383034785267708}
   - component: {fileID: 6585450630695512111}
   - component: {fileID: 7634907887031611416}
-  - component: {fileID: -4195476813523511679}
   - component: {fileID: 1050280763982521275}
   - component: {fileID: 9080512036675359647}
   - component: {fileID: -3669298940605149762}
@@ -42,6 +41,8 @@ GameObject:
   - component: {fileID: 561661824595126088}
   - component: {fileID: 8098078696631618741}
   - component: {fileID: 1896749486805056960}
+  - component: {fileID: 6499475636765262129}
+  - component: {fileID: 8510626742742758009}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -62,6 +63,7 @@ Transform:
   m_Children:
   - {fileID: 3156832999062780051}
   - {fileID: 1905810204942890318}
+  - {fileID: 936919547041129539}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -81,7 +83,7 @@ MonoBehaviour:
   playerDetails: {fileID: 11400000, guid: 608f39f2e3fdd87439833cff6399725b, type: 2}
   spriteRenderer: {fileID: 0}
   circleRange: {fileID: 0}
-  test: {fileID: 0}
+  ctrl: {fileID: 0}
   health: {fileID: 0}
   playerExp: {fileID: 0}
   idleEvent: {fileID: 0}
@@ -95,8 +97,7 @@ MonoBehaviour:
   healthEvent: {fileID: 0}
   destroyedEvent: {fileID: 0}
   playerStatChangedEvent: {fileID: 0}
-  weaponList: []
-  playerInventory: {fileID: 0}
+  playerLevelUpEvent: {fileID: 0}
 --- !u!212 &5197409163352979792
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -206,7 +207,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -259,22 +260,6 @@ SortingGroup:
   m_SortingLayerID: 105275597
   m_SortingLayer: 4
   m_SortingOrder: 0
---- !u!58 &-4195476813523511679
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2148578077218841453}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.4}
-  serializedVersion: 2
-  m_Radius: 0.8
 --- !u!114 &1050280763982521275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,6 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponShootPoint: {fileID: 1905810204942890318}
+  moveSpeed: 0
 --- !u!114 &-7447359093335275865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,8 +551,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 6018750361136621757}
-  isDamageable: 1
-  enemy: {fileID: 0}
 --- !u!114 &6197999926387848293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,6 +612,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50d2fefaeed3c04e816ddc513a092d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6499475636765262129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2148578077218841453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf7927a2e05bf54a8e2de34f4772836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8510626742742758009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2148578077218841453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0c96403677309489b5c3825302c02e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelUpList:
+  - dungeonObject:
+      statType: 5
+      changeValue: -1
+      choiceText: fr
+      changeValueText: + 50
+      txtColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}
+      isPlayerStat: 0
+    ratio: 1
+  - dungeonObject:
+      statType: 4
+      changeValue: 60
+      choiceText: Base Damage
+      changeValueText: + 60
+      txtColor: {r: 0.60784316, g: 0.23921569, b: 0.8509804, a: 1}
+      isPlayerStat: 0
+    ratio: 1
+  - dungeonObject:
+      statType: 9
+      changeValue: 100
+      choiceText: Move Speed
+      changeValueText: + 5
+      txtColor: {r: 1, g: 1, b: 1, a: 1}
+      isPlayerStat: 0
+    ratio: 1
+  levelUpUI: {fileID: 0}
 --- !u!1 &6588465340913994189
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,6 +692,53 @@ Transform:
   m_Father: {fileID: 527178686122750262}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8234398275418576533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 936919547041129539}
+  - component: {fileID: 4115137651306825846}
+  m_Layer: 7
+  m_Name: ItemPickUpCircle
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &936919547041129539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8234398275418576533}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 527178686122750262}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &4115137651306825846
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8234398275418576533}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  serializedVersion: 2
+  m_Radius: 0.8
 --- !u!1001 &8126185388256500608
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -119,7 +119,7 @@ public class GameManager : Singleton<GameManager>
     {
         switch (gameState)
         {
-            case GameState.InEntrance: 
+            case GameState.InEntrance:
                 // 사격 이벤트 호출 X 
                 break;
 
@@ -157,6 +157,7 @@ public class GameManager : Singleton<GameManager>
             prevGameState = gameState;
             gameState = GameState.InEntrance;
             player.fireWeapon.enabled = false;
+            player.health.AddHealth(100); // 입구로 돌아오면 체력 100% 회복 (한번만)
         } else
         {
             prevGameState = gameState;

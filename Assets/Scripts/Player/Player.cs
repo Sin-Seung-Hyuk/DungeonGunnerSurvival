@@ -7,7 +7,6 @@ using UnityEngine.Rendering;
 #region RequireComponents
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
-[RequireComponent(typeof(CircleCollider2D))]
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
@@ -19,14 +18,14 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(MovementEvent))]
 [RequireComponent(typeof(Movement))]
 #endregion
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IHealthObject
 {
     [HideInInspector] public Animator animator;
     [HideInInspector] public PlayerDetailsSO playerDetails;
     [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public CircleCollider2D circleRange; // 자석범위
-    [HideInInspector] public PolygonCollider2D test; // 자석범위
     [HideInInspector] public PlayerStat stat; // 캐릭터 스탯
+    [HideInInspector] public PlayerCtrl ctrl; // 캐릭터 컨트롤러
     [HideInInspector] public Health health;
     [HideInInspector] public PlayerExp playerExp;
 
@@ -42,10 +41,10 @@ public class Player : MonoBehaviour
     [HideInInspector] public HealthEvent healthEvent;
     [HideInInspector] public DestroyedEvent destroyedEvent;
     [HideInInspector] public PlayerStatChangedEvent playerStatChangedEvent;
+    [HideInInspector] public PlayerLevelUpEvent playerLevelUpEvent;
 
-    [HideInInspector] public List<Weapon> weaponList = new List<Weapon>(); // 무기 리스트
-
-    [HideInInspector] public PlayerInventoryHolder playerInventory; // 플레이어 인벤토리
+    public List<Weapon> weaponList { get; private set; } // 무기 리스트
+    public PlayerInventoryHolder playerInventory { get; private set; } // 플레이어 인벤토리
 
 
 
@@ -54,9 +53,9 @@ public class Player : MonoBehaviour
         playerInventory = GetComponent<PlayerInventoryHolder>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        circleRange = GetComponent<CircleCollider2D>();
-        test = GetComponent<PolygonCollider2D>();
+        circleRange = GetComponentInChildren<CircleCollider2D>();
         health = GetComponent<Health>();
+        ctrl = GetComponent<PlayerCtrl>();
         playerExp = GetComponent<PlayerExp>();
 
         idleEvent = GetComponent<IdleEvent>();
@@ -70,6 +69,7 @@ public class Player : MonoBehaviour
         healthEvent = GetComponent<HealthEvent>();
         destroyedEvent = GetComponent<DestroyedEvent>();
         playerStatChangedEvent = GetComponent<PlayerStatChangedEvent>();
+        playerLevelUpEvent = GetComponent<PlayerLevelUpEvent>();
     }
 
     public void InitializePlayer(PlayerDetailsSO playerDetails)
@@ -78,8 +78,9 @@ public class Player : MonoBehaviour
 
         spriteRenderer.sprite = playerDetails.playerSprite;
         animator.runtimeAnimatorController = playerDetails.runtimeAnimatorController;
+        weaponList = new List<Weapon>();
 
-        SetPlayerHealth(playerDetails.maxHp);
+        health.SetStartingHealth(playerDetails.maxHp);
 
         stat.SetPlayerStat(PlayerStatType.MaxHP, playerDetails.maxHp);
         stat.SetPlayerStat(PlayerStatType.BaseDamage, playerDetails.baseDamage);
@@ -120,19 +121,42 @@ public class Player : MonoBehaviour
         {
             destroyedEvent.CallDestroyedEvent(true, this.transform.position);
         }
+        health.SetHealthBar(); // 체력이 변경되면 체력바 반영
     }
 
     private void PlayerStatChangedEvent_OnPlayerStatChanged(PlayerStatChangedEvent arg1, PlayerStatChangedEventArgs args)
     {
+        Debug.Log(args.statType);
+
         stat.ChangePlayerStat(args.statType, args.changeValue);
 
-        circleRange.radius = stat.circleRange;
-    }
+        switch (args.statType)
+        {
+            case PlayerStatType.MaxHP:
+                health.SetMaxHealth((int)args.changeValue); // 최대체력 변경
+                break;
 
+            case PlayerStatType.BaseDamage: // Weapon 클래스로 가서 무기의 스탯 변경
+                ChangePlayerWeaponStat(PlayerStatType.BaseDamage, args.changeValue);
+                break;
+            case PlayerStatType.ReloadSpeed:
+                ChangePlayerWeaponStat(PlayerStatType.ReloadSpeed, args.changeValue); 
+                break;
+            case PlayerStatType.FireRate:
+                ChangePlayerWeaponStat(PlayerStatType.FireRate, args.changeValue);
+                break;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-      Debug.Log("player : " + collision.transform.position);
+            case PlayerStatType.MoveSpeed:
+                ctrl.moveSpeed = stat.moveSpeed; // 컨트롤러의 이동속도 변경
+                break;
+
+            case PlayerStatType.CircleRadius:
+                circleRange.radius = stat.circleRange; // 아이템 획득범위 조정
+                break;
+
+            default:
+                break;
+        }
     }
 
     public Weapon AddWeaponToPlayer(WeaponDetailsSO weaponDetails)
@@ -147,9 +171,28 @@ public class Player : MonoBehaviour
         return playerWeapon;
     }
 
-    private void SetPlayerHealth(int hp)
+    private void ChangePlayerWeaponStat(PlayerStatType statType, float value)
     {
-        // playerDeatilsSO 에서 설정한 최대체력으로 스타팅체력 설정
-        health.SetStartingHealth(hp);
+        foreach (Weapon weapon in weaponList)   // 플레이어가 가진 모든 무기 스탯 변경
+        {
+            weapon.ChangeWeaponStat(statType, value);
+        }
+    }
+
+    public int TakeDamage(int damageAmount)
+    {
+        if (stat.dodgeChance >= 1)
+        {
+            // 회피에 성공
+            if (Utilities.isSuccess(stat.dodgeChance)) return -1;
+        }
+                                // 방어력만큼 데미지 % 깎기
+        damageAmount = Utilities.DecreaseByPercent(damageAmount, stat.baseArmor);
+
+        health.SetCurrentHealth(damageAmount);
+        health.CallHealthEvent(damageAmount);
+        health.SetHealthBar();
+
+        return damageAmount;
     }
 }

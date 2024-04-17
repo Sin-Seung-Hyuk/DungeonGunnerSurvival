@@ -30,19 +30,20 @@ public class Ammo : MonoBehaviour, IFireable // 사격 인터페이스
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
 
         if (isColliding) return;
 
-        Health health = collision.gameObject.GetComponent<Health>();
+        IHealthObject health = collision.GetComponent<IHealthObject>();
 
         if (health != null)
         {
             isColliding = true; // 충돌 중
             this.ammoDamage = GetAmmoDamage(); // 데미지 계산
-            health.TakeDamage(ammoDamage);
-            AmmoHitText(ammoDamage, isCritic);
+            int damageAmount = health.TakeDamage(ammoDamage);
+            // 플레이어가 회피시 피격텍스트 X, 방어력만큼 깎인 수치 반영
+            if (damageAmount > 0) AmmoHitText(damageAmount, isCritic);
         }
 
         AmmoHitEffect();

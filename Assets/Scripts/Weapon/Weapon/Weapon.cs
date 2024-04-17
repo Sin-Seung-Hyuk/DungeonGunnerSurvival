@@ -8,17 +8,17 @@ public class Weapon : MonoBehaviour
     public string weaponName { get; private set; }
     public Sprite weaponSprite { get; private set; }
     public WeaponDetailsSO weaponDetail { get; private set; }
+    public int weaponAmmoCapacity { get; private set; } // 탄창 용량
+    public List<GameObject> weaponAmmoList { get; private set; } // 무기 탄
+    
 
     // 무기의 스탯 (레벨업하여 스탯 상승 가능)
     public int weaponLevel; // 무기 레벨
     public int weaponBaseDamage; // 기본데미지
     public int weaponCriticChance; // 치명타 확률 (%)
     public int weaponCriticDamage; // 치명타 피해 (%)
-    public int weaponAmmoCapacity; // 탄창
     public float weaponFireRate; // 연사속도
     public float weaponReloadTime; // 재장전 속도
-    public List<GameObject> weaponAmmoList; // 무기 탄
-
 
     // 실시간으로 인게임에서 사격하면서 바뀌는 변수들
     public int weaponAmmoRemaining; // 남은 탄약
@@ -65,5 +65,34 @@ public class Weapon : MonoBehaviour
     {
         int idx = level / 10; // 무기 10레벨 찍으면 탄 업그레이드
         return weaponAmmoList[idx];
+    }
+
+    public void ChangeWeaponStat(PlayerStatType statType, float value)
+    {
+        switch (statType)
+        {
+            case PlayerStatType.BaseDamage:
+                weaponBaseDamage += (int)value;
+                break;
+
+            case PlayerStatType.CriticChance:
+                weaponCriticChance += (int)value;
+                break;
+
+            case PlayerStatType.CriticDamage:
+                weaponCriticDamage += (int)value;
+                break;
+
+            case PlayerStatType.FireRate:
+                weaponFireRate += value;
+                break;
+
+            case PlayerStatType.ReloadSpeed:
+                weaponReloadTime += value;
+                break;
+
+            default:
+                break;
+        }
     }
 }

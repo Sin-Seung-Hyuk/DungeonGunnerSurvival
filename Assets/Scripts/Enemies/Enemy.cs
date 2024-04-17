@@ -38,7 +38,7 @@ using System.Collections.Generic;
 #endregion REQUIRE COMPONENTS
 
 [DisallowMultipleComponent]
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IHealthObject
 {
     [HideInInspector] public EnemyDetailsSO enemyDetails;
     [HideInInspector] public MovementToPositionEvent movementToPositionEvent;
@@ -53,9 +53,11 @@ public class Enemy : MonoBehaviour
     private EnemyMovementAI enemyMovementAI;
     private MaterializeEffect materializeEffect;
     private FireWeapon fireWeapon;
-    private Health health;
     private Weapon weapon;
+    private Health health;
     private HealthEvent healthEvent;
+
+
 
 
     private void Awake()
@@ -170,5 +172,13 @@ public class Enemy : MonoBehaviour
     private void SetEnemyAnimateSpeed()
     {   // AI의 애니메이션 재생속도 설정
         animator.speed = enemyDetails.speed / 3f;
+    }
+
+    public int TakeDamage(int damageAmount)
+    {
+        health.SetCurrentHealth(damageAmount);
+        health.CallHealthEvent(damageAmount);
+
+        return damageAmount;
     }
 }

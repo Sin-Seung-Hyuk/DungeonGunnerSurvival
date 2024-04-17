@@ -16,8 +16,11 @@ public enum PlayerStatType
     FireRate,
     MoveSpeed,
     CircleRadius,
-    ExpGain
+    ExpGain,
+    CriticChance,
+    CriticDamage
 }
+
 
 public enum GameState
 {

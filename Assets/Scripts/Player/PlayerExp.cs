@@ -43,12 +43,8 @@ public class PlayerExp : MonoBehaviour
         maxExp = maxExp + (int)(maxExp * 0.05f); // 최대경험치 5% 증가
 
         expBar.SetLevel(++level);
+
+        player.playerLevelUpEvent.CallPlayerLevelUpEvent(); // 레벨업 이벤트 호출
     }
 }
 
-[System.Serializable]
-public class PlayerLevelExp
-{
-    int level;  // 레벨
-    int maxExp; // 다음 레벨까지 필요 경험치
-}

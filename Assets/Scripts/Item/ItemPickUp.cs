@@ -36,7 +36,7 @@ public class ItemPickUp : MonoBehaviour  // 아이템에 연결할 클래스
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Player inventoryHolder = collision.transform.GetComponent<Player>();
+        Player inventoryHolder = collision.transform.GetComponentInParent<Player>();
 
         if (!inventoryHolder) return; // 인벤토리 보유여부
 

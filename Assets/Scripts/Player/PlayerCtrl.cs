@@ -10,9 +10,10 @@ public class PlayerCtrl : MonoBehaviour
     private Player player;
     private PlayerStat playerStat;
     private Rigidbody2D rigid;
+    private Vector3 moveDirection;
 
-    private float moveSpeed;
-    public Vector3 moveDirection { get; private set; }
+    public float moveSpeed;
+
 
     private void Awake()
     {

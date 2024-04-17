@@ -19,6 +19,6 @@ public class ReciveContactDamage : MonoBehaviour
     {
         if (contactDamageAmount > 0) damage = contactDamageAmount;
 
-        health.TakeDamage(damage);
+        //health.TakeDamage(damage);
     }
 }

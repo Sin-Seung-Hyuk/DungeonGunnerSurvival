@@ -7,13 +7,10 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private HealthBarUI healthBar;
-    private int startingHealth;
+    private int maxHealth;
     private int currentHealth;
     private HealthEvent healthEvent;
-    private Player player;
 
-    [HideInInspector] public bool isDamageable = true; // 데미지 받는지
-    [HideInInspector] public Enemy enemy;
 
     private void Awake()
     {
@@ -22,43 +19,45 @@ public class Health : MonoBehaviour
     private void Start()
     {
         CallHealthEvent(0); // UI 업데이트 위해
-
-        player = GetComponent<Player>();
-        enemy = GetComponent<Enemy>();
-
-        //if (enemy != null && enemy.enemyDetails.isHealthBarDisplayed == true && healthBar != null)
-        //{
-        //    healthBar.EnableHealthBar();
-        //}
-        //else if (healthBar != null) healthBar.DisableHealthBar();
     }
-    public void TakeDamage(int damageAmount)
-    {
-        if (isDamageable)
-        {
-            currentHealth -= damageAmount;
-            CallHealthEvent(damageAmount);
 
-            if (healthBar != null)
-                healthBar.SetHealthBar((float)currentHealth / (float)startingHealth);
-        }
-    }
-    private void CallHealthEvent(int damageAmount)
+
+    public void CallHealthEvent(int damageAmount)
     {
         // 현재체력/최대체력 (체력비율), 현재체력, 데미지 매개변수로 이벤트 호출
         healthEvent.CallHealthChangedEvent(
-            ((float)currentHealth / (float)startingHealth), currentHealth, damageAmount);
+            ((float)currentHealth / (float)maxHealth), currentHealth, damageAmount);
     }
 
-    public void SetStartingHealth(int startingHealth)
+    public void SetHealthBar()
     {
-        this.startingHealth = startingHealth;
+        healthBar.SetHealthBar((float)currentHealth / (float)maxHealth);
+    }
+
+    public void SetStartingHealth(int startingHealth) // 시작체력 초기화
+    {
+        this.maxHealth = startingHealth;
         currentHealth = startingHealth;
+    }
+
+    public void SetMaxHealth(int changeValue) // 최대체력 변경
+    {
+        this.maxHealth += changeValue;
+
+        if (currentHealth > maxHealth) 
+            currentHealth = maxHealth; // 최대체력 장비 해제했을 경우 대비
+
+        SetHealthBar(); // 최대체력이 변경되었으므로
+    }
+
+    public void SetCurrentHealth(int damageAmount) // 현재체력 변경
+    {
+        this.currentHealth -= damageAmount;
     }
 
     public int GetStartingHealth()
     {
-        return startingHealth;
+        return maxHealth;
     }   
     public int GetCurrentHealth()
     {
@@ -68,12 +67,12 @@ public class Health : MonoBehaviour
     public void AddHealth(int healthPercent)
     {
         // 증가할 체력의 양을 정수로 변환
-        int healthIncrease = Mathf.RoundToInt((startingHealth * healthPercent) / 100f);
+        int healthIncrease = Mathf.RoundToInt((maxHealth * healthPercent) / 100f);
 
         int totalHealth = currentHealth + healthIncrease;
 
-        if (totalHealth > startingHealth)
-            currentHealth = startingHealth;
+        if (totalHealth > maxHealth)
+            currentHealth = maxHealth;
         else
             currentHealth = totalHealth;
 
