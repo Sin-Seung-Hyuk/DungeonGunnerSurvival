@@ -79,18 +79,27 @@ public class Enemy : MonoBehaviour, IHealthObject
     private void OnEnable()
     {
         healthEvent.OnHealthChanged += HealthEvent_OnHealthLost;
+
+        StaticEventHandler.OnRoomTimeout += StaticEventHandler_OnRoomTimeout;
     }
 
     private void OnDisable()
     {
         healthEvent.OnHealthChanged -= HealthEvent_OnHealthLost;
+
+        StaticEventHandler.OnRoomTimeout -= StaticEventHandler_OnRoomTimeout;
+    }
+
+    private void StaticEventHandler_OnRoomTimeout(RoomTimeoutArgs obj)
+    {
+        StartCoroutine(EnemyDestroyedRoutine()); // 타임아웃으로 적 파괴
     }
 
     private void HealthEvent_OnHealthLost(HealthEvent healthEvent, HealthEventArgs healthEventArgs)
     {
         if (healthEventArgs.damageAmount == 0) return;
 
-        if (healthEventArgs.healthAmount <= 0) StartCoroutine(EnemyDestroyed()); // 파괴 코루틴
+        if (healthEventArgs.healthAmount <= 0) StartCoroutine(EnemyDestroyedRoutine()); // 적 파괴코루틴 실행
     }
 
     public void EnemyInitialization(EnemyDetailsSO enemyDetails, DungeonLevelSO dungeonLevel)
@@ -114,7 +123,7 @@ public class Enemy : MonoBehaviour, IHealthObject
         gameObject.SetActive(true);
     }
 
-    private IEnumerator EnemyDestroyed()
+    private IEnumerator EnemyDestroyedRoutine()
     {
         // 적 비활성화, 속도 0
         EnemyEnable(false);
@@ -125,6 +134,7 @@ public class Enemy : MonoBehaviour, IHealthObject
             enemyDetails.enemyMaterializeShader, enemyDetails.enemyMaterializeColor,
             enemyDetails.enemyMaterializeTime, spriteRenderer, enemyDetails.enemyStandardMaterial));
 
+        // 머테리얼 코루틴이 끝난 후 풀에 반환하기 위해 파괴이벤트 호출
         DestroyedEvent destroyedEvent = GetComponent<DestroyedEvent>();
         destroyedEvent.CallDestroyedEvent(true, this.transform.position); // 풀에 반환해야하므로 true
     }

@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Room_Entrance
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 2669920366053851494, guid: 7eedeeb27a23afa4789ea06e6fa6f5d9, type: 3}
+  roomName: Entrance
   isEntrance: 1
+  isBossRoom: 0
   lowerBounds: {x: -11, y: -7}
   upperBounds: {x: 12, y: 8}
   playerSpawnPos: {x: -1, y: -4, z: 0}
   spawnPositionArray: []
+  spawnableEnemyList: []
+  spawnableItemList: []

@@ -53,12 +53,6 @@ public class Weapon : MonoBehaviour
             weaponFireRateTimer -= Time.deltaTime;
         else weaponFireRateTimer = weaponFireRate;
 
-
-        // 테스트 
-        if (Keyboard.current.rKey.wasPressedThisFrame)
-        {
-            //weaponFireRateTimer -= 0.5f;
-        }
     }
 
     public GameObject GetCurrentAmmo(int level)
@@ -66,13 +60,15 @@ public class Weapon : MonoBehaviour
         int idx = level / 10; // 무기 10레벨 찍으면 탄 업그레이드
         return weaponAmmoList[idx];
     }
-
-    public void ChangeWeaponStat(PlayerStatType statType, float value)
+                                                                          // % 계산 여부
+    public void ChangeWeaponStat(PlayerStatType statType, float value, bool isPercent)
     {
         switch (statType)
         {
             case PlayerStatType.BaseDamage:
-                weaponBaseDamage += (int)value;
+                if (isPercent)
+                    weaponBaseDamage = Utilities.IncreaseByPercent(weaponBaseDamage, value);
+                else weaponBaseDamage += (int)value;
                 break;
 
             case PlayerStatType.CriticChance:
@@ -84,11 +80,11 @@ public class Weapon : MonoBehaviour
                 break;
 
             case PlayerStatType.FireRate:
-                weaponFireRate += value;
+                weaponFireRate = Utilities.DecreaseByPercent(weaponFireRate, value);
                 break;
 
             case PlayerStatType.ReloadSpeed:
-                weaponReloadTime += value;
+                weaponReloadTime = Utilities.DecreaseByPercent(weaponReloadTime, value);
                 break;
 
             default:

@@ -12,13 +12,13 @@ public enum PlayerStatType
     BaseDamage,
     BaseArmor,
     Dodge,
-    ReloadSpeed,
-    FireRate,
+    CriticChance,
+    CriticDamage,
     MoveSpeed,
     CircleRadius,
     ExpGain,
-    CriticChance,
-    CriticDamage
+    ReloadSpeed,
+    FireRate
 }
 
 

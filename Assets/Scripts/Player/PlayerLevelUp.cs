@@ -43,11 +43,11 @@ public class PlayerLevelUp : MonoBehaviour
             }
 
             for (int i = 0; i < 3; i++)
-            {
+            {                      // 랜덤으로 뽑은 번호의 레벨업 선택지 매개변수로 UI 초기화
                 levelUpUI.InitializeLevelUpUI(playerLevelUpList.GetItem(randomChoice[i]), i);
             }
 
-            levelUpUI.gameObject.SetActive(true);
+            levelUpUI.gameObject.SetActive(true); // 레벨업 UI 모두 초기화 후 활성화
         }
     }
 }

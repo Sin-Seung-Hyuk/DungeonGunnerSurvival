@@ -50,12 +50,16 @@ public class InventoryUIController : MonoBehaviour
             Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             equipmentPanel.gameObject.SetActive(false);
+
+            Time.timeScale = 1;
         }
 
         // TAB 키로 장비창 활성화
         if (Keyboard.current.tabKey.wasPressedThisFrame)
         {
             PlayerEquipmentHolder.OnPlayerEquipmentDisplayRequested?.Invoke();
+
+            Time.timeScale = 0;
         }
     } 
 

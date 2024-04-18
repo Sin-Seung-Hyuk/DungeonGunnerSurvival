@@ -5,6 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class Room : MonoBehaviour
 {
+    [HideInInspector] public RoomTemplateSO roomTemplate; // 방의 정보가 담긴 SO
+
     [HideInInspector] public Grid grid; // 방에 포함된 그리드
     [HideInInspector] public Tilemap groundTilemap;
     [HideInInspector] public Tilemap decoration1Tilemap;
@@ -14,6 +16,7 @@ public class Room : MonoBehaviour
     [HideInInspector] public Tilemap minimapTilemap; // 방에 포함된 타일맵들 (그리드 자식오브젝트)
 
     [HideInInspector] public bool isEntrance; // 입구인지 판별
+    [HideInInspector] public bool isBossRoom; // 보스방 판별
 
     [HideInInspector] public Vector2Int lowerBounds; // 방의 좌하단 (3사분면)
     [HideInInspector] public Vector2Int upperBounds; // 방의 우상단 (1사분면)
@@ -33,7 +36,10 @@ public class Room : MonoBehaviour
     {
         grid = roomObject.GetComponentInChildren<Grid>(); // 던전빌더에서 생성된 방 프리팹의 그리드 가져오기
 
+        this.roomTemplate = roomTemplate;
+
         isEntrance = roomTemplate.isEntrance;
+        isBossRoom = roomTemplate.isBossRoom;
         lowerBounds = roomTemplate.lowerBounds;
         upperBounds = roomTemplate.upperBounds;
         playerSpawnPos = roomTemplate.playerSpawnPos;

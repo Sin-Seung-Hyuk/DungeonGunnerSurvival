@@ -22,3 +22,4 @@ MonoBehaviour:
   gradeColor: {r: 1, g: 1, b: 1, a: 1}
   itemType: 2
   equipmentType: 6
+  playerStatChangeList: []

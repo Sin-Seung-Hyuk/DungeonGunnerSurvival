@@ -31,8 +31,8 @@ public class PlayerStatUI : MonoBehaviour
         playerStatArray[(int)PlayerStatType.BaseDamage].text = player.stat.baseDamage.ToString();
         playerStatArray[(int)PlayerStatType.BaseArmor].text = player.stat.baseArmor.ToString();
         playerStatArray[(int)PlayerStatType.Dodge].text = player.stat.dodgeChance.ToString();
-        playerStatArray[(int)PlayerStatType.ReloadSpeed].text = player.stat.reloadSpeed.ToString();
-        playerStatArray[(int)PlayerStatType.FireRate].text = player.stat.fireRateSpeed.ToString();
+        playerStatArray[(int)PlayerStatType.CriticChance].text = player.stat.criticChance.ToString();
+        playerStatArray[(int)PlayerStatType.CriticDamage].text = player.stat.criticDamage.ToString();
         playerStatArray[(int)PlayerStatType.MoveSpeed].text = player.stat.moveSpeed.ToString();
         playerStatArray[(int)PlayerStatType.CircleRadius].text = player.stat.circleRange.ToString();
         playerStatArray[(int)PlayerStatType.ExpGain].text = player.stat.expGain.ToString();

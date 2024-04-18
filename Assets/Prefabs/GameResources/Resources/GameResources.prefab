@@ -44,6 +44,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPlayer: {fileID: 11400000, guid: 5edfcfdd569a79b4ebea571d06639eda, type: 2}
+  playerSelectionPrefab: {fileID: 1962451547254290841, guid: 86f63ddb7f9985243bddebc0b104b738, type: 3}
+  playerDetailsList:
+  - {fileID: 11400000, guid: 608f39f2e3fdd87439833cff6399725b, type: 2}
+  - {fileID: 11400000, guid: cca3cbd1890991246b41b7caf44eabfb, type: 2}
+  - {fileID: 11400000, guid: b610ed9abf03a404282f797ffee4a95e, type: 2}
   musicMasterMixerGroup: {fileID: -7206380732494497733, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   musicOnFullSnapshot: {fileID: 24500006, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   musicLowSnapshot: {fileID: 8893122114324796974, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}

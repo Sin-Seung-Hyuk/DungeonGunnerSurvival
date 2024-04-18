@@ -11,6 +11,7 @@ public class PlayerCtrl : MonoBehaviour
     private PlayerStat playerStat;
     private Rigidbody2D rigid;
     private Vector3 moveDirection;
+    private bool isPlayerMovementDisabled = false;
 
     public float moveSpeed;
 
@@ -36,6 +37,8 @@ public class PlayerCtrl : MonoBehaviour
     #region Player Movement
     private void FixedUpdate()
     {
+        if (isPlayerMovementDisabled) return;
+
         Move();
     }
 
@@ -52,6 +55,16 @@ public class PlayerCtrl : MonoBehaviour
         if (moveDirection != Vector3.zero)
             player.movementEvent.CallPlayerMovement();
         else player.idleEvent.CallIdle();
+    }
+
+    public void EnablePlayer()
+    {
+        isPlayerMovementDisabled = false;
+    }
+    public void DisablePlayer()
+    {
+        isPlayerMovementDisabled = true;
+        player.idleEvent.CallIdle();
     }
     #endregion
 

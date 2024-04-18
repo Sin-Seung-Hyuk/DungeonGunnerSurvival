@@ -15,16 +15,23 @@ MonoBehaviour:
   playerPrefab: {fileID: 5975701987863624188, guid: 3790ba262ad90e849b7ad26dbaf04f02, type: 3}
   characterName: TheThief
   runtimeAnimatorController: {fileID: 9100000, guid: fb0cc3b02f662c74f941f11193bb2c27, type: 2}
-  minimapIcon: {fileID: 21300000, guid: c20c73e487486924cbff342c0d6e33e2, type: 3}
-  playerSprite: {fileID: 2200474710894333254, guid: a4d403ee88c1ec84880d5d3450361e5c, type: 3}
-  playerStartingWeapon: {fileID: 11400000, guid: b4683f4ff6d55f64493c4f6533138766, type: 2}
-  maxHp: 150
-  baseDamage: 50
-  criticChance: 15
-  criticDamage: 150
-  reloadSpeed: 0
-  fireRateSpeed: 0
-  moveSpeed: 6
-  circleRange: 0.8
-  dodgeChance: 0
+  minimapIcon: {fileID: 21300000, guid: 315b2925a8c3976498b2ddde24a0d5be, type: 3}
+  playerSprite: {fileID: 2200474710894333254, guid: 792761d9a2ee9904c8d0d63e0a897bac, type: 3}
+  playerStartingWeapon: {fileID: 11400000, guid: be654f3fe3fb8f84c8bdc0df859aba03, type: 2}
+  characterStrength: 'Dodge Chance
+
+    Move Speed
+
+    PickUp Range'
+  characterWeakness: 'Max HP
+
+    Base Armor'
+  maxHp: 80
+  baseDamage: 0
+  baseArmor: 0
+  dodgeChance: 15
+  criticChance: 0
+  criticDamage: 0
+  moveSpeed: 7
+  circleRange: 1
   expGain: 0

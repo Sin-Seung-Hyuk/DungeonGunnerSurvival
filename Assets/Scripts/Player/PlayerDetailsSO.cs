@@ -11,7 +11,9 @@ public class PlayerDetailsSO : ScriptableObject
     public RuntimeAnimatorController runtimeAnimatorController;
     public Sprite minimapIcon;
     public Sprite playerSprite;
-    public List<WeaponDetailsSO> playerStartingWeapon;
+    public WeaponDetailsSO playerStartingWeapon;
+    [TextArea] public string characterStrength;
+    [TextArea] public string characterWeakness;
 
     [Space(10)]
     [Header("Character Stat")]
@@ -19,8 +21,8 @@ public class PlayerDetailsSO : ScriptableObject
     [Range(0, 100)] public int baseDamage;
     [Range(0, 100)] public int baseArmor;
     [Range(0, 100)] public int dodgeChance;
-    [Range(0, 100)] public float reloadSpeed;
-    [Range(0, 100)] public float fireRateSpeed;
+    [Range(0, 100)] public int criticChance;
+    [Range(0, 100)] public int criticDamage;
     [Range(5f, 20f)] public float moveSpeed;
     [Range(0.8f, 5f)] public float circleRange; // 자석 범위
     [Range(0, 100)] public int expGain;

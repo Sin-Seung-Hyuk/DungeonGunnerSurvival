@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using DG.Tweening;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -11,6 +14,9 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] private Player player;
     private PlayerDetailsSO playerDetails;
+
+    [SerializeField] private TextMeshProUGUI msgTextTMP; // 페이드 텍스트
+    [SerializeField] private CanvasGroup canvasGroup;    // 페이드 이미지
 
     [HideInInspector] public GameState gameState;
     [HideInInspector] public GameState prevGameState;
@@ -26,10 +32,12 @@ public class GameManager : Singleton<GameManager>
     private void OnEnable()
     {
         StaticEventHandler.OnRoomChanged += StaticEventHandler_OnRoomChanged;
+        StaticEventHandler.OnRoomTimeout += StaticEventHandler_OnRoomTimeout;
     }
     private void OnDisable()
     {
         StaticEventHandler.OnRoomChanged -= StaticEventHandler_OnRoomChanged;
+        StaticEventHandler.OnRoomTimeout -= StaticEventHandler_OnRoomTimeout;
     }
 
     void Start()
@@ -124,7 +132,7 @@ public class GameManager : Singleton<GameManager>
                 break;
 
             case GameState.InDungeon:
-                StartCoroutine(BackToEntrance());
+                //StartCoroutine(BackToEntrance());
                 break;
 
             case GameState.DungeonRoomClear: // 타이머가 끝나면 이벤트 호출 (게임상태 변화)
@@ -164,13 +172,22 @@ public class GameManager : Singleton<GameManager>
             gameState = GameState.InDungeon; // 입구 아니면 던전밖에 없음
             player.fireWeapon.enabled = true;
         }
+
+        player.ctrl.EnablePlayer();
+    }
+
+    private void StaticEventHandler_OnRoomTimeout(RoomTimeoutArgs args)
+    {
+        player.ctrl.DisablePlayer(); // 타임아웃 이벤트 호출되면 플레이어 이동 불가
+
+        prevGameState = gameState;
+        gameState = GameState.DungeonRoomClear;
     }
     #endregion
 
 
 
     // =================== 유틸 ============================
-
     public Player GetPlayer()
     {
         return player;
@@ -200,4 +217,12 @@ public class GameManager : Singleton<GameManager>
         return instantiatedRoom;
     }
 
+    private IEnumerator Fade(int goal, float time)
+    {
+        // 캔버스 그룹의 알파값을 time에 걸쳐서 goal만큼 보간 (캔버스 그룹이므로 자식도 같이적용)
+        var tween = DOTween.To(() => canvasGroup.alpha, x => canvasGroup.alpha = x,
+            goal, time);
+
+        yield return tween.WaitForCompletion();
+    }
 }

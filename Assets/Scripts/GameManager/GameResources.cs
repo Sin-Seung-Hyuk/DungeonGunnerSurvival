@@ -24,6 +24,8 @@ public class GameResources : MonoBehaviour
     [Space(10)]
     [Header("Player")]
     public CurrentPlayerSO currentPlayer;
+    public GameObject playerSelectionPrefab;
+    public List<PlayerDetailsSO> playerDetailsList;
 
     [Space(10)]
     [Header("Music")]

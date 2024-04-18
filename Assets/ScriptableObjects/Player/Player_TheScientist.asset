@@ -17,14 +17,19 @@ MonoBehaviour:
   runtimeAnimatorController: {fileID: 9100000, guid: e52ed9234b488b0449570da9e57ce474, type: 2}
   minimapIcon: {fileID: 21300000, guid: da88e4a191f22674e9aab239e652640a, type: 3}
   playerSprite: {fileID: 2887896937163043261, guid: ffa25ab59b41d9d4abbfe10d88fea3d7, type: 3}
-  playerStartingWeapon: {fileID: 11400000, guid: b4683f4ff6d55f64493c4f6533138766, type: 2}
-  maxHp: 150
-  baseDamage: 50
-  criticChance: 15
-  criticDamage: 150
-  reloadSpeed: 0
-  fireRateSpeed: 0
-  moveSpeed: 6
-  circleRange: 0.8
+  playerStartingWeapon: {fileID: 11400000, guid: a89988e84fae6c84787c25702f5c4458, type: 2}
+  characterStrength: 'Critic Chance
+
+    Critic Damage'
+  characterWeakness: 'Max HP
+
+    Base Armor'
+  maxHp: 100
+  baseDamage: 0
+  baseArmor: 0
   dodgeChance: 0
+  criticChance: 10
+  criticDamage: 10
+  moveSpeed: 6.5
+  circleRange: 0.8
   expGain: 0

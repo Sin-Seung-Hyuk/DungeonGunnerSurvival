@@ -86,8 +86,8 @@ public class Player : MonoBehaviour, IHealthObject
         stat.SetPlayerStat(PlayerStatType.BaseDamage, playerDetails.baseDamage);
         stat.SetPlayerStat(PlayerStatType.BaseArmor, playerDetails.baseArmor);
         stat.SetPlayerStat(PlayerStatType.Dodge, playerDetails.dodgeChance);
-        stat.SetPlayerStat(PlayerStatType.ReloadSpeed, playerDetails.reloadSpeed);
-        stat.SetPlayerStat(PlayerStatType.FireRate, playerDetails.fireRateSpeed);
+        stat.SetPlayerStat(PlayerStatType.CriticChance, playerDetails.criticChance);
+        stat.SetPlayerStat(PlayerStatType.CriticDamage, playerDetails.criticDamage);
         stat.SetPlayerStat(PlayerStatType.MoveSpeed, playerDetails.moveSpeed);
         stat.SetPlayerStat(PlayerStatType.CircleRadius, playerDetails.circleRange);
         stat.SetPlayerStat(PlayerStatType.ExpGain, playerDetails.expGain);
@@ -97,10 +97,7 @@ public class Player : MonoBehaviour, IHealthObject
 
     private void Start()
     {
-        foreach (var weapon in playerDetails.playerStartingWeapon)
-        {
-            AddWeaponToPlayer(weapon);
-        }
+        AddWeaponToPlayer(playerDetails.playerStartingWeapon);
     }
 
     private void OnEnable()
@@ -126,8 +123,6 @@ public class Player : MonoBehaviour, IHealthObject
 
     private void PlayerStatChangedEvent_OnPlayerStatChanged(PlayerStatChangedEvent arg1, PlayerStatChangedEventArgs args)
     {
-        Debug.Log(args.statType);
-
         stat.ChangePlayerStat(args.statType, args.changeValue);
 
         switch (args.statType)
@@ -139,11 +134,11 @@ public class Player : MonoBehaviour, IHealthObject
             case PlayerStatType.BaseDamage: // Weapon 클래스로 가서 무기의 스탯 변경
                 ChangePlayerWeaponStat(PlayerStatType.BaseDamage, args.changeValue);
                 break;
-            case PlayerStatType.ReloadSpeed:
-                ChangePlayerWeaponStat(PlayerStatType.ReloadSpeed, args.changeValue); 
+            case PlayerStatType.CriticChance:
+                ChangePlayerWeaponStat(PlayerStatType.CriticChance, args.changeValue); 
                 break;
-            case PlayerStatType.FireRate:
-                ChangePlayerWeaponStat(PlayerStatType.FireRate, args.changeValue);
+            case PlayerStatType.CriticDamage:
+                ChangePlayerWeaponStat(PlayerStatType.CriticDamage, args.changeValue);
                 break;
 
             case PlayerStatType.MoveSpeed:
@@ -165,6 +160,11 @@ public class Player : MonoBehaviour, IHealthObject
         Weapon playerWeapon = gameObject.AddComponent<Weapon>();
         playerWeapon.InitializeWeapon(weaponDetails);
 
+        // 무기 추가되면서 캐릭터 스탯 반영
+        playerWeapon.ChangeWeaponStat(PlayerStatType.BaseDamage, stat.baseDamage, false);
+        playerWeapon.ChangeWeaponStat(PlayerStatType.CriticChance, stat.criticChance, false);
+        playerWeapon.ChangeWeaponStat(PlayerStatType.CriticDamage, stat.criticDamage, false);
+
         weaponList.Add(playerWeapon); // 무기 리스트에 추가
         activeWeaponEvent.CallActiveWeaponEvent(playerWeapon, weaponList.Count-1); // 무기 UI 추가
 
@@ -175,7 +175,7 @@ public class Player : MonoBehaviour, IHealthObject
     {
         foreach (Weapon weapon in weaponList)   // 플레이어가 가진 모든 무기 스탯 변경
         {
-            weapon.ChangeWeaponStat(statType, value);
+            weapon.ChangeWeaponStat(statType, value, false);
         }
     }
 

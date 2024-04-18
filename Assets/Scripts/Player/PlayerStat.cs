@@ -9,8 +9,8 @@ public class PlayerStat
     public int baseDamage    {get; private set; }
     public int baseArmor { get; private set; }
     public int dodgeChance { get; private set; }
-    public float reloadSpeed   {get; private set; }
-    public float fireRateSpeed {get; private set; }
+    public int criticChance   {get; private set; }
+    public int criticDamage {get; private set; }
     public float moveSpeed   {get; private set; }
     public float circleRange {get; private set;}
     public int expGain       { get; private set; }
@@ -35,6 +35,12 @@ public class PlayerStat
             case PlayerStatType.Dodge:
                 dodgeChance = value;
                 break;
+            case PlayerStatType.CriticChance:
+                criticChance = value;
+                break;
+            case PlayerStatType.CriticDamage:
+                criticDamage = value;
+                break;
             case PlayerStatType.ExpGain:
                 expGain = value;
                 break;
@@ -46,12 +52,6 @@ public class PlayerStat
     {
         switch (statType)
         {
-            case PlayerStatType.ReloadSpeed:
-                reloadSpeed = value;
-                break;
-            case PlayerStatType.FireRate:
-                fireRateSpeed = value;
-                break;
             case PlayerStatType.MoveSpeed:
                 moveSpeed = value;
                 break;
@@ -86,11 +86,11 @@ public class PlayerStat
             case PlayerStatType.ExpGain:
                 expGain += (int)value;
                 break;
-            case PlayerStatType.ReloadSpeed:
-                reloadSpeed += value;
+            case PlayerStatType.CriticChance:
+                criticChance += (int)value;
                 break;
-            case PlayerStatType.FireRate:
-                fireRateSpeed += value;
+            case PlayerStatType.CriticDamage:
+                criticDamage += (int)value;
                 break;
             case PlayerStatType.MoveSpeed:
                 moveSpeed += value;
