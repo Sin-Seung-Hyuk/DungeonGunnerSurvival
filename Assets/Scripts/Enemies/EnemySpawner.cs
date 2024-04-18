@@ -13,7 +13,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
     private Room currentRoom;
     //private RoomEnemySpawnParameters spawnParameters;
 
-    [SerializeField] private GameObject enemyPrefab; // ½ºÆùÇÏ±â À§ÇÑ ¿À¸®Áö³Î ÇÁ¸®ÆÕ
+    [SerializeField] private GameObject enemyPrefab; // ìŠ¤í°í•˜ê¸° ìœ„í•œ ì˜¤ë¦¬ì§€ë„ í”„ë¦¬íŒ¹
     [SerializeField] private GameObject itemPrefab;
 
     private RandomSpawnableObject<EnemyDetailsSO> enemySpawnable;
@@ -35,59 +35,61 @@ public class EnemySpawner : Singleton<EnemySpawner>
     private void StaticEventHandler_OnRoomChanged(RoomChangedArgs args)
     {
         currentRoom = args.room;
-        if (args.room.spawnPositionArray.Count < 1) return; // ½ºÆùÁöÁ¡ÀÌ ¾ø´Â ¹æÀº ¸®ÅÏ
+        if (args.room.isEntrance) return; // ë³€ê²½ëœ ë°©ì´ ì…êµ¬ë¼ë©´ ê·¸ëŒ€ë¡œ ë¦¬í„´
 
-        player = GameManager.Instance.GetPlayer(); // ÇÃ·¹ÀÌ¾î ¹Ş¾Æ¿À±â
+        player = GameManager.Instance.GetPlayer(); // í”Œë ˆì´ì–´ ë°›ì•„ì˜¤ê¸°
 
-        SetRandomNumberList(); // ½ºÆùÇÒ ·£´ı¿ÀºêÁ§Æ® ¹Ì¸® Á¤ÇØµÎ±â
+        SetRandomNumberList(); // ìŠ¤í°í•  ëœë¤ì˜¤ë¸Œì íŠ¸ ë¯¸ë¦¬ ì •í•´ë‘ê¸°
          
-        StartCoroutine(SpawnEnemiesRoutine()); // À§¿¡¼­ »ı¼ºÇÑ ·£´ı¼ıÀÚ´ë·Î ½ºÆù (½ºÆùµÉ°Ô ¹Ì¸® Á¤ÇØÁø »óÅÂ)
+        StartCoroutine(SpawnEnemiesRoutine()); // ìœ„ì—ì„œ ìƒì„±í•œ ëœë¤ìˆ«ìëŒ€ë¡œ ìŠ¤í° (ìŠ¤í°ë ê²Œ ë¯¸ë¦¬ ì •í•´ì§„ ìƒíƒœ)
+
+        //if (args.room.isBossRoom) SpawnBoss(args.room);
     }
 
     private void SetRandomNumberList()
     {
-        // »ı¼ºµÈ ´øÀü¿¡¼­ ½ºÆùµÉ Àû,¾ÆÀÌÅÛ ¸®½ºÆ®¸¦ ¹Ş¾Æ¿Í »ı¼ºÀÚÀÇ ¸Å°³º¯¼ö·Î ³Ö¾îÁÜ
+        // ìƒì„±ëœ ë˜ì „ì—ì„œ ìŠ¤í°ë  ì ,ì•„ì´í…œ ë¦¬ìŠ¤íŠ¸ë¥¼ ë°›ì•„ì™€ ìƒì„±ìì˜ ë§¤ê°œë³€ìˆ˜ë¡œ ë„£ì–´ì¤Œ
 
         enemySpawnable = new RandomSpawnableObject<EnemyDetailsSO>(currentRoom.spawnableEnemyList);
         randomEnemy = new List<int>(100);
         for (int i = 0; i < 100; ++i)
         {
-            randomEnemy.Add(Random.Range(0, enemySpawnable.ratioValueTotal)); // 100°³ÀÇ ·£´ı¼ıÀÚ »ı¼º
+            randomEnemy.Add(Random.Range(0, enemySpawnable.ratioValueTotal)); // 100ê°œì˜ ëœë¤ìˆ«ì ìƒì„±
         }
 
         itemSpawnable = new RandomSpawnableObject<InventoryItemData>(currentRoom.spawnableItemList);
         randomItem = new List<int>(100);
         for (int i = 0; i < 100; ++i)
         {
-            randomItem.Add(Random.Range(0, itemSpawnable.ratioValueTotal)); // 100°³ÀÇ ·£´ı¼ıÀÚ »ı¼º
+            randomItem.Add(Random.Range(0, itemSpawnable.ratioValueTotal)); // 100ê°œì˜ ëœë¤ìˆ«ì ìƒì„±
         }
     }
 
     private IEnumerator SpawnEnemiesRoutine()
     {
-        for (int i = 0; i < 40; i++) // ÃÑ ½ºÆùÈ½¼ö±îÁö ¹İº¹
+        for (int i = 0; i < 40; i++) // ì´ ìŠ¤í°íšŸìˆ˜ê¹Œì§€ ë°˜ë³µ
         {
-            // ±×¸®µå ±âÁØ ½ºÆù°¡´É ¹è¿­¿¡¼­ ·£´ıÀ¸·Î °¡Á®¿Í ½ºÆùÁöÁ¡ ¸¸µé±â
+            // ê·¸ë¦¬ë“œ ê¸°ì¤€ ìŠ¤í°ê°€ëŠ¥ ë°°ì—´ì—ì„œ ëœë¤ìœ¼ë¡œ ê°€ì ¸ì™€ ìŠ¤í°ì§€ì  ë§Œë“¤ê¸°
             Vector3Int cellPos = (Vector3Int)currentRoom.spawnPositionArray[Random.Range(0, currentRoom.spawnPositionArray.Count)];
 
             Enemy enemyObj = (Enemy)ObjectPoolManager.Instance.Release(enemyPrefab, cellPos, Quaternion.identity);
 
-            // ·£´ıÀ¸·Î »ÌÀº ¼ıÀÚ 100°³ Áß¿¡¼­ ÇÑ°³¸¦ °ñ¶ó ÇØ´ç ¹üÀ§ÀÇ Àû »ı¼º
+            // ëœë¤ìœ¼ë¡œ ë½‘ì€ ìˆ«ì 100ê°œ ì¤‘ì—ì„œ í•œê°œë¥¼ ê³¨ë¼ í•´ë‹¹ ë²”ìœ„ì˜ ì  ìƒì„±
             enemyObj.GetComponent<Enemy>().EnemyInitialization(enemySpawnable.GetItem(randomEnemy[i%100]), GameManager.Instance.GetCurrentDungeonLevelSO());
 
-            // ÀûÀÇ ÆÄ±« ÀÌº¥Æ® ±¸µ¶
+            // ì ì˜ íŒŒê´´ ì´ë²¤íŠ¸ êµ¬ë…
             enemyObj.GetComponent<DestroyedEvent>().OnDestroyed += Enemy_OnDestroyed;
 
-            yield return new WaitForSeconds(2f); // ½ºÆùÆÄ¶ó¹ÌÅÍ¿¡¼­ ½ºÆù°£°İ ±¸ÇØ¿À±â
+            yield return new WaitForSeconds(2f); // ìŠ¤í°íŒŒë¼ë¯¸í„°ì—ì„œ ìŠ¤í°ê°„ê²© êµ¬í•´ì˜¤ê¸°
         }
 
     }
 
     private void Enemy_OnDestroyed(DestroyedEvent arg1, DestroyedEventArgs args)
-    {                                                                                 // ÆÄ±«µÈ À§Ä¡
+    {                                                                                 // íŒŒê´´ëœ ìœ„ì¹˜
         ItemPickUp itemObj = (ItemPickUp)ObjectPoolManager.Instance.Release(itemPrefab, args.point, Quaternion.identity);
         
-        // ·£´ıÀ¸·Î »ÌÀº ¼ıÀÚ 100°³ Áß¿¡¼­ ÇÑ°³¸¦ °ñ¶ó ÇØ´ç ¹üÀ§ÀÇ ¾ÆÀÌÅÛ »ı¼º
+        // ëœë¤ìœ¼ë¡œ ë½‘ì€ ìˆ«ì 100ê°œ ì¤‘ì—ì„œ í•œê°œë¥¼ ê³¨ë¼ í•´ë‹¹ ë²”ìœ„ì˜ ì•„ì´í…œ ìƒì„±
         itemObj.GetComponent<ItemPickUp>().InitializeItem(itemSpawnable.GetItem(randomItem[randomItemIdx++%100]));
     }
 }
