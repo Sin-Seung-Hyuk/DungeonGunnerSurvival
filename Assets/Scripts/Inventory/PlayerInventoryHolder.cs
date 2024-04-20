@@ -12,10 +12,14 @@ public class PlayerInventoryHolder : InventoryHolder
     // 동적인벤토리(플레이어) 화면을 출력해야 하는 경우
     public static UnityAction<InventorySystem, int> OnPlayerInventoryDisplayRequested;
 
+    private Player player;
+
 
     private void Start()
     {
         SaveLoad.OnSaveGame += SaveFile;
+
+        player = GetComponent<Player>();
     }
 
     private void SaveFile()
@@ -41,7 +45,6 @@ public class PlayerInventoryHolder : InventoryHolder
         {
             OnPlayerInventoryDisplayRequested?.Invoke(primaryInventorySystem, offset);
         }
-
     }
 
     public bool AddToInventory(InventoryItemData data, int amount)
@@ -53,14 +56,19 @@ public class PlayerInventoryHolder : InventoryHolder
         return false;
     }
 
-    public bool GetNumpadItem(int num)
+    public bool GetNumpadItem(int num) // 숫자패드(슬롯)에 등록된 포션 사용
     {
-        if (primaryInventorySystem.InventorySlots[num].ItemData != null)
+        // 해당 슬롯이 비어있지 않고 아이템 타입이 포션이여야 함
+        if (primaryInventorySystem.InventorySlots[num].ItemData != null
+            && primaryInventorySystem.InventorySlots[num].ItemData.itemType == ItemType.Potion)
         {
-            primaryInventorySystem.InventorySlots[num].RemoveFromStack(1);
+            // 플레이어 클래스에 접근하여 포션 사용함수 호출
+            player.UsePotion(primaryInventorySystem.InventorySlots[num].ItemData); 
+
+            primaryInventorySystem.InventorySlots[num].RemoveFromStack(1); // 1개 감소
             if (primaryInventorySystem.InventorySlots[num].StackSize < 1)
                 primaryInventorySystem.InventorySlots[num].ClearSlot();
-            OnPlayerInventoryChanged?.Invoke();
+            OnPlayerInventoryChanged?.Invoke(); // 인벤토리 변경 이벤트 호출
 
             return true;
         }

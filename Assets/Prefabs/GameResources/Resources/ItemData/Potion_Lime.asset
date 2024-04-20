@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 104
   DisplayName: Brutal Potion
-  Description: Critic Damage + 50% (30sec)
-  ItemSprite: {fileID: -4369440675659646405, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
+  Description: Critic Damage + 30% (30sec)
+  ItemSprite: {fileID: 3078254798106308436, guid: a0a8191ae565ae547b83608c207fabb6, type: 3}
   MaxStackSize: 1
   GoldValue: 600
-  itemGrade: 3
+  itemGrade: 20
   gradeColor: {r: 0.8862745, g: 0.49019608, b: 0.07450981, a: 1}
-  itemType: 2
-  equipmentType: 6
+  itemType: 0
+  equipmentType: 7
+  playerStatChangeList:
+  - statType: 5
+    changeValue: 30

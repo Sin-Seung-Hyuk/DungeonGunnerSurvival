@@ -30,6 +30,8 @@ public class PlayerCtrl : MonoBehaviour
     void Update()
     {
         PlayerWeaponAim(); // 무기 조준, 사격
+
+        PlayerInventoryInput(); // 플레이어 인벤토리 슬롯 입력
     }
 
 
@@ -100,4 +102,52 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
     #endregion
+
+    // ============================= PlayerInventoryInput ====================================
+    #region PlayerInventory Input
+    private void PlayerInventoryInput()
+    {
+        if (Keyboard.current.digit1Key.wasPressedThisFrame)
+        {
+            player.playerInventory.GetNumpadItem(0);
+        }
+        if (Keyboard.current.digit2Key.wasPressedThisFrame)
+        {
+            player.playerInventory.GetNumpadItem(1);
+        }
+        if (Keyboard.current.digit3Key.wasPressedThisFrame)
+        {
+            player.playerInventory.GetNumpadItem(2);
+        }
+        if (Keyboard.current.digit4Key.wasPressedThisFrame)
+        {
+            player.playerInventory.GetNumpadItem(3);
+        }
+        if (Keyboard.current.digit5Key.wasPressedThisFrame)
+        {
+            player.playerInventory.GetNumpadItem(4);
+        }
+        if (Keyboard.current.digit6Key.wasPressedThisFrame)
+        {
+            player.playerInventory.GetNumpadItem(5);
+        }
+        if (Keyboard.current.digit7Key.wasPressedThisFrame)
+        {
+            player.playerInventory.GetNumpadItem(6);
+        }
+        if (Keyboard.current.digit8Key.wasPressedThisFrame)
+        {
+            player.playerInventory.GetNumpadItem(7);
+        }
+        if (Keyboard.current.digit9Key.wasPressedThisFrame)
+        {
+            player.playerInventory.GetNumpadItem(8);
+        }
+        if (Keyboard.current.digit0Key.wasPressedThisFrame)
+        {
+            player.playerInventory.GetNumpadItem(9);
+        }
+    }
+    #endregion
 }
+

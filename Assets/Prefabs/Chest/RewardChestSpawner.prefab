@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7416285747424420098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6907844701530728947}
+  - component: {fileID: 2096679819399822258}
+  m_Layer: 0
+  m_Name: RewardChestSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6907844701530728947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7416285747424420098}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2096679819399822258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7416285747424420098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09369ff9ec139ed46a19efb76c33bc9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponList:
+  - {fileID: 11400000, guid: d7b5bcaac67b6c641af0dcefeba568e8, type: 2}
+  - {fileID: 11400000, guid: 36d37135570d1f9408f842b635db8ba1, type: 2}
+  - {fileID: 11400000, guid: 0798b4103f9b3e34d8b0f2202da3f46d, type: 2}
+  - {fileID: 11400000, guid: b4683f4ff6d55f64493c4f6533138766, type: 2}
+  - {fileID: 11400000, guid: a89988e84fae6c84787c25702f5c4458, type: 2}
+  - {fileID: 11400000, guid: 6b48c1ee18dad3b4f8928eeee690c729, type: 2}
+  - {fileID: 11400000, guid: be654f3fe3fb8f84c8bdc0df859aba03, type: 2}
+  - {fileID: 11400000, guid: e5ff22d9233434b42a6422594fbbc492, type: 2}

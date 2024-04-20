@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private List<DungeonLevelSO> dungeonLevelList; // 던전의 레벨이 들어갈 리스트
     private int currentDungeonLevel = 0; // 플레이어가 입장할 던전의 레벨
     private Room instantiatedRoom; // 지금 생성된 던전의 방
+    [SerializeField] private ChestSpawner chestSpawner; // 입구에 배치된 상자스포너 (보상상자)
 
     [SerializeField] private Player player;
     private PlayerDetailsSO playerDetails;
@@ -88,7 +89,7 @@ public class GameManager : Singleton<GameManager>
         CreateDungeonLevel(currentDungeonLevel);
     }
 
-    private IEnumerator DungeonCompleted() // 해당 레벨의 모든 방 클리어
+    private IEnumerator DungeonLevelCompleted() // 해당 레벨의 모든 방 클리어
     {
         gameState = GameState.InDungeon;
 
@@ -101,7 +102,9 @@ public class GameManager : Singleton<GameManager>
 
         // 던전 레벨 증가시켜 다음레벨 던전 플레이
         currentDungeonLevel++;
-        CreateDungeonLevel(currentDungeonLevel);
+        CreateDungeonLevel(0); // 입구로 복귀
+
+        chestSpawner.SpawnChest(); // 보상상자 스폰
     }
 
     private IEnumerator BackToEntrance() // 던전입구로 돌아가기
@@ -142,7 +145,7 @@ public class GameManager : Singleton<GameManager>
 
             case GameState.DungeonCompleted: // 보스를 처치하면 레벨완료 이벤트 호출 (상자생성+게임상태 변화)
                 // 입구로 이동 후 던전레벨 증가 (코루틴,엔터입력까지)
-                StartCoroutine(DungeonCompleted());
+                StartCoroutine(DungeonLevelCompleted());
                 break;
 
             case GameState.GameCompleted:
@@ -181,7 +184,10 @@ public class GameManager : Singleton<GameManager>
         player.ctrl.DisablePlayer(); // 타임아웃 이벤트 호출되면 플레이어 이동 불가
 
         prevGameState = gameState;
-        gameState = GameState.DungeonRoomClear;
+
+        if (args.room.isBossRoom) // 보스방 클리어인지 확인
+            gameState = GameState.DungeonCompleted;
+        else gameState = GameState.DungeonRoomClear;
     }
     #endregion
 

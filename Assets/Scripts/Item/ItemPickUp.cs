@@ -16,6 +16,21 @@ public class ItemPickUp : MonoBehaviour  // 아이템에 연결할 클래스
 
     private string id;
 
+
+    private void OnEnable()
+    {
+        StaticEventHandler.OnRoomChanged += StaticEventHandler_OnRoomChanged;
+    }
+    private void OnDisable()
+    {
+        StaticEventHandler.OnRoomChanged -= StaticEventHandler_OnRoomChanged;
+    }
+
+    private void StaticEventHandler_OnRoomChanged(RoomChangedArgs obj)
+    {
+        gameObject.SetActive(false); // 방 변경시 아이템 소멸
+    }
+
     public void InitializeItem(InventoryItemData data)
     {
         if (data == null) return; // 아무런 데이터가 들어오지 않았을 경우 (EnemySpawn 클래스 참고)

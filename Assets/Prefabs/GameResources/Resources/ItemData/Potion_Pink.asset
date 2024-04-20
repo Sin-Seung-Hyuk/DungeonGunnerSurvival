@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 102
   DisplayName: Potion of Renewal
-  Description: HP + 30
+  Description: HP + 20%
   ItemSprite: {fileID: 2429076500916345128, guid: fffb5af430ee93e419736e35d44043a2, type: 3}
   MaxStackSize: 1
   GoldValue: 600
-  itemGrade: 1
-  gradeColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}
+  itemGrade: 10
+  gradeColor: {r: 0.60784316, g: 0.23921569, b: 0.8509804, a: 1}
   itemType: 0
   equipmentType: 7
+  playerStatChangeList:
+  - statType: 0
+    changeValue: 20

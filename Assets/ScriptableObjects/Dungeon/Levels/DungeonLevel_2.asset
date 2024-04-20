@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: Test_Level1
   level: 2
-  roomTemplateList: []
+  roomTemplateList:
+  - {fileID: 11400000, guid: d855653cf84d6bc48bc38c720f0069a5, type: 2}

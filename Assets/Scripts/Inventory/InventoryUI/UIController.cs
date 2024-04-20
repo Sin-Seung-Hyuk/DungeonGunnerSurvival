@@ -52,7 +52,7 @@ public class UIController : MonoBehaviour // 최상위 UI 컨트롤러
             TxtTimer.text = "";
 
         else {
-            timer = 3;
+            timer = Settings.dungeonTimer;
             StartCoroutine(TimerRoutine());
         }
 

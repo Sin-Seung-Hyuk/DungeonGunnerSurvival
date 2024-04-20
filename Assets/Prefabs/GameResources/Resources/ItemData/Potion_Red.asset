@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 103
   DisplayName: Panacea Potion
-  Description: HP + 100
+  Description: HP + 40%
   ItemSprite: {fileID: 2622213409082645890, guid: ce9b0fcd06c36d541912c391dbdef096, type: 3}
   MaxStackSize: 1
   GoldValue: 600
-  itemGrade: 3
+  itemGrade: 20
   gradeColor: {r: 0.8862745, g: 0.49019608, b: 0.07450981, a: 1}
   itemType: 0
   equipmentType: 7
+  playerStatChangeList:
+  - statType: 0
+    changeValue: 40

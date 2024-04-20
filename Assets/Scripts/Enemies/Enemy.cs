@@ -132,7 +132,7 @@ public class Enemy : MonoBehaviour, IHealthObject
         // MaterializeRoutine 코루틴이 끝날때까지 기다림 (중첩 코루틴)
         yield return StartCoroutine(materializeEffect.MaterializeRoutine( // 머테리얼 DissolveAmount 속성 코루틴
             enemyDetails.enemyMaterializeShader, enemyDetails.enemyMaterializeColor,
-            enemyDetails.enemyMaterializeTime, spriteRenderer, enemyDetails.enemyStandardMaterial));
+            enemyDetails.enemyMaterializeTime, spriteRenderer, enemyDetails.enemyStandardMaterial, false));
 
         // 머테리얼 코루틴이 끝난 후 풀에 반환하기 위해 파괴이벤트 호출
         DestroyedEvent destroyedEvent = GetComponent<DestroyedEvent>();

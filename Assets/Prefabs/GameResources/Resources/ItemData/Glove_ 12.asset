@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c87455de393bbf44ac52bbf37c7a401, type: 3}
   m_Name: Glove_ 12
   m_EditorClassIdentifier: 
-  ID: 62
+  ID: 1011
   DisplayName: Dragonscale Gauntlets
   Description: Stat
   ItemSprite: {fileID: 3606773647901661111, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
@@ -22,3 +22,4 @@ MonoBehaviour:
   gradeColor: {r: 0.60784316, g: 0.23921569, b: 0.8509804, a: 1}
   itemType: 2
   equipmentType: 3
+  playerStatChangeList: []

@@ -54,13 +54,16 @@ MonoBehaviour:
   musicLowSnapshot: {fileID: 8893122114324796974, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   musicOffSnapshot: {fileID: -3084740370723268673, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   soundsMasterMixerGroup: {fileID: -4734643798044506327, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
-  chestOpen: {fileID: 0}
+  chestOpen: {fileID: 11400000, guid: cf8428f7a9c88164c89498748ec9a635, type: 2}
   healthPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
-  ammoPickUp: {fileID: 0}
   enemyUnwalkableTilesArray:
   - {fileID: 11400000, guid: 37e2c9e0227bfbc409cd632b9bd0c81f, type: 2}
   - {fileID: 11400000, guid: 98f177f8276c38b429705e6720c48672, type: 2}
   preferredEnemyPathTile: {fileID: 11400000, guid: 3ce5fb260af53d24887b55c3d50041e2, type: 2}
   ammoHitEffect: {fileID: 7853615770937549561, guid: a67a9f991dc97ed46b3202ca3f58f2df, type: 3}
   ammoHitText: {fileID: 7337716550809129691, guid: 18c7cabe3bfab8c4ba2287fb856633e2, type: 3}
+  litMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  materializeShader: {fileID: -6465566751694194690, guid: 5fec8f8e6ea244648a3c6ede24a56288, type: 3}
+  chestItemPrefab: {fileID: 6227206944734826548, guid: 400afa566b45e994a9503768b3329b07, type: 3}
+  chestPrefab: {fileID: 2229734922805013933, guid: b0123f06a942dc14eb8334314147fea9, type: 3}

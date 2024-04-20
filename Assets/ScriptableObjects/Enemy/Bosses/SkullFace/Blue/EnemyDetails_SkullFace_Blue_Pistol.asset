@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: SkullFace Blue
   enemyPrefab: {fileID: 3758058488491148191, guid: 9ee461d9166ee9647951745d34cacf33, type: 3}
+  sprite: {fileID: 4434631920700272137, guid: 7bdbf47b0efa80f4b8f0b72e6571c9da, type: 3}
+  runtimeAnimatorController: {fileID: 9100000, guid: 2a6e05932cc7db243b3bb6296cff5612, type: 2}
   speed: 4
   chaseDistance: 6
   enemyStandardMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}

@@ -22,3 +22,6 @@ MonoBehaviour:
   spawnPositionArray: []
   spawnableEnemyList: []
   spawnableItemList: []
+  spawnableBossList:
+  - {fileID: 11400000, guid: 454715ef913d9c742bc14faffb0e61bb, type: 2}
+  - {fileID: 11400000, guid: ffd2aa2d495d0854b9cd94cce4f5f0ae, type: 2}

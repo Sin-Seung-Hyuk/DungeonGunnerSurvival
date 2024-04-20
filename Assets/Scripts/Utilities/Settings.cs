@@ -4,6 +4,9 @@ using UnityEngine;
 
 public static class Settings
 {
+    #region PLAYER PARAMETER
+    public static float potionDuration = 3f; // 포션 지속시간
+    #endregion
 
 
     #region Animator Parameter
@@ -19,6 +22,8 @@ public static class Settings
     public static int rollDown = Animator.StringToHash("rollDown");
     public static int rollRight = Animator.StringToHash("rollRight");
     public static int rollLeft = Animator.StringToHash("rollLeft");
+
+    public static int use = Animator.StringToHash("use");
     #endregion
 
 
@@ -37,6 +42,9 @@ public static class Settings
     public const string playerWeapon = "playerWeapon";
     #endregion
 
+    #region DUNGEON PARAMETERS
+    public const int dungeonTimer = 10; // 던전 타이머
+    #endregion
 
     #region ENEMY PARAMETERS
     public const int defaultEnemyHealth = 20;
@@ -47,7 +55,6 @@ public static class Settings
     #endregion
 
     #region UI PARAMETERS
-    public const float uiHeartSpacing = 16f;
     #endregion
 
     #region AUDIO

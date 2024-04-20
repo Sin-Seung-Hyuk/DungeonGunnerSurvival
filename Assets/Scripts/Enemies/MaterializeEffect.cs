@@ -5,8 +5,11 @@ using DG.Tweening;
 
 public class MaterializeEffect : MonoBehaviour
 {
+    private float dissolveAmount; // 시작 값
+    private float targetAmount;   // 목표 값
+
     public IEnumerator MaterializeRoutine(Shader materializeShader, Color materializeColor, 
-        float materializeTime, SpriteRenderer sprite, Material normalMaterial)
+        float materializeTime, SpriteRenderer sprite, Material normalMaterial, bool isFadeIn)
     {
         Material materializeMaterial = new Material(materializeShader); // 매개변수 쉐이더로 머테리얼 생성
 
@@ -14,10 +17,18 @@ public class MaterializeEffect : MonoBehaviour
 
         sprite.material = materializeMaterial; // 매개변수 객체의 스프라이트에 머테리얼 입히기
 
-        float dissolveAmount = 1f;
+        if (isFadeIn)
+        {
+            dissolveAmount = 0f;
+            targetAmount = 1f;
+        } else
+        {
+            dissolveAmount = 1f;
+            targetAmount = 0f;
+        }
 
         // DOTween.To(..) 람다식을 통해 변수를 n초에 걸쳐 x값으로 보간
-        var tween = DOTween.To(() => dissolveAmount, x => dissolveAmount = x, 0f, materializeTime)
+        var tween = DOTween.To(() => dissolveAmount, x => dissolveAmount = x, targetAmount, materializeTime)
             .OnUpdate(() => { materializeMaterial.SetFloat("_DissolveAmount", dissolveAmount); }); 
         // OnUpdate() : 트윈이 실행되는 동안 람다식으로 머테리얼 속성 변경
 

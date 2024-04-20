@@ -21,5 +21,5 @@ public class RoomTemplateSO : ScriptableObject
     public List<SpawnableObjectRatio<EnemyDetailsSO>> spawnableEnemyList; // 스폰될 적 종류
     public List<SpawnableObjectRatio<InventoryItemData>> spawnableItemList; // 스폰될 아이템 종류
 
-
+    public List<EnemyDetailsSO> spawnableBossList; // 보스방일 경우 스폰될 보스 리스트
 }

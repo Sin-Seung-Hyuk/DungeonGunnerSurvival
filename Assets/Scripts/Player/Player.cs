@@ -195,4 +195,33 @@ public class Player : MonoBehaviour, IHealthObject
 
         return damageAmount;
     }
+
+    public void UsePotion(InventoryItemData itemData)
+    {
+        PlayerStatType statType = itemData.playerStatChangeList[0].statType;
+        float changeValue = itemData.playerStatChangeList[0].changeValue;
+
+        // 포션은 스탯을 하나만 변경해줌
+        switch (statType)
+        {
+            case PlayerStatType.MaxHP:
+                health.AddHealth((int)changeValue); // 체력회복
+                break;
+
+            case PlayerStatType.MoveSpeed:
+            case PlayerStatType.CriticChance:
+            case PlayerStatType.CriticDamage:
+                StartCoroutine(PotionRoutine(statType, changeValue)); // 포션 사용
+                break;
+        }
+    }
+
+    private IEnumerator PotionRoutine(PlayerStatType statType, float changeValue)
+    {
+        playerStatChangedEvent.CallPlayerStatChangedEvent(statType, changeValue);
+
+        yield return new WaitForSeconds(Settings.potionDuration); // 포션 지속시간
+
+        playerStatChangedEvent.CallPlayerStatChangedEvent(statType, -changeValue);
+    }
 }

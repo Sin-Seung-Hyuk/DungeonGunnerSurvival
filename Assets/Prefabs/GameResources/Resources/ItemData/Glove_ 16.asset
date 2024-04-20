@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c87455de393bbf44ac52bbf37c7a401, type: 3}
   m_Name: Glove_ 16
   m_EditorClassIdentifier: 
-  ID: 66
+  ID: 1015
   DisplayName: Radiant Paladin's Gauntlets
   Description: Stat
   ItemSprite: {fileID: 1925680345457781459, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
@@ -22,3 +22,4 @@ MonoBehaviour:
   gradeColor: {r: 0.8862745, g: 0.49019608, b: 0.07450981, a: 1}
   itemType: 2
   equipmentType: 3
+  playerStatChangeList: []

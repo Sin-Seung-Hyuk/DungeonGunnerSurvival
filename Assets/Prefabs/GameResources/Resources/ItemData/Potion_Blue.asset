@@ -15,10 +15,13 @@ MonoBehaviour:
   ID: 106
   DisplayName: Quicksilver Potion
   Description: Move Speed + 2 (30sec)
-  ItemSprite: {fileID: -4369440675659646405, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
+  ItemSprite: {fileID: -2878736502288998233, guid: ab89f761ffc11b9468624cc72d2c1214, type: 3}
   MaxStackSize: 1
   GoldValue: 600
-  itemGrade: 3
+  itemGrade: 20
   gradeColor: {r: 0.8862745, g: 0.49019608, b: 0.07450981, a: 1}
-  itemType: 2
-  equipmentType: 6
+  itemType: 0
+  equipmentType: 7
+  playerStatChangeList:
+  - statType: 6
+    changeValue: 2

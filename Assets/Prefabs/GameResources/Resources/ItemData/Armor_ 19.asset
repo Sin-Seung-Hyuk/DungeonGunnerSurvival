@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c87455de393bbf44ac52bbf37c7a401, type: 3}
   m_Name: Armor_ 19
   m_EditorClassIdentifier: 
-  ID: 100
+  ID: 1026
   DisplayName: Vortex Aegis
   Description: Stat
   ItemSprite: {fileID: 9099801601263107796, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}

@@ -41,7 +41,6 @@ public class GameResources : MonoBehaviour
     public SoundEffectSO chestOpen;
     public SoundEffectSO healthPickUp;
     public SoundEffectSO weaponPickUp;
-    public SoundEffectSO ammoPickUp;
 
     [Space(10)]
     [Header("Tilemap Tiles for AStar")]
@@ -52,4 +51,14 @@ public class GameResources : MonoBehaviour
     [Header("Ammo Hit Effect/Text")]
     public GameObject ammoHitEffect;
     public GameObject ammoHitText;
+
+    [Space(10)]
+    [Header("Materials")]
+    public Material litMaterial;
+    public Shader materializeShader;
+
+    [Header("Chests")]
+    public GameObject chestItemPrefab;
+    public GameObject chestPrefab;
+
 }
