@@ -9,20 +9,17 @@ using UnityEngine;
 public class ShopSystem
 {
     [SerializeField] private List<ShopSlot> _shopInventory; // 아이템 슬롯
-    [SerializeField] private int avaliableGold; // 상인 골드
     [SerializeField] private float _buyMarkUp;
     [SerializeField] private float _sellMarkUp;
 
 
     public List<ShopSlot> ShopInventory => _shopInventory;
-    public int AvaliableGold => avaliableGold;
     public float BuyMarkUp => _buyMarkUp;
     public float SellMarkUp => _sellMarkUp;
 
 
-    public ShopSystem(int size, int gold, float buyMarkUp, float sellMarkUp)
+    public ShopSystem(int size, float buyMarkUp, float sellMarkUp)
     {
-        avaliableGold = gold;
         _buyMarkUp = buyMarkUp;
         _sellMarkUp = sellMarkUp;
 
@@ -79,19 +76,8 @@ public class ShopSystem
         slot.RemoveFromStack(amount); // 해당 아이템 스택감소
     }
 
-    public void GainGold(int basketTotal)
-    {
-        avaliableGold += basketTotal; // 상인 골드획득
-    }
-
     public void SellItem(InventoryItemData data, int amount, int price)
     {
         AddToShop(data, amount); // 유저가 판 아이템 상점에 추가
-        ReduceGold(price);       // 상인 돈 감소
-    }
-
-    private void ReduceGold(int price)
-    {
-        avaliableGold -= price;
     }
 }

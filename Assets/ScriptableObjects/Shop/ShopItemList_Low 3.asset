@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 833cfa3ec8cb74f4db41d1eb15926f92, type: 3}
+  m_Name: ShopItemList_Low 3
+  m_EditorClassIdentifier: 
+  _items:
+  - ItemData: {fileID: 11400000, guid: 6193086286945144193de048769f6712, type: 2}
+    Amount: 1
+  - ItemData: {fileID: 11400000, guid: b046084a35237184da5686e2a3fe7630, type: 2}
+    Amount: 1
+  - ItemData: {fileID: 11400000, guid: eb14b4f604a8f404d97f7f101044bf52, type: 2}
+    Amount: 1
+  - ItemData: {fileID: 11400000, guid: 28e3dee673e129a49acbdc03ac99dd6f, type: 2}
+    Amount: 1
+  - ItemData: {fileID: 11400000, guid: e8793c813ab3f5a46b684b9958d373e1, type: 2}
+    Amount: 1
+  - ItemData: {fileID: 11400000, guid: 5549aae5aa2f42443aabbbdc9d300ed7, type: 2}
+    Amount: 1
+  - ItemData: {fileID: 11400000, guid: 5ab738872904cc04092e21524ec2dc4c, type: 2}
+    Amount: 1
+  - ItemData: {fileID: 11400000, guid: 84d36c8b8646ea64f8b4f92a8d1035fe, type: 2}
+    Amount: 1
+  _sellMarkUp: 0.5
+  _buyMarkUp: 1

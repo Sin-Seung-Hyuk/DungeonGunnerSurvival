@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Rendering;
 
 #region RequireComponents
@@ -46,6 +47,11 @@ public class Player : MonoBehaviour, IHealthObject
     public List<Weapon> weaponList { get; private set; } // 무기 리스트
     public PlayerInventoryHolder playerInventory { get; private set; } // 플레이어 인벤토리
 
+    private HorizontalLayoutGroup potionState; // 포션 사용시 체력바 위에 나타날 상태창
+    private bool isBluePotionUsed = false;
+    private bool isGreenPotionUsed = false;
+    private bool isLimePotionUsed = false;
+
 
 
     private void Awake()
@@ -57,6 +63,7 @@ public class Player : MonoBehaviour, IHealthObject
         health = GetComponent<Health>();
         ctrl = GetComponent<PlayerCtrl>();
         playerExp = GetComponent<PlayerExp>();
+        potionState = GetComponentInChildren<HorizontalLayoutGroup>();
 
         idleEvent = GetComponent<IdleEvent>();
         movementEvent = GetComponent<MovementEvent>();
@@ -123,7 +130,7 @@ public class Player : MonoBehaviour, IHealthObject
 
     private void PlayerStatChangedEvent_OnPlayerStatChanged(PlayerStatChangedEvent arg1, PlayerStatChangedEventArgs args)
     {
-        stat.ChangePlayerStat(args.statType, args.changeValue);
+        stat.ChangePlayerStat(args.statType, args.changeValue); // 스탯변경 함수 호출
 
         switch (args.statType)
         {
@@ -196,10 +203,14 @@ public class Player : MonoBehaviour, IHealthObject
         return damageAmount;
     }
 
+
+    // ============================ Potion ======================================
+    #region Potion
     public void UsePotion(InventoryItemData itemData)
     {
         PlayerStatType statType = itemData.playerStatChangeList[0].statType;
         float changeValue = itemData.playerStatChangeList[0].changeValue;
+        Sprite potionSprite = itemData.ItemSprite;
 
         // 포션은 스탯을 하나만 변경해줌
         switch (statType)
@@ -209,19 +220,69 @@ public class Player : MonoBehaviour, IHealthObject
                 break;
 
             case PlayerStatType.MoveSpeed:
+                StartCoroutine(PotionRoutine(statType, changeValue, potionSprite)); // 포션 사용
+                break;
             case PlayerStatType.CriticChance:
+                StartCoroutine(PotionRoutine(statType, changeValue, potionSprite)); // 포션 사용
+                break;
             case PlayerStatType.CriticDamage:
-                StartCoroutine(PotionRoutine(statType, changeValue)); // 포션 사용
+                StartCoroutine(PotionRoutine(statType, changeValue, potionSprite)); // 포션 사용
                 break;
         }
     }
 
-    private IEnumerator PotionRoutine(PlayerStatType statType, float changeValue)
+    private IEnumerator PotionRoutine(PlayerStatType statType, float changeValue, Sprite potionSprite)
     {
+        SetPotionUsed(statType, true);
+
         playerStatChangedEvent.CallPlayerStatChangedEvent(statType, changeValue);
+
+        GameObject potionStateImage = Instantiate(GameResources.Instance.potionStateImage, potionState.transform);
+        potionStateImage.GetComponent<SpriteRenderer>().sprite = potionSprite;
 
         yield return new WaitForSeconds(Settings.potionDuration); // 포션 지속시간
 
         playerStatChangedEvent.CallPlayerStatChangedEvent(statType, -changeValue);
+        Destroy(potionStateImage);
+        SetPotionUsed(statType, false);
     }
+    private void SetPotionUsed(PlayerStatType statType, bool isUsed)
+    {
+        // 해당 타입의 포션을 사용했는지 여부 설정
+        switch (statType)
+        {
+            case PlayerStatType.MoveSpeed:
+                isBluePotionUsed = isUsed;
+                break;
+
+            case PlayerStatType.CriticChance:
+                isGreenPotionUsed = isUsed;
+                break;
+
+            case PlayerStatType.CriticDamage:
+                isLimePotionUsed = isUsed;
+                break;
+        }
+    }
+    public bool CanUsePotion(PlayerStatType statType)
+    {
+        // 해당 타입의 포션을 사용할 수 있는지 반환 (같은포션 중복사용X, 체력포션은 상관X)
+        switch (statType)
+        {
+            case PlayerStatType.MaxHP:
+                return true;
+
+            case PlayerStatType.MoveSpeed:
+                return !isBluePotionUsed;
+
+            case PlayerStatType.CriticChance:
+                return !isGreenPotionUsed;
+
+            case PlayerStatType.CriticDamage:
+                return !isLimePotionUsed;
+        }
+
+        return false;
+    }
+    #endregion
 }

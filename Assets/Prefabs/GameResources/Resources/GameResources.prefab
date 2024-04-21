@@ -49,6 +49,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 608f39f2e3fdd87439833cff6399725b, type: 2}
   - {fileID: 11400000, guid: cca3cbd1890991246b41b7caf44eabfb, type: 2}
   - {fileID: 11400000, guid: b610ed9abf03a404282f797ffee4a95e, type: 2}
+  potionStateImage: {fileID: 8621863467021509720, guid: cb417a01e2a634045970bc515a8c68e4, type: 3}
   musicMasterMixerGroup: {fileID: -7206380732494497733, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   musicOnFullSnapshot: {fileID: 24500006, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   musicLowSnapshot: {fileID: 8893122114324796974, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}

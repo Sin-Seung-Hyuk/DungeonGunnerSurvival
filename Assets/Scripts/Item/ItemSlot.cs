@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-                        // 직렬화,역직렬화를 위한 인터페이스
+// 직렬화,역직렬화를 위한 인터페이스
 public class ItemSlot : ISerializationCallbackReceiver
 {
     [SerializeField] protected InventoryItemData itemData; // 슬롯에 들어갈 아이템데이터
     [SerializeField] protected int stackSize; // 이 슬롯의 현재스택
     [SerializeField] protected int itemID = -1; // 이 슬롯에 들어간 아이템ID
-    
+
 
     public InventoryItemData ItemData => itemData; 
     public int StackSize => stackSize;

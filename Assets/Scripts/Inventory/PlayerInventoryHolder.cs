@@ -62,15 +62,18 @@ public class PlayerInventoryHolder : InventoryHolder
         if (primaryInventorySystem.InventorySlots[num].ItemData != null
             && primaryInventorySystem.InventorySlots[num].ItemData.itemType == ItemType.Potion)
         {
-            // 플레이어 클래스에 접근하여 포션 사용함수 호출
-            player.UsePotion(primaryInventorySystem.InventorySlots[num].ItemData); 
+            // 플레이어 클래스에 접근해 해당 타입의 포션을 사용할 수 있는지 검사 (중복사용 X)
+            if (player.CanUsePotion(primaryInventorySystem.InventorySlots[num].ItemData.playerStatChangeList[0].statType)) {
+                // 플레이어 클래스에 접근하여 포션 사용함수 호출
+                player.UsePotion(primaryInventorySystem.InventorySlots[num].ItemData);
 
-            primaryInventorySystem.InventorySlots[num].RemoveFromStack(1); // 1개 감소
-            if (primaryInventorySystem.InventorySlots[num].StackSize < 1)
-                primaryInventorySystem.InventorySlots[num].ClearSlot();
-            OnPlayerInventoryChanged?.Invoke(); // 인벤토리 변경 이벤트 호출
+                primaryInventorySystem.InventorySlots[num].RemoveFromStack(1); // 1개 감소
+                if (primaryInventorySystem.InventorySlots[num].StackSize < 1)
+                    primaryInventorySystem.InventorySlots[num].ClearSlot();
+                OnPlayerInventoryChanged?.Invoke(); // 인벤토리 변경 이벤트 호출
 
-            return true;
+                return true;
+            }
         }
 
         return false;

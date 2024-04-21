@@ -8,6 +8,7 @@ using System.Linq;
 
 public class ShopKeeperDisplay : MonoBehaviour
 {
+    [SerializeField] private ShopKeeper shopKeeper;
     [SerializeField] private ShopSlotUI _shopSlotPrefab;
     [SerializeField] private ShoppingCartItemUI _shoppingCartItemPrefab;
     [SerializeField] private Button btnSellTab;
@@ -16,9 +17,9 @@ public class ShopKeeperDisplay : MonoBehaviour
     [Header("Shopping Cart")] // 쇼핑카트 구역
     [SerializeField] private TextMeshProUGUI basketTotalText;
     [SerializeField] private TextMeshProUGUI playerGoldText;
-    [SerializeField] private TextMeshProUGUI shopGoldText;
     [SerializeField] private TextMeshProUGUI buyButtonText;
     [SerializeField] private Button BtnBuy;
+    [SerializeField] private TextMeshProUGUI RerollGoldText;
 
     [Header("Item Preview")] // 아이템 프리뷰 구역
     [SerializeField] private Image itemPreviewSprite;
@@ -30,6 +31,7 @@ public class ShopKeeperDisplay : MonoBehaviour
 
     private int basketTotal;
     private bool isSelling;
+    private int rerollGold = Settings.rerollGold;
 
     private ShopSystem _shopSystem; // 상점시스템
     private PlayerInventoryHolder _playerInventory; // 플레이어 인벤토리
@@ -65,8 +67,7 @@ public class ShopKeeperDisplay : MonoBehaviour
 
         basketTotalText.enabled = false;
         basketTotal = 0;
-        playerGoldText.text = "Player Gold : " + _playerInventory.PrimaryInventorySystem.Gold.ToString();
-        shopGoldText.text = "Shop Gold : " + _shopSystem.AvaliableGold;
+        playerGoldText.text = _playerInventory.PrimaryInventorySystem.Gold.ToString() + " G";
 
         if (isSelling) DisplayPlayerInventory(); // 판매모드 : 플레이어 인벤토리
         else DisplayShopInventory();            // 구입모드 : 상점 인벤토리
@@ -90,7 +91,6 @@ public class ShopKeeperDisplay : MonoBehaviour
             }
         }
 
-        _shopSystem.GainGold(basketTotal); // 상인은 돈얻기
         _playerInventory.PrimaryInventorySystem.SpendGold(basketTotal); // 플레이어는 돈 소비
 
         RefreshDisplay();
@@ -98,8 +98,6 @@ public class ShopKeeperDisplay : MonoBehaviour
 
     private void SellItems()    // 아이템 판매
     {
-        if (_shopSystem.AvaliableGold < basketTotal) return; // 상인의 돈부족
-
         foreach (var pair in _shoppingCart)
         {                                // data      amount
             int price = GetModifiedPrice(pair.Key, pair.Value, _shopSystem.SellMarkUp);
@@ -135,6 +133,26 @@ public class ShopKeeperDisplay : MonoBehaviour
 
             ShopSlotUI shopSlot = Instantiate(_shopSlotPrefab, itemListContentPanel.transform);
             shopSlot.Init(tempSlot, _shopSystem.SellMarkUp);
+        }
+    }
+
+    // ============= Reroll Shop ====================================================================================================================================================================================================================================
+    public void RerollShop()
+    {
+        // 1. 구매모드일때만 동작, 플레이어는 새로고침 비용을 지불해야함
+        // 2. 기존의 상점리스트 모두 삭제
+        // 3. 새로고침한 상점으로 디스플레이 업데이트
+        if (!isSelling && _playerInventory.PrimaryInventorySystem.Gold >= rerollGold)
+        {
+            _playerInventory.PrimaryInventorySystem.SpendGold(rerollGold);
+            rerollGold = Utilities.IncreaseByPercent(rerollGold, 15);
+            RerollGoldText.text = rerollGold.ToString();
+
+            ClearShopItemList();
+            shopKeeper.SetShopItemList();
+            _shopSystem = shopKeeper._shopSystem;
+
+            RefreshDisplay();
         }
     }
 
@@ -213,10 +231,6 @@ public class ShopKeeperDisplay : MonoBehaviour
 
     private void CheckCartAvailableGold()
     {
-        int goldToCheck = isSelling ? _shopSystem.AvaliableGold : _playerInventory.PrimaryInventorySystem.Gold;
-
-        basketTotalText.color = basketTotal > goldToCheck ? Color.red : Color.white;
-
         if (isSelling || _playerInventory.PrimaryInventorySystem.CheckInventoryRemaining(_shoppingCart)) return;
 
         basketTotalText.text = "Not Enough to room in inventory"; // 가방에 공간부족
@@ -264,6 +278,15 @@ public class ShopKeeperDisplay : MonoBehaviour
         itemPreviewName.text = "";
         itemPreviewName.color = Color.clear;
         itemPreviewDescription.text = "";
+    }
+    private void ClearShopItemList() // 상점 아이템 모두 없애기 (상점 새로고침)
+    {
+        ShopSlotUI[] slotUI = itemListContentPanel.GetComponentsInChildren<ShopSlotUI>();
+
+        foreach (var item in slotUI)
+        {
+            item.ClearSlotUI();
+        }
     }
 
 

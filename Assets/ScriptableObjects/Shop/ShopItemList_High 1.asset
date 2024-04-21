@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 833cfa3ec8cb74f4db41d1eb15926f92, type: 3}
+  m_Name: ShopItemList_High 1
+  m_EditorClassIdentifier: 
+  _items:
+  - ItemData: {fileID: 11400000, guid: 6e7cef19a0b265047a1a3f926ddb416a, type: 2}
+    Amount: 50
+  - ItemData: {fileID: 11400000, guid: cd97f0b412ce52444874261c38507138, type: 2}
+    Amount: 30
+  - ItemData: {fileID: 11400000, guid: 05bb5e851569dd64e8c32e2d01f07a73, type: 2}
+    Amount: 30
+  - ItemData: {fileID: 11400000, guid: 79a2a6a6ee89ddf4683d262cadc4882b, type: 2}
+    Amount: 10
+  - ItemData: {fileID: 11400000, guid: 32442a54886ff1342adfea279305a442, type: 2}
+    Amount: 10
+  _sellMarkUp: 0.5
+  _buyMarkUp: 1

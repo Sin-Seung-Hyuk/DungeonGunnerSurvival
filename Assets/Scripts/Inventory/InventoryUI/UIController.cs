@@ -13,7 +13,7 @@ public class UIController : MonoBehaviour // 최상위 UI 컨트롤러
     [SerializeField] private TextMeshProUGUI TxtTimer;      // 던전 타이머
     [SerializeField] private TextMeshProUGUI TxtRoomName;   // 던전 이름
 
-    private float timer = 300;
+    private float timer;
 
 
     private void Awake()
@@ -32,7 +32,6 @@ public class UIController : MonoBehaviour // 최상위 UI 컨트롤러
 
         StaticEventHandler.OnRoomChanged -= StaticEventHandler_OnRoomChanged;
     }
-
 
     private void Update()
     {

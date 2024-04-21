@@ -8,12 +8,10 @@ public class ShopItemList : ScriptableObject
     // 상인이 가질 속성
 
     [SerializeField] private List<ShopInventoryItem> _items;
-    [SerializeField] private int _maxAllowedGold; // 상인이 보유한 골드
-    [SerializeField] private float _sellMarkUp;   // 판매 가격비율
-    [SerializeField] private float _buyMarkUp;    // 구입 가격비율
+    [SerializeField] private float _sellMarkUp = 0.5f;   // 판매 가격비율
+    [SerializeField] private float _buyMarkUp = 1.0f;    // 구입 가격비율
 
     public List<ShopInventoryItem> Items => _items;
-    public int MaxAllowedGold => _maxAllowedGold;
     public float SellMarkUp => _sellMarkUp;
     public float BuyMarkUp => _buyMarkUp;
 
@@ -21,8 +19,8 @@ public class ShopItemList : ScriptableObject
 
 
 [System.Serializable]
-public struct ShopInventoryItem // 상인이 가질 아이템목록
+public class ShopInventoryItem // 상인이 가질 아이템목록
 {
     public InventoryItemData ItemData;
-    public int Amount;
+    public int Amount = 1;
 }

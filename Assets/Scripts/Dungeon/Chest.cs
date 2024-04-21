@@ -16,7 +16,6 @@ public class Chest : MonoBehaviour, IInteractable
     private MaterializeEffect materializeEffect;
     private Animator animator;
     private bool isEnable = false;
-    private int cnt = 0;
 
 
     private void Awake()

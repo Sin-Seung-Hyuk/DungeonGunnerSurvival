@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
 
@@ -47,6 +48,12 @@ public class ShopSlotUI : MonoBehaviour // 상점슬롯 UI
         UpdateUISlot();
     }
 
+    public void ClearSlotUI()
+    {
+        AssignedItemSlot.ClearSlot();
+        UpdateUISlot();
+    }
+
     private void UpdateUISlot() // 슬롯UI 업데이트
     {
         if (_assignedItemSlot.ItemData != null) // 슬롯UI에 데이터가 있다면
@@ -69,11 +76,25 @@ public class ShopSlotUI : MonoBehaviour // 상점슬롯 UI
 
     private void AddItemToCart()
     {
-        if (tempAmount <= 0) return;
+        if (Keyboard.current.altKey.isPressed)
+        {
+            for (int i =0; i<10; ++i)
+            {
+                if (tempAmount <= 0) return;
 
-         tempAmount--;
-         ParentDisplay.AddItemToCart(this);
-         _itemCount.text = tempAmount.ToString();   
+                tempAmount--;
+                ParentDisplay.AddItemToCart(this);
+                _itemCount.text = tempAmount.ToString();
+            }
+        }
+        else
+        {
+            if (tempAmount <= 0) return;
+
+            tempAmount--;
+            ParentDisplay.AddItemToCart(this);
+            _itemCount.text = tempAmount.ToString();
+        }
     }
 
     private void RemoveItemFromCart()

@@ -6,6 +6,7 @@ public static class Settings
 {
     #region PLAYER PARAMETER
     public static float potionDuration = 3f; // 포션 지속시간
+    public static int rerollGold = 100; // 상점 새로고침 비용
     #endregion
 
 

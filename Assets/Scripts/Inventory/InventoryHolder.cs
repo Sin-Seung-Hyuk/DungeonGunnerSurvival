@@ -10,7 +10,6 @@ public abstract class InventoryHolder : MonoBehaviour // 추상클래스
     [SerializeField] private int inventorySize; // 인벤토리 크기
     [SerializeField] protected InventorySystem primaryInventorySystem;
     [SerializeField] protected int offset = 10; // 퀵슬롯을 위한 오프셋 (매우중요)
-    [SerializeField] protected int _gold;
 
     public int Offset => offset;
 

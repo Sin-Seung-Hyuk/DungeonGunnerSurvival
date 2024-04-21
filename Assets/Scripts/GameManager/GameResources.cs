@@ -26,6 +26,7 @@ public class GameResources : MonoBehaviour
     public CurrentPlayerSO currentPlayer;
     public GameObject playerSelectionPrefab;
     public List<PlayerDetailsSO> playerDetailsList;
+    public GameObject potionStateImage;
 
     [Space(10)]
     [Header("Music")]
