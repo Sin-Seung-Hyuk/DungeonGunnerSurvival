@@ -6,10 +6,16 @@ using UnityEngine;
 public class DealContactDamage : MonoBehaviour
 {
     [Header("Deal Damage")]
-    [SerializeField] private int contactDamageAmount;
+    private int contactDamageAmount;
     [SerializeField] private LayerMask layerMask;
 
     private bool isColliding = false;
+
+
+    public void InitializedContactDamage(int damageAmount)
+    {
+        contactDamageAmount = damageAmount;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

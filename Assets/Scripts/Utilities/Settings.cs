@@ -5,8 +5,9 @@ using UnityEngine;
 public static class Settings
 {
     #region PLAYER PARAMETER
-    public static float potionDuration = 3f; // 포션 지속시간
+    public static float potionDuration = 30f; // 포션 지속시간
     public static int rerollGold = 100; // 상점 새로고침 비용
+    public static int startExp = 50; // 1레벨 최대경험치
     #endregion
 
 
@@ -25,6 +26,7 @@ public static class Settings
     public static int rollLeft = Animator.StringToHash("rollLeft");
 
     public static int use = Animator.StringToHash("use");
+    public static int destroy = Animator.StringToHash("destroy");
     #endregion
 
 
@@ -44,7 +46,7 @@ public static class Settings
     #endregion
 
     #region DUNGEON PARAMETERS
-    public const int dungeonTimer = 10; // 던전 타이머
+    public const int dungeonTimer = 150; // 던전 타이머
     #endregion
 
     #region ENEMY PARAMETERS

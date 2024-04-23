@@ -22,12 +22,12 @@ MonoBehaviour:
 
     Base Armor'
   characterWeakness: Move Speed
-  maxHp: 150
-  baseDamage: 5
-  baseArmor: 100
+  maxHp: 80
+  baseDamage: 0
+  baseArmor: 15
   dodgeChance: 0
   criticChance: 0
   criticDamage: 0
   moveSpeed: 6
   circleRange: 0.8
-  expGain: 100
+  expGain: 0

@@ -17,7 +17,7 @@ public class PlayerExp : MonoBehaviour
         level = 1;
 
         currentExp = 0;
-        maxExp = 100; // 시작 경험치 100
+        maxExp = Settings.startExp; // 시작 경험치 
 
         TakeExp(0);
         expBar.SetLevel(level);

@@ -208,6 +208,8 @@ public class Player : MonoBehaviour, IHealthObject
     #region Potion
     public void UsePotion(InventoryItemData itemData)
     {
+        SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.healthPickUp);
+
         PlayerStatType statType = itemData.playerStatChangeList[0].statType;
         float changeValue = itemData.playerStatChangeList[0].changeValue;
         Sprite potionSprite = itemData.ItemSprite;

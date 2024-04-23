@@ -65,7 +65,6 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
                 GameObject newObj = Instantiate(prefab, componentToReuse.gameObject.transform.parent);
                 newObj.transform.position = position;
                 newObj.transform.rotation = rotation;
-                newObj.AddComponent(componentToReuse.GetType());
                 componentToReuse = newObj.GetComponent(componentToReuse.GetType());
             }
 

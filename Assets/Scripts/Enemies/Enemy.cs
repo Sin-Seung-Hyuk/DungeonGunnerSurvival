@@ -50,13 +50,13 @@ public class Enemy : MonoBehaviour, IHealthObject
 
     private CircleCollider2D circleCollider2D;
     private PolygonCollider2D polygonCollider2D;
+    private DealContactDamage dealContactDamage;
     private EnemyMovementAI enemyMovementAI;
     private MaterializeEffect materializeEffect;
     private FireWeapon fireWeapon;
     private Weapon weapon;
     private Health health;
     private HealthEvent healthEvent;
-
 
 
 
@@ -67,6 +67,7 @@ public class Enemy : MonoBehaviour, IHealthObject
         idleEvent = GetComponent<IdleEvent>();
         circleCollider2D = GetComponent<CircleCollider2D>();
         polygonCollider2D = GetComponent<PolygonCollider2D>();
+        dealContactDamage = GetComponent<DealContactDamage>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         materializeEffect = GetComponent<MaterializeEffect>();
@@ -76,6 +77,7 @@ public class Enemy : MonoBehaviour, IHealthObject
         health = GetComponent<Health>();
         healthEvent = GetComponent<HealthEvent>();
     }
+
     private void OnEnable()
     {
         healthEvent.OnHealthChanged += HealthEvent_OnHealthLost;
@@ -106,6 +108,7 @@ public class Enemy : MonoBehaviour, IHealthObject
     {
         this.enemyDetails = enemyDetails;
 
+        SetDealContactDamage();
         SetEnemyAnimateSpeed();
         SetEnemyMovementUpdateFrame();
         SetEnemyStartingHealth(dungeonLevel);
@@ -148,6 +151,13 @@ public class Enemy : MonoBehaviour, IHealthObject
         fireWeapon.enabled = isEnable;
     }
 
+    public Weapon GetEnemyWeapon()
+    {
+        return weapon;
+    }
+
+    // ========================== Set Enemy Initialize ================================
+    #region Set Enemy Initialize
     private void SetEnemyStartingWeapon() // Start 지점에서 수행됨
     {
         if (enemyDetails.enemyWeapon != null)
@@ -157,11 +167,6 @@ public class Enemy : MonoBehaviour, IHealthObject
         }
         else
             fireWeapon.enabled = false;
-    }
-
-    public Weapon GetEnemyWeapon()
-    {
-        return weapon;
     }
     private void SetEnemyStartingHealth(DungeonLevelSO dungeonLevel)
     {
@@ -183,6 +188,11 @@ public class Enemy : MonoBehaviour, IHealthObject
     {   // AI의 애니메이션 재생속도 설정
         animator.speed = enemyDetails.speed / 3f;
     }
+    private void SetDealContactDamage()
+    {
+        dealContactDamage.InitializedContactDamage(enemyDetails.contactDamageAmount);
+    }
+    #endregion
 
     public int TakeDamage(int damageAmount)
     {

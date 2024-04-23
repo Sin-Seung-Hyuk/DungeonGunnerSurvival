@@ -5,17 +5,13 @@ using UnityEngine;
 
 public class EnemySpawner : Singleton<EnemySpawner>
 {
-    private Player player;
-    private int enemiesToSpawn;
-    private int currentEnemyCount;
-    private int enemiesSpawnedSoFar;
-    private int enemyMaxConcurrentSpawnNumber;
+    private float spawnTimer;
+    private float waveTimer;
     private Room currentRoom;
-    //private RoomEnemySpawnParameters spawnParameters;
+    private SpawnParameter spawnParameters;
 
     [SerializeField] private GameObject enemyPrefab; // 스폰하기 위한 오리지널 프리팹
     [SerializeField] private GameObject itemPrefab;
-    [SerializeField] private Database Database; // 보스 드랍템
 
     private RandomSpawnableObject<EnemyDetailsSO> enemySpawnable;
     private List<int> randomEnemy;
@@ -45,10 +41,11 @@ public class EnemySpawner : Singleton<EnemySpawner>
         currentRoom = args.room;
         if (args.room.isEntrance) return; // 변경된 방이 입구라면 그대로 리턴
 
-        player = GameManager.Instance.GetPlayer(); // 플레이어 받아오기
+        spawnParameters = args.room.spawnParameter; // 방의 스폰파라미터 받아오기
 
         SetRandomNumberList(); // 스폰할 랜덤오브젝트 미리 정해두기         
         StartCoroutine(SpawnEnemiesRoutine()); // 위에서 생성한 랜덤숫자대로 스폰 (스폰될게 미리 정해진 상태)
+        StartCoroutine(SpawnParameterRoutine()); // 웨이브마다 스폰간격 변경 코루틴
 
         if (args.room.isBossRoom) SpawnBoss(args.room); // 보스방이라면 보스 생성
     }
@@ -72,10 +69,31 @@ public class EnemySpawner : Singleton<EnemySpawner>
         }
     }
 
+
+    private IEnumerator SpawnParameterRoutine()
+    {
+        spawnTimer = spawnParameters.spawnDistance;
+
+        // 웨이브 간격마다 웨이브 지속시간 동안 스폰간격 설정, 웨이브 끝나면 스폰간격 복구
+        while (true)
+        {
+            yield return new WaitForSeconds(spawnParameters.waveDistance); // 웨이브 간격동안 대기
+
+            spawnTimer = spawnParameters.spawnDistanceInWave; // 웨이브 시작 (스폰간격 짧아짐)
+
+            yield return new WaitForSeconds(spawnParameters.waveDuration); // 웨이브 지속시간
+
+            spawnTimer = spawnParameters.spawnDistance; // 웨이브 종료 (스폰간격 길어짐)
+        }
+    }
+
     private IEnumerator SpawnEnemiesRoutine()
     {
-        for (int i = 0; i < 40; i++) // 총 스폰횟수까지 반복
+        int i = 0;
+        while (true) // 계속 반복
         {
+            i++;
+
             // 그리드 기준 스폰가능 배열에서 랜덤으로 가져와 스폰지점 만들기
             Vector3Int cellPos = (Vector3Int)currentRoom.spawnPositionArray[Random.Range(0, currentRoom.spawnPositionArray.Count)];
 
@@ -87,7 +105,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
             // 적의 파괴 이벤트 구독
             enemyObj.GetComponent<DestroyedEvent>().OnDestroyed += Enemy_OnDestroyed;
 
-            yield return new WaitForSeconds(2f); // 스폰파라미터에서 스폰간격 구해오기
+            yield return new WaitForSeconds(spawnTimer); // 스폰파라미터에서 스폰간격 구해오기
         }
     }
 
@@ -123,6 +141,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
         ItemPickUp itemObj = (ItemPickUp)ObjectPoolManager.Instance.Release(itemPrefab, args.point, Quaternion.identity);
         
-        itemObj.GetComponent<ItemPickUp>().InitializeItem(Database.GetItem(randomItem));
+                                                        // 데이터베이스에서 아이템 랜덤으로 하나 가져오기
+        itemObj.GetComponent<ItemPickUp>().InitializeItem(GameResources.Instance.database.GetItem(randomItem));
     }
 }

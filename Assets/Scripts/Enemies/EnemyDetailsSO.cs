@@ -10,10 +10,12 @@ public class EnemyDetailsSO : ScriptableObject
     public string enemyName;
     public GameObject enemyPrefab;
     public Sprite sprite;
+    public Color spriteColor; // 스프라이트 색상
     public RuntimeAnimatorController runtimeAnimatorController;
 
     public int speed; // 이동속도
     public float chaseDistance = 50f; // 플레이어와의 최대 간격
+    public int contactDamageAmount = 10; // 플레이어 접촉 데미지
 
     [Header("Material")]
     public Material enemyStandardMaterial;

@@ -6,19 +6,19 @@ using UnityEngine;
 public class ReciveContactDamage : MonoBehaviour
 {
     [Header("접촉시 데미지 수치")]
-    [SerializeField] private int contactDamageAmount;
+    private int contactDamageAmount;
 
-    private Health health;
+    private Player player;
 
     private void Awake()
     {
-        health = GetComponent<Health>();
+        player = GetComponent<Player>();
     }
 
     public void TakeContactDamage(int damage = 0)
     {
         if (contactDamageAmount > 0) damage = contactDamageAmount;
 
-        //health.TakeDamage(damage);
+        player.TakeDamage(damage);
     }
 }

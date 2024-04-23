@@ -20,6 +20,16 @@ public class RoomTemplateSO : ScriptableObject
 
     public List<SpawnableObjectRatio<EnemyDetailsSO>> spawnableEnemyList; // 스폰될 적 종류
     public List<SpawnableObjectRatio<InventoryItemData>> spawnableItemList; // 스폰될 아이템 종류
+    public SpawnParameter spawnParameter; // 스폰될 아이템 종류
 
     public List<EnemyDetailsSO> spawnableBossList; // 보스방일 경우 스폰될 보스 리스트
+}
+
+[System.Serializable] 
+public class SpawnParameter
+{
+    public float waveDistance; // 웨이브 간격
+    public float waveDuration; // 웨이브 지속시간
+    public float spawnDistanceInWave; // 웨이브 스폰간격 
+    public float spawnDistance; // 평상시 스폰간격
 }

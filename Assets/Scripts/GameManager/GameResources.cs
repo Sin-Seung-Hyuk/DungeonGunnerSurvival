@@ -62,4 +62,6 @@ public class GameResources : MonoBehaviour
     public GameObject chestItemPrefab;
     public GameObject chestPrefab;
 
+    [Header("Game Data")]
+    public Database database;
 }

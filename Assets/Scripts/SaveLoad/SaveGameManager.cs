@@ -18,7 +18,7 @@ public class SaveGameManager : MonoBehaviour // 세이브 매니저
         TryLoadData(); // 시작하면 세이브 로드
     }
 
-    private void OnApplicationQuit() // 게임 꺼질때 자동호출
+    private void OnDisable() // 게임 꺼질때 자동호출
     {
         SaveData();
     }

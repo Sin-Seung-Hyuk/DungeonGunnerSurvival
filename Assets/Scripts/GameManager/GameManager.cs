@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
@@ -34,11 +35,15 @@ public class GameManager : Singleton<GameManager>
     {
         StaticEventHandler.OnRoomChanged += StaticEventHandler_OnRoomChanged;
         StaticEventHandler.OnRoomTimeout += StaticEventHandler_OnRoomTimeout;
+
+        player.destroyedEvent.OnDestroyed += Player_OnDestroyed;
     }
     private void OnDisable()
     {
         StaticEventHandler.OnRoomChanged -= StaticEventHandler_OnRoomChanged;
         StaticEventHandler.OnRoomTimeout -= StaticEventHandler_OnRoomTimeout;
+
+        player.destroyedEvent.OnDestroyed -= Player_OnDestroyed;
     }
 
     void Start()
@@ -55,7 +60,7 @@ public class GameManager : Singleton<GameManager>
     }
 
 
-    // ======================= 던전 관리 ========================================
+    // ======================= 던전(씬) 관리 ========================================
     #region DUNGEON
     public void CreateDungeonLevel(int currentDungeonLevel)
     {
@@ -107,9 +112,9 @@ public class GameManager : Singleton<GameManager>
         chestSpawner.SpawnChest(); // 보상상자 스폰
     }
 
-    private IEnumerator BackToEntrance() // 던전입구로 돌아가기
+    private IEnumerator GameLost() // 
     {
-        gameState = GameState.InEntrance;
+        prevGameState = GameState.GameLost;
 
         while (!Input.GetKeyDown(KeyCode.Return))
         {   // 리턴 키를 입력할때까지 반복
@@ -118,7 +123,8 @@ public class GameManager : Singleton<GameManager>
 
         yield return null;
 
-        CreateDungeonLevel(0);
+        player.playerInventory.ClearPlayerInventory();
+        gameState = GameState.RestartGame;
     }
     #endregion
 
@@ -151,7 +157,15 @@ public class GameManager : Singleton<GameManager>
             case GameState.GameCompleted:
                 break;
 
+            case GameState.GameLost:
+                StartCoroutine(GameLost());
+                break;
+
             case GameState.Paused:
+                break;
+
+            case GameState.RestartGame:
+                SceneManager.LoadScene("MainMenuScene");
                 break;
 
             default:
@@ -188,6 +202,12 @@ public class GameManager : Singleton<GameManager>
         if (args.room.isBossRoom) // 보스방 클리어인지 확인
             gameState = GameState.DungeonCompleted;
         else gameState = GameState.DungeonRoomClear;
+    }
+
+    private void Player_OnDestroyed(DestroyedEvent arg1, DestroyedEventArgs arg2)
+    {
+        prevGameState = gameState;
+        gameState = GameState.GameLost;
     }
     #endregion
 

@@ -78,4 +78,13 @@ public class PlayerInventoryHolder : InventoryHolder
 
         return false;
     }
+
+    // 플레이어의 모든 인벤토리 아이템 제거 (플레이어 죽었을때)
+    public void ClearPlayerInventory()
+    {
+        foreach (var item in primaryInventorySystem.InventorySlots)
+        {
+            item.ClearSlot();
+        }
+    }
 }

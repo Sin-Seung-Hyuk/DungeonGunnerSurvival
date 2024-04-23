@@ -56,8 +56,8 @@ MonoBehaviour:
   musicOffSnapshot: {fileID: -3084740370723268673, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   soundsMasterMixerGroup: {fileID: -4734643798044506327, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   chestOpen: {fileID: 11400000, guid: cf8428f7a9c88164c89498748ec9a635, type: 2}
-  healthPickUp: {fileID: 0}
-  weaponPickUp: {fileID: 0}
+  healthPickUp: {fileID: 11400000, guid: 761578ad22012b449bbe6fc021abfd7a, type: 2}
+  weaponPickUp: {fileID: 11400000, guid: cf80790ae68a33443997166fea9cfcdb, type: 2}
   enemyUnwalkableTilesArray:
   - {fileID: 11400000, guid: 37e2c9e0227bfbc409cd632b9bd0c81f, type: 2}
   - {fileID: 11400000, guid: 98f177f8276c38b429705e6720c48672, type: 2}
@@ -68,3 +68,4 @@ MonoBehaviour:
   materializeShader: {fileID: -6465566751694194690, guid: 5fec8f8e6ea244648a3c6ede24a56288, type: 3}
   chestItemPrefab: {fileID: 6227206944734826548, guid: 400afa566b45e994a9503768b3329b07, type: 3}
   chestPrefab: {fileID: 2229734922805013933, guid: b0123f06a942dc14eb8334314147fea9, type: 3}
+  database: {fileID: 11400000, guid: d58967e9c47ec2c4ead798689de07816, type: 2}
