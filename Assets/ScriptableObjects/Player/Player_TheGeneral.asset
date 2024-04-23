@@ -24,10 +24,10 @@ MonoBehaviour:
   characterWeakness: Move Speed
   maxHp: 80
   baseDamage: 0
-  baseArmor: 15
+  baseArmor: 100
   dodgeChance: 0
   criticChance: 0
   criticDamage: 0
   moveSpeed: 6
   circleRange: 0.8
-  expGain: 0
+  expGain: 100

@@ -19,6 +19,14 @@ public static class StaticEventHandler
     {
         OnRoomTimeout?.Invoke(new RoomTimeoutArgs() { room = room });
     }
+
+
+    // 무기 스탯변경 이벤트
+    public static event Action OnWeaponStatChanged;
+    public static void CallWeaponStatChangedEvent()
+    {
+        OnWeaponStatChanged?.Invoke();
+    }
 }
 
 public class RoomChangedArgs : EventArgs

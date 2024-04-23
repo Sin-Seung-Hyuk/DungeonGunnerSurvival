@@ -52,6 +52,9 @@ public class GameManager : Singleton<GameManager>
         CreateDungeonLevel(currentDungeonLevel++);
         gameState = GameState.InEntrance;
         prevGameState = GameState.InEntrance;
+
+        StartCoroutine(Fade(0, 3f));
+        msgTextTMP.text = "Entrance";
     }
 
     void Update()
@@ -72,9 +75,6 @@ public class GameManager : Singleton<GameManager>
     {
         // 게임리소스에 등록된 선택된 캐릭터 정보 받아와 초기화
         playerDetails = GameResources.Instance.currentPlayer.currentPlayerDetailsSO;
-
-        //GameObject playerObject = Instantiate(playerDetails.playerPrefab);
-        //player = playerObject.GetComponent<Player>();
 
         player.InitializePlayer(playerDetails);
     }
@@ -112,7 +112,7 @@ public class GameManager : Singleton<GameManager>
         chestSpawner.SpawnChest(); // 보상상자 스폰
     }
 
-    private IEnumerator GameLost() // 
+    private IEnumerator GameLost() // 플레이어 던전에서 사망
     {
         prevGameState = GameState.GameLost;
 
@@ -129,7 +129,6 @@ public class GameManager : Singleton<GameManager>
     #endregion
 
 
-
     // ======================= 게임상태 관리 ========================================
     #region GAME STATE
     private void HandleGameState()
@@ -138,10 +137,12 @@ public class GameManager : Singleton<GameManager>
         {
             case GameState.InEntrance:
                 // 사격 이벤트 호출 X 
+                player.fireWeapon.enabled = false;
+                player.health.AddHealth(100); // 입구로 돌아오면 체력 100% 회복 (한번만)
                 break;
 
             case GameState.InDungeon:
-                //StartCoroutine(BackToEntrance());
+                player.fireWeapon.enabled = true;
                 break;
 
             case GameState.DungeonRoomClear: // 타이머가 끝나면 이벤트 호출 (게임상태 변화)
@@ -181,13 +182,10 @@ public class GameManager : Singleton<GameManager>
         {
             prevGameState = gameState;
             gameState = GameState.InEntrance;
-            player.fireWeapon.enabled = false;
-            player.health.AddHealth(100); // 입구로 돌아오면 체력 100% 회복 (한번만)
         } else
         {
             prevGameState = gameState;
             gameState = GameState.InDungeon; // 입구 아니면 던전밖에 없음
-            player.fireWeapon.enabled = true;
         }
 
         player.ctrl.EnablePlayer();
@@ -250,5 +248,11 @@ public class GameManager : Singleton<GameManager>
             goal, time);
 
         yield return tween.WaitForCompletion();
+    }
+    private IEnumerator FadeInOut(float time)
+    {
+        yield return StartCoroutine(Fade(1, time));
+
+        StartCoroutine(Fade(0, time));
     }
 }

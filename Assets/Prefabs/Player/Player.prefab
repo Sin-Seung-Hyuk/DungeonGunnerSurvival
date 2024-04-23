@@ -599,7 +599,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765e974ec35024b4d8897a803a61f963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contactDamageAmount: 0
 --- !u!114 &1896749486805056960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1126,7 +1125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 936919547041129539}
   - component: {fileID: 4115137651306825846}
-  m_Layer: 7
+  m_Layer: 21
   m_Name: ItemPickUpCircle
   m_TagString: Player
   m_Icon: {fileID: 0}

@@ -59,7 +59,7 @@ public class PlayerLevelUpUI : MonoBehaviour
     private void BtnWeaponStatUp(Weapon weapon, PlayerLevelUpList list)
     {
         // 랜덤으로 선택된 무기의 스탯 변경 (해당 무기의 스탯만 변경됨)
-        weapon.ChangeWeaponStat(list.statType, list.changeValue, true);
+        weapon.LevelUp(list.statType, list.changeValue, true);
         Time.timeScale = 1; // 게임 재개
 
         gameObject.SetActive(false);

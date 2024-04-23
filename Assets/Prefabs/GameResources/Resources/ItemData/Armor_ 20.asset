@@ -24,6 +24,6 @@ MonoBehaviour:
   equipmentType: 6
   playerStatChangeList:
   - statType: 5
-    changeValue: 1
+    changeValue: 100
   - statType: 1
     changeValue: 100

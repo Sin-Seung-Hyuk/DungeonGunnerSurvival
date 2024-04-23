@@ -13,6 +13,8 @@ public class PlayerEquipmentHolder : InventoryDisplay
     [SerializeField] private EquipmentSlot_UI[] slots;
     [SerializeField] private Image playerSprite;
 
+    [SerializeField] private PlayerStatUI playerStatUI;
+    [SerializeField] private WeaponStatUI weaponStatUI;
 
     private void Awake()
     {
@@ -27,6 +29,7 @@ public class PlayerEquipmentHolder : InventoryDisplay
         SaveLoad.OnSaveGame += SaveFile;
 
         playerSprite.sprite = GameManager.Instance.GetPlayer().playerDetails.playerSprite;
+
     }
 
     private void SaveFile()
@@ -42,6 +45,20 @@ public class PlayerEquipmentHolder : InventoryDisplay
         {
             this.inventorySystem = data.playerEquipment.invSystem;
             AssignSlot(inventorySystem,0);
+        }
+    }
+
+    public void StatInfoChange()
+    {
+        if (playerStatUI.gameObject.activeSelf)
+        {
+            playerStatUI.gameObject.SetActive(false);
+            weaponStatUI.gameObject.SetActive(true);
+        }
+        else
+        {
+            playerStatUI.gameObject.SetActive(true);
+            weaponStatUI.gameObject.SetActive(false);
         }
     }
 
