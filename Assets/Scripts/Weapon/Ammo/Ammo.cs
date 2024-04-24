@@ -3,17 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Ammo : MonoBehaviour, IFireable // 사격 인터페이스
+// 추상클래스
+public abstract class Ammo : MonoBehaviour, IFireable // 사격 인터페이스
 {
     // 오브젝트가 움직일떄 그 뒤를 따라 움직이는 효과 (총알 날라가는 효과 등)
     [SerializeField] private TrailRenderer trailRenderer;
     private Weapon weapon;
     private float ammoRange;
     private float ammoSpeed;
-    private int ammoDamage;
+    protected int ammoDamage; // protected로 상속 가능
     private Vector3 fireDirectionVector;
-    private bool isColliding = false; // 충돌 여부
     private bool isCritic = false; // 치명타 여부
 
     void Update()
@@ -30,25 +29,20 @@ public class Ammo : MonoBehaviour, IFireable // 사격 인터페이스
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (isColliding) return;
-
+        // 충돌체에 데미지를 입히고 피격텍스트 표시 (모든 탄이 가져야하는 공통적인 기능)
         IHealthObject health = collision.GetComponent<IHealthObject>();
 
         if (health != null)
         {
-            isColliding = true; // 충돌 중
-            this.ammoDamage = GetAmmoDamage(); // 데미지 계산
             int damageAmount = health.TakeDamage(ammoDamage);
             // 플레이어가 회피시 피격텍스트 X, 방어력만큼 깎인 수치 반영
             if (damageAmount > 0) AmmoHitText(damageAmount, isCritic);
         }
+        else gameObject.SetActive(false); 
 
-        AmmoHitEffect();
-
-        gameObject.SetActive(false);
+        AmmoHitEffect(); // 부딪힌 곳에 피격이펙트 남기기 (모든 탄이 가져야하는 공통적인 기능)
     }
 
     private void AmmoHitText(int damageAmount, bool isCritic)
@@ -67,13 +61,12 @@ public class Ammo : MonoBehaviour, IFireable // 사격 인터페이스
 
     public void InitializeAmmo(float aimAngle, Vector3 aimDirectionVector, Weapon weapon)
     {
-        isColliding = false;
-
         SetFireDirection(aimAngle, aimDirectionVector); // 탄 진행방향
 
         this.weapon = weapon;
         this.ammoRange = weapon.weaponDetail.weaponRange;
         this.ammoSpeed = weapon.weaponDetail.weaponAmmoSpeed;
+        this.ammoDamage = GetAmmoDamage();
 
         gameObject.SetActive(true); // 탄 초기화 후 활성화
 

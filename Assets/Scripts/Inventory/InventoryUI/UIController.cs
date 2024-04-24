@@ -64,7 +64,7 @@ public class UIController : MonoBehaviour // 최상위 UI 컨트롤러
         {
             if (timer <= 10f)
             {
-                TxtTimer.color = new Color32(154, 37, 37, 255);
+                TxtTimer.color = Settings.red;
                 TxtTimer.fontSize = 15;
             }
 

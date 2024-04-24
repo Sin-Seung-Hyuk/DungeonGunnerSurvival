@@ -318,6 +318,15 @@ MonoBehaviour:
   - poolSize: 50
     prefab: {fileID: 7337716550809129691, guid: 18c7cabe3bfab8c4ba2287fb856633e2, type: 3}
     componentType: DamageTextUI
+  - poolSize: 50
+    prefab: {fileID: 8274860614600379229, guid: ca412b232f83c3f4aaf5b157a9ba9bc2, type: 3}
+    componentType: IFireable
+  - poolSize: 50
+    prefab: {fileID: 4454987432227277477, guid: 2c3c8e222ce0d0747a55957724e92f82, type: 3}
+    componentType: IFireable
+  - poolSize: 50
+    prefab: {fileID: 4454987432227277477, guid: 69ae2959dd4025f4c8dc7efec222f9c4, type: 3}
+    componentType: IFireable
 --- !u!4 &345247726
 Transform:
   m_ObjectHideFlags: 0

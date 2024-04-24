@@ -58,6 +58,8 @@ public static class Settings
     #endregion
 
     #region UI PARAMETERS
+    public static Color32 blue = new Color32(76 ,115, 209,255);
+    public static Color32 red = new Color32(255 ,112, 120, 255);
     #endregion
 
     #region AUDIO

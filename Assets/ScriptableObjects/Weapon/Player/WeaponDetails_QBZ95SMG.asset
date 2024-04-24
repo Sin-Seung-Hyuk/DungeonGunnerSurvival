@@ -18,12 +18,12 @@ MonoBehaviour:
   weaponCriticChance: 25
   weaponCriticDamage: 50
   weaponAmmoCapacity: 17
-  weaponFireRate: 0.7
-  weaponReloadTime: 1.5
-  weaponRange: 12
-  weaponAmmoSpeed: 13
+  weaponFireRate: 0.85
+  weaponReloadTime: 1.9
+  weaponRange: 13
+  weaponAmmoSpeed: 12
   weaponAmmo:
-  - {fileID: 4454987432227277477, guid: a63d5773f98b2c84aade89e10aafcdb2, type: 3}
+  - {fileID: 8274860614600379229, guid: ca412b232f83c3f4aaf5b157a9ba9bc2, type: 3}
   isTrail: 0
   ammoTrailMaterial: {fileID: 0}
   ammoTrailStartWidth: 0

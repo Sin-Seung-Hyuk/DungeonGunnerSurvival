@@ -234,7 +234,7 @@ public class ShopKeeperDisplay : MonoBehaviour
         if (isSelling || _playerInventory.PrimaryInventorySystem.CheckInventoryRemaining(_shoppingCart)) return;
 
         basketTotalText.text = "Not Enough to room in inventory"; // 가방에 공간부족
-        basketTotalText.color = Color.red;
+        basketTotalText.color = Settings.red;
     }
 
     public static int GetModifiedPrice(InventoryItemData data, int amount, float markUp)

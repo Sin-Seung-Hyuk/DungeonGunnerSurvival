@@ -4,6 +4,7 @@ using UnityEngine;
 public class AmmoPattern : MonoBehaviour, IFireable
 {
     [SerializeField] private Ammo[] ammoArray;
+    [SerializeField] private float rotateValue = 45f;
 
     private float ammoRange;
     private float ammoSpeed;
@@ -28,7 +29,7 @@ public class AmmoPattern : MonoBehaviour, IFireable
     {
         Vector3 distanceVector = fireDirectionVector * ammoSpeed * Time.deltaTime;
         transform.position += distanceVector;
-        transform.Rotate(new Vector3(0f, 0f, 45f * Time.deltaTime));
+        transform.Rotate(new Vector3(0f, 0f, rotateValue * Time.deltaTime));
 
         ammoRange -= distanceVector.magnitude;
 

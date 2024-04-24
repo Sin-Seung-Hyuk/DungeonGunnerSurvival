@@ -9,7 +9,8 @@ public class Weapon : MonoBehaviour
     public Sprite weaponSprite { get; private set; }
     public WeaponDetailsSO weaponDetail { get; private set; }
     public int weaponAmmoCapacity { get; private set; } // 탄창 용량
-    public List<GameObject> weaponAmmoList { get; private set; } // 무기 탄
+    private List<GameObject> weaponAmmoList; // 무기 탄
+    private GameObject currentAmmo; // 현재 무기의 탄
     
 
     // 무기의 스탯 (레벨업하여 스탯 상승 가능)
@@ -59,8 +60,11 @@ public class Weapon : MonoBehaviour
 
     public GameObject GetCurrentAmmo(int level)
     {
-        int idx = level / 10; // 무기 10레벨 찍으면 탄 업그레이드
-        return weaponAmmoList[idx];
+        int idx = level / 2; // 무기 10레벨 찍으면 탄 업그레이드
+
+        currentAmmo = weaponAmmoList[0];
+
+        return currentAmmo;
     }
 
     public void LevelUp(PlayerStatType statType, float changeValue, bool isPercent)

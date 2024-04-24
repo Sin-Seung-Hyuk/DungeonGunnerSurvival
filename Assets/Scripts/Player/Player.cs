@@ -186,6 +186,9 @@ public class Player : MonoBehaviour, IHealthObject
         }
     }
 
+
+    // =================== Interface ±¸Çö =============================================
+    #region Interface
     public int TakeDamage(int damageAmount)
     {
         if (stat.dodgeChance >= 1)
@@ -202,6 +205,7 @@ public class Player : MonoBehaviour, IHealthObject
 
         return damageAmount;
     }
+    #endregion
 
 
     // ============================ Potion ======================================

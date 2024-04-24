@@ -38,7 +38,7 @@ using System.Collections.Generic;
 #endregion REQUIRE COMPONENTS
 
 [DisallowMultipleComponent]
-public class Enemy : MonoBehaviour, IHealthObject
+public class Enemy : MonoBehaviour, IHealthObject, IDebuff
 {
     [HideInInspector] public EnemyDetailsSO enemyDetails;
     [HideInInspector] public MovementToPositionEvent movementToPositionEvent;
@@ -65,7 +65,7 @@ public class Enemy : MonoBehaviour, IHealthObject
         enemyMovementAI = GetComponent<EnemyMovementAI>();
         movementToPositionEvent = GetComponent<MovementToPositionEvent>();
         idleEvent = GetComponent<IdleEvent>();
-        circleCollider2D = GetComponent<CircleCollider2D>();
+        circleCollider2D = GetComponentInChildren<CircleCollider2D>(); // 총알을 무시하는 충돌체 (몸끼리 부딪히는 충돌)
         polygonCollider2D = GetComponent<PolygonCollider2D>();
         dealContactDamage = GetComponent<DealContactDamage>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -116,7 +116,7 @@ public class Enemy : MonoBehaviour, IHealthObject
 
         spriteRenderer.sprite = enemyDetails.sprite;
 
-        List<Vector2> spritePhysicsShapePointsList = new List<Vector2>(); 
+        List<Vector2> spritePhysicsShapePointsList = new List<Vector2>();
 
         spriteRenderer.sprite.GetPhysicsShape(0, spritePhysicsShapePointsList); // 스프라이트 테두리 따오기
         polygonCollider2D.points = spritePhysicsShapePointsList.ToArray(); // 피격판정 충돌체 그리기
@@ -194,6 +194,9 @@ public class Enemy : MonoBehaviour, IHealthObject
     }
     #endregion
 
+
+    // =================== Interface 구현 =============================================
+    #region Interface
     public int TakeDamage(int damageAmount)
     {
         health.SetCurrentHealth(damageAmount);
@@ -201,4 +204,37 @@ public class Enemy : MonoBehaviour, IHealthObject
 
         return damageAmount;
     }
+
+    public void Debuff_Slow()
+    {
+        spriteRenderer.color = Settings.blue;
+
+        enemyMovementAI.moveSpeed = 2;
+    }
+    public void Debuff_Burn(int ammoDamage)
+    {
+        spriteRenderer.color = Settings.red;
+        StartCoroutine(Burn(ammoDamage));
+    }
+    private IEnumerator Burn(int ammoDamage)
+    {
+        int burnDamage = (int)(ammoDamage * 0.1f);
+
+        int count = 0;
+        while (count < 3)
+        {
+            TakeDamage(burnDamage);
+
+            Vector3 pos = new Vector3(transform.position.x, transform.position.y + 1f, 0f);
+            DamageTextUI hitText = (DamageTextUI)ObjectPoolManager.Instance.Release(GameResources.Instance.ammoHitText, pos, Quaternion.identity);
+
+            hitText.InitializeDamageText(burnDamage, false, pos.y);
+
+            yield return new WaitForSeconds(1.0f);
+            count++;
+        }
+
+        spriteRenderer.color = Color.white;
+    }
+    #endregion
 }

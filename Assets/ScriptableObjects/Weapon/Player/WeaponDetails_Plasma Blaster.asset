@@ -23,7 +23,7 @@ MonoBehaviour:
   weaponRange: 30
   weaponAmmoSpeed: 20
   weaponAmmo:
-  - {fileID: 4454987432227277477, guid: 435a147f85de6a545a08edc231b4a140, type: 3}
+  - {fileID: 4454987432227277477, guid: 69ae2959dd4025f4c8dc7efec222f9c4, type: 3}
   isTrail: 1
   ammoTrailMaterial: {fileID: 2100000, guid: c92da765fb7cca448a71d99956fe00bd, type: 2}
   ammoTrailStartWidth: 0.15
