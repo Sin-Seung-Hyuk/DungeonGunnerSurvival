@@ -32,4 +32,4 @@ MonoBehaviour:
   criticDamage: 10
   moveSpeed: 6.5
   circleRange: 0.8
-  expGain: 0
+  expGain: 100

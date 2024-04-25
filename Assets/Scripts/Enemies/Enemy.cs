@@ -197,8 +197,9 @@ public class Enemy : MonoBehaviour, IHealthObject, IDebuff
 
     // =================== Interface ±¸Çö =============================================
     #region Interface
-    public int TakeDamage(int damageAmount)
+    public int TakeDamage(int ammoDamage, out int damageAmount)
     {
+        damageAmount = ammoDamage;
         health.SetCurrentHealth(damageAmount);
         health.CallHealthEvent(damageAmount);
 
@@ -223,7 +224,7 @@ public class Enemy : MonoBehaviour, IHealthObject, IDebuff
         int count = 0;
         while (count < 3)
         {
-            TakeDamage(burnDamage);
+            TakeDamage(burnDamage,out int damageAmount);
 
             Vector3 pos = new Vector3(transform.position.x, transform.position.y + 1f, 0f);
             DamageTextUI hitText = (DamageTextUI)ObjectPoolManager.Instance.Release(GameResources.Instance.ammoHitText, pos, Quaternion.identity);

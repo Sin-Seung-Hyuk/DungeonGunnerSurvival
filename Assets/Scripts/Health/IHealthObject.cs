@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface IHealthObject 
 {
-    public int TakeDamage(int damageAmount);
+                            // 탄 데미지   ,  실제 데미지 (방어력 계산)
+    public int TakeDamage(int ammoDamage, out int damageAmount);
 }

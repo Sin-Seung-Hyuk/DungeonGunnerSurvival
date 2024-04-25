@@ -44,6 +44,7 @@ public class Weapon : MonoBehaviour
         weaponFireRate = weaponDetails.weaponFireRate;
         weaponReloadTime = weaponDetails.weaponReloadTime;
         weaponAmmoList = weaponDetails.weaponAmmo;
+        currentAmmo = weaponDetail.weaponAmmo[0];
 
         weaponAmmoRemaining = weaponDetails.weaponAmmoCapacity;
         weaponFireRateTimer = weaponDetails.weaponFireRate;
@@ -58,22 +59,19 @@ public class Weapon : MonoBehaviour
 
     }
 
-    public GameObject GetCurrentAmmo(int level)
+    public GameObject GetCurrentAmmo()
     {
-        int idx = level / 2; // 무기 10레벨 찍으면 탄 업그레이드
-
-        currentAmmo = weaponAmmoList[0];
-
         return currentAmmo;
     }
 
     public void LevelUp(PlayerStatType statType, float changeValue, bool isPercent)
     {
         weaponLevel++;
+        if (weaponLevel == Settings.weaponUpgrade) currentAmmo = weaponAmmoList[1]; 
         ChangeWeaponStat(statType, changeValue, isPercent);
     }
 
-    // % 계산 여부
+    //                                                                  % 계산 여부
     public void ChangeWeaponStat(PlayerStatType statType, float value, bool isPercent)
     {
         StaticEventHandler.CallWeaponStatChangedEvent();

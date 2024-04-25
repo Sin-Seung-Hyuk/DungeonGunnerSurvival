@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: WeaponDetails_SlimeBlockKing
   m_EditorClassIdentifier: 
   weaponName: Pistol
+  weaponType: 8
   weaponSprite: {fileID: 21300000, guid: abbe40c4d6a803f42a7c4f53404a484d, type: 3}
   weaponBaseDamage: 20
+  weaponCriticChance: 10
+  weaponCriticDamage: 150
   weaponAmmoCapacity: 17
   weaponFireRate: 1.5
   weaponReloadTime: 1.5
@@ -22,10 +25,10 @@ MonoBehaviour:
   weaponAmmoSpeed: 5
   weaponAmmo:
   - {fileID: 6778550213661633531, guid: f82082fcefe173e4c873b128e2628d94, type: 3}
+  upgradeDescription: 
   isTrail: 0
   ammoTrailMaterial: {fileID: 0}
   ammoTrailStartWidth: 0
   ammoTrailEndWidth: 0
   ammoTrailTime: 0
   weaponFiringSoundEffect: {fileID: 0}
-  weaponReloadingSoundEffect: {fileID: 0}

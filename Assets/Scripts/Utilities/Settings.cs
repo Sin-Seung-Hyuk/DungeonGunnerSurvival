@@ -8,6 +8,7 @@ public static class Settings
     public static float potionDuration = 30f; // 포션 지속시간
     public static int rerollGold = 100; // 상점 새로고침 비용
     public static int startExp = 50; // 1레벨 최대경험치
+    public static int weaponUpgrade = 3; // 무기 업그레이드 레벨
     #endregion
 
 
@@ -46,7 +47,7 @@ public static class Settings
     #endregion
 
     #region DUNGEON PARAMETERS
-    public const int dungeonTimer = 30; // 던전 타이머
+    public const int dungeonTimer = 20; // 던전 타이머
     #endregion
 
     #region ENEMY PARAMETERS
@@ -60,6 +61,7 @@ public static class Settings
     #region UI PARAMETERS
     public static Color32 blue = new Color32(76 ,115, 209,255);
     public static Color32 red = new Color32(255 ,112, 120, 255);
+    public static Color32 legend = new Color32(226 ,125, 19, 255);
     #endregion
 
     #region AUDIO

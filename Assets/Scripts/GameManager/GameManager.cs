@@ -17,11 +17,15 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private Player player;
     private PlayerDetailsSO playerDetails;
 
-    [SerializeField] private TextMeshProUGUI msgTextTMP; // 페이드 텍스트
+    [SerializeField] private TextMeshProUGUI TxtFade; // 페이드 텍스트
+    [SerializeField] private Image bossRoomImage; // 페이드 텍스트
     [SerializeField] private CanvasGroup canvasGroup;    // 페이드 이미지
+
+    [SerializeField] private CanvasGroup gameOverUI;    // 게임실패,클리어시 나오는 UI
 
     [HideInInspector] public GameState gameState;
     [HideInInspector] public GameState prevGameState;
+
 
 
     protected override void Awake()
@@ -52,9 +56,6 @@ public class GameManager : Singleton<GameManager>
         CreateDungeonLevel(currentDungeonLevel++);
         gameState = GameState.InEntrance;
         prevGameState = GameState.InEntrance;
-
-        StartCoroutine(Fade(0, 3f));
-        msgTextTMP.text = "Entrance";
     }
 
     void Update()
@@ -70,7 +71,10 @@ public class GameManager : Singleton<GameManager>
         DungeonBuilder.Instance.CreateDungeonRoom(dungeonLevelList[currentDungeonLevel]);
 
         player.transform.position = new Vector3Int(0, 0, 0);
+
+        CreateDungeonFade();
     }
+
     public void InstantiatePlayer()
     {
         // 게임리소스에 등록된 선택된 캐릭터 정보 받아와 초기화
@@ -82,6 +86,11 @@ public class GameManager : Singleton<GameManager>
     private IEnumerator DungeonRoomCleared() // 방 하나 클리어 
     {
         gameState = GameState.InDungeon;
+
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(Fade(0.75f, 2f));
+
+        TxtFade.text = "PRESS 'ENTER' TO NEXT DUNGEON!";
 
         while (!Input.GetKeyDown(KeyCode.Return))
         {   // 리턴 키를 입력할때까지 반복
@@ -97,6 +106,11 @@ public class GameManager : Singleton<GameManager>
     private IEnumerator DungeonLevelCompleted() // 해당 레벨의 모든 방 클리어
     {
         gameState = GameState.InDungeon;
+
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(Fade(0.75f, 2f));
+
+        TxtFade.text = "LEVEL CLEAR!\nPRESS 'ENTER' TO ENTRANCE!";
 
         while (!Input.GetKeyDown(KeyCode.Return))
         {   // 리턴 키를 입력할때까지 반복
@@ -115,6 +129,13 @@ public class GameManager : Singleton<GameManager>
     private IEnumerator GameLost() // 플레이어 던전에서 사망
     {
         prevGameState = GameState.GameLost;
+        gameState = GameState.InDungeon;
+
+        TxtFade.text = "";
+        yield return new WaitForSeconds(2f);
+        yield return StartCoroutine(Fade(0.75f, 2f));
+
+        gameOverUI.gameObject.SetActive(true);
 
         while (!Input.GetKeyDown(KeyCode.Return))
         {   // 리턴 키를 입력할때까지 반복
@@ -125,6 +146,15 @@ public class GameManager : Singleton<GameManager>
 
         player.playerInventory.ClearPlayerInventory();
         gameState = GameState.RestartGame;
+    }
+
+    private void CreateDungeonFade() // 던전입장시 까만화면에서 점점 밝아짐 (페이드인)
+    {
+        canvasGroup.alpha = 1f;
+        TxtFade.text = instantiatedRoom.roomTemplate.roomName;
+        if (instantiatedRoom.isBossRoom) bossRoomImage.gameObject.SetActive(true);
+        else bossRoomImage.gameObject.SetActive(false);
+        StartCoroutine(Fade(0, 3f));
     }
     #endregion
 
@@ -193,6 +223,8 @@ public class GameManager : Singleton<GameManager>
 
     private void StaticEventHandler_OnRoomTimeout(RoomTimeoutArgs args)
     {
+        if (prevGameState == GameState.GameLost) return; // 게임 실패한 상태이면 시간이 지나도 클리어 X
+
         player.ctrl.DisablePlayer(); // 타임아웃 이벤트 호출되면 플레이어 이동 불가
 
         prevGameState = gameState;
@@ -241,18 +273,12 @@ public class GameManager : Singleton<GameManager>
         return instantiatedRoom;
     }
 
-    private IEnumerator Fade(int goal, float time)
+    private IEnumerator Fade(float goal, float time)
     {
         // 캔버스 그룹의 알파값을 time에 걸쳐서 goal만큼 보간 (캔버스 그룹이므로 자식도 같이적용)
         var tween = DOTween.To(() => canvasGroup.alpha, x => canvasGroup.alpha = x,
-            goal, time);
+            goal, time).SetEase(Ease.InQuart); // 천천히 증가하다 가파르게 증가함
 
         yield return tween.WaitForCompletion();
-    }
-    private IEnumerator FadeInOut(float time)
-    {
-        yield return StartCoroutine(Fade(1, time));
-
-        StartCoroutine(Fade(0, time));
     }
 }

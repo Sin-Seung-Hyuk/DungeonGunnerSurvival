@@ -43,18 +43,32 @@ public class PlayerLevelUpUI : MonoBehaviour
 
     private void SetPlayerLevelUpChoice(PlayerLevelUpList list, int idx)
     {
+        levelUpUIComponents[idx].weaponLevel.gameObject.SetActive(false); // 플레이어 선택지는 무기레벨 숨기기
+
         // 플레이어 스프라이트로 설정
         levelUpUIComponents[idx].choiceImage.sprite = player.playerDetails.playerSprite;
         levelUpUIComponents[idx].BtnChoice.onClick.AddListener(() => BtnPlayerStatUp(list)); // 인수가 있는 함수등록시 람다식활용
     }
     private void SetWeaponLevelUpChoice(PlayerLevelUpList list, int idx)
     {
+        levelUpUIComponents[idx].weaponLevel.gameObject.SetActive(true);
+
         // 현재 플레이어 무기 리스트에서 랜덤으로 무기 선택하여 가져오기
         Weapon randomWeapon = player.weaponList[Random.Range(0, player.weaponList.Count)];
+
+        if (randomWeapon.weaponLevel == Settings.weaponUpgrade - 1) SetWeaponUpgradeUI(randomWeapon, idx); 
+
+        levelUpUIComponents[idx].TxtWeaponLevel.text = randomWeapon.weaponLevel.ToString();
         levelUpUIComponents[idx].choiceImage.sprite = randomWeapon.weaponSprite;
         levelUpUIComponents[idx].BtnChoice.onClick.AddListener(() => BtnWeaponStatUp(randomWeapon, list));
     }
 
+    private void SetWeaponUpgradeUI(Weapon weapon, int idx)
+    {
+        levelUpUIComponents[idx].TxtChoice.text = weapon.weaponDetail.upgradeDescription;
+        levelUpUIComponents[idx].TxtChoice.color = Settings.legend;
+        levelUpUIComponents[idx].TxtChangeValue.text = "";
+    }
 
     private void BtnWeaponStatUp(Weapon weapon, PlayerLevelUpList list)
     {
@@ -82,4 +96,6 @@ public class LevelUpUIComponents // 보여줄 UI 컴포넌트들
     public Image choiceImage;
     public TextMeshProUGUI TxtChoice;
     public TextMeshProUGUI TxtChangeValue;
+    public TextMeshProUGUI TxtWeaponLevel;
+    public Image weaponLevel;
 }

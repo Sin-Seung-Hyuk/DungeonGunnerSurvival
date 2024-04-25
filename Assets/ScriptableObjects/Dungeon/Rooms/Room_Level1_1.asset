@@ -15,7 +15,7 @@ MonoBehaviour:
   roomPrefab: {fileID: 8094615767779393151, guid: 7e84fe8d332adc241b8411986e0a3024, type: 3}
   roomName: 1-1. Red Cunnel
   isEntrance: 0
-  isBossRoom: 1
+  isBossRoom: 0
   lowerBounds: {x: -42, y: -30}
   upperBounds: {x: 32, y: 26}
   playerSpawnPos: {x: 0, y: 0, z: 0}

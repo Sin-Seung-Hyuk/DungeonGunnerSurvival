@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerExp : MonoBehaviour
 {
     [SerializeField] private ExpBarUI expBar;
-    private int level;
+    public int level { get; private set; }
     private int maxExp;
     private int currentExp;
     private Player player;

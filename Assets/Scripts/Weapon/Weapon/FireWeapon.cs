@@ -61,8 +61,8 @@ public class FireWeapon : MonoBehaviour
 
     private void FireAmmo(Weapon weapon, float aimAngle, Vector3 weaponAimDirectionVector, int weaponIndex)
     {
-        //Ammo currentAmmo = weapon.GetCurrentAmmo(weapon.weaponLevel); // 현재 무기의 탄
-        GameObject ammoPrefab = weapon.GetCurrentAmmo(weapon.weaponLevel);
+        GameObject ammoPrefab = weapon.GetCurrentAmmo(); // 현재 사용하고 있는 탄
+
         if (ammoPrefab != null)
         {
             // ammo에 오브젝트 풀에 등록된 Ammo프리팹이 가지고있는 IFireable 컴포넌트가 반환됨

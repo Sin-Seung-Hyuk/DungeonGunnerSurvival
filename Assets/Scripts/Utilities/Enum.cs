@@ -1,9 +1,16 @@
 
-public enum PlayerCharacter
+public enum WeaponType
 {
-    TheGeneral,
-    TheThief,
-    TheScientist
+    GM6Lynx,
+    MP7,
+    N22LaserBlaster,
+    Pistol,
+    PlasmaGun,
+    QBZ95SMG,
+    Revolver,
+    RocketLauncher,
+
+    EnemyWeapon
 }
 
 public enum PlayerStatType

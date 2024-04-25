@@ -36,9 +36,13 @@ public abstract class Ammo : MonoBehaviour, IFireable // 사격 인터페이스
 
         if (health != null)
         {
-            int damageAmount = health.TakeDamage(ammoDamage);
+            health.TakeDamage(ammoDamage, out int damageAmount);
             // 플레이어가 회피시 피격텍스트 X, 방어력만큼 깎인 수치 반영
-            if (damageAmount > 0) AmmoHitText(damageAmount, isCritic);
+            if (damageAmount > 0)
+            {
+                AmmoHitText(damageAmount, isCritic);
+                StatisticsManager.Instance.SetDamageStatistics(weapon.weaponDetail.weaponType, damageAmount); // 누적데미지 통계
+            }
         }
         else gameObject.SetActive(false); 
 

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WeaponDetails_Pistol
   m_EditorClassIdentifier: 
   weaponName: Pistol
+  weaponType: 3
   weaponSprite: {fileID: 21300000, guid: abbe40c4d6a803f42a7c4f53404a484d, type: 3}
   weaponBaseDamage: 20
   weaponCriticChance: 25
@@ -23,12 +24,12 @@ MonoBehaviour:
   weaponRange: 12
   weaponAmmoSpeed: 13
   weaponAmmo:
-  - {fileID: 4454987432227277477, guid: 4992750dc11052f42b5c9877e344c876, type: 3}
   - {fileID: 4454987432227277477, guid: 1a90ddc6ccc56e04e8ddcd467c2a5d5e, type: 3}
+  - {fileID: 4454987432227277477, guid: 4992750dc11052f42b5c9877e344c876, type: 3}
+  upgradeDescription: SLOW Enemy
   isTrail: 0
   ammoTrailMaterial: {fileID: 0}
   ammoTrailStartWidth: 0
   ammoTrailEndWidth: 0
   ammoTrailTime: 0
   weaponFiringSoundEffect: {fileID: 11400000, guid: 3e50ec44c5295d3439c6e44d00377f35, type: 2}
-  weaponReloadingSoundEffect: {fileID: 11400000, guid: 01251822b1c7cbf4aa83203f97875b41, type: 2}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WeaponDetails_QBZ95SMG
   m_EditorClassIdentifier: 
   weaponName: QBZ95SMG
+  weaponType: 5
   weaponSprite: {fileID: 21300000, guid: dff74299f2cf7674eb05930ed6b07f8e, type: 3}
   weaponBaseDamage: 20
   weaponCriticChance: 25
@@ -24,10 +25,10 @@ MonoBehaviour:
   weaponAmmoSpeed: 12
   weaponAmmo:
   - {fileID: 8274860614600379229, guid: ca412b232f83c3f4aaf5b157a9ba9bc2, type: 3}
+  upgradeDescription: 
   isTrail: 0
   ammoTrailMaterial: {fileID: 0}
   ammoTrailStartWidth: 0
   ammoTrailEndWidth: 0
   ammoTrailTime: 0
   weaponFiringSoundEffect: {fileID: 11400000, guid: 4225ce0c0a9f94048a0a296bb37af070, type: 2}
-  weaponReloadingSoundEffect: {fileID: 11400000, guid: d08f2238c0a3e1f4eb5516b75f2337d1, type: 2}

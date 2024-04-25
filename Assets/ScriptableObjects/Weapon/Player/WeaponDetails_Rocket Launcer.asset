@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WeaponDetails_Rocket Launcer
   m_EditorClassIdentifier: 
   weaponName: Rocket Launcer
+  weaponType: 7
   weaponSprite: {fileID: 21300000, guid: f4a1e113145591f45bfacfc7d7bf80c5, type: 3}
   weaponBaseDamage: 65
   weaponCriticChance: 25
@@ -24,10 +25,10 @@ MonoBehaviour:
   weaponAmmoSpeed: 16
   weaponAmmo:
   - {fileID: 4454987432227277477, guid: 6566c2c100613cb468d35fbcd5f8e0cb, type: 3}
+  upgradeDescription: 
   isTrail: 1
   ammoTrailMaterial: {fileID: 2100000, guid: 48f4966adea5f654bb6bea4ade4b7e8a, type: 2}
   ammoTrailStartWidth: 0.15
   ammoTrailEndWidth: 0.5
   ammoTrailTime: 0.15
   weaponFiringSoundEffect: {fileID: 11400000, guid: 766414ed20bdaf64d90c8a3bbd309c48, type: 2}
-  weaponReloadingSoundEffect: {fileID: 11400000, guid: 14cfa5736ab0f004192392a74032da71, type: 2}

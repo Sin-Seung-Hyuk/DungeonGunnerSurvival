@@ -7,6 +7,7 @@ public class WeaponDetailsSO : ScriptableObject
 {
     [Header("weapon base details")]
     public string weaponName;
+    public WeaponType weaponType;
     public Sprite weaponSprite;
 
     [Header("weapon operating values")]
@@ -21,11 +22,11 @@ public class WeaponDetailsSO : ScriptableObject
 
     [Header("weapon configuration")]
     public List<GameObject> weaponAmmo;
+    [TextArea] public string upgradeDescription;
     public bool isTrail; // Trail ·»´õ·¯ ¿©ºÎ
     public Material ammoTrailMaterial;
     public float ammoTrailStartWidth;
     public float ammoTrailEndWidth;
     public float ammoTrailTime;
     public SoundEffectSO weaponFiringSoundEffect;
-    public SoundEffectSO weaponReloadingSoundEffect;
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WeaponDetails_Revolver
   m_EditorClassIdentifier: 
   weaponName: Revolver
+  weaponType: 6
   weaponSprite: {fileID: 21300000, guid: 29bc0107bc11191468ed7d175994fb5b, type: 3}
   weaponBaseDamage: 65
   weaponCriticChance: 25
@@ -25,10 +26,10 @@ MonoBehaviour:
   weaponAmmo:
   - {fileID: 4454987432227277477, guid: 2c3c8e222ce0d0747a55957724e92f82, type: 3}
   - {fileID: 4454987432227277477, guid: 38d4030fb725ae148afda2f7320083b6, type: 3}
+  upgradeDescription: 
   isTrail: 0
   ammoTrailMaterial: {fileID: 0}
   ammoTrailStartWidth: 0
   ammoTrailEndWidth: 0
   ammoTrailTime: 0
   weaponFiringSoundEffect: {fileID: 11400000, guid: 83d2910f4cf8316498fbce8cd636eb13, type: 2}
-  weaponReloadingSoundEffect: {fileID: 11400000, guid: e3ebbc083611ac246823f65c46678093, type: 2}

@@ -189,15 +189,16 @@ public class Player : MonoBehaviour, IHealthObject
 
     // =================== Interface 구현 =============================================
     #region Interface
-    public int TakeDamage(int damageAmount)
+    public int TakeDamage(int ammoDamage,out int damageAmount)
     {
+        // 방어력만큼 데미지 % 깎기
+        damageAmount = Utilities.DecreaseByPercent(ammoDamage, stat.baseArmor);
+
         if (stat.dodgeChance >= 1)
         {
             // 회피에 성공
             if (Utilities.isSuccess(stat.dodgeChance)) return -1;
         }
-                                // 방어력만큼 데미지 % 깎기
-        damageAmount = Utilities.DecreaseByPercent(damageAmount, stat.baseArmor);
 
         health.SetCurrentHealth(damageAmount);
         health.CallHealthEvent(damageAmount);

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WeaponDetails_MP7
   m_EditorClassIdentifier: 
   weaponName: MP7
+  weaponType: 1
   weaponSprite: {fileID: 21300000, guid: a735f74a317b5f944929af56be472cb7, type: 3}
   weaponBaseDamage: 15
   weaponCriticChance: 25
@@ -24,10 +25,10 @@ MonoBehaviour:
   weaponAmmoSpeed: 14
   weaponAmmo:
   - {fileID: 4454987432227277477, guid: 9eb6671ad6d437f4e9e2ccefb3c910e1, type: 3}
+  upgradeDescription: 
   isTrail: 0
   ammoTrailMaterial: {fileID: 0}
   ammoTrailStartWidth: 0
   ammoTrailEndWidth: 0
   ammoTrailTime: 0
   weaponFiringSoundEffect: {fileID: 11400000, guid: ea6721b367566574f904348e491e36a1, type: 2}
-  weaponReloadingSoundEffect: {fileID: 11400000, guid: bb16debbf68831446ad853c3911ef8ec, type: 2}
