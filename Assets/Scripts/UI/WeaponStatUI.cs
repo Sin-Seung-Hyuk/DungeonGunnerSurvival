@@ -39,8 +39,8 @@ public class WeaponStatUI : MonoBehaviour
                 StatUIComponentList[i].TxtDamage.text = weapon.weaponBaseDamage.ToString();
                 StatUIComponentList[i].TxtCriticChance.text = weapon.weaponCriticChance.ToString();
                 StatUIComponentList[i].TxtCriticDamage.text = weapon.weaponCriticDamage.ToString();
-                StatUIComponentList[i].TxtFireRate.text = weapon.weaponFireRate.ToString();
-                StatUIComponentList[i].TxtReload.text = weapon.weaponReloadTime.ToString();
+                StatUIComponentList[i].TxtFireRate.text = weapon.weaponFireRate.ToString("F2");
+                StatUIComponentList[i].TxtReload.text = weapon.weaponReloadTime.ToString("F2"); // 소수점 2자리까지 표시
             }
         }
     }

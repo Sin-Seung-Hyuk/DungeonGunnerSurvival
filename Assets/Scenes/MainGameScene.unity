@@ -276,10 +276,10 @@ MonoBehaviour:
   - poolSize: 10
     prefab: {fileID: 6778550213661633531, guid: f82082fcefe173e4c873b128e2628d94, type: 3}
     componentType: IFireable
-  - poolSize: 100
+  - poolSize: 200
     prefab: {fileID: 5045320335855835643, guid: 7d9bf5c8e5746c642a787fa527ac3292, type: 3}
     componentType: Enemy
-  - poolSize: 100
+  - poolSize: 200
     prefab: {fileID: 2700208970764977922, guid: e94de283d9474c748b17cda2cbb8aa6f, type: 3}
     componentType: ItemPickUp
   - poolSize: 50
@@ -565,7 +565,7 @@ MonoBehaviour:
     ModeOverride: 1
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.479452, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1930,7 +1930,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3549284918307221643, guid: d17187c904cea764db437fbb95344b4e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3549284918377433344, guid: d17187c904cea764db437fbb95344b4e, type: 3}
       propertyPath: m_Name
@@ -1994,15 +1994,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3549284919532991192, guid: d17187c904cea764db437fbb95344b4e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3549284919532991192, guid: d17187c904cea764db437fbb95344b4e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3549284919532991192, guid: d17187c904cea764db437fbb95344b4e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -54.444794
       objectReference: {fileID: 0}
     - target: {fileID: 3581841530145531615, guid: d17187c904cea764db437fbb95344b4e, type: 3}
       propertyPath: m_AnchorMax.y

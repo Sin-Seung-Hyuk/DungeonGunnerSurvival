@@ -47,7 +47,7 @@ public static class Settings
     #endregion
 
     #region DUNGEON PARAMETERS
-    public const int dungeonTimer = 30; // 던전 타이머
+    public const int dungeonTimer = 150; // 던전 타이머
     #endregion
 
     #region ENEMY PARAMETERS

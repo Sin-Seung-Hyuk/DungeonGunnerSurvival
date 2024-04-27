@@ -17,17 +17,17 @@ MonoBehaviour:
   runtimeAnimatorController: {fileID: 9100000, guid: e87ce176a15556c459b355908992b930, type: 2}
   minimapIcon: {fileID: 21300000, guid: 709f49100a0267f419aa33d571fb9d25, type: 3}
   playerSprite: {fileID: -892881270494569320, guid: 788b52df224c1d14594c1176892c7ab3, type: 3}
-  playerStartingWeapon: {fileID: 11400000, guid: b4683f4ff6d55f64493c4f6533138766, type: 2}
+  playerStartingWeapon: {fileID: 11400000, guid: 36d37135570d1f9408f842b635db8ba1, type: 2}
   characterStrength: 'Max HP
 
     Base Armor'
   characterWeakness: Move Speed
   maxHp: 150
-  baseDamage: 0
-  baseArmor: 10
+  baseDamage: 100
+  baseArmor: 100
   dodgeChance: 0
   criticChance: 0
   criticDamage: 0
-  moveSpeed: 6
+  moveSpeed: 8.67
   circleRange: 0.8
   expGain: 0

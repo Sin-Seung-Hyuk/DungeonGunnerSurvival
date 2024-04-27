@@ -36,15 +36,15 @@ MonoBehaviour:
     ratio: 3
   spawnableItemList:
   - dungeonObject: {fileID: 11400000, guid: 7e62ab87baee6b8429b892d5f9d376f3, type: 2}
-    ratio: 40
+    ratio: 50
   - dungeonObject: {fileID: 11400000, guid: aa91d301142f72145ae3ff898f905170, type: 2}
-    ratio: 40
+    ratio: 50
   - dungeonObject: {fileID: 11400000, guid: 86c73ca8b9bef7b4c984771c28298d18, type: 2}
-    ratio: 25
+    ratio: 30
   - dungeonObject: {fileID: 11400000, guid: 3fb2f9b0a6a52a74a9bc5299650a8396, type: 2}
-    ratio: 25
+    ratio: 30
   - dungeonObject: {fileID: 11400000, guid: 246a9873cf2f0ce498e71fac5c63342a, type: 2}
-    ratio: 2
+    ratio: 3
   - dungeonObject: {fileID: 11400000, guid: 634b7a547ee78584797e6115e805c1ac, type: 2}
     ratio: 1
   - dungeonObject: {fileID: 11400000, guid: bb34eac8bc367444f8488bb0c7fdd425, type: 2}

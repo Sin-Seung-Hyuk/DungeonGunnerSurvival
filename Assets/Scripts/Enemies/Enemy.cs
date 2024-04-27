@@ -124,6 +124,7 @@ public class Enemy : MonoBehaviour, IHealthObject, IDebuff
 
         animator.runtimeAnimatorController = enemyDetails.runtimeAnimatorController;
 
+        EnemyEnable(true);
         gameObject.SetActive(true);
     }
 
@@ -185,6 +186,7 @@ public class Enemy : MonoBehaviour, IHealthObject, IDebuff
     }
     private void SetEnemyMovementUpdateFrame()
     {
+        enemyMovementAI.moveSpeed = enemyDetails.speed;
         enemyMovementAI.SetUpdateFrameNumber(60 % Settings.targetFrameRateToSpreadPathFindingOver);
     }
     private void SetEnemyAnimateSpeed()
