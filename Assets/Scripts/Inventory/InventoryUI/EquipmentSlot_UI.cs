@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class EquipmentSlot_UI : InventorySlot_UI // 기존 슬롯UI 상속
 {
     [SerializeField] private EquipmentType slotType; // 이 장비슬롯의 장비타입
+    [SerializeField] private Button BtnSlot;
+
 
     public override void OnUIISlotClick() // 슬롯UI 클릭함수 오버라이딩
     {
@@ -22,6 +24,7 @@ public class EquipmentSlot_UI : InventorySlot_UI // 기존 슬롯UI 상속
             GameManager.Instance.GetPlayer().playerStatChangedEvent
                 .CallPlayerStatChangedEvent(statChangeList.statType, statChangeList.changeValue);
         }
+        SetBtnColor(AssignedInventorySlot.ItemData.gradeColor);
     }
 
     // 장비 해제
@@ -32,5 +35,16 @@ public class EquipmentSlot_UI : InventorySlot_UI // 기존 슬롯UI 상속
             GameManager.Instance.GetPlayer().playerStatChangedEvent
                 .CallPlayerStatChangedEvent(statChangeList.statType, -statChangeList.changeValue);
         }
+        SetBtnColor(Color.white);
+    }
+
+    private void SetBtnColor(Color color)
+    {
+        ColorBlock btnColor = BtnSlot.colors;
+        btnColor.normalColor = color;
+        btnColor.highlightedColor = color;
+        btnColor.selectedColor = color;
+        btnColor.pressedColor = color;
+        BtnSlot.colors = btnColor;
     }
 }

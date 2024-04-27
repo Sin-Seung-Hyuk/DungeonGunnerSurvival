@@ -152,12 +152,11 @@ public abstract class InventoryDisplay : MonoBehaviour
         if (clickedSlotUI.AssignedInventorySlot.ItemData != null && mouseInventoryItem.AssignedInventorySlot.ItemData != null)
         {
             if (mouseInventoryItem.AssignedInventorySlot.ItemData.equipmentType == slotType)
-
             {
-                clickedSlotUI.UnequipItem(clickedSlotUI.AssignedInventorySlot.ItemData.playerStatChangeList);
-                clickedSlotUI.EquipItem(mouseInventoryItem.AssignedInventorySlot.ItemData.playerStatChangeList);
-
                 SwapSlot(clickedSlotUI);
+                clickedSlotUI.UnequipItem(mouseInventoryItem.AssignedInventorySlot.ItemData.playerStatChangeList);
+                clickedSlotUI.EquipItem(clickedSlotUI.AssignedInventorySlot.ItemData.playerStatChangeList);
+
                 return;
             }
         }

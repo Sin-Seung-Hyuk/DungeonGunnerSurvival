@@ -115,8 +115,9 @@ public class Enemy : MonoBehaviour, IHealthObject, IDebuff
         SetEnemyStartingWeapon();
 
         spriteRenderer.sprite = enemyDetails.sprite;
+        spriteRenderer.color = enemyDetails.spriteColor;
 
-        List<Vector2> spritePhysicsShapePointsList = new List<Vector2>();
+        List <Vector2> spritePhysicsShapePointsList = new List<Vector2>();
 
         spriteRenderer.sprite.GetPhysicsShape(0, spritePhysicsShapePointsList); // 스프라이트 테두리 따오기
         polygonCollider2D.points = spritePhysicsShapePointsList.ToArray(); // 피격판정 충돌체 그리기
@@ -140,6 +141,8 @@ public class Enemy : MonoBehaviour, IHealthObject, IDebuff
         // 머테리얼 코루틴이 끝난 후 풀에 반환하기 위해 파괴이벤트 호출
         DestroyedEvent destroyedEvent = GetComponent<DestroyedEvent>();
         destroyedEvent.CallDestroyedEvent(true, this.transform.position); // 풀에 반환해야하므로 true
+
+        StatisticsManager.Instance.TotalEnemiesKill++; // 처치한 적 수 증가
     }
 
     private void EnemyEnable(bool isEnable) // 적 활성화/비활성화 (콜라이더,움직임,사격)

@@ -92,6 +92,7 @@ public class ShopKeeperDisplay : MonoBehaviour
         }
 
         _playerInventory.PrimaryInventorySystem.SpendGold(basketTotal); // 플레이어는 돈 소비
+        StatisticsManager.Instance.TotalSpentGold += basketTotal; // 총 소모한 골드 증가
 
         RefreshDisplay();
     }

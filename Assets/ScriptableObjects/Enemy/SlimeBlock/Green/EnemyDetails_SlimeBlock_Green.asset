@@ -41,4 +41,3 @@ MonoBehaviour:
     enemyHealthAmount: 35
   - dungeonLevel: {fileID: 0}
     enemyHealthAmount: 40
-  isHealthBarDisplayed: 0

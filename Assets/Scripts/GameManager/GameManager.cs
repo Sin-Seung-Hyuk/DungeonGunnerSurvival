@@ -21,7 +21,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private Image bossRoomImage; // 페이드 텍스트
     [SerializeField] private CanvasGroup canvasGroup;    // 페이드 이미지
 
-    [SerializeField] private CanvasGroup gameOverUI;    // 게임실패,클리어시 나오는 UI
+    [SerializeField] private UIController uIController;    // UI 컨트롤러
 
     [HideInInspector] public GameState gameState;
     [HideInInspector] public GameState prevGameState;
@@ -87,7 +87,10 @@ public class GameManager : Singleton<GameManager>
     {
         gameState = GameState.InDungeon;
 
-        yield return new WaitForSeconds(2f);
+
+        yield return new WaitForSeconds(1f);
+        if (currentDungeonLevel == 1)
+            yield return StartCoroutine(AddWeaponToPlayer()); // 1레벨 던전은 매번 무기를 추가해줌
         StartCoroutine(Fade(0.75f, 2f));
 
         TxtFade.text = "PRESS 'ENTER' TO NEXT DUNGEON!";
@@ -107,7 +110,9 @@ public class GameManager : Singleton<GameManager>
     {
         gameState = GameState.InDungeon;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
+        if (currentDungeonLevel == 1)
+            yield return StartCoroutine(AddWeaponToPlayer()); // 1레벨 던전은 매번 무기를 추가해줌
         StartCoroutine(Fade(0.75f, 2f));
 
         TxtFade.text = "LEVEL CLEAR!\nPRESS 'ENTER' TO ENTRANCE!";
@@ -135,7 +140,7 @@ public class GameManager : Singleton<GameManager>
         yield return new WaitForSeconds(2f);
         yield return StartCoroutine(Fade(0.75f, 2f));
 
-        gameOverUI.gameObject.SetActive(true);
+        uIController.SetGameOverUI(); // 게임오버 UI 활성화
 
         while (!Input.GetKeyDown(KeyCode.Return))
         {   // 리턴 키를 입력할때까지 반복
@@ -154,7 +159,45 @@ public class GameManager : Singleton<GameManager>
         TxtFade.text = instantiatedRoom.roomTemplate.roomName;
         if (instantiatedRoom.isBossRoom) bossRoomImage.gameObject.SetActive(true);
         else bossRoomImage.gameObject.SetActive(false);
-        StartCoroutine(Fade(0, 3f));
+        StartCoroutine(Fade(0, 2f));
+    }
+
+    private IEnumerator AddWeaponToPlayer() // 1레벨 던전을 클리어하면서 무기 하나씩 획득
+    {
+        WeaponDetailsSO weaponDetail = null;
+        List<WeaponDetailsSO> weaponList = GameResources.Instance.weaponList;
+
+        while (true)
+        {
+            weaponDetail = weaponList[UnityEngine.Random.Range(0, weaponList.Count)];
+            bool hasWeapon = false; // 갖고있는 무기인지 검사
+
+            foreach (var playerWeapon in player.weaponList)
+            {
+                if (weaponDetail == playerWeapon.weaponDetail)
+                {
+                    hasWeapon = true;
+                    break; // 이미 가진무기라면 반복문 종료
+                }
+            }
+
+            if (!hasWeapon)
+            {
+                break; // 가진 무기가 아니라면 반복문 종료
+            }
+        }
+
+        uIController.SetAddWeaponUI(weaponDetail, true); // UI 컨트롤러의 무기추가 UI 활성화 함수호출
+
+        while (!Input.GetKeyDown(KeyCode.Return))
+        {   // 리턴 키를 입력할때까지 반복
+            yield return null;
+        }
+
+        yield return null;
+
+        uIController.SetAddWeaponUI(weaponDetail, false);
+        player.AddWeaponToPlayer(weaponDetail);
     }
     #endregion
 

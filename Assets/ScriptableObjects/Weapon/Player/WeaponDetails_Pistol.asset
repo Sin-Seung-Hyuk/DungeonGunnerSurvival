@@ -15,18 +15,18 @@ MonoBehaviour:
   weaponName: Pistol
   weaponType: 3
   weaponSprite: {fileID: 21300000, guid: abbe40c4d6a803f42a7c4f53404a484d, type: 3}
-  weaponBaseDamage: 20
-  weaponCriticChance: 25
+  weaponBaseDamage: 25
+  weaponCriticChance: 10
   weaponCriticDamage: 50
-  weaponAmmoCapacity: 17
-  weaponFireRate: 0.7
+  weaponAmmoCapacity: 20
+  weaponFireRate: 1
   weaponReloadTime: 1.5
   weaponRange: 12
-  weaponAmmoSpeed: 13
+  weaponAmmoSpeed: 12
   weaponAmmo:
   - {fileID: 4454987432227277477, guid: 1a90ddc6ccc56e04e8ddcd467c2a5d5e, type: 3}
   - {fileID: 4454987432227277477, guid: 4992750dc11052f42b5c9877e344c876, type: 3}
-  upgradeDescription: SLOW Enemy
+  upgradeDescription: A bullet slows the enemy
   isTrail: 0
   ammoTrailMaterial: {fileID: 0}
   ammoTrailStartWidth: 0

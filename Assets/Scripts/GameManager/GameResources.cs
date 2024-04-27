@@ -26,6 +26,7 @@ public class GameResources : MonoBehaviour
     public CurrentPlayerSO currentPlayer;
     public GameObject playerSelectionPrefab;
     public List<PlayerDetailsSO> playerDetailsList;
+    public List<WeaponDetailsSO> weaponList;
     public GameObject potionStateImage;
 
     [Space(10)]

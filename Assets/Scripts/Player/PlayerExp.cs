@@ -40,7 +40,7 @@ public class PlayerExp : MonoBehaviour
     private void LevelUp()
     {
         currentExp -= maxExp;
-        maxExp = maxExp + (int)(maxExp * 0.05f); // 최대경험치 5% 증가
+        maxExp = maxExp + (int)(maxExp * 0.07f); // 최대경험치 5% 증가
 
         expBar.SetLevel(++level);
 

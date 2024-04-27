@@ -15,15 +15,16 @@ MonoBehaviour:
   weaponName: QBZ95SMG
   weaponType: 5
   weaponSprite: {fileID: 21300000, guid: dff74299f2cf7674eb05930ed6b07f8e, type: 3}
-  weaponBaseDamage: 20
-  weaponCriticChance: 25
+  weaponBaseDamage: 35
+  weaponCriticChance: 10
   weaponCriticDamage: 50
-  weaponAmmoCapacity: 17
-  weaponFireRate: 0.85
-  weaponReloadTime: 1.9
-  weaponRange: 13
-  weaponAmmoSpeed: 12
+  weaponAmmoCapacity: 25
+  weaponFireRate: 0.8
+  weaponReloadTime: 2.5
+  weaponRange: 14
+  weaponAmmoSpeed: 15
   weaponAmmo:
+  - {fileID: 4454987432227277477, guid: a63d5773f98b2c84aade89e10aafcdb2, type: 3}
   - {fileID: 8274860614600379229, guid: ca412b232f83c3f4aaf5b157a9ba9bc2, type: 3}
   upgradeDescription: 
   isTrail: 0

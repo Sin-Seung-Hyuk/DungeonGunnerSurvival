@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3219becdae0357e47aaee7920d257ac8, type: 3}
+  m_Name: Room_Level1_2
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4327421925113694216, guid: 3febf765dbadb7240bc6b6e0bbb777eb, type: 3}
+  roomName: test
+  isEntrance: 0
+  isBossRoom: 0
+  lowerBounds: {x: -44, y: -12}
+  upperBounds: {x: 70, y: 62}
+  playerSpawnPos: {x: -14, y: -22, z: 0}
+  spawnPositionArray:
+  - {x: -35, y: 31}
+  - {x: -35, y: 17}
+  - {x: 63, y: 31}
+  - {x: 63, y: 17}
+  - {x: 4, y: 58}
+  - {x: 22, y: 58}
+  - {x: 4, y: -8}
+  - {x: 22, y: -8}
+  - {x: -22, y: 45}
+  - {x: -22, y: 3}
+  - {x: 48, y: 3}
+  - {x: 48, y: 45}
+  spawnableEnemyList:
+  - dungeonObject: {fileID: 11400000, guid: 2bb1c82ba6be59841a63d3223db83545, type: 2}
+    ratio: 5
+  - dungeonObject: {fileID: 11400000, guid: fac23ecfe5d254542ba460bca1718f7f, type: 2}
+    ratio: 3
+  - dungeonObject: {fileID: 11400000, guid: 2ff4a0c0e714e2c43b45264fa66fcb32, type: 2}
+    ratio: 2
+  spawnableItemList: []
+  spawnParameter:
+    waveDistance: 30
+    waveDuration: 10
+    spawnDistanceInWave: 1.5
+    spawnDistance: 0.8
+  spawnableBossList: []

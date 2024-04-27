@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 105
   DisplayName: Serendipity Potion
-  Description: Critic Chance + 15% (30sec)
+  Description: Critic Chance + 15% (60sec)
   ItemSprite: {fileID: 3641686006095517685, guid: 1a59e6589a702274ca77ec6b61130abd, type: 3}
   MaxStackSize: 50
-  GoldValue: 600
-  itemGrade: 20
+  GoldValue: 500
+  itemGrade: 30
   gradeColor: {r: 0.8862745, g: 0.49019608, b: 0.07450981, a: 1}
   itemType: 0
   equipmentType: 7

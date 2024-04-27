@@ -6,8 +6,8 @@ using UnityEngine;
 public class StatisticsManager : Singleton<StatisticsManager> // 통계 관리
 {
     [SerializeField] private List<DamageStatistics> DamageStatisticsList = new List<DamageStatistics>(8);
-    public int TotalEnemiesKill { get; private set; } // 총 처치한 적
-    public int TotalSpentGold { get; private set; } // 총 사용한 골드
+    [HideInInspector] public int TotalEnemiesKill; // 총 처치한 적
+    [HideInInspector] public int TotalSpentGold; // 총 사용한 골드
 
 
     protected override void Awake()
@@ -23,7 +23,10 @@ public class StatisticsManager : Singleton<StatisticsManager> // 통계 관리
     private void ClearDamageStatisticsList()
     {
         for (int i = 0; i < DamageStatisticsList.Count; ++i)
-            DamageStatisticsList[i].dealt = 0;   
+            DamageStatisticsList[i].dealt = 0;
+
+        TotalEnemiesKill = 0;
+        TotalSpentGold = 0;
     }
 
     public void SetDamageStatistics(WeaponType weaponType, int damageAmount)

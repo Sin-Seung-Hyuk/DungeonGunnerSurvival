@@ -8,12 +8,10 @@ public class PlayerLevelUp : MonoBehaviour
     [SerializeField] List<SpawnableObjectRatio<PlayerLevelUpList>> levelUpList; // 레벨업 선택지 리스트
     [SerializeField] PlayerLevelUpUI levelUpUI; // 레벨업 UI
     private RandomSpawnableObject<PlayerLevelUpList> playerLevelUpList; // 랜덤으로 선택될 레벨업 선택지
-    private Player player;
     private PlayerLevelUpEvent playerLevelUpEvent;
 
     private void Awake()
     {
-        player = GetComponent<Player>();
         playerLevelUpEvent = GetComponent<PlayerLevelUpEvent>();
         playerLevelUpList = new RandomSpawnableObject<PlayerLevelUpList>(levelUpList);
     }
@@ -31,14 +29,14 @@ public class PlayerLevelUp : MonoBehaviour
     {
         if (levelUpList.Count > 0)
         {
-            int[] randomChoice = new int[3];
+            List<int> randomChoice = new List<int>();
 
-            for (int i = 0; i < 3; i++)
+            while (randomChoice.Count < 3)
             {
-                randomChoice[i] = Random.Range(0, playerLevelUpList.ratioValueTotal); // 아이템의 종류 결정 
-                for (int j = 0; j < i; j++)
+                int randomNumber = Random.Range(0, playerLevelUpList.ratioValueTotal); // 레벨업 종류 결정 
+                if (!randomChoice.Contains(randomNumber))
                 {
-                    if (randomChoice[i] == randomChoice[j]) i--;
+                    randomChoice.Add(randomNumber);
                 }
             }
 

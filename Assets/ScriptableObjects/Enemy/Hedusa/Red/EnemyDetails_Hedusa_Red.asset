@@ -15,11 +15,11 @@ MonoBehaviour:
   enemyName: Hedusa Red
   enemyPrefab: {fileID: 5608039967066705527, guid: 7e8d84ca627068841816fdf5f327c5f6, type: 3}
   sprite: {fileID: -8023197995696302144, guid: a53e0a6238da01b4a9189f65aeb58998, type: 3}
-  spriteColor: {r: 0.8980392, g: 0.26666668, b: 0.19215687, a: 1}
+  spriteColor: {r: 0.9764706, g: 0.34509805, b: 0.27058825, a: 1}
   runtimeAnimatorController: {fileID: 9100000, guid: 19b6ff9fbadc74e479b63068d33eb245, type: 2}
   speed: 8
   chaseDistance: 0.2
-  contactDamageAmount: 5
+  contactDamageAmount: 10
   enemyStandardMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   enemyMaterializeTime: 1
   enemyMaterializeShader: {fileID: -6465566751694194690, guid: 5fec8f8e6ea244648a3c6ede24a56288, type: 3}
@@ -30,15 +30,4 @@ MonoBehaviour:
   firingLineOfSightRequired: 0
   enemyHealthDetailsArray:
   - dungeonLevel: {fileID: 0}
-    enemyHealthAmount: 20
-  - dungeonLevel: {fileID: 0}
-    enemyHealthAmount: 25
-  - dungeonLevel: {fileID: 0}
-    enemyHealthAmount: 35
-  - dungeonLevel: {fileID: 0}
-    enemyHealthAmount: 40
-  - dungeonLevel: {fileID: 0}
-    enemyHealthAmount: 40
-  - dungeonLevel: {fileID: 0}
-    enemyHealthAmount: 50
-  isHealthBarDisplayed: 0
+    enemyHealthAmount: 100

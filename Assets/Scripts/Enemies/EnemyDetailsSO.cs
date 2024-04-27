@@ -31,5 +31,4 @@ public class EnemyDetailsSO : ScriptableObject
 
     [Header("enemy health")]
     public EnemyHealthDetails[] enemyHealthDetailsArray; // 던전레벨별 체력
-    public bool isHealthBarDisplayed = false;
 }

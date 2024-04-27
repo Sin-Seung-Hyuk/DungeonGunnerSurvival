@@ -94,8 +94,8 @@ public class EnemySpawner : Singleton<EnemySpawner>
         {
             i++;
 
-            // 그리드 기준 스폰가능 배열에서 랜덤으로 가져와 스폰지점 만들기
-            Vector3Int cellPos = (Vector3Int)currentRoom.spawnPositionArray[Random.Range(0, currentRoom.spawnPositionArray.Count)];
+            // 그리드 기준 스폰가능 배열에서 랜덤으로 가져와 스폰지점 만들기 (플레이어 스폰좌표만큼 맵이 이동되어있으므로 더해줘야함)
+            Vector3Int cellPos = (Vector3Int)currentRoom.spawnPositionArray[Random.Range(0, currentRoom.spawnPositionArray.Count)] + currentRoom.playerSpawnPos;
 
             Enemy enemyObj = (Enemy)ObjectPoolManager.Instance.Release(enemyPrefab, cellPos, Quaternion.identity);
 

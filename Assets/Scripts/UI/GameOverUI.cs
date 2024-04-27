@@ -41,6 +41,8 @@ public class GameOverUI : MonoBehaviour
 
         playerImage.sprite = player.playerDetails.playerSprite;
         TxtPlayerLevel.text = "Level : "+ player.playerExp.level.ToString();
+        TxtTotalKills.text = "Total Enemy Kills : " + StatisticsManager.Instance.TotalEnemiesKill.ToString();
+        TxtTotalSpentGold.text = "Total Spent Gold : " + StatisticsManager.Instance.TotalSpentGold.ToString();
     }
 }
 
