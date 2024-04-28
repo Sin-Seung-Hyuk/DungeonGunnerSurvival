@@ -13,7 +13,9 @@ public class InventoryUIController : MonoBehaviour
     [FormerlySerializedAs("chestPanel")] // 인스펙터의 값 유지 (리팩토링해도 유지)
     public DynamicInventoryDisplay inventoryPanel; // 동적인벤토리 UI (창고)
     public DynamicInventoryDisplay playerPanel; // 동적인벤토리 UI (플레이어)
-    public PlayerEquipmentHolder equipmentPanel; // 동적인벤토리 UI (장비)
+    public PlayerEquipmentHolder equipmentPanel; // 인벤토리 UI (장비)
+
+    private bool isTogleEquipment = false;
 
     private void Awake()
     {
@@ -36,30 +38,11 @@ public class InventoryUIController : MonoBehaviour
 
     void Update()
     {
-        if (inventoryPanel.gameObject.activeInHierarchy &&
-            Keyboard.current.escapeKey.wasPressedThisFrame)
-            inventoryPanel.gameObject.SetActive(false);
-
-        if (playerPanel.gameObject.activeInHierarchy &&
-            Keyboard.current.escapeKey.wasPressedThisFrame)
-        { 
-            playerPanel.gameObject.SetActive(false);
-        }
-
-        if (equipmentPanel.gameObject.activeInHierarchy &&
-            Keyboard.current.escapeKey.wasPressedThisFrame)
-        {
-            equipmentPanel.gameObject.SetActive(false);
-
-            Time.timeScale = 1;
-        }
-
         // TAB 키로 장비창 활성화
         if (Keyboard.current.tabKey.wasPressedThisFrame)
         {
-            PlayerEquipmentHolder.OnPlayerEquipmentDisplayRequested?.Invoke();
-
-            Time.timeScale = 0;
+            DisplayPlayerEquipment();
+            isTogleEquipment = !isTogleEquipment;
         }
     } 
 
@@ -67,19 +50,36 @@ public class InventoryUIController : MonoBehaviour
     // 동적 인벤토리가 열리면 이 함수가 호출됨
     private void DisplayInventory(InventorySystem invToDisplay, int offset)
     {
-        inventoryPanel.gameObject.SetActive(true);
-        inventoryPanel.RefreshInventory(invToDisplay, offset);
+        if (!inventoryPanel.gameObject.activeSelf)
+        {
+            inventoryPanel.gameObject.SetActive(true);
+            inventoryPanel.RefreshInventory(invToDisplay, offset);
+        }
+        else inventoryPanel.gameObject.SetActive(false);
     }
 
     private void DisplayPlayerInventory(InventorySystem invToDisplay, int offset)
     {
-        playerPanel.gameObject.SetActive(true);
-        playerPanel.RefreshInventory(invToDisplay, offset);
+        if (!playerPanel.gameObject.activeSelf)
+        {
+            playerPanel.gameObject.SetActive(true);
+            playerPanel.RefreshInventory(invToDisplay, offset);
+        }
+        else playerPanel.gameObject.SetActive(false);
     }
 
     private void DisplayPlayerEquipment()
     {
-        equipmentPanel.gameObject.SetActive(true);
+        if (isTogleEquipment)
+        {
+            equipmentPanel.gameObject.SetActive(false);
+
+            Time.timeScale = 1;
+        } else if (!isTogleEquipment)
+        {
+            equipmentPanel.gameObject.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 }
 

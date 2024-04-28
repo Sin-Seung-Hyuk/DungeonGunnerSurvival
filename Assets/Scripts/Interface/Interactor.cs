@@ -13,6 +13,7 @@ public class Interactor : MonoBehaviour
     public float InteractionPointRadius = 1f;
     public bool IsInteracting { get; private set; }
 
+
     private void Update()
     {
         // 상호작용 위치 주위 충돌체크
@@ -40,6 +41,6 @@ public class Interactor : MonoBehaviour
 
     private void EndInteracting()
     {
-        IsInteracting = false;
+
     }
 }

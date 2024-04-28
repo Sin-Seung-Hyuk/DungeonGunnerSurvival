@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f0d97d71498a64a9440f57c75e217e, type: 3}
   m_Name: SoundEffect_LevelUp
   m_EditorClassIdentifier: 
-  soundEffectName: ChestOpen
+  soundEffectName: LevelUp
   soundPrefab: {fileID: 3569315727940573030, guid: 711bf167bff05cf488be307e23f0d0e5, type: 3}
-  soundEffectClip: {fileID: 8300000, guid: 8f61ae245e5e9344a9834b6540c9ecb5, type: 3}
-  soundEffectPitchVariationMin: 0.8
-  soundEffectPitchVariationMax: 1.2
+  soundEffectClip: {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
+  soundEffectPitchVariationMin: 1
+  soundEffectPitchVariationMax: 1
   soundEffectVolume: 0.5

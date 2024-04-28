@@ -9,6 +9,7 @@ using UnityEngine;
 public class ItemPickUp : MonoBehaviour  // 아이템에 연결할 클래스
 {
     [SerializeField] private InventoryItemData itemData; // 아이템이 가지고 있는 아이템데이터
+    [SerializeField] private SoundEffectSO itemPickUpSound;
 
     private SpriteRenderer spriteRenderer;
     private ParticleSystem particle;
@@ -59,6 +60,8 @@ public class ItemPickUp : MonoBehaviour  // 아이템에 연결할 클래스
         {
             gainExp += inventoryHolder.stat.expGain;
             inventoryHolder.playerExp.TakeExp(gainExp);
+
+            SoundEffectManager.Instance.PlaySoundEffect(itemPickUpSound);
             gameObject.SetActive(false);
         }
     }

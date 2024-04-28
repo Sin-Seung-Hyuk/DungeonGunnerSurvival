@@ -11,12 +11,23 @@ public class PlayerLevelUpUI : MonoBehaviour
     [SerializeField] private List<LevelUpUIComponents> levelUpUIComponents = new List<LevelUpUIComponents>(3);
     private Player player;
 
+    [SerializeField] private SoundEffectSO levelUpSound;
+    [SerializeField] private SoundEffectSO levelUpChoiceSound;
+
 
     private void OnEnable()
     {
         Time.timeScale = 0; // 이 UI가 활성화 될때마다 일시정지
 
         // 사운드 추가
+        SoundEffectManager.Instance.PlaySoundEffect(levelUpSound);
+        MusicManager.Instance.SetMusicLowSnapShot(); // 배경음악 줄이기
+    }
+
+    private void OnDisable()
+    {
+        SoundEffectManager.Instance.PlaySoundEffect(levelUpChoiceSound);
+        MusicManager.Instance.SetMusicFullSnapShot();
     }
 
     public void InitializeLevelUpUI(PlayerLevelUpList list, int idx) // 몇번째 UI 컴포넌트들 설정인지

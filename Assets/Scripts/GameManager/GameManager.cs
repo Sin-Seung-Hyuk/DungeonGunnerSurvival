@@ -196,8 +196,29 @@ public class GameManager : Singleton<GameManager>
 
         yield return null;
 
+        SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.weaponPickUp);
         uIController.SetAddWeaponUI(weaponDetail, false);
         player.AddWeaponToPlayer(weaponDetail);
+    }
+
+    private void PauseGameMenu()
+    {
+        if (gameState != GameState.Paused)
+        {
+            uIController.SetPauseUI(true); // 일시정지 UI 활성화
+            //player.playerControl.DisablePlayer();
+
+            prevGameState = gameState;
+            gameState = GameState.Paused;
+        }
+        else if (gameState == GameState.Paused)
+        {
+            uIController.SetPauseUI(false);
+            //player.playerControl.EnablePlayer();
+
+            gameState = prevGameState;
+            prevGameState = GameState.Paused;
+        }
     }
     #endregion
 
@@ -212,10 +233,16 @@ public class GameManager : Singleton<GameManager>
                 // 사격 이벤트 호출 X 
                 player.fireWeapon.enabled = false;
                 player.health.AddHealth(100); // 입구로 돌아오면 체력 100% 회복 (한번만)
+                // 일시정지 메뉴                       
+                if (Input.GetKeyDown(KeyCode.Escape))
+                    PauseGameMenu();
                 break;
 
             case GameState.InDungeon:
                 player.fireWeapon.enabled = true;
+                // 일시정지 메뉴
+                if (Input.GetKeyDown(KeyCode.Escape))
+                    PauseGameMenu();
                 break;
 
             case GameState.DungeonRoomClear: // 타이머가 끝나면 이벤트 호출 (게임상태 변화)
@@ -236,6 +263,9 @@ public class GameManager : Singleton<GameManager>
                 break;
 
             case GameState.Paused:
+                // 일시정지 메뉴
+                if (Input.GetKeyDown(KeyCode.Escape))
+                    PauseGameMenu();
                 break;
 
             case GameState.RestartGame:
@@ -275,6 +305,8 @@ public class GameManager : Singleton<GameManager>
         if (args.room.isBossRoom) // 보스방 클리어인지 확인
             gameState = GameState.DungeonCompleted;
         else gameState = GameState.DungeonRoomClear;
+
+        SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.dungeonClear);
     }
 
     private void Player_OnDestroyed(DestroyedEvent arg1, DestroyedEventArgs arg2)
@@ -297,7 +329,8 @@ public class GameManager : Singleton<GameManager>
     }
     public Vector3Int GetPlayerCellPosition()
     {
-        return instantiatedRoom.grid.WorldToCell(player.transform.position);
+        Vector3Int playerCellPos = instantiatedRoom.grid.WorldToCell(player.transform.position);
+        return playerCellPos;
     }
     public Sprite GetPlayerMinimapIcon()
     {

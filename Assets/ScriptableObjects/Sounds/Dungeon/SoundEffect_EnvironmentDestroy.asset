@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f0d97d71498a64a9440f57c75e217e, type: 3}
   m_Name: SoundEffect_EnvironmentDestroy
   m_EditorClassIdentifier: 
-  soundEffectName: ChestOpen
+  soundEffectName: EnvironmentDestroy
   soundPrefab: {fileID: 3569315727940573030, guid: 711bf167bff05cf488be307e23f0d0e5, type: 3}
   soundEffectClip: {fileID: 8300000, guid: a359800f30ed2d04cba7001ef7af6855, type: 3}
   soundEffectPitchVariationMin: 0.8

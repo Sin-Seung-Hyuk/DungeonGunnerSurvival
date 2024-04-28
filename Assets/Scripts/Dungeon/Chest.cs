@@ -8,10 +8,7 @@ public class Chest : MonoBehaviour, IInteractable
     [SerializeField] private Color materializeColor; // 상자의 색
     [SerializeField] private float materializeTime = 3f; // 상자가 나타나는 시간
     [SerializeField] private Transform itemSpawnPoint; 
-    [SerializeField] private ChestSpawner chestSpawner; 
-
-    private WeaponDetailsSO weaponDetails;
-    private GameObject chestItemGameObject;
+    [SerializeField] private GameObject itemPrefab;
 
     private MaterializeEffect materializeEffect;
     private Animator animator;
@@ -22,7 +19,6 @@ public class Chest : MonoBehaviour, IInteractable
     {
         animator = GetComponent<Animator>();
         materializeEffect = GetComponent<MaterializeEffect>();
-        weaponDetails = chestSpawner.weaponDetail;
     }
 
     private void OnEnable()
@@ -70,20 +66,21 @@ public class Chest : MonoBehaviour, IInteractable
     {
         animator.SetBool(Settings.use, true);
 
-        chestItemGameObject = Instantiate(GameResources.Instance.chestItemPrefab, itemSpawnPoint);
-
-        chestItemGameObject.GetComponent<SpriteRenderer>().sprite = weaponDetails.weaponSprite;
-
         SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.chestOpen);
 
         yield return new WaitForSeconds(1.5f);
 
-        GameManager.Instance.GetPlayer().AddWeaponToPlayer(weaponDetails);
-        chestItemGameObject.gameObject.SetActive(false);
+        int randomItem = Random.Range(1000, 1028);
+
+        ItemPickUp itemObj = (ItemPickUp)ObjectPoolManager.Instance.Release(itemPrefab, itemSpawnPoint.position, Quaternion.identity);
+
+        // 데이터베이스에서 아이템 랜덤으로 하나 가져오기
+        itemObj.GetComponent<ItemPickUp>().InitializeItem(GameResources.Instance.database.GetItem(randomItem));
     }
 
 
     public void EndInteraction()
     {
+
     }
 }

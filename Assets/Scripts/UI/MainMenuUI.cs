@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] private GameObject BtnPlay;
-    //[SerializeField] private GameObject BtnHighScores;
     [SerializeField] private GameObject BtnReturnToMainMenu;
     [SerializeField] private GameObject BtnGameRules;
 
@@ -16,7 +15,7 @@ public class MainMenuUI : MonoBehaviour
 
     void Start()
     {
-        //MusicManager.Instance.PlayMusic(GameResources.Instance.mainMusic, 0f, 2f);
+        MusicManager.Instance.PlayMusic(GameResources.Instance.mainMusic, 0f, 2f);
 
         SceneManager.LoadScene("CharacterScene", LoadSceneMode.Additive);
 
@@ -27,7 +26,6 @@ public class MainMenuUI : MonoBehaviour
     public void LoadHighScore()
     {
         BtnPlay.SetActive(false);
-        //BtnHighScores.SetActive(false);
         BtnGameRules.SetActive(false);
         isHighScoreScene = true;
 
@@ -58,7 +56,6 @@ public class MainMenuUI : MonoBehaviour
         }
 
         BtnPlay.SetActive(true);
-        //BtnHighScores.SetActive(true);
         BtnGameRules.SetActive(true);
 
         SceneManager.LoadScene("CharacterScene", LoadSceneMode.Additive);
@@ -67,7 +64,6 @@ public class MainMenuUI : MonoBehaviour
     public void LoadGameRulesScene()
     {
         BtnPlay.SetActive(false);
-        //BtnHighScores.SetActive(false);
         BtnGameRules.SetActive(false);
         isGameRulesScene = true;
 

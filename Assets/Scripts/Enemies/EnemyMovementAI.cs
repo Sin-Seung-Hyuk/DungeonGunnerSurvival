@@ -14,7 +14,7 @@ public class EnemyMovementAI : MonoBehaviour
     private WaitForFixedUpdate waitForFixedUpdate;
     public float moveSpeed; //movementDetail에서 받아온 이속
     private float chaseDistance; //movementDetail에서 받아온 플레이어와의 간격 (플레이어를 어디까지 쫓아올지)
-    private List<Vector2Int> surroundPosList = new List<Vector2Int>(); // 플레이어 주위 포지션
+    private List<Vector2Int> surroundPosList = new List<Vector2Int>();
 
     [HideInInspector] public int updateFrameNumber = 1; // 업데이트 프레임
 
@@ -96,8 +96,9 @@ public class EnemyMovementAI : MonoBehaviour
         Room currentRoom = GameManager.Instance.GetCurrentRoom(); // 현재 생성되어 있는 방 가져오기
         Grid grid = currentRoom.grid; // 현재 방의 Grid 컴포넌트 가져오기 
 
-        // 그리드에서 플레이어 포지션 얻기
-        Vector3Int playerGridPos = GameManager.Instance.GetPlayerCellPosition();
+        // 그리드에서 플레이어 포지션 얻기 (플레이어 위치에 적합한 곳 찾기)
+        Vector3Int playerGridPos = GetNearPlayerPos(currentRoom);
+
         // 그리드에서 적 포지션 얻기
         Vector3Int enemyGridPos = grid.WorldToCell(transform.position);
 
@@ -109,21 +110,21 @@ public class EnemyMovementAI : MonoBehaviour
     }
 
     private Vector3Int GetNearPlayerPos(Room currentRoom)
-    {   // 플레이어가 장애물쪽에 있으면 그 근처의 위치로 이동해야함
-        Vector3 playerPos = GameManager.Instance.GetPlayerPosition();
+    {   
+        // 플레이어가 장애물쪽에 있으면 그 근처의 위치로 이동해야함
+        Vector3Int playerCellPos = GameManager.Instance.GetPlayerCellPosition();
 
-        Vector3Int playerCellPos = currentRoom.grid.WorldToCell(playerPos);
-
+        // 현재 맵을 기준으로 플레이어 포지션 구하기 (월드포지션이 아닌 맵의 좌표)
         Vector2Int adjustPlayerCellPos = new Vector2Int(playerCellPos.x - currentRoom.lowerBounds.x,
             playerCellPos.y - currentRoom.lowerBounds.y);
 
-        int obstacle = Mathf.Min(currentRoom.aStarMovementPenalty[adjustPlayerCellPos.x, adjustPlayerCellPos.y],
-            currentRoom.aStarItemObstacles[adjustPlayerCellPos.x, adjustPlayerCellPos.y]);
+        // 맵에서 플레이어 위치의 G값 구하기 (플레이어가 장애물 근처에 있는지 확인)
+        int obstacle = currentRoom.aStarMovementPenalty[adjustPlayerCellPos.x, adjustPlayerCellPos.y];
 
         if (obstacle != 0) return playerCellPos; // 현재 플레이어가 장애물에 위치하지 않음
         else
         {
-            surroundPosList.Clear();
+            surroundPosList.Clear(); // 장애물에 위치한 플레이어의 근처 좌표
 
             for (int i = -1; i <= 1; i++)
             {
@@ -131,33 +132,24 @@ public class EnemyMovementAI : MonoBehaviour
                 {
                     if (j == 0 && i == 0) continue;
 
-                    surroundPosList.Add(new Vector2Int(i, j));
+                    surroundPosList.Add(new Vector2Int(i, j)); // 8방향 검사하기
                 }
             }
 
             for (int i = 0; i < 8; i++)
             {
-                int index = Random.Range(0, surroundPosList.Count);
+                obstacle = currentRoom.aStarMovementPenalty[adjustPlayerCellPos.x +
+                    surroundPosList[i].x, adjustPlayerCellPos.y + surroundPosList[i].y];
 
-                try
+                if (obstacle != 0) // 장애물이 아닌 좌표 발견
                 {
-                    obstacle = Mathf.Min(currentRoom.aStarMovementPenalty[adjustPlayerCellPos.x +
-                        surroundPosList[index].x, adjustPlayerCellPos.y + surroundPosList[index].y],
-                        currentRoom.aStarItemObstacles[adjustPlayerCellPos.x + surroundPosList[index].x,
-                        adjustPlayerCellPos.y + surroundPosList[index].y]);
-
-                    if (obstacle != 0)
-                    {
-                        return new Vector3Int(playerCellPos.x + surroundPosList[index].x, playerCellPos.y + surroundPosList[index].y, 0);
-                    }
+                    return new Vector3Int(playerCellPos.x + surroundPosList[i].x, playerCellPos.y + surroundPosList[i].y, 0);
                 }
-                catch
-                {
 
-                }
-                surroundPosList.RemoveAt(index);
+                surroundPosList.RemoveAt(i);
             }
 
+            // 발견하지 못했다면 랜덤으로 이동
             return (Vector3Int)currentRoom.spawnPositionArray[Random.Range(0, currentRoom.spawnPositionArray.Count)];
         }
     }

@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 0}
+  itemPickUpSound: {fileID: 11400000, guid: 2af32e633f23c924189681ee6ab3b077, type: 2}
 --- !u!114 &9107159239740426743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f613a1ca2cce440af945deb2ac95bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: d9405638-1792-4919-9276-03f21a4cc787
+  id: 2b9c3d20-5a1b-4bba-9e49-793a49018c6f
 --- !u!198 &1579655258195330775
 ParticleSystem:
   m_ObjectHideFlags: 0

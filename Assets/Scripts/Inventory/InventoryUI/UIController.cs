@@ -16,6 +16,8 @@ public class UIController : MonoBehaviour // 최상위 UI 컨트롤러
     [SerializeField] private GameObject gameOverUI;   // 게임 실패,클리어시 나오는 UI
     [SerializeField] private AddWeaponUI addWeaponUI;   // 플레이어 무기 추가 UI
 
+    [SerializeField] private PauseUI pauseUI; // 일시정지 UI
+
     private float timer;
 
 
@@ -36,16 +38,14 @@ public class UIController : MonoBehaviour // 최상위 UI 컨트롤러
         StaticEventHandler.OnRoomChanged -= StaticEventHandler_OnRoomChanged;
     }
 
-    private void Update()
-    {
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
-            shopKeeperDisplay.gameObject.SetActive(false);
-    }
-
     private void DisplayShopWindow(ShopSystem shopSystem, PlayerInventoryHolder playerInventory)
     {
-        shopKeeperDisplay.gameObject.SetActive(true); // 상점UI on
-        shopKeeperDisplay.DisplayShopWindow(shopSystem, playerInventory);
+        if (shopKeeperDisplay.gameObject.activeSelf)
+            shopKeeperDisplay.gameObject.SetActive(false);
+        else if (!shopKeeperDisplay.gameObject.activeSelf) {
+            shopKeeperDisplay.gameObject.SetActive(true); // 상점UI on
+            shopKeeperDisplay.DisplayShopWindow(shopSystem, playerInventory);
+        }
     }
 
 
@@ -90,6 +90,14 @@ public class UIController : MonoBehaviour // 최상위 UI 컨트롤러
     public void SetGameOverUI()
     {
         gameOverUI.gameObject.SetActive(true);
+    }
+    #endregion
+
+    // ======================= 일시정지 UI 관리 =======================================
+    #region GameOverUI
+    public void SetPauseUI(bool isActive)
+    {
+        pauseUI.gameObject.SetActive(isActive);
     }
     #endregion
 

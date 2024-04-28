@@ -8,6 +8,8 @@ using System;
 public class CharacterSelectorUI : MonoBehaviour
 {
     [SerializeField] private Transform characterSelector;
+    
+    // 왼쪽에 나타날 캐릭터 설명UI
     [SerializeField] private TextMeshProUGUI characterName;
     [SerializeField] private TextMeshProUGUI characterStrength;
     [SerializeField] private TextMeshProUGUI characterWeakness;

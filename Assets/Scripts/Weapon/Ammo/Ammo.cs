@@ -65,7 +65,7 @@ public abstract class Ammo : MonoBehaviour, IFireable // 사격 인터페이스
 
     public void InitializeAmmo(float aimAngle, Vector3 aimDirectionVector, Weapon weapon)
     {
-        SetFireDirection(aimAngle, aimDirectionVector); // 탄 진행방향
+        SetFireDirection(aimAngle); // 탄 진행방향
 
         this.weapon = weapon;
         this.ammoRange = weapon.weaponDetail.weaponRange;
@@ -103,7 +103,7 @@ public abstract class Ammo : MonoBehaviour, IFireable // 사격 인터페이스
         return ammoDamage;
     }
 
-    private void SetFireDirection(float aimAngle, Vector3 aimDirectionVector)
+    private void SetFireDirection(float aimAngle)
     {
         transform.eulerAngles = new Vector3(0f, 0f, aimAngle);
         fireDirectionVector = Utilities.GetDirectionVectorFromAngle(aimAngle);
