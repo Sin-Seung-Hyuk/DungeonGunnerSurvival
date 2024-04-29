@@ -46,6 +46,10 @@ public class InventoryUIController : MonoBehaviour
         }
 
         // 계속 일시정지 활성화시키기
+        if (isTogleEquipment)
+        {
+            Time.timeScale = 0;
+        }
     } 
 
 
@@ -80,7 +84,6 @@ public class InventoryUIController : MonoBehaviour
         } else if (!isTogleEquipment)
         {
             equipmentPanel.gameObject.SetActive(true);
-            Time.timeScale = 0;
         }
     }
 }

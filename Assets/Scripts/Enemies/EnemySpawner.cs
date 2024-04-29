@@ -134,7 +134,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
         foreach (var spawnableBoss in room.spawnableBossList)
         {
             // 그리드 기준 스폰가능 배열에서 랜덤으로 가져와 스폰지점 만들기
-            Vector3Int cellPos = (Vector3Int)currentRoom.spawnPositionArray[Random.Range(0, currentRoom.spawnPositionArray.Count)];
+            Vector3Int cellPos = (Vector3Int)currentRoom.spawnPositionArray[Random.Range(0, currentRoom.spawnPositionArray.Count)] + currentRoom.playerSpawnPos;
 
             GameObject enemyBoss = Instantiate(enemyPrefab, cellPos, Quaternion.identity);
             enemyBoss.GetComponent<Enemy>().EnemyInitialization(spawnableBoss, GameManager.Instance.GetCurrentDungeonLevelSO());

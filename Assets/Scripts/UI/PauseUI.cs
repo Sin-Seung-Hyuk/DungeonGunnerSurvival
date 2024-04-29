@@ -25,8 +25,6 @@ public class PauseUI : MonoBehaviour
 
     private void OnEnable()
     {
-        //Time.timeScale = 0f;
-
         StartCoroutine(InitializeUI());
     }
     private void OnDisable()

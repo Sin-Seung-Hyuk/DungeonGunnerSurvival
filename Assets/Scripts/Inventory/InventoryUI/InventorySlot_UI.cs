@@ -36,7 +36,7 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
     }
 
     private void Update() {
-        Debug.Log("일시정지 상태에서 업데이트 호출");
+        //Debug.Log("일시정지 상태에서 업데이트 호출");
     }
 
     public void OnPointerEnter(PointerEventData eventData) // 슬롯UI에 마우스오버
