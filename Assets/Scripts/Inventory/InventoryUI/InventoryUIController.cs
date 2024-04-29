@@ -7,13 +7,13 @@ using UnityEngine.InputSystem;
 
 public class InventoryUIController : MonoBehaviour
 {
-    // ÀÎº¥Åä¸® UI¸¦ ¹­¾î¼­ °ü¸®ÇÏ´Â ÄÁÆ®·Ñ·¯
-    // Ã¢°í °°ÀÌ Æ¯Á¤ »óÈ²¿¡¼­¸¸ ¿­¸®´Â ÀÎº¥Åä¸®¸¦ °¡Áö°í ÀÖ´Ù.
+    // ì¸ë²¤í† ë¦¬ UIë¥¼ ë¬¶ì–´ì„œ ê´€ë¦¬í•˜ëŠ” ì»¨íŠ¸ë¡¤ëŸ¬
+    // ì°½ê³  ê°™ì´ íŠ¹ì • ìƒí™©ì—ì„œë§Œ ì—´ë¦¬ëŠ” ì¸ë²¤í† ë¦¬ë¥¼ ê°€ì§€ê³  ìˆë‹¤.
 
-    [FormerlySerializedAs("chestPanel")] // ÀÎ½ºÆåÅÍÀÇ °ª À¯Áö (¸®ÆÑÅä¸µÇØµµ À¯Áö)
-    public DynamicInventoryDisplay inventoryPanel; // µ¿ÀûÀÎº¥Åä¸® UI (Ã¢°í)
-    public DynamicInventoryDisplay playerPanel; // µ¿ÀûÀÎº¥Åä¸® UI (ÇÃ·¹ÀÌ¾î)
-    public PlayerEquipmentHolder equipmentPanel; // ÀÎº¥Åä¸® UI (Àåºñ)
+    [FormerlySerializedAs("chestPanel")] // ì¸ìŠ¤í™í„°ì˜ ê°’ ìœ ì§€ (ë¦¬íŒ©í† ë§í•´ë„ ìœ ì§€)
+    public DynamicInventoryDisplay inventoryPanel; // ë™ì ì¸ë²¤í† ë¦¬ UI (ì°½ê³ )
+    public DynamicInventoryDisplay playerPanel; // ë™ì ì¸ë²¤í† ë¦¬ UI (í”Œë ˆì´ì–´)
+    public PlayerEquipmentHolder equipmentPanel; // ì¸ë²¤í† ë¦¬ UI (ì¥ë¹„)
 
     private bool isTogleEquipment = false;
 
@@ -38,16 +38,18 @@ public class InventoryUIController : MonoBehaviour
 
     void Update()
     {
-        // TAB Å°·Î ÀåºñÃ¢ È°¼ºÈ­
+        // TAB í‚¤ë¡œ ì¥ë¹„ì°½ í™œì„±í™”
         if (Keyboard.current.tabKey.wasPressedThisFrame)
         {
             DisplayPlayerEquipment();
             isTogleEquipment = !isTogleEquipment;
         }
+
+        // ê³„ì† ì¼ì‹œì •ì§€ í™œì„±í™”ì‹œí‚¤ê¸°
     } 
 
 
-    // µ¿Àû ÀÎº¥Åä¸®°¡ ¿­¸®¸é ÀÌ ÇÔ¼ö°¡ È£ÃâµÊ
+    // ë™ì  ì¸ë²¤í† ë¦¬ê°€ ì—´ë¦¬ë©´ ì´ í•¨ìˆ˜ê°€ í˜¸ì¶œë¨
     private void DisplayInventory(InventorySystem invToDisplay, int offset)
     {
         if (!inventoryPanel.gameObject.activeSelf)
