@@ -16,7 +16,7 @@ public class PauseUI : MonoBehaviour
 
     private IEnumerator InitializeUI()
     {
-        // ÇÑ ÇÁ·¹ÀÓ ±×³É ³Ñ±â±â. »ç¿îµå ¼¼ÆÃ ±â´Ù¸®±â
+        // í•œ í”„ë ˆì„ ê·¸ëƒ¥ ë„˜ê¸°ê¸°. ì‚¬ìš´ë“œ ì„¸íŒ… ê¸°ë‹¤ë¦¬ê¸°
         yield return null;
 
         musicText.text = MusicManager.Instance.musicVolume.ToString();
@@ -25,13 +25,17 @@ public class PauseUI : MonoBehaviour
 
     private void OnEnable()
     {
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
 
         StartCoroutine(InitializeUI());
     }
     private void OnDisable()
     {
         Time.timeScale = 1f;
+    }
+
+    private void Update() {
+        Time.timeScale = 0f; // í™œì„±í™” ë˜ì–´ìˆëŠ” ë™ì•ˆ ì¼ì‹œì •ì§€
     }
 
     public void IncreaseMusicVolume()
