@@ -114,8 +114,12 @@ public class EnemySpawner : Singleton<EnemySpawner>
         }
     }
 
-    private void Enemy_OnDestroyed(DestroyedEvent arg1, DestroyedEventArgs args)
-    {                                                                                 // 파괴된 위치
+    private void Enemy_OnDestroyed(DestroyedEvent destroyedEvent, DestroyedEventArgs args)
+    {
+        // 적의 파괴 이벤트 구독해지
+        destroyedEvent.OnDestroyed -= Enemy_OnDestroyed;
+
+        // 파괴된 위치
         ItemPickUp itemObj = (ItemPickUp)ObjectPoolManager.Instance.Release(itemPrefab, args.point, Quaternion.identity);
         
         // 랜덤으로 뽑은 숫자 100개 중에서 한개를 골라 해당 범위의 아이템 생성

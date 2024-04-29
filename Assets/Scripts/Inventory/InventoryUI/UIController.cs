@@ -18,7 +18,7 @@ public class UIController : MonoBehaviour // 최상위 UI 컨트롤러
 
     [SerializeField] private PauseUI pauseUI; // 일시정지 UI
 
-    private float timer;
+    private float timer = Settings.dungeonTimer;
 
 
     private void Awake()
@@ -72,6 +72,10 @@ public class UIController : MonoBehaviour // 최상위 UI 컨트롤러
             {
                 TxtTimer.color = Settings.red;
                 TxtTimer.fontSize = 15;
+            } else
+            {
+                TxtTimer.color = Color.white;
+                TxtTimer.fontSize = 13;
             }
 
             timer -= Time.deltaTime;

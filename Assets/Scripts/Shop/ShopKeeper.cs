@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(UniqueID))] // 상인마다 고유 ID 존재
 public class ShopKeeper : MonoBehaviour, IInteractable // 상호작용 대상
 {
     [SerializeField] private List<ShopItemList> _shopItemsHeld; // 상인이 가진 아이템

@@ -19,8 +19,8 @@ MonoBehaviour:
   weaponCriticChance: 10
   weaponCriticDamage: 50
   weaponAmmoCapacity: 25
-  weaponFireRate: 0.8
-  weaponReloadTime: 2.5
+  weaponFireRate: 1.15
+  weaponReloadTime: 2.8
   weaponRange: 14
   weaponAmmoSpeed: 15
   weaponAmmo:

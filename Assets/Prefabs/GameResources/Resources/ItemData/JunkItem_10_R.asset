@@ -18,8 +18,8 @@ MonoBehaviour:
     surface cool to the touch.
   ItemSprite: {fileID: 21300000, guid: 0332de190583c664184310f6e0f4dbc1, type: 3}
   MaxStackSize: 50
-  GoldValue: 60
-  itemGrade: 10
+  GoldValue: 20
+  itemGrade: 8
   gradeColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}
   itemType: 1
   equipmentType: 7

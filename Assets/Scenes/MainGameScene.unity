@@ -276,7 +276,7 @@ MonoBehaviour:
   - poolSize: 10
     prefab: {fileID: 6778550213661633531, guid: f82082fcefe173e4c873b128e2628d94, type: 3}
     componentType: IFireable
-  - poolSize: 200
+  - poolSize: 3
     prefab: {fileID: 5045320335855835643, guid: 7d9bf5c8e5746c642a787fa527ac3292, type: 3}
     componentType: Enemy
   - poolSize: 200
@@ -565,7 +565,7 @@ MonoBehaviour:
     ModeOverride: 1
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.5234375, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1079,6 +1079,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 15fc1e7f4d7863a46b900355ca7d37bd, type: 2}
   - {fileID: 11400000, guid: 2fdf2969fd55b514d98d3c3510e6cd12, type: 2}
   - {fileID: 11400000, guid: 2cbef6b9092dbee4a968a9c436942408, type: 2}
+  - {fileID: 11400000, guid: d21727b925ffcfb4fbca30a2282a4eae, type: 2}
+  - {fileID: 11400000, guid: 2fdf2969fd55b514d98d3c3510e6cd12, type: 2}
   chestSpawner: {fileID: 2096679819399822258, guid: 1c96154ec73d0f64bba6aad452d9fb80, type: 3}
   player: {fileID: 796670778}
   TxtFade: {fileID: 2085638960}

@@ -22,3 +22,9 @@ MonoBehaviour:
   spawnPositionArray: []
   spawnableEnemyList: []
   spawnableItemList: []
+  spawnParameter:
+    waveDistance: 0
+    waveDuration: 0
+    spawnDistanceInWave: 0
+    spawnDistance: 0
+  spawnableBossList: []

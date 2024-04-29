@@ -136,6 +136,7 @@ public class Player : MonoBehaviour, IHealthObject
         {
             case PlayerStatType.MaxHP:
                 health.SetMaxHealth((int)args.changeValue); // 최대체력 변경
+                health.AddHealth((int)(args.changeValue * 0.5f));
                 break;
 
             case PlayerStatType.BaseDamage: // Weapon 클래스로 가서 무기의 스탯 변경

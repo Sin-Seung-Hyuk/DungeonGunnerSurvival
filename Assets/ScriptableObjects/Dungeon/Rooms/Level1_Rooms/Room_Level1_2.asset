@@ -41,13 +41,13 @@ MonoBehaviour:
     ratio: 2
   spawnableItemList:
   - dungeonObject: {fileID: 11400000, guid: 8ae94c1933db95942bdec7bed7d6bb46, type: 2}
-    ratio: 50
+    ratio: 60
   - dungeonObject: {fileID: 11400000, guid: 35e82c5b920fc8644a4f85fceb4722b4, type: 2}
-    ratio: 50
+    ratio: 60
   - dungeonObject: {fileID: 11400000, guid: 025792cf6e55c9b459cadbe7a4132824, type: 2}
-    ratio: 30
+    ratio: 35
   - dungeonObject: {fileID: 11400000, guid: b4e2fc65947617c4ebfe6c675acebcbc, type: 2}
-    ratio: 30
+    ratio: 35
   - dungeonObject: {fileID: 11400000, guid: 246a9873cf2f0ce498e71fac5c63342a, type: 2}
     ratio: 3
   - dungeonObject: {fileID: 11400000, guid: 634b7a547ee78584797e6115e805c1ac, type: 2}
@@ -79,6 +79,6 @@ MonoBehaviour:
   spawnParameter:
     waveDistance: 30
     waveDuration: 10
-    spawnDistanceInWave: 1.5
-    spawnDistance: 0.8
+    spawnDistanceInWave: 1.3
+    spawnDistance: 1.8
   spawnableBossList: []

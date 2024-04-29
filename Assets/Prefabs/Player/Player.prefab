@@ -678,17 +678,17 @@ MonoBehaviour:
     ratio: 20
   - dungeonObject:
       statType: 1
-      changeValue: 4
+      changeValue: 3
       choiceText: Base Damage
-      changeValueText: + 4
+      changeValueText: + 3
       txtColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}
       isPlayerStat: 1
     ratio: 8
   - dungeonObject:
       statType: 1
-      changeValue: 7
+      changeValue: 5
       choiceText: Base Damage
-      changeValueText: + 7
+      changeValueText: + 5
       txtColor: {r: 0.60784316, g: 0.23921569, b: 0.8509804, a: 1}
       isPlayerStat: 1
     ratio: 3
@@ -958,17 +958,17 @@ MonoBehaviour:
     ratio: 1
   - dungeonObject:
       statType: 4
-      changeValue: 5
+      changeValue: 3
       choiceText: Critic Chance
-      changeValueText: + 5
+      changeValueText: + 3
       txtColor: {r: 1, g: 1, b: 1, a: 1}
       isPlayerStat: 0
     ratio: 20
   - dungeonObject:
       statType: 4
-      changeValue: 7
+      changeValue: 5
       choiceText: Critic Chance
-      changeValueText: + 7
+      changeValueText: + 5
       txtColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}
       isPlayerStat: 0
     ratio: 8
@@ -990,17 +990,17 @@ MonoBehaviour:
     ratio: 1
   - dungeonObject:
       statType: 5
-      changeValue: 15
+      changeValue: 10
       choiceText: Critic Damage
-      changeValueText: + 15
+      changeValueText: + 10
       txtColor: {r: 1, g: 1, b: 1, a: 1}
       isPlayerStat: 0
     ratio: 20
   - dungeonObject:
       statType: 5
-      changeValue: 20
+      changeValue: 15
       choiceText: Critic Damage
-      changeValueText: + 20
+      changeValueText: + 15
       txtColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}
       isPlayerStat: 0
     ratio: 8

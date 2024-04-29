@@ -42,8 +42,8 @@ public enum EquipmentType
 
 public enum ItemGrade
 {
-    Normal = 5,
-    Rare = 10,
+    Normal = 4,
+    Rare = 8,
     Unique = 15,
     Legend = 30
 }

@@ -15,14 +15,14 @@ MonoBehaviour:
   weaponName: Pistol
   weaponType: 8
   weaponSprite: {fileID: 21300000, guid: abbe40c4d6a803f42a7c4f53404a484d, type: 3}
-  weaponBaseDamage: 15
+  weaponBaseDamage: 10
   weaponCriticChance: 10
   weaponCriticDamage: 50
   weaponAmmoCapacity: 20
   weaponFireRate: 1
   weaponReloadTime: 1
-  weaponRange: 13
-  weaponAmmoSpeed: 10
+  weaponRange: 12
+  weaponAmmoSpeed: 9
   weaponAmmo:
   - {fileID: 4454987432227277477, guid: 7d4f7fb6f9cbeb34a96ad7f4b70bc0d8, type: 3}
   upgradeDescription: 

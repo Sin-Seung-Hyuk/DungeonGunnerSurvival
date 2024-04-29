@@ -108,6 +108,8 @@ public class Enemy : MonoBehaviour, IHealthObject, IDebuff
     {
         this.enemyDetails = enemyDetails;
 
+
+
         SetDealContactDamage();
         SetEnemyAnimateSpeed();
         SetEnemyMovementUpdateFrame();
@@ -126,12 +128,19 @@ public class Enemy : MonoBehaviour, IHealthObject, IDebuff
 
         EnemyEnable(true);
         gameObject.SetActive(true);
+
+
+        if (weapon != null)
+            Debug.Log(enemyDetails.enemyName + " 무기 : "+weapon.weaponName + " 무기 여부: "+fireWeapon.enabled);
+        else Debug.Log(enemyDetails.enemyName+"무기없음, 무기 여부: " + fireWeapon.enabled);
     }
 
     private IEnumerator EnemyDestroyedRoutine()
     {
         // 적 비활성화, 속도 0
         EnemyEnable(false);
+        if (weapon != null)
+            Destroy(weapon);
         enemyMovementAI.moveSpeed = 0f;
 
         // MaterializeRoutine 코루틴이 끝날때까지 기다림 (중첩 코루틴)
@@ -164,13 +173,19 @@ public class Enemy : MonoBehaviour, IHealthObject, IDebuff
     #region Set Enemy Initialize
     private void SetEnemyStartingWeapon() // Start 지점에서 수행됨
     {
+
+
         if (enemyDetails.enemyWeapon != null)
         {
             weapon = gameObject.AddComponent<Weapon>();
             weapon.InitializeWeapon(enemyDetails.enemyWeapon);
+            fireWeapon.enabled = true;
         }
         else
+        {
+            weapon = null;
             fireWeapon.enabled = false;
+        }
     }
     private void SetEnemyStartingHealth(DungeonLevelSO dungeonLevel)
     {
@@ -187,6 +202,8 @@ public class Enemy : MonoBehaviour, IHealthObject, IDebuff
     private void SetEnemyMovementUpdateFrame()
     {
         enemyMovementAI.moveSpeed = enemyDetails.speed;
+        enemyMovementAI.chaseDistance = enemyDetails.chaseDistance;
+
         enemyMovementAI.SetUpdateFrameNumber(60 % Settings.targetFrameRateToSpreadPathFindingOver);
     }
     private void SetEnemyAnimateSpeed()

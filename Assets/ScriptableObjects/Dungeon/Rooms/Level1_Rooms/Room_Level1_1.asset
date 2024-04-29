@@ -20,29 +20,22 @@ MonoBehaviour:
   upperBounds: {x: 32, y: 26}
   playerSpawnPos: {x: 0, y: 0, z: 0}
   spawnPositionArray:
-  - {x: -37, y: -25}
-  - {x: -37, y: -3}
-  - {x: -37, y: 22}
-  - {x: -21, y: 22}
   - {x: -9, y: 8}
-  - {x: 10, y: 8}
-  - {x: 2, y: -25}
-  - {x: 18, y: -21}
-  - {x: 9, y: -11}
+  - {x: 9, y: 8}
   spawnableEnemyList:
   - dungeonObject: {fileID: 11400000, guid: 2bb1c82ba6be59841a63d3223db83545, type: 2}
-    ratio: 7
-  - dungeonObject: {fileID: 11400000, guid: fac23ecfe5d254542ba460bca1718f7f, type: 2}
-    ratio: 3
+    ratio: 5
+  - dungeonObject: {fileID: 11400000, guid: 2ff4a0c0e714e2c43b45264fa66fcb32, type: 2}
+    ratio: 5
   spawnableItemList:
   - dungeonObject: {fileID: 11400000, guid: 7e62ab87baee6b8429b892d5f9d376f3, type: 2}
-    ratio: 50
+    ratio: 60
   - dungeonObject: {fileID: 11400000, guid: aa91d301142f72145ae3ff898f905170, type: 2}
-    ratio: 50
+    ratio: 60
   - dungeonObject: {fileID: 11400000, guid: 86c73ca8b9bef7b4c984771c28298d18, type: 2}
-    ratio: 30
+    ratio: 35
   - dungeonObject: {fileID: 11400000, guid: 3fb2f9b0a6a52a74a9bc5299650a8396, type: 2}
-    ratio: 30
+    ratio: 35
   - dungeonObject: {fileID: 11400000, guid: 246a9873cf2f0ce498e71fac5c63342a, type: 2}
     ratio: 3
   - dungeonObject: {fileID: 11400000, guid: 634b7a547ee78584797e6115e805c1ac, type: 2}
@@ -76,7 +69,6 @@ MonoBehaviour:
   spawnParameter:
     waveDistance: 30
     waveDuration: 10
-    spawnDistanceInWave: 1
-    spawnDistance: 2
-  spawnableBossList:
-  - {fileID: 11400000, guid: 454715ef913d9c742bc14faffb0e61bb, type: 2}
+    spawnDistanceInWave: 5
+    spawnDistance: 5
+  spawnableBossList: []

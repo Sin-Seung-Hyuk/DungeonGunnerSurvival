@@ -13,7 +13,7 @@ public class EnemyMovementAI : MonoBehaviour
     private float currentEnemyPathRebuildCooldown; // 경로 재설정 쿨타임
     private WaitForFixedUpdate waitForFixedUpdate;
     public float moveSpeed; //movementDetail에서 받아온 이속
-    private float chaseDistance; //movementDetail에서 받아온 플레이어와의 간격 (플레이어를 어디까지 쫓아올지)
+    public float chaseDistance; //movementDetail에서 받아온 플레이어와의 간격 (플레이어를 어디까지 쫓아올지)
     private List<Vector2Int> surroundPosList = new List<Vector2Int>();
 
     [HideInInspector] public int updateFrameNumber = 1; // 업데이트 프레임
@@ -28,8 +28,6 @@ public class EnemyMovementAI : MonoBehaviour
 
         // 플레이어 포지션 받아오기
         playerRefPos = GameManager.Instance.GetPlayerPosition();
-        moveSpeed = enemy.enemyDetails.speed;
-        chaseDistance = enemy.enemyDetails.chaseDistance;
     }
     private void Update()
     {

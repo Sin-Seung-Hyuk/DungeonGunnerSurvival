@@ -7,7 +7,7 @@ public static class Settings
     #region PLAYER PARAMETER
     public static float potionDuration = 60f; // 포션 지속시간
     public static int rerollGold = 100; // 상점 새로고침 비용
-    public static int startExp = 20; // 1레벨 최대경험치
+    public static int startExp = 30; // 1레벨 최대경험치
     public static int weaponUpgrade = 15; // 무기 업그레이드 레벨
     #endregion
 
@@ -47,7 +47,7 @@ public static class Settings
     #endregion
 
     #region DUNGEON PARAMETERS
-    public const int dungeonTimer = 50; // 던전 타이머
+    public const int dungeonTimer = 150; // 던전 타이머
     #endregion
 
     #region ENEMY PARAMETERS

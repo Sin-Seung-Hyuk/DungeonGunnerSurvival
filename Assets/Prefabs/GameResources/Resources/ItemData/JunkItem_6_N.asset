@@ -18,8 +18,8 @@ MonoBehaviour:
     toxic spikes.
   ItemSprite: {fileID: 21300000, guid: 324ffa2b5a759784eac6b8dab84fe11b, type: 3}
   MaxStackSize: 99
-  GoldValue: 22
-  itemGrade: 5
+  GoldValue: 8
+  itemGrade: 4
   gradeColor: {r: 1, g: 1, b: 1, a: 1}
   itemType: 1
   equipmentType: 7
