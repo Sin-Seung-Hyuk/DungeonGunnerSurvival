@@ -6,19 +6,19 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
 using System;
-                                                // ½½·ÔUI¿¡ ¸¶¿ì½º ¿Ã¸®±â,¶¼±â
+                                                // ìŠ¬ë¡¯UIì— ë§ˆìš°ìŠ¤ ì˜¬ë¦¬ê¸°,ë–¼ê¸°
 public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private Image itemSprite; // ½½·ÔUI ÀÌ¹ÌÁö
-    [SerializeField] private TextMeshProUGUI itemCount; // ½½·ÔUI ¼ö·®Ç¥½Ã
-    [SerializeField] public TextMeshProUGUI itemNumPad; // ½½·ÔUI ³Ñ¹öÆĞµå
+    [SerializeField] private Image itemSprite; // ìŠ¬ë¡¯UI ì´ë¯¸ì§€
+    [SerializeField] private TextMeshProUGUI itemCount; // ìŠ¬ë¡¯UI ìˆ˜ëŸ‰í‘œì‹œ
+    [SerializeField] public TextMeshProUGUI itemNumPad; // ìŠ¬ë¡¯UI ë„˜ë²„íŒ¨ë“œ
 
-    [SerializeField] private Image MouseOverUI; // ½½·ÔUI ¸¶¿ì½º¿À¹ö UI
+    [SerializeField] private Image MouseOverUI; // ìŠ¬ë¡¯UI ë§ˆìš°ìŠ¤ì˜¤ë²„ UI
     [SerializeField] private TextMeshProUGUI MouseOverDisplayName;
     [SerializeField] private TextMeshProUGUI MouseOverDescription;
     private Coroutine mouseOverCoroutine;
 
-    // ÀÌ ½½·ÔUI¿¡ ÇÒ´çµÉ ÀÎº¥Åä¸® ½½·Ô µ¥ÀÌÅÍ (½½·ÔUI´Â ÀÌ ÀÎº¥Åä¸® ½½·ÔÀÇ Á¤º¸¸¦ 'Ãâ·Â'ÇÏ´Â ÀåÄ¡)
+    // ì´ ìŠ¬ë¡¯UIì— í• ë‹¹ë  ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ ë°ì´í„° (ìŠ¬ë¡¯UIëŠ” ì´ ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì˜ ì •ë³´ë¥¼ 'ì¶œë ¥'í•˜ëŠ” ì¥ì¹˜)
     [SerializeField] private InventorySlot assignedInventorySlot;
 
     private Button btn;
@@ -27,7 +27,7 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     private void Awake()
     {
-        ClearSlot(); // ºó ½½·ÔUI·Î ½ÃÀÛ
+        ClearSlot(); // ë¹ˆ ìŠ¬ë¡¯UIë¡œ ì‹œì‘
 
         btn = GetComponent<Button>();
         btn?.onClick.AddListener(OnUIISlotClick);
@@ -35,9 +35,13 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
         ParentDisplay = transform.parent.GetComponent<InventoryDisplay>();
     }
 
-    public void OnPointerEnter(PointerEventData eventData) // ½½·ÔUI¿¡ ¸¶¿ì½º¿À¹ö
+    private void Update() {
+        Debug.Log("ì¼ì‹œì •ì§€ ìƒíƒœì—ì„œ ì—…ë°ì´íŠ¸ í˜¸ì¶œ");
+    }
+
+    public void OnPointerEnter(PointerEventData eventData) // ìŠ¬ë¡¯UIì— ë§ˆìš°ìŠ¤ì˜¤ë²„
     {
-        if (assignedInventorySlot.ItemData == null) return; // ºó½½·Ô ³Ñ±â±â
+        if (assignedInventorySlot.ItemData == null) return; // ë¹ˆìŠ¬ë¡¯ ë„˜ê¸°ê¸°
 
         if (mouseOverCoroutine != null)
             StopCoroutine(mouseOverCoroutine);
@@ -47,13 +51,13 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private IEnumerator mouseOverRoutine(PointerEventData eventData)
     {
         float timer = 0f;
-        while (timer < 1.5f) // ½½·Ô¿¡ 1.5ÃÊ ÀÌ»ó ¸¶¿ì½º¸¦ °®´Ù´ë¸é È°¼ºÈ­
+        while (timer < 1.5f) // ìŠ¬ë¡¯ì— 1.5ì´ˆ ì´ìƒ ë§ˆìš°ìŠ¤ë¥¼ ê°–ë‹¤ëŒ€ë©´ í™œì„±í™”
         {
             timer += Time.deltaTime;
             yield return null;
         }
 
-        MouseOverUI.gameObject.SetActive(true); // ¸¶¿ì½º¿À¹öUI È°¼ºÈ­
+        MouseOverUI.gameObject.SetActive(true); // ë§ˆìš°ìŠ¤ì˜¤ë²„UI í™œì„±í™”
         MouseOverDisplayName.text = assignedInventorySlot.ItemData.DisplayName;
         MouseOverDisplayName.color = assignedInventorySlot.ItemData.gradeColor;
         MouseOverDescription.text = assignedInventorySlot.ItemData.Description;
@@ -65,15 +69,15 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
         MouseOverUI.transform.position = pos;
     }
 
-    public void OnPointerExit(PointerEventData eventData) // ½½·ÔUI¿¡ ¸¶¿ì½º ¶¼±â
+    public void OnPointerExit(PointerEventData eventData) // ìŠ¬ë¡¯UIì— ë§ˆìš°ìŠ¤ ë–¼ê¸°
     {
         if (mouseOverCoroutine != null)
             StopCoroutine(mouseOverCoroutine);
         if (MouseOverUI.gameObject.activeSelf)
-            MouseOverUI.gameObject.SetActive(false); // ¸¶¿ì½º¿À¹öUI ºñÈ°¼ºÈ­
+            MouseOverUI.gameObject.SetActive(false); // ë§ˆìš°ìŠ¤ì˜¤ë²„UI ë¹„í™œì„±í™”
     }
 
-    public void ClearSlot() // ÀÌ ½½·ÔUIÀÇ ½½·ÔÁ¤º¸ Æ÷ÇÔ ÀüºÎ ÃÊ±âÈ­
+    public void ClearSlot() // ì´ ìŠ¬ë¡¯UIì˜ ìŠ¬ë¡¯ì •ë³´ í¬í•¨ ì „ë¶€ ì´ˆê¸°í™”
     {
         assignedInventorySlot?.ClearSlot();
         itemSprite.sprite = null;
@@ -83,11 +87,11 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void Init(InventorySlot slot)
     {
-        assignedInventorySlot = slot; // ÀÎº¥Åä¸® ½½·Ô ¹Ş¾Æ¿À±â
-        UpdateUISlot(slot); // ¹Ş¾Æ¿Â ½½·Ô µ¥ÀÌÅÍ·Î ½½·ÔUI ¾÷µ¥ÀÌÆ®
+        assignedInventorySlot = slot; // ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ ë°›ì•„ì˜¤ê¸°
+        UpdateUISlot(slot); // ë°›ì•„ì˜¨ ìŠ¬ë¡¯ ë°ì´í„°ë¡œ ìŠ¬ë¡¯UI ì—…ë°ì´íŠ¸
     }
 
-    public void UpdateUISlot(InventorySlot slot) // ½½·ÔUI ¾÷µ¥ÀÌÆ®. È­¸é»ó¿¡ ½½·Ô Á¤º¸¸¦ Ãâ·ÂÇØÁÖ±â
+    public void UpdateUISlot(InventorySlot slot) // ìŠ¬ë¡¯UI ì—…ë°ì´íŠ¸. í™”ë©´ìƒì— ìŠ¬ë¡¯ ì •ë³´ë¥¼ ì¶œë ¥í•´ì£¼ê¸°
     {
         if (slot.ItemData != null)
         {
@@ -103,7 +107,7 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
         else itemCount.text = "";
     }
 
-    public void UpdateUISlot() // »õ·Î¿î µ¥ÀÌÅÍ´Â ¾Æ´Ï°í ½ºÅÃ¸¸ ¹Ù²ğ¶§ È£ÃâµÊ
+    public void UpdateUISlot() // ìƒˆë¡œìš´ ë°ì´í„°ëŠ” ì•„ë‹ˆê³  ìŠ¤íƒë§Œ ë°”ë€”ë•Œ í˜¸ì¶œë¨
     {
         if (assignedInventorySlot != null)
             UpdateUISlot(assignedInventorySlot);
@@ -111,7 +115,7 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public virtual void OnUIISlotClick()
     {
-        // ºÎ¸ğ¿ÀºêÁ§Æ®¿¡ Å¬¸¯ÀÌº¥Æ®·Î ÀÌ ½½·ÔÀ» ³Ñ°ÜÁÜ
+        // ë¶€ëª¨ì˜¤ë¸Œì íŠ¸ì— í´ë¦­ì´ë²¤íŠ¸ë¡œ ì´ ìŠ¬ë¡¯ì„ ë„˜ê²¨ì¤Œ
          ParentDisplay?.SlotClicked(this);
     }
 }
