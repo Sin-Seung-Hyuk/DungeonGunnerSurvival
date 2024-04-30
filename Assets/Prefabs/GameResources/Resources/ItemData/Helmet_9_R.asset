@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Helmet_9_R
   m_EditorClassIdentifier: 
   ID: 28
-  DisplayName: Cowl of the Plague Doctor
+  DisplayName: Cowl of Plague Doctor
   Description: 'Dodge + 7
 
-    ExpGain + 3'
+    ExpGain + 2'
   ItemSprite: {fileID: -7953767466865973445, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
   GoldValue: 2150
@@ -28,4 +28,4 @@ MonoBehaviour:
   - statType: 3
     changeValue: 7
   - statType: 8
-    changeValue: 3
+    changeValue: 2

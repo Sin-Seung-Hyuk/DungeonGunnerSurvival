@@ -17,7 +17,7 @@ MonoBehaviour:
   Description: A rugged granite laced with streaks of iron, radiating an aura of
     unbending strength and resilience.
   ItemSprite: {fileID: 21300000, guid: 7bd4baa03343a794fa0619cc0ecd23a8, type: 3}
-  MaxStackSize: 1
+  MaxStackSize: 5
   GoldValue: 1111
   itemGrade: 30
   gradeColor: {r: 0.8862745, g: 0.49019608, b: 0.07450981, a: 1}

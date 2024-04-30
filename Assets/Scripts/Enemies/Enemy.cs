@@ -52,6 +52,7 @@ public class Enemy : MonoBehaviour, IHealthObject, IDebuff
     private PolygonCollider2D polygonCollider2D;
     private DealContactDamage dealContactDamage;
     private EnemyMovementAI enemyMovementAI;
+    private EnemyWeaponAI enemyWeaponAI;
     private MaterializeEffect materializeEffect;
     private FireWeapon fireWeapon;
     private Weapon weapon;
@@ -63,6 +64,7 @@ public class Enemy : MonoBehaviour, IHealthObject, IDebuff
     private void Awake()
     {
         enemyMovementAI = GetComponent<EnemyMovementAI>();
+        enemyWeaponAI = GetComponent<EnemyWeaponAI>();
         movementToPositionEvent = GetComponent<MovementToPositionEvent>();
         idleEvent = GetComponent<IdleEvent>();
         circleCollider2D = GetComponentInChildren<CircleCollider2D>(); // 총알을 무시하는 충돌체 (몸끼리 부딪히는 충돌)
@@ -106,15 +108,17 @@ public class Enemy : MonoBehaviour, IHealthObject, IDebuff
 
     public void EnemyInitialization(EnemyDetailsSO enemyDetails, DungeonLevelSO dungeonLevel)
     {
+        // ============= **** 오브젝트 풀에 반환하고나서 다시 스폰될때 완벽하게 모든 정보를 다 명시해주면서 초기화해야함 =================================
         this.enemyDetails = enemyDetails;
-
-
+        
+        EnemyEnable(true); // 비활성화되어있던 상태를 다시 활성화
 
         SetDealContactDamage();
         SetEnemyAnimateSpeed();
         SetEnemyMovementUpdateFrame();
         SetEnemyStartingHealth(dungeonLevel);
         SetEnemyStartingWeapon();
+        SetEnemyWeaponAI(); // 무기 AI 재설정 (처음에 근거리몬스터가 나왔어도 이후 원거리가 나올때 원거리 무기AI를 가져야함)
 
         spriteRenderer.sprite = enemyDetails.sprite;
         spriteRenderer.color = enemyDetails.spriteColor;
@@ -126,13 +130,7 @@ public class Enemy : MonoBehaviour, IHealthObject, IDebuff
 
         animator.runtimeAnimatorController = enemyDetails.runtimeAnimatorController;
 
-        EnemyEnable(true);
         gameObject.SetActive(true);
-
-
-        if (weapon != null)
-            Debug.Log(enemyDetails.enemyName + " 무기 : "+weapon.weaponName + " 무기 여부: "+fireWeapon.enabled);
-        else Debug.Log(enemyDetails.enemyName+"무기없음, 무기 여부: " + fireWeapon.enabled);
     }
 
     private IEnumerator EnemyDestroyedRoutine()
@@ -186,6 +184,12 @@ public class Enemy : MonoBehaviour, IHealthObject, IDebuff
             weapon = null;
             fireWeapon.enabled = false;
         }
+    }
+    private void SetEnemyWeaponAI()
+    {
+        enemyWeaponAI.enemyDetails = enemyDetails;
+        enemyWeaponAI.firingIntervalTimer = enemyDetails.firingInterval;
+        enemyWeaponAI.firingDurationTimer = enemyDetails.firingDuration;
     }
     private void SetEnemyStartingHealth(DungeonLevelSO dungeonLevel)
     {

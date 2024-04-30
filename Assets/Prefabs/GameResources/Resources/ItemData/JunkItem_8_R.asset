@@ -17,7 +17,7 @@ MonoBehaviour:
   Description: An amethyst of immense size and clarity, whispered to grant the wielder
     insight into the arcane.
   ItemSprite: {fileID: 21300000, guid: be5fee1ce6f2f3a4f8de88829c24f7b3, type: 3}
-  MaxStackSize: 50
+  MaxStackSize: 70
   GoldValue: 15
   itemGrade: 8
   gradeColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}

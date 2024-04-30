@@ -8,7 +8,8 @@ public static class Settings
     public static float potionDuration = 60f; // 포션 지속시간
     public static int rerollGold = 100; // 상점 새로고침 비용
     public static int startExp = 30; // 1레벨 최대경험치
-    public static int weaponUpgrade = 15; // 무기 업그레이드 레벨
+    public static int weaponUpgrade = 10; // 무기 업그레이드 레벨
+    public static float combatScalingConstant = 50f; // 방어력,회피율 계산을 위한 상수 (수치가 높아질수록 효율이 감소하는 커브)
     #endregion
 
 
@@ -48,6 +49,8 @@ public static class Settings
 
     #region DUNGEON PARAMETERS
     public const int dungeonTimer = 150; // 던전 타이머
+    public const int potionDropChacne = 30; // 포션 드랍확률 25%
+    public const int lastLegendItemID = 1032; // 유니크,전설 아이템의 마지막 ID +1 (랜덤범위 지정용)
     #endregion
 
     #region ENEMY PARAMETERS

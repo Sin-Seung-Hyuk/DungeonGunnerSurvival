@@ -17,7 +17,7 @@ MonoBehaviour:
   Description: A lapis lazuli of the deepest, richest blue, flecked with glittering
     veins of pyrite, glowing as if lit from within.
   ItemSprite: {fileID: 21300000, guid: 3b83f515d9d2e6642adc580b019c68b4, type: 3}
-  MaxStackSize: 1
+  MaxStackSize: 5
   GoldValue: 1024
   itemGrade: 30
   gradeColor: {r: 0.8862745, g: 0.49019608, b: 0.07450981, a: 1}

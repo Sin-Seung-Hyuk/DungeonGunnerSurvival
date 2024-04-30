@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Helmet_11_U
   m_EditorClassIdentifier: 
   ID: 1001
-  DisplayName: Faceplate of Adamantine Sentinel
+  DisplayName: Faceplate of Sentinel
   Description: 'MaxHp + 40
 
-    BaseArmor + 20'
+    BaseArmor + 15'
   ItemSprite: {fileID: -3597388712997048742, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
-  GoldValue: 3300
+  GoldValue: 5600
   itemGrade: 15
   gradeColor: {r: 0.60784316, g: 0.23921569, b: 0.8509804, a: 1}
   itemType: 2
@@ -28,4 +28,4 @@ MonoBehaviour:
   - statType: 0
     changeValue: 40
   - statType: 2
-    changeValue: 20
+    changeValue: 15

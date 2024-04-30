@@ -41,13 +41,13 @@ MonoBehaviour:
     ratio: 2
   spawnableItemList:
   - dungeonObject: {fileID: 11400000, guid: 8ae94c1933db95942bdec7bed7d6bb46, type: 2}
-    ratio: 60
+    ratio: 80
   - dungeonObject: {fileID: 11400000, guid: 35e82c5b920fc8644a4f85fceb4722b4, type: 2}
-    ratio: 60
+    ratio: 80
   - dungeonObject: {fileID: 11400000, guid: 025792cf6e55c9b459cadbe7a4132824, type: 2}
-    ratio: 35
+    ratio: 40
   - dungeonObject: {fileID: 11400000, guid: b4e2fc65947617c4ebfe6c675acebcbc, type: 2}
-    ratio: 35
+    ratio: 40
   - dungeonObject: {fileID: 11400000, guid: 246a9873cf2f0ce498e71fac5c63342a, type: 2}
     ratio: 3
   - dungeonObject: {fileID: 11400000, guid: 634b7a547ee78584797e6115e805c1ac, type: 2}
@@ -75,6 +75,10 @@ MonoBehaviour:
   - dungeonObject: {fileID: 11400000, guid: 13112dd3e425683438c8130cba89a7b6, type: 2}
     ratio: 1
   - dungeonObject: {fileID: 11400000, guid: d2700845957b87a4eae3ebe3a1532fc6, type: 2}
+    ratio: 1
+  - dungeonObject: {fileID: 11400000, guid: 274c5a22370f0124fa086c66b1647ec6, type: 2}
+    ratio: 1
+  - dungeonObject: {fileID: 11400000, guid: c908b94cab2bd6c44bfbc330f74b012c, type: 2}
     ratio: 1
   spawnParameter:
     waveDistance: 30

@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: Boots_ 11_U
   m_EditorClassIdentifier: 
   ID: 1016
-  DisplayName: Necromancer's Boots
-  Description: 'Dodge + 15
+  DisplayName: Necromancer Boots
+  Description: 'Dodge + 12
 
     MoveSpeed + 0.4'
   ItemSprite: {fileID: -8100887858987163017, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
-  GoldValue: 2800
+  GoldValue: 5400
   itemGrade: 15
   gradeColor: {r: 0.60784316, g: 0.23921569, b: 0.8509804, a: 1}
   itemType: 2
   equipmentType: 5
   playerStatChangeList:
   - statType: 3
-    changeValue: 15
+    changeValue: 12
   - statType: 6
     changeValue: 0.4

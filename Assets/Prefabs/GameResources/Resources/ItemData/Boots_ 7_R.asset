@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Boots_ 7_R
   m_EditorClassIdentifier: 
   ID: 73
-  DisplayName: Assassin's Shadowstep Boots
+  DisplayName: Shadowstep Boots
   Description: BaseArmor + 10
   ItemSprite: {fileID: -3900023512317210909, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1

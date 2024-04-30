@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 56
   DisplayName: Gauntlets of Berserker
-  Description: BaseDamage + 5
+  Description: BaseDamage + 4
   ItemSprite: {fileID: -2169761040959030465, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
   GoldValue: 2000
@@ -24,4 +24,4 @@ MonoBehaviour:
   equipmentType: 3
   playerStatChangeList:
   - statType: 1
-    changeValue: 5
+    changeValue: 4

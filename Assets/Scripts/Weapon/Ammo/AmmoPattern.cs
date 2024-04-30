@@ -33,7 +33,12 @@ public class AmmoPattern : MonoBehaviour, IFireable
 
         ammoRange -= distanceVector.magnitude;
 
-        if (ammoRange < 0f) gameObject.SetActive(false);
+        if (ammoRange < 0f)
+        {
+            transform.position = new Vector3(0, 0, 0);
+            transform.rotation = Quaternion.identity;
+            gameObject.SetActive(false);
+        }
     }
     private void SetFireDirection(float aimAngle, Vector3 aimDirectionVector)
     {

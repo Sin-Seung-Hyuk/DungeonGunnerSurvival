@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Boots_ 2_N
   m_EditorClassIdentifier: 
   ID: 68
-  DisplayName: Greaves of the Juggernaut
+  DisplayName: Greave of Juggernaut
   Description: 'BaseArmor + 5
 
     MoveSpeed + 0.05'

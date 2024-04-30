@@ -32,4 +32,4 @@ MonoBehaviour:
   - dungeonLevel: {fileID: 11400000, guid: 2fdf2969fd55b514d98d3c3510e6cd12, type: 2}
     enemyHealthAmount: 40
   - dungeonLevel: {fileID: 11400000, guid: 2cbef6b9092dbee4a968a9c436942408, type: 2}
-    enemyHealthAmount: 80
+    enemyHealthAmount: 100

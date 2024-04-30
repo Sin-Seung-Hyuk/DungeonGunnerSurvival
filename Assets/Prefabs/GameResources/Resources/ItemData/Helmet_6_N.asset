@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Helmet_6_N
   m_EditorClassIdentifier: 
   ID: 25
-  DisplayName: Mask of Shadow Assassin
+  DisplayName: Mask of Assassin
   Description: Dodge + 7
   ItemSprite: {fileID: 8135845105137467745, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1

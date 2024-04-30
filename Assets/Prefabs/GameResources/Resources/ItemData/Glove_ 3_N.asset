@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Glove_ 3_N
   m_EditorClassIdentifier: 
   ID: 53
-  DisplayName: Wraps of the Wilderness
+  DisplayName: Wraps of Wilderness
   Description: ExpGain + 1
   ItemSprite: {fileID: -1960598095631796955, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1

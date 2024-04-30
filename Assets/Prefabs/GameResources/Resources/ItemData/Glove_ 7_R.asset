@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Glove_ 7_R
   m_EditorClassIdentifier: 
   ID: 57
-  DisplayName: Stealth Gloves of Assassin
+  DisplayName: Stealth Gloves
   Description: PickUp + 0.07
   ItemSprite: {fileID: 1357336909878944130, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1

@@ -27,5 +27,11 @@ MonoBehaviour:
     Amount: 1
   - ItemData: {fileID: 11400000, guid: 7b7d47e0baa9c15469cfd72034a8dfb2, type: 2}
     Amount: 1
+  - ItemData: {fileID: 11400000, guid: 274c5a22370f0124fa086c66b1647ec6, type: 2}
+    Amount: 1
+  - ItemData: {fileID: 11400000, guid: c908b94cab2bd6c44bfbc330f74b012c, type: 2}
+    Amount: 1
+  - ItemData: {fileID: 11400000, guid: 49a97a1d84c69144c9b40f56f328d7a8, type: 2}
+    Amount: 1
   _sellMarkUp: 0.5
   _buyMarkUp: 1

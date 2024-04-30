@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Boots_ 8_R
   m_EditorClassIdentifier: 
   ID: 74
-  DisplayName: Mage's Arcane Treads
+  DisplayName: Arcane Treads
   Description: 'Dodge + 7
 
     MoveSpeed + 0.2'

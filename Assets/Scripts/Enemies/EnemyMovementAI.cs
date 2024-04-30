@@ -17,6 +17,7 @@ public class EnemyMovementAI : MonoBehaviour
     private List<Vector2Int> surroundPosList = new List<Vector2Int>();
 
     [HideInInspector] public int updateFrameNumber = 1; // 업데이트 프레임
+    [HideInInspector] public int targetFrameRateToSpreadPathFindingOver = 1; // 업데이트 프레임
 
     private void Awake()
     {
@@ -25,6 +26,8 @@ public class EnemyMovementAI : MonoBehaviour
     private void Start()
     {
         waitForFixedUpdate = new WaitForFixedUpdate();
+
+        targetFrameRateToSpreadPathFindingOver = Random.Range(50, 70);
 
         // 플레이어 포지션 받아오기
         playerRefPos = GameManager.Instance.GetPlayerPosition();
@@ -40,7 +43,7 @@ public class EnemyMovementAI : MonoBehaviour
         currentEnemyPathRebuildCooldown -= Time.deltaTime;
 
         // 부하를 분산시키기 위해 특정 프레임에서만 경로를 재구축
-        if (Time.frameCount % Settings.targetFrameRateToSpreadPathFindingOver != updateFrameNumber) return;
+        if (Time.frameCount % targetFrameRateToSpreadPathFindingOver != updateFrameNumber) return;
 
         if (currentEnemyPathRebuildCooldown <= 0f || (Vector3.Distance(playerRefPos, GameManager.Instance.GetPlayerPosition()) >
             Settings.playerMoveDistanceToRebuildPath))

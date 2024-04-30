@@ -17,7 +17,7 @@ MonoBehaviour:
   Description: An emerald of verdant green, pulsing with an inner vitality that whispers
     of nature's resilience.
   ItemSprite: {fileID: 21300000, guid: 253dfa7bfac41bb438efeac3390058d2, type: 3}
-  MaxStackSize: 50
+  MaxStackSize: 70
   GoldValue: 15
   itemGrade: 8
   gradeColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}

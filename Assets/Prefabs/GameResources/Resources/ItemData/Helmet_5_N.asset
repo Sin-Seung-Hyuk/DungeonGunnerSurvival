@@ -17,7 +17,7 @@ MonoBehaviour:
   Description: BaseArmor + 7
   ItemSprite: {fileID: -7517349821158783618, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
-  GoldValue: 900
+  GoldValue: 1100
   itemGrade: 4
   gradeColor: {r: 1, g: 1, b: 1, a: 1}
   itemType: 2

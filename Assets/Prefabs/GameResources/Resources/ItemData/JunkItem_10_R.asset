@@ -17,7 +17,7 @@ MonoBehaviour:
   Description: A beryl that seems to shimmer with the light of distant stars, its
     surface cool to the touch.
   ItemSprite: {fileID: 21300000, guid: 0332de190583c664184310f6e0f4dbc1, type: 3}
-  MaxStackSize: 50
+  MaxStackSize: 70
   GoldValue: 20
   itemGrade: 8
   gradeColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}

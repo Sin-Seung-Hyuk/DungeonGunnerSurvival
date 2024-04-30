@@ -35,53 +35,60 @@ MonoBehaviour:
   - {x: -11, y: 37}
   - {x: -11, y: 67}
   spawnableEnemyList:
-  - dungeonObject: {fileID: 11400000, guid: 2bb1c82ba6be59841a63d3223db83545, type: 2}
-    ratio: 7
-  - dungeonObject: {fileID: 11400000, guid: fac23ecfe5d254542ba460bca1718f7f, type: 2}
+  - dungeonObject: {fileID: 11400000, guid: e305d49d6dbbced4aacbcba4b9e8a0e0, type: 2}
+    ratio: 8
+  - dungeonObject: {fileID: 11400000, guid: 2726a8143e1a84a43bbaae049842f036, type: 2}
     ratio: 3
+  - dungeonObject: {fileID: 11400000, guid: 63fa46fca0a2aff498fcee125f0e85f0, type: 2}
+    ratio: 1
   spawnableItemList:
-  - dungeonObject: {fileID: 11400000, guid: 7e62ab87baee6b8429b892d5f9d376f3, type: 2}
-    ratio: 50
-  - dungeonObject: {fileID: 11400000, guid: aa91d301142f72145ae3ff898f905170, type: 2}
-    ratio: 50
-  - dungeonObject: {fileID: 11400000, guid: 86c73ca8b9bef7b4c984771c28298d18, type: 2}
-    ratio: 30
-  - dungeonObject: {fileID: 11400000, guid: 3fb2f9b0a6a52a74a9bc5299650a8396, type: 2}
-    ratio: 30
+  - dungeonObject: {fileID: 11400000, guid: 368b5f79a1cf9fc4799ce376338ccc0d, type: 2}
+    ratio: 80
+  - dungeonObject: {fileID: 11400000, guid: e369893ceea1fc14db0c064eb7927217, type: 2}
+    ratio: 80
+  - dungeonObject: {fileID: 11400000, guid: 422bbe7d21fba38469ce2aac8688077e, type: 2}
+    ratio: 60
+  - dungeonObject: {fileID: 11400000, guid: 411ab2b955234694c83e152f7b8dc239, type: 2}
+    ratio: 60
   - dungeonObject: {fileID: 11400000, guid: 246a9873cf2f0ce498e71fac5c63342a, type: 2}
-    ratio: 3
+    ratio: 2
+  - dungeonObject: {fileID: 11400000, guid: ba975414c12f5f7429448cd03b328126, type: 2}
+    ratio: 2
   - dungeonObject: {fileID: 11400000, guid: 634b7a547ee78584797e6115e805c1ac, type: 2}
     ratio: 1
-  - dungeonObject: {fileID: 11400000, guid: bb34eac8bc367444f8488bb0c7fdd425, type: 2}
+  - dungeonObject: {fileID: 11400000, guid: 6e63293d2089abc4e85fb2062341359f, type: 2}
     ratio: 1
-  - dungeonObject: {fileID: 11400000, guid: d330e1e7d20fd5b4c946cafdc02997f8, type: 2}
+  - dungeonObject: {fileID: 11400000, guid: 13112dd3e425683438c8130cba89a7b6, type: 2}
     ratio: 1
-  - dungeonObject: {fileID: 11400000, guid: 47113d6f76220c649851313853ada26a, type: 2}
+  - dungeonObject: {fileID: 11400000, guid: d2700845957b87a4eae3ebe3a1532fc6, type: 2}
     ratio: 1
-  - dungeonObject: {fileID: 11400000, guid: 7984a22600b7e2346b49594a5312ba14, type: 2}
+  - dungeonObject: {fileID: 11400000, guid: 626c165303dd3584ab748dee1b6f607a, type: 2}
     ratio: 1
-  - dungeonObject: {fileID: 11400000, guid: 6193086286945144193de048769f6712, type: 2}
+  - dungeonObject: {fileID: 11400000, guid: a176044548d344443ad30b6ca5755429, type: 2}
     ratio: 1
-  - dungeonObject: {fileID: 11400000, guid: b046084a35237184da5686e2a3fe7630, type: 2}
+  - dungeonObject: {fileID: 11400000, guid: 64eb19f51af38d942876ea99e7138a42, type: 2}
     ratio: 1
-  - dungeonObject: {fileID: 11400000, guid: eb14b4f604a8f404d97f7f101044bf52, type: 2}
+  - dungeonObject: {fileID: 11400000, guid: d928be071b2d41d49b7b3db156ca9792, type: 2}
     ratio: 1
-  - dungeonObject: {fileID: 11400000, guid: 23719b88e7389474782010b3045c812a, type: 2}
+  - dungeonObject: {fileID: 11400000, guid: ab3b2e79df042ca43880b1ba5b600c0b, type: 2}
     ratio: 1
-  - dungeonObject: {fileID: 11400000, guid: 7b7fba34c5902da49861360b630151b9, type: 2}
+  - dungeonObject: {fileID: 11400000, guid: 4855fb0f0fc1528458a365e5f28817d2, type: 2}
     ratio: 1
-  - dungeonObject: {fileID: 11400000, guid: e8793c813ab3f5a46b684b9958d373e1, type: 2}
+  - dungeonObject: {fileID: 11400000, guid: 29e90921075443b45a6b5d5c74e66cdd, type: 2}
     ratio: 1
-  - dungeonObject: {fileID: 11400000, guid: 5549aae5aa2f42443aabbbdc9d300ed7, type: 2}
+  - dungeonObject: {fileID: 11400000, guid: 5b1148b5285923c47a6f2e1b831dd571, type: 2}
     ratio: 1
-  - dungeonObject: {fileID: 11400000, guid: 527ca3288a0cc974cb255aa78ae2426f, type: 2}
+  - dungeonObject: {fileID: 11400000, guid: 27eba9424a32a7b4d994490beb7bcc23, type: 2}
     ratio: 1
-  - dungeonObject: {fileID: 11400000, guid: 610bc8d4b7181084e89aa9922544f09c, type: 2}
+  - dungeonObject: {fileID: 11400000, guid: ddda6213e0cbaae409e47ccbe16fe0b7, type: 2}
+    ratio: 1
+  - dungeonObject: {fileID: 11400000, guid: dd5c32accb1a0c045b5d354bc6d03c68, type: 2}
+    ratio: 1
+  - dungeonObject: {fileID: 11400000, guid: e06281e4263da724b87f59ebc4e0b686, type: 2}
     ratio: 1
   spawnParameter:
     waveDistance: 30
     waveDuration: 10
-    spawnDistanceInWave: 0.5
+    spawnDistanceInWave: 0.6
     spawnDistance: 1
-  spawnableBossList:
-  - {fileID: 11400000, guid: 454715ef913d9c742bc14faffb0e61bb, type: 2}
+  spawnableBossList: []

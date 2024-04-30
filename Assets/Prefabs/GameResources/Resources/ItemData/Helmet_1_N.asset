@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Helmet_1_N
   m_EditorClassIdentifier: 
   ID: 20
-  DisplayName: Stalwart Helm of Vanguard
+  DisplayName: Helm of Vanguard
   Description: BaseArmor + 5
   ItemSprite: {fileID: 4662278715444935228, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1

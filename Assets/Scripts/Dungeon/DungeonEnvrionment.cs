@@ -10,6 +10,7 @@ public class DungeonEnvrionment : MonoBehaviour
 
     private DestroyedEvent destroyedEvent;
     private Animator animator;
+    private int potionDropChacne = Settings.potionDropChacne;
 
     private bool isDestroyed = false;
 
@@ -32,6 +33,8 @@ public class DungeonEnvrionment : MonoBehaviour
 
     private void DestroyedEvent_OnDestroyed(DestroyedEvent arg1, DestroyedEventArgs args)
     {
+        if (!Utilities.isSuccess(potionDropChacne)) return; // 포션 드랍확률 존재
+
         // 102~106 : 포션
         InventoryItemData randomPotion = GameResources.Instance.database.GetItem(Random.Range(102, 107));
 

@@ -19,7 +19,7 @@ MonoBehaviour:
     MoveSpeed + 1'
   ItemSprite: {fileID: 4940453492227284520, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
-  GoldValue: 4800
+  GoldValue: 11000
   itemGrade: 30
   gradeColor: {r: 0.8862745, g: 0.49019608, b: 0.07450981, a: 1}
   itemType: 2

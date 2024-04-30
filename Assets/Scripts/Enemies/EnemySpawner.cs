@@ -146,7 +146,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
     private void Boss_Destroyed(DestroyedEvent arg1, DestroyedEventArgs args)
     {
-        int randomItem = Random.Range(1000, 1028);
+        int randomItem = Random.Range(1000, Settings.lastLegendItemID);
 
         ItemPickUp itemObj = (ItemPickUp)ObjectPoolManager.Instance.Release(itemPrefab, args.point, Quaternion.identity);
         

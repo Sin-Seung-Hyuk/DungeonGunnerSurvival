@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 55
   DisplayName: Embroidered Handwraps
-  Description: 'BaseDamage + 2
+  Description: 'BaseDamage + 1
 
     ExpGain + 1'
   ItemSprite: {fileID: 3074304670329751637, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
@@ -26,6 +26,6 @@ MonoBehaviour:
   equipmentType: 3
   playerStatChangeList:
   - statType: 1
-    changeValue: 2
+    changeValue: 1
   - statType: 8
     changeValue: 1

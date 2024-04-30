@@ -192,19 +192,24 @@ public class Player : MonoBehaviour, IHealthObject
     #region Interface
     public int TakeDamage(int ammoDamage,out int damageAmount)
     {
-        // 방어력만큼 데미지 % 깎기
-        damageAmount = Utilities.DecreaseByPercent(ammoDamage, stat.baseArmor);
+        // 방어력만큼 데미지 % 깎기 (수치가 높아질수록 효율 감소)
+        //(int)(value / (value + Settings.combatScalingConstant));
+        int armor = Utilities.CombatScaling(stat.baseArmor);
+        damageAmount = Utilities.DecreaseByPercent(ammoDamage, armor);
 
-        if (stat.dodgeChance >= 1)
+        int dodge = Utilities.CombatScaling(stat.dodgeChance);
+        if (dodge >= 1)
         {
             // 회피에 성공
-            if (Utilities.isSuccess(stat.dodgeChance)) return -1;
+            if (Utilities.isSuccess(dodge)) return -1;
         }
 
         health.SetCurrentHealth(damageAmount);
         health.CallHealthEvent(damageAmount);
         health.SetHealthBar();
 
+        Debug.Log("damage: " + damageAmount);
+        Debug.Log("armor: "+armor);
         return damageAmount;
     }
     #endregion

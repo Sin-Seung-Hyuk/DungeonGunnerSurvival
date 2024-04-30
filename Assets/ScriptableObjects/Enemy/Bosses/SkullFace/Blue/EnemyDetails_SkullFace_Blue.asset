@@ -18,13 +18,13 @@ MonoBehaviour:
   spriteColor: {r: 0.3764706, g: 0.5294118, b: 0.8980392, a: 1}
   runtimeAnimatorController: {fileID: 9100000, guid: 2a6e05932cc7db243b3bb6296cff5612, type: 2}
   speed: 4
-  chaseDistance: 6
+  chaseDistance: 7
   contactDamageAmount: 10
   enemyStandardMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   enemyMaterializeTime: 1
   enemyMaterializeShader: {fileID: -6465566751694194690, guid: 5fec8f8e6ea244648a3c6ede24a56288, type: 3}
   enemyMaterializeColor: {r: 8.47419, g: 0, b: 6.122713, a: 1}
-  enemyWeapon: {fileID: 11400000, guid: b669a8c339978be4e91f4e6a022b6668, type: 2}
+  enemyWeapon: {fileID: 11400000, guid: be1b2416503d4dd49962f46a19863f5e, type: 2}
   firingInterval: 1.5
   firingDuration: 3
   firingLineOfSightRequired: 1

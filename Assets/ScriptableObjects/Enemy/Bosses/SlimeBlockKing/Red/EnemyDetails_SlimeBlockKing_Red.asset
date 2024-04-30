@@ -18,16 +18,16 @@ MonoBehaviour:
   spriteColor: {r: 0.9764706, g: 0.34509805, b: 0.27058825, a: 1}
   runtimeAnimatorController: {fileID: 9100000, guid: 6eeeb0c028585e344a9339b29de59673, type: 2}
   speed: 5
-  chaseDistance: 6
+  chaseDistance: 7
   contactDamageAmount: 5
   enemyStandardMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   enemyMaterializeTime: 1
   enemyMaterializeShader: {fileID: -6465566751694194690, guid: 5fec8f8e6ea244648a3c6ede24a56288, type: 3}
   enemyMaterializeColor: {r: 8.47419, g: 0, b: 6.122713, a: 1}
   enemyWeapon: {fileID: 11400000, guid: b669a8c339978be4e91f4e6a022b6668, type: 2}
-  firingInterval: 1
+  firingInterval: 0.8
   firingDuration: 3
-  firingLineOfSightRequired: 0
+  firingLineOfSightRequired: 1
   enemyHealthDetailsArray:
   - dungeonLevel: {fileID: 11400000, guid: 2fdf2969fd55b514d98d3c3510e6cd12, type: 2}
     enemyHealthAmount: 3000

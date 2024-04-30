@@ -17,7 +17,7 @@ MonoBehaviour:
   Description: A jagged shard of obsidian, its edges razor-sharp and its surface
     gleaming with an otherworldly sheen.
   ItemSprite: {fileID: 21300000, guid: ad6f773a5b07c5548b644202c595820c, type: 3}
-  MaxStackSize: 50
+  MaxStackSize: 70
   GoldValue: 17
   itemGrade: 8
   gradeColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}

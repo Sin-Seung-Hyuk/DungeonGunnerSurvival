@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1023
   DisplayName: Arcane Bulwark
-  Description: Dodge + 30
+  Description: Dodge + 25
   ItemSprite: {fileID: -2839709415051324713, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
-  GoldValue: 2950
+  GoldValue: 5500
   itemGrade: 15
   gradeColor: {r: 0.60784316, g: 0.23921569, b: 0.8509804, a: 1}
   itemType: 2
   equipmentType: 6
   playerStatChangeList:
   - statType: 3
-    changeValue: 30
+    changeValue: 25

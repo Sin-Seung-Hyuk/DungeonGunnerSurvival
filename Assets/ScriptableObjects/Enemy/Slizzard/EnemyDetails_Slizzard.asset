@@ -25,13 +25,13 @@ MonoBehaviour:
   enemyMaterializeShader: {fileID: -6465566751694194690, guid: 5fec8f8e6ea244648a3c6ede24a56288, type: 3}
   enemyMaterializeColor: {r: 8.47419, g: 0, b: 6.122713, a: 1}
   enemyWeapon: {fileID: 11400000, guid: a3b48b8a2de4c0a43b636e36e4591d6b, type: 2}
-  firingInterval: 0.5
+  firingInterval: 0.6
   firingDuration: 2
   firingLineOfSightRequired: 1
   enemyHealthDetailsArray:
   - dungeonLevel: {fileID: 11400000, guid: 2cbef6b9092dbee4a968a9c436942408, type: 2}
-    enemyHealthAmount: 90
-  - dungeonLevel: {fileID: 0}
-    enemyHealthAmount: 35
+    enemyHealthAmount: 150
+  - dungeonLevel: {fileID: 11400000, guid: d21727b925ffcfb4fbca30a2282a4eae, type: 2}
+    enemyHealthAmount: 250
   - dungeonLevel: {fileID: 0}
     enemyHealthAmount: 60

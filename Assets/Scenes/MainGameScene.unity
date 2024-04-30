@@ -273,10 +273,25 @@ MonoBehaviour:
   - poolSize: 50
     prefab: {fileID: 4454987432227277477, guid: 7d4f7fb6f9cbeb34a96ad7f4b70bc0d8, type: 3}
     componentType: IFireable
-  - poolSize: 10
+  - poolSize: 30
     prefab: {fileID: 6778550213661633531, guid: f82082fcefe173e4c873b128e2628d94, type: 3}
     componentType: IFireable
-  - poolSize: 4
+  - poolSize: 30
+    prefab: {fileID: 4024413289330009806, guid: c3a341333d1be2c40a267360ecf1acbb, type: 3}
+    componentType: IFireable
+  - poolSize: 30
+    prefab: {fileID: 8274860614600379229, guid: 955bd1a837a9d0b46bc2af6b79383302, type: 3}
+    componentType: IFireable
+  - poolSize: 30
+    prefab: {fileID: 4024413289330009806, guid: cc1eed6e05b959d47b31344f3a0f6894, type: 3}
+    componentType: IFireable
+  - poolSize: 30
+    prefab: {fileID: 2441378453221013712, guid: 3e0376fca8440d942b4acc2e24631a8f, type: 3}
+    componentType: IFireable
+  - poolSize: 30
+    prefab: {fileID: 5767396921803552879, guid: d35ec5f8fbec8094bbf9cc61d7c5e684, type: 3}
+    componentType: IFireable
+  - poolSize: 200
     prefab: {fileID: 5045320335855835643, guid: 7d9bf5c8e5746c642a787fa527ac3292, type: 3}
     componentType: Enemy
   - poolSize: 200
@@ -1077,8 +1092,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dungeonLevelList:
   - {fileID: 11400000, guid: 15fc1e7f4d7863a46b900355ca7d37bd, type: 2}
-  - {fileID: 11400000, guid: 2fdf2969fd55b514d98d3c3510e6cd12, type: 2}
   - {fileID: 11400000, guid: 2cbef6b9092dbee4a968a9c436942408, type: 2}
+  - {fileID: 11400000, guid: 2fdf2969fd55b514d98d3c3510e6cd12, type: 2}
   - {fileID: 11400000, guid: d21727b925ffcfb4fbca30a2282a4eae, type: 2}
   - {fileID: 11400000, guid: 2fdf2969fd55b514d98d3c3510e6cd12, type: 2}
   chestSpawner: {fileID: 2096679819399822258, guid: 1c96154ec73d0f64bba6aad452d9fb80, type: 3}
@@ -1729,7 +1744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3549284918307221643, guid: d17187c904cea764db437fbb95344b4e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3549284918377433344, guid: d17187c904cea764db437fbb95344b4e, type: 3}
       propertyPath: m_Name
@@ -1797,15 +1812,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3549284919532991192, guid: d17187c904cea764db437fbb95344b4e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3549284919532991192, guid: d17187c904cea764db437fbb95344b4e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549284919532991192, guid: d17187c904cea764db437fbb95344b4e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3549284919532991192, guid: d17187c904cea764db437fbb95344b4e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -54.444794
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3581841530145531615, guid: d17187c904cea764db437fbb95344b4e, type: 3}
       propertyPath: m_AnchorMax.y

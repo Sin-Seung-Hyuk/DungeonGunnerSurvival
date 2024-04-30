@@ -10,9 +10,9 @@ public class EnemyWeaponAI : MonoBehaviour
 
     [SerializeField] private Transform weaponShootPos;
     private Enemy enemy;
-    private EnemyDetailsSO enemyDetails;
-    private float firingIntervalTimer;
-    private float firingDurationTimer;
+    [HideInInspector] public EnemyDetailsSO enemyDetails;
+    [HideInInspector] public float firingIntervalTimer;
+    [HideInInspector] public float firingDurationTimer;
 
     private void Awake()
     {
@@ -21,9 +21,7 @@ public class EnemyWeaponAI : MonoBehaviour
 
     private void Start()
     {
-        enemyDetails = enemy.enemyDetails;
-        firingIntervalTimer = enemyDetails.firingInterval;
-        firingDurationTimer = enemyDetails.firingDuration;
+
     }
     private void Update()
     {

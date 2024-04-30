@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Boots_ 9_R
   m_EditorClassIdentifier: 
   ID: 75
-  DisplayName: Titan-Forged Greaves
+  DisplayName: Titan Greaves
   Description: MoveSpeed + 0.4
   ItemSprite: {fileID: -6595952757086248409, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Helmet_7_R
   m_EditorClassIdentifier: 
   ID: 26
-  DisplayName: Crown of Forgotten Pharaoh
+  DisplayName: Crown of Pharaoh
   Description: 'MaxHp + 20
 
     BaseArmor + 7'

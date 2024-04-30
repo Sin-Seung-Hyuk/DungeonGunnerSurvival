@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Helmet_8_R
   m_EditorClassIdentifier: 
   ID: 27
-  DisplayName: Visage of Dragon Knight
-  Description: BaseArmor + 13
+  DisplayName: Visage of Knight
+  Description: BaseArmor + 11
   ItemSprite: {fileID: 3824219051185779185, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
   GoldValue: 1900
@@ -24,4 +24,4 @@ MonoBehaviour:
   equipmentType: 0
   playerStatChangeList:
   - statType: 2
-    changeValue: 13
+    changeValue: 11

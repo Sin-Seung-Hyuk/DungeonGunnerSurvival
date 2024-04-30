@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Glove_ 4_N
   m_EditorClassIdentifier: 
   ID: 54
-  DisplayName: Plated Fists of Crusader
+  DisplayName: Fists of Crusader
   Description: 'PickUp + 0.03
 
     ExpGain + 1'

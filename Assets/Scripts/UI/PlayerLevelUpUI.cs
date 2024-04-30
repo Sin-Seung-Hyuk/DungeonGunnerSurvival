@@ -17,8 +17,6 @@ public class PlayerLevelUpUI : MonoBehaviour
 
     private void OnEnable()
     {
-        Time.timeScale = 0; // 이 UI가 활성화 될때마다 일시정지
-
         // 사운드 추가
         SoundEffectManager.Instance.PlaySoundEffect(levelUpSound);
         MusicManager.Instance.SetMusicLowSnapShot(); // 배경음악 줄이기
@@ -26,8 +24,14 @@ public class PlayerLevelUpUI : MonoBehaviour
 
     private void OnDisable()
     {
+        Time.timeScale = 1; // 게임 재개
         SoundEffectManager.Instance.PlaySoundEffect(levelUpChoiceSound);
         MusicManager.Instance.SetMusicFullSnapShot();
+    }
+
+    private void Update()
+    {
+        Time.timeScale = 0; // 이 UI가 활성화 될때마다 일시정지
     }
 
     public void InitializeLevelUpUI(PlayerLevelUpList list, int idx) // 몇번째 UI 컴포넌트들 설정인지
@@ -85,7 +89,6 @@ public class PlayerLevelUpUI : MonoBehaviour
     {
         // 랜덤으로 선택된 무기의 스탯 변경 (해당 무기의 스탯만 변경됨)
         weapon.LevelUp(list.statType, list.changeValue, true);
-        Time.timeScale = 1; // 게임 재개
 
         gameObject.SetActive(false);
     }
@@ -94,7 +97,6 @@ public class PlayerLevelUpUI : MonoBehaviour
     {
         // 플레이어의 스탯 변경
         player.playerStatChangedEvent.CallPlayerStatChangedEvent(list.statType, list.changeValue);
-        Time.timeScale = 1;
 
         gameObject.SetActive(false);
     }

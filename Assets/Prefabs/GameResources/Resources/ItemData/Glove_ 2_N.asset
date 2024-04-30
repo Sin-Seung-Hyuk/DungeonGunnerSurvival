@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 52
   DisplayName: Gauntlets of Juggernaut
-  Description: BaseDamage + 3
+  Description: BaseDamage + 2
   ItemSprite: {fileID: 7292192217671135671, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
   GoldValue: 900
@@ -24,4 +24,4 @@ MonoBehaviour:
   equipmentType: 3
   playerStatChangeList:
   - statType: 1
-    changeValue: 3
+    changeValue: 2

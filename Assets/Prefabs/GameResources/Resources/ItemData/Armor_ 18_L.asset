@@ -16,10 +16,10 @@ MonoBehaviour:
   DisplayName: Phoenix Mantle
   Description: 'MaxHP + 25
 
-    BaseDamage + 25'
+    BaseDamage + 20'
   ItemSprite: {fileID: -8735235732997728080, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
-  GoldValue: 5000
+  GoldValue: 10000
   itemGrade: 30
   gradeColor: {r: 0.8862745, g: 0.49019608, b: 0.07450981, a: 1}
   itemType: 2
@@ -28,4 +28,4 @@ MonoBehaviour:
   - statType: 0
     changeValue: 25
   - statType: 1
-    changeValue: 25
+    changeValue: 20

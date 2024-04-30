@@ -46,6 +46,15 @@ public static class Utilities
         return value - increase;
     }
 
+    // 방어율,회피율 계산하기  ===========================================================
+    public static int CombatScaling(int value)
+    {
+        float f_value = value;
+        int scale = (int)(f_value / (f_value + Settings.combatScalingConstant) * 100f);
+       
+        return scale;
+    }
+
     // 확률 계산하기  ===========================================================
     public static bool isSuccess(int percent)
     {

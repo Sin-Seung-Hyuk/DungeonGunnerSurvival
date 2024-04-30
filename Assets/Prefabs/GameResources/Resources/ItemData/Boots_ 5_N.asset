@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Boots_ 5_N
   m_EditorClassIdentifier: 
   ID: 71
-  DisplayName: Embroidered Footwraps
+  DisplayName: Footwraps
   Description: 'Dodge + 3
 
     MoveSpeed + 0.1'
