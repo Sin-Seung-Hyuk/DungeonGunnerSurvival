@@ -9,7 +9,7 @@ public class Database : ScriptableObject
 {
     [SerializeField] private List<InventoryItemData> itemDatabase;
 
-    [ContextMenu("Set ID")]
+    [ContextMenu("Set ID")] // 인스펙터에서 빠르게 사용 가능한 함수
     public void SetItemID()
     {
         itemDatabase = new List<InventoryItemData>();
@@ -49,7 +49,7 @@ public class Database : ScriptableObject
         }
     }
 
-    public InventoryItemData GetItem(int id)
+    public InventoryItemData GetItem(int id) // 해당 id의 아이템데이터 반환
     {
         return itemDatabase.Find(i => i.ID == id);
     }

@@ -16,7 +16,7 @@ MonoBehaviour:
   DisplayName: Dragonscale Belt
   Description: 'MaxHp + 50
 
-    BaseArmor + 10'
+    BaseArmor + 20'
   ItemSprite: {fileID: 8890868316448956488, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
   GoldValue: 5600
@@ -28,4 +28,4 @@ MonoBehaviour:
   - statType: 0
     changeValue: 50
   - statType: 2
-    changeValue: 10
+    changeValue: 20

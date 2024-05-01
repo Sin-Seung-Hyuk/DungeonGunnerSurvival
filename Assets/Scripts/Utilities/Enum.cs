@@ -50,9 +50,3 @@ public enum AimDirection
     Left,
     Down
 }
-
-public enum SlotType
-{
-    NonEquipmentSlot,
-    EquipmentSlot,
-}

@@ -7,7 +7,7 @@ public class DealContactDamage : MonoBehaviour
 {
     [Header("Deal Damage")]
     private int contactDamageAmount;
-    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private LayerMask layerMask; // 충돌 감지할 레이어
 
     private bool isColliding = false;
 
@@ -46,14 +46,16 @@ public class DealContactDamage : MonoBehaviour
         {
             isColliding = true;
             // contactsDamageDelay 초 이후에 충돌데미지 다시 활성화
-            Invoke("ResetContactCollision", Settings.contactsDamageDelay);
+            StartCoroutine(ResetContactCollision());
 
             reciveContactDamage.TakeContactDamage(contactDamageAmount);
         }
     }
 
-    private void ResetContactCollision()
+    private IEnumerator ResetContactCollision()
     {
+        yield return new WaitForSeconds(Settings.contactsDamageDelay);
+       
         isColliding = false;
     }
 }

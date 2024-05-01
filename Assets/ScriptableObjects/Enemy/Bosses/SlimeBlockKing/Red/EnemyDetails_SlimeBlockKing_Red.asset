@@ -31,8 +31,8 @@ MonoBehaviour:
   enemyHealthDetailsArray:
   - dungeonLevel: {fileID: 11400000, guid: 2fdf2969fd55b514d98d3c3510e6cd12, type: 2}
     enemyHealthAmount: 3000
-  - dungeonLevel: {fileID: 0}
-    enemyHealthAmount: 400
+  - dungeonLevel: {fileID: 11400000, guid: fdfb9cf2d30bec446aa451c327ac5547, type: 2}
+    enemyHealthAmount: 10000
   - dungeonLevel: {fileID: 0}
     enemyHealthAmount: 400
   - dungeonLevel: {fileID: 0}

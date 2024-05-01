@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(UniqueID))]
 
                              // 인벤토리 홀더, 상호작용 인터페이스
 public class ChestInventory : InventoryHolder, IInteractable

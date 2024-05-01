@@ -6,5 +6,4 @@ using UnityEngine;
 public class CurrentPlayerSO : ScriptableObject
 {
     public PlayerDetailsSO currentPlayerDetailsSO;
-    public string playerName;
 }

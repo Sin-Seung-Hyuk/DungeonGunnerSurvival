@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1022
   DisplayName: Shadowhawk
-  Description: BaseArmor + 25
+  Description: BaseArmor + 40
   ItemSprite: {fileID: 8484921320705233728, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
   GoldValue: 5500
@@ -24,4 +24,4 @@ MonoBehaviour:
   equipmentType: 6
   playerStatChangeList:
   - statType: 2
-    changeValue: 25
+    changeValue: 40

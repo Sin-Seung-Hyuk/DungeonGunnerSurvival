@@ -11,9 +11,7 @@ public class DungeonBuilder : Singleton<DungeonBuilder>
 
     protected override void Awake()
     {
-        base.Awake();
-
-      
+        base.Awake(); 
     }
 
     public void CreateDungeonRoom(DungeonLevelSO dungeonLevel) // 던전 생성
@@ -29,11 +27,11 @@ public class DungeonBuilder : Singleton<DungeonBuilder>
 
         RoomTemplateSO roomTemplate = dungeonLevel.roomTemplateList[currentRoomNum];
         currentRoomNum++;
-
+                                                          // 방 생성위치 플레이어 스폰위치 기준
         roomObject = Instantiate(roomTemplate.roomPrefab, roomTemplate.playerSpawnPos , Quaternion.identity);
         roomObject.transform.SetParent(this.transform,false); // 던전빌더 자식오브젝트로 던전 생성
 
-        Room instantiatedRoom = GetComponentInChildren<Room>();
+        Room instantiatedRoom = GetComponentInChildren<Room>(); // 던전빌더 클래스의 자식으로 Room이 생성되므로 자식의 컴포넌트 받아오기
         instantiatedRoom.InitializedRoom(roomTemplate, roomObject); // 생성된 방 초기화
     }
 }

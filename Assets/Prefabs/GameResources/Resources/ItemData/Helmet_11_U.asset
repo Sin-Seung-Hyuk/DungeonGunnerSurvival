@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1001
   DisplayName: Faceplate of Sentinel
-  Description: 'MaxHp + 40
+  Description: 'MaxHp + 50
 
-    BaseArmor + 15'
+    BaseArmor + 30'
   ItemSprite: {fileID: -3597388712997048742, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
   GoldValue: 5600
@@ -26,6 +26,6 @@ MonoBehaviour:
   equipmentType: 0
   playerStatChangeList:
   - statType: 0
-    changeValue: 40
+    changeValue: 50
   - statType: 2
-    changeValue: 15
+    changeValue: 30

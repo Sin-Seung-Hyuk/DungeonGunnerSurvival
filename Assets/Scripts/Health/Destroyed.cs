@@ -25,7 +25,7 @@ public class Destroyed : MonoBehaviour
 
     private void DestroyedEvent_OnDestroyed(DestroyedEvent obj, DestroyedEventArgs args)
     {
-        if (args.isPooling)
+        if (args.isPooling) // 오브젝트 풀에 반환해야 하는 객체일 경우
         {
             gameObject.SetActive(false);
         }

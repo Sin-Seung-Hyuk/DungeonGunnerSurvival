@@ -22,7 +22,7 @@ MonoBehaviour:
   weaponFireRate: 1.5
   weaponReloadTime: 1.5
   weaponRange: 13
-  weaponAmmoSpeed: 4
+  weaponAmmoSpeed: 3
   weaponAmmo:
   - {fileID: 2441378453221013712, guid: 3e0376fca8440d942b4acc2e24631a8f, type: 3}
   upgradeDescription: 

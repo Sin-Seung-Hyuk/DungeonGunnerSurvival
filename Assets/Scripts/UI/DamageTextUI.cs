@@ -23,7 +23,7 @@ public class DamageTextUI : MonoBehaviour
 
         if (isCritic)
         {
-            TxtDamage.color = new Color32(255, 102, 2,255);
+            TxtDamage.color = Settings.critical;
             TxtDamage.fontSize = 4;
 
             rect.DOMoveY(yPos + 0.8f, 0.8f).SetEase(Ease.InOutQuad).OnComplete(() => this.gameObject.SetActive(false));

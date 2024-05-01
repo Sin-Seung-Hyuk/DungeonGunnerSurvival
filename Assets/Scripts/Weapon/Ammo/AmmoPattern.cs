@@ -10,18 +10,18 @@ public class AmmoPattern : MonoBehaviour, IFireable
     private float ammoSpeed;
     private Vector3 fireDirectionVector;
 
-    public void InitializeAmmo(float aimAngle, Vector3 weaponAimDirectionVector, Weapon weapon)
+    public void InitializeAmmo(float aimAngle, Weapon weapon)
     {
-        SetFireDirection(aimAngle, weaponAimDirectionVector); // 탄 진행방향
+        SetFireDirection(aimAngle); // 탄 진행방향
 
         this.ammoRange = weapon.weaponDetail.weaponRange;
         this.ammoSpeed = weapon.weaponDetail.weaponAmmoSpeed;
 
         gameObject.SetActive(true); // 탄 초기화 후 활성화
 
-        foreach (Ammo ammo in ammoArray)
+        foreach (Ammo ammo in ammoArray) // 배열에 들어있는 각 탄약별로 초기화 진행
         {
-            ammo.InitializeAmmo(aimAngle, weaponAimDirectionVector, weapon);
+            ammo.InitializeAmmo(aimAngle, weapon);
         }
     }
 
@@ -40,7 +40,7 @@ public class AmmoPattern : MonoBehaviour, IFireable
             gameObject.SetActive(false);
         }
     }
-    private void SetFireDirection(float aimAngle, Vector3 aimDirectionVector)
+    private void SetFireDirection(float aimAngle)
     {
         transform.eulerAngles = new Vector3(0f, 0f, aimAngle);
         fireDirectionVector = Utilities.GetDirectionVectorFromAngle(aimAngle);

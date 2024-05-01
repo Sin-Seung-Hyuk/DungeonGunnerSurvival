@@ -70,7 +70,7 @@ public class Chest : MonoBehaviour, IInteractable
 
         yield return new WaitForSeconds(1.5f);
 
-        int randomItem = Random.Range(1000, Settings.lastLegendItemID);
+        int randomItem = Random.Range(1000, Settings.lastLegendItemID); // 유니크~전설 아이템 중 랜덤
 
         ItemPickUp itemObj = (ItemPickUp)ObjectPoolManager.Instance.Release(itemPrefab, itemSpawnPoint.position, Quaternion.identity);
 

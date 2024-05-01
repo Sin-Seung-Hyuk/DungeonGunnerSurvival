@@ -6,7 +6,6 @@ using UnityEngine;
 public class EnemySpawner : Singleton<EnemySpawner>
 {
     private float spawnTimer;
-    private float waveTimer;
     private Room currentRoom;
     private SpawnParameter spawnParameters;
 
@@ -146,7 +145,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
     private void Boss_Destroyed(DestroyedEvent arg1, DestroyedEventArgs args)
     {
-        int randomItem = Random.Range(1000, Settings.lastLegendItemID);
+        int randomItem = Random.Range(1000, Settings.lastLegendItemID); // 유니크~전설 아이템 드랍
 
         ItemPickUp itemObj = (ItemPickUp)ObjectPoolManager.Instance.Release(itemPrefab, args.point, Quaternion.identity);
         

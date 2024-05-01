@@ -193,7 +193,6 @@ public class Player : MonoBehaviour, IHealthObject
     public int TakeDamage(int ammoDamage,out int damageAmount)
     {
         // 방어력만큼 데미지 % 깎기 (수치가 높아질수록 효율 감소)
-        //(int)(value / (value + Settings.combatScalingConstant));
         int armor = Utilities.CombatScaling(stat.baseArmor);
         damageAmount = Utilities.DecreaseByPercent(ammoDamage, armor);
 
@@ -208,8 +207,6 @@ public class Player : MonoBehaviour, IHealthObject
         health.CallHealthEvent(damageAmount);
         health.SetHealthBar();
 
-        Debug.Log("damage: " + damageAmount);
-        Debug.Log("armor: "+armor);
         return damageAmount;
     }
     #endregion

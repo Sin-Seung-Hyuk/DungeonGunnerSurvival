@@ -10,6 +10,8 @@ public static class Settings
     public static int startExp = 30; // 1레벨 최대경험치
     public static int weaponUpgrade = 10; // 무기 업그레이드 레벨
     public static float combatScalingConstant = 50f; // 방어력,회피율 계산을 위한 상수 (수치가 높아질수록 효율이 감소하는 커브)
+    public static float burnDamage = 0.1f; // 틱데미지 비율 (공격력의 n%)
+    public static float burnDistance = 0.5f; // 틱데미지 간격
     #endregion
 
 
@@ -49,7 +51,7 @@ public static class Settings
 
     #region DUNGEON PARAMETERS
     public const int dungeonTimer = 150; // 던전 타이머
-    public const int potionDropChacne = 30; // 포션 드랍확률 25%
+    public const int potionDropChacne = 50; // 포션 드랍확률 50%
     public const int lastLegendItemID = 1032; // 유니크,전설 아이템의 마지막 ID +1 (랜덤범위 지정용)
     #endregion
 
@@ -65,6 +67,7 @@ public static class Settings
     public static Color32 blue = new Color32(76 ,115, 209,255);
     public static Color32 red = new Color32(255 ,112, 120, 255);
     public static Color32 legend = new Color32(226 ,125, 19, 255);
+    public static Color32 critical = new Color32(255, 102, 2, 255);
     #endregion
 
     #region AUDIO

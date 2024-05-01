@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1027
   DisplayName: Dawnbreaker
-  Description: 'MaxHP + 20
+  Description: 'MaxHP + 30
 
-    BaseArmor + 20
+    BaseArmor + 30
 
-    Dodge + 20'
+    Dodge + 30'
   ItemSprite: {fileID: -4369440675659646405, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
   GoldValue: 10000
@@ -28,8 +28,8 @@ MonoBehaviour:
   equipmentType: 6
   playerStatChangeList:
   - statType: 0
-    changeValue: 20
+    changeValue: 30
   - statType: 2
-    changeValue: 20
+    changeValue: 30
   - statType: 3
-    changeValue: 20
+    changeValue: 30

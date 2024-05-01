@@ -35,9 +35,10 @@ public class FireWeapon : MonoBehaviour
 
     private void WeaponFire(FireWeaponEventArgs fireWeaponEventArgs)
     {
+        // 남은 탄약, 재장전 여부, 연사속도. 3가지를 체크한 후 모두 통과되면 FireAmmo
         if (IsWeaponReadyToFire(fireWeaponEventArgs.weapon, fireWeaponEventArgs.weaponIndex))
         {
-            FireAmmo(fireWeaponEventArgs.weapon,fireWeaponEventArgs.aimAngle, fireWeaponEventArgs.weaponAimDirectionVector, fireWeaponEventArgs.weaponIndex);
+            FireAmmo(fireWeaponEventArgs.weapon,fireWeaponEventArgs.aimAngle, fireWeaponEventArgs.weaponIndex);
         }
     }
 
@@ -59,7 +60,7 @@ public class FireWeapon : MonoBehaviour
         return true;
     }
 
-    private void FireAmmo(Weapon weapon, float aimAngle, Vector3 weaponAimDirectionVector, int weaponIndex)
+    private void FireAmmo(Weapon weapon, float aimAngle , int weaponIndex)
     {
         GameObject ammoPrefab = weapon.GetCurrentAmmo(); // 현재 사용하고 있는 탄
 
@@ -68,7 +69,7 @@ public class FireWeapon : MonoBehaviour
             // ammo에 오브젝트 풀에 등록된 Ammo프리팹이 가지고있는 IFireable 컴포넌트가 반환됨
             IFireable ammo = (IFireable)ObjectPoolManager.Instance.Release(ammoPrefab, weaponShootPosition.position, Quaternion.identity);
 
-            ammo.InitializeAmmo(aimAngle, weaponAimDirectionVector, weapon);
+            ammo.InitializeAmmo(aimAngle, weapon);
 
             weapon.weaponAmmoRemaining--; // 남은 탄 감소
 

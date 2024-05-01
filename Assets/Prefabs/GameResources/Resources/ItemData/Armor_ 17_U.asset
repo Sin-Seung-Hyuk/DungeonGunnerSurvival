@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1024
   DisplayName: Titan's Embrace
-  Description: MaxHP + 70
+  Description: MaxHP + 80
   ItemSprite: {fileID: 856356093089372617, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
   GoldValue: 5200
@@ -24,4 +24,4 @@ MonoBehaviour:
   equipmentType: 6
   playerStatChangeList:
   - statType: 0
-    changeValue: 70
+    changeValue: 80

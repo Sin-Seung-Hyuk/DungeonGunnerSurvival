@@ -5,11 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(Enemy))]
 public class EnemyWeaponAI : MonoBehaviour
 {
+    private Enemy enemy;
+
     // LayerMask : 32비트 int형. 인스펙터에서 사용하는 레이어를 비트마스크로 쉽게 사용
     [SerializeField] private LayerMask layerMask;
 
     [SerializeField] private Transform weaponShootPos;
-    private Enemy enemy;
     [HideInInspector] public EnemyDetailsSO enemyDetails;
     [HideInInspector] public float firingIntervalTimer;
     [HideInInspector] public float firingDurationTimer;
@@ -19,10 +20,6 @@ public class EnemyWeaponAI : MonoBehaviour
         enemy = GetComponent<Enemy>();
     }
 
-    private void Start()
-    {
-
-    }
     private void Update()
     {
         firingIntervalTimer -= Time.deltaTime;

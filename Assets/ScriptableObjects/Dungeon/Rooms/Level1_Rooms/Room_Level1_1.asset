@@ -22,6 +22,13 @@ MonoBehaviour:
   spawnPositionArray:
   - {x: -9, y: 8}
   - {x: 9, y: 8}
+  - {x: -37, y: -25}
+  - {x: -37, y: -3}
+  - {x: -37, y: 22}
+  - {x: -21, y: 22}
+  - {x: 2, y: -25}
+  - {x: 18, y: -21}
+  - {x: 9, y: -11}
   spawnableEnemyList:
   - dungeonObject: {fileID: 11400000, guid: 2bb1c82ba6be59841a63d3223db83545, type: 2}
     ratio: 7

@@ -16,7 +16,7 @@ MonoBehaviour:
   DisplayName: Tempest
   Description: 'MaxHP + 40
 
-    BaseArmor + 15'
+    BaseArmor + 25'
   ItemSprite: {fileID: 3272930962163403208, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
   GoldValue: 5000
@@ -28,4 +28,4 @@ MonoBehaviour:
   - statType: 0
     changeValue: 40
   - statType: 2
-    changeValue: 15
+    changeValue: 25

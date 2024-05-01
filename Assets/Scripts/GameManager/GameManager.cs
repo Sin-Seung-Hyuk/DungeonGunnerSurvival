@@ -87,7 +87,6 @@ public class GameManager : Singleton<GameManager>
     {
         gameState = GameState.InDungeon;
 
-
         yield return new WaitForSeconds(1f);
         if (currentDungeonLevel == 1)
             yield return StartCoroutine(AddWeaponToPlayer()); // 1레벨 던전은 매번 무기를 추가해줌
@@ -102,7 +101,7 @@ public class GameManager : Singleton<GameManager>
 
         yield return null;
 
-        // 던전의 다음 방 플레이
+        // 같은 던전의 다음 방 플레이
         CreateDungeonLevel(currentDungeonLevel);
     }
 
@@ -137,7 +136,7 @@ public class GameManager : Singleton<GameManager>
         gameState = GameState.InDungeon;
 
         TxtFade.text = "";
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         yield return StartCoroutine(Fade(0.75f, 2f));
 
         uIController.SetGameOverUI(); // 게임오버 UI 활성화
@@ -149,14 +148,13 @@ public class GameManager : Singleton<GameManager>
 
         yield return null;
 
-        player.playerInventory.ClearPlayerInventory();
         gameState = GameState.RestartGame;
     }
 
     private void CreateDungeonFade() // 던전입장시 까만화면에서 점점 밝아짐 (페이드인)
     {
         canvasGroup.alpha = 1f;
-        TxtFade.text = instantiatedRoom.roomTemplate.roomName;
+        TxtFade.text = instantiatedRoom.roomTemplate.roomName; // 방의 이름 보여주기
         if (instantiatedRoom.isBossRoom) bossRoomImage.gameObject.SetActive(true);
         else bossRoomImage.gameObject.SetActive(false);
         StartCoroutine(Fade(0, 2f));
@@ -206,7 +204,6 @@ public class GameManager : Singleton<GameManager>
         if (gameState != GameState.Paused)
         {
             uIController.SetPauseUI(true); // 일시정지 UI 활성화
-            //player.playerControl.DisablePlayer();
 
             prevGameState = gameState;
             gameState = GameState.Paused;
@@ -214,7 +211,6 @@ public class GameManager : Singleton<GameManager>
         else if (gameState == GameState.Paused)
         {
             uIController.SetPauseUI(false);
-            //player.playerControl.EnablePlayer();
 
             gameState = prevGameState;
             prevGameState = GameState.Paused;
@@ -305,6 +301,7 @@ public class GameManager : Singleton<GameManager>
         if (args.room.isBossRoom) // 보스방 클리어인지 확인
             gameState = GameState.DungeonCompleted;
         else gameState = GameState.DungeonRoomClear;
+        // 마지막 방인지 확인 (게임클리어)
 
         SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.dungeonClear);
     }

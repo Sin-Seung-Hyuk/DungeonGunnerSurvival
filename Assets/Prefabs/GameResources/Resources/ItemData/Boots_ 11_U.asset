@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1016
   DisplayName: Necromancer Boots
-  Description: 'Dodge + 12
+  Description: 'Dodge + 20
 
     MoveSpeed + 0.4'
   ItemSprite: {fileID: -8100887858987163017, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
@@ -26,6 +26,6 @@ MonoBehaviour:
   equipmentType: 5
   playerStatChangeList:
   - statType: 3
-    changeValue: 12
+    changeValue: 20
   - statType: 6
     changeValue: 0.4

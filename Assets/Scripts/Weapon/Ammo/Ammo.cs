@@ -63,7 +63,7 @@ public abstract class Ammo : MonoBehaviour, IFireable // 사격 인터페이스
         hitEffect.gameObject.SetActive(true);
     }
 
-    public void InitializeAmmo(float aimAngle, Vector3 aimDirectionVector, Weapon weapon)
+    public void InitializeAmmo(float aimAngle, Weapon weapon)
     {
         SetFireDirection(aimAngle); // 탄 진행방향
 

@@ -12,9 +12,10 @@ public class EnemyMovementAI : MonoBehaviour
     private Coroutine moveEnemyRoutine;
     private float currentEnemyPathRebuildCooldown; // 경로 재설정 쿨타임
     private WaitForFixedUpdate waitForFixedUpdate;
-    public float moveSpeed; //movementDetail에서 받아온 이속
-    public float chaseDistance; //movementDetail에서 받아온 플레이어와의 간격 (플레이어를 어디까지 쫓아올지)
     private List<Vector2Int> surroundPosList = new List<Vector2Int>();
+
+    [HideInInspector] public float moveSpeed; //movementDetail에서 받아온 이속
+    [HideInInspector] public float chaseDistance; //movementDetail에서 받아온 플레이어와의 간격 (플레이어를 어디까지 쫓아올지)
 
     [HideInInspector] public int updateFrameNumber = 1; // 업데이트 프레임
     [HideInInspector] public int targetFrameRateToSpreadPathFindingOver = 1; // 업데이트 프레임
@@ -27,6 +28,7 @@ public class EnemyMovementAI : MonoBehaviour
     {
         waitForFixedUpdate = new WaitForFixedUpdate();
 
+        // 각 적마다 랜덤으로 경로 재구축 텀 설정. 랜덤으로 결정된 이 수치의 프레임마다 경로재구축 실행
         targetFrameRateToSpreadPathFindingOver = Random.Range(50, 70);
 
         // 플레이어 포지션 받아오기
@@ -86,7 +88,7 @@ public class EnemyMovementAI : MonoBehaviour
                 yield return waitForFixedUpdate;
             }
 
-            yield return waitForFixedUpdate;
+            yield return waitForFixedUpdate; // 물리연산이므로 fixedUpdate 마다 수행
         }
 
         enemy.idleEvent.CallIdle();
@@ -115,7 +117,7 @@ public class EnemyMovementAI : MonoBehaviour
         // 플레이어가 장애물쪽에 있으면 그 근처의 위치로 이동해야함
         Vector3Int playerCellPos = GameManager.Instance.GetPlayerCellPosition();
 
-        // 현재 맵을 기준으로 플레이어 포지션 구하기 (월드포지션이 아닌 맵의 좌표)
+        // 현재 맵을 기준으로 플레이어 포지션 구하기 (월드포지션이 아닌 맵 위의 좌표)
         Vector2Int adjustPlayerCellPos = new Vector2Int(playerCellPos.x - currentRoom.lowerBounds.x,
             playerCellPos.y - currentRoom.lowerBounds.y);
 

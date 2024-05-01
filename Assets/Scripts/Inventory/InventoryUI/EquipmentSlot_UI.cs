@@ -24,7 +24,9 @@ public class EquipmentSlot_UI : InventorySlot_UI // 기존 슬롯UI 상속
             GameManager.Instance.GetPlayer().playerStatChangedEvent
                 .CallPlayerStatChangedEvent(statChangeList.statType, statChangeList.changeValue);
         }
-        SetBtnColor(AssignedInventorySlot.ItemData.gradeColor);
+
+        // 장착한 아이템의 등급색상으로 장비슬롯 색상 설정
+        SetBtnColor(AssignedInventorySlot.ItemData.gradeColor); 
     }
 
     // 장비 해제
