@@ -25,6 +25,7 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public InventorySlot AssignedInventorySlot => assignedInventorySlot;
     public InventoryDisplay ParentDisplay { get; private set;}
 
+
     private void Awake()
     {
         ClearSlot(); // 빈 슬롯UI로 시작
@@ -33,10 +34,6 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
         btn?.onClick.AddListener(OnUIISlotClick);
 
         ParentDisplay = transform.parent.GetComponent<InventoryDisplay>();
-    }
-
-    private void Update() {
-        //Debug.Log("일시정지 상태에서 업데이트 호출");
     }
 
     public void OnPointerEnter(PointerEventData eventData) // 슬롯UI에 마우스오버
@@ -53,7 +50,7 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
         float timer = 0f;
         while (timer < 1.5f) // 슬롯에 1.5초 이상 마우스를 갖다대면 활성화
         {
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime; // 일시정지에도 영향이 없는 unscaledDeltaTime
             yield return null;
         }
 

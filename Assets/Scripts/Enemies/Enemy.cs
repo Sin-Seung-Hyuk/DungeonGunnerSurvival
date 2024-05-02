@@ -130,6 +130,7 @@ public class Enemy : MonoBehaviour, IHealthObject, IDebuff
     private IEnumerator EnemyDestroyedRoutine()
     {
         // 적 비활성화, 속도 0
+        dealContactDamage.InitializedContactDamage(0);
         EnemyEnable(false);
         if (weapon != null) Destroy(weapon); // 무기를 가진 적이라면 파괴되면서 무기를 파괴해야함 (다음에 생성될 적을 위해)
         enemyMovementAI.moveSpeed = 0f;

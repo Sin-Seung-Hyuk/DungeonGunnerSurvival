@@ -26,7 +26,7 @@ MonoBehaviour:
   weaponAmmo:
   - {fileID: 4454987432227277477, guid: a63d5773f98b2c84aade89e10aafcdb2, type: 3}
   - {fileID: 8274860614600379229, guid: ca412b232f83c3f4aaf5b157a9ba9bc2, type: 3}
-  upgradeDescription: 
+  upgradeDescription: Three bullets are fired at a time
   isTrail: 0
   ammoTrailMaterial: {fileID: 0}
   ammoTrailStartWidth: 0

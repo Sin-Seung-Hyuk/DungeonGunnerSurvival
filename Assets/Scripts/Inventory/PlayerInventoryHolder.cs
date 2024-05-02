@@ -20,7 +20,6 @@ public class PlayerInventoryHolder : InventoryHolder
         SaveLoad.OnSaveGame += SaveFile;
 
         player = GetComponent<Player>();
-        ClearPlayerInventory(); // 게임이 시작되면 플레이어 인벤토리 초기화 (로그라이크 게임이므로)
     }
 
     private void SaveFile()
@@ -29,14 +28,9 @@ public class PlayerInventoryHolder : InventoryHolder
     }
 
     protected override void LoadInventory(SaveData data)
-    {   // 세이브 데이터 확인하고 저장된 데이터 가져와 인벤토리 초기화
-
-        // 세이브데이터의 플레이어 세이브데이터 확인하기
-        if (data.playerInventory.invSystem != null)
-        {
-            this.primaryInventorySystem = data.playerInventory.invSystem;
-            OnPlayerInventoryChanged?.Invoke();
-        }
+    {   
+        // 플레이어 인벤토리는 세이브 X
+        // 게임이 시작되면 창고만 로드되고 인벤토리는 초기화
     }
 
     void Update()
@@ -78,14 +72,5 @@ public class PlayerInventoryHolder : InventoryHolder
         }
 
         return false;
-    }
-
-    // 플레이어의 모든 인벤토리 아이템 제거 (플레이어 죽었을때)
-    private void ClearPlayerInventory()
-    {
-        foreach (var item in primaryInventorySystem.InventorySlots)
-        {
-            item.ClearSlot();
-        }
     }
 }

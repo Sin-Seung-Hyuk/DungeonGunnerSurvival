@@ -100,6 +100,8 @@ public class Player : MonoBehaviour, IHealthObject
         stat.SetPlayerStat(PlayerStatType.ExpGain, playerDetails.expGain);
 
         circleRange.radius = stat.circleRange;
+
+
     }
 
     private void Start()

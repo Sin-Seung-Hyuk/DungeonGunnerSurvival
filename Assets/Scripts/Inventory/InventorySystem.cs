@@ -126,6 +126,10 @@ public class InventorySystem    // 인벤토리의 슬롯들을 관리하는 인벤토리 시스템
     {
         gold -= basketTotal;
     }
+    public void SetGold(int value) // 골드 설정
+    {
+        gold = value;
+    }
 
     public Dictionary<InventoryItemData, int> GetAllItem() // 인벤의 모든 아이템 반환
     {

@@ -146,7 +146,7 @@ public class ShopKeeperDisplay : MonoBehaviour
         if (!isSelling && _playerInventory.PrimaryInventorySystem.Gold >= rerollGold)
         {
             _playerInventory.PrimaryInventorySystem.SpendGold(rerollGold);
-            rerollGold = Utilities.IncreaseByPercent(rerollGold, 15);
+            rerollGold = Utilities.IncreaseByPercent(rerollGold, 10); // 리롤비용 10%씩 증가
             RerollGoldText.text = rerollGold.ToString();
 
             ClearShopItemList();

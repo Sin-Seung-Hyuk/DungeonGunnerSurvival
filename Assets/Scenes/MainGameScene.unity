@@ -1095,7 +1095,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2fdf2969fd55b514d98d3c3510e6cd12, type: 2}
   - {fileID: 11400000, guid: 2cbef6b9092dbee4a968a9c436942408, type: 2}
   - {fileID: 11400000, guid: d21727b925ffcfb4fbca30a2282a4eae, type: 2}
-  - {fileID: 11400000, guid: 2fdf2969fd55b514d98d3c3510e6cd12, type: 2}
+  - {fileID: 11400000, guid: fdfb9cf2d30bec446aa451c327ac5547, type: 2}
   chestSpawner: {fileID: 2096679819399822258, guid: 1c96154ec73d0f64bba6aad452d9fb80, type: 3}
   player: {fileID: 796670778}
   TxtFade: {fileID: 2085638960}

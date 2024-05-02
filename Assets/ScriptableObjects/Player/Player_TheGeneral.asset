@@ -28,6 +28,6 @@ MonoBehaviour:
   dodgeChance: 0
   criticChance: 0
   criticDamage: 0
-  moveSpeed: 6
+  moveSpeed: 12.37
   circleRange: 0.8
   expGain: 0

@@ -702,65 +702,65 @@ MonoBehaviour:
     ratio: 1
   - dungeonObject:
       statType: 2
-      changeValue: 3
+      changeValue: 5
       choiceText: Base Armor
-      changeValueText: + 3
+      changeValueText: + 5
       txtColor: {r: 1, g: 1, b: 1, a: 1}
       isPlayerStat: 1
     ratio: 20
   - dungeonObject:
       statType: 2
-      changeValue: 5
+      changeValue: 7
       choiceText: Base Armor
-      changeValueText: + 5
+      changeValueText: + 7
       txtColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}
       isPlayerStat: 1
     ratio: 8
   - dungeonObject:
       statType: 2
-      changeValue: 7
+      changeValue: 10
       choiceText: Base Armor
-      changeValueText: + 7
+      changeValueText: + 10
       txtColor: {r: 0.60784316, g: 0.23921569, b: 0.8509804, a: 1}
       isPlayerStat: 1
     ratio: 3
   - dungeonObject:
       statType: 2
-      changeValue: 10
+      changeValue: 15
       choiceText: Base Armor
-      changeValueText: + 10
+      changeValueText: + 15
       txtColor: {r: 0.8862745, g: 0.49019608, b: 0.07450981, a: 1}
       isPlayerStat: 1
     ratio: 1
   - dungeonObject:
       statType: 3
-      changeValue: 3
+      changeValue: 5
       choiceText: Dodge Chance
-      changeValueText: + 3
+      changeValueText: + 5
       txtColor: {r: 1, g: 1, b: 1, a: 1}
       isPlayerStat: 1
     ratio: 20
   - dungeonObject:
       statType: 3
-      changeValue: 5
+      changeValue: 7
       choiceText: Dodge Chance
-      changeValueText: + 5
+      changeValueText: + 7
       txtColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}
       isPlayerStat: 1
     ratio: 8
   - dungeonObject:
       statType: 3
-      changeValue: 7
+      changeValue: 10
       choiceText: Dodge Chance
-      changeValueText: + 7
+      changeValueText: + 10
       txtColor: {r: 0.60784316, g: 0.23921569, b: 0.8509804, a: 1}
       isPlayerStat: 1
     ratio: 3
   - dungeonObject:
       statType: 3
-      changeValue: 10
+      changeValue: 15
       choiceText: Dodge Chance
-      changeValueText: + 10
+      changeValueText: + 15
       txtColor: {r: 0.8862745, g: 0.49019608, b: 0.07450981, a: 1}
       isPlayerStat: 1
     ratio: 1
@@ -1022,65 +1022,65 @@ MonoBehaviour:
     ratio: 1
   - dungeonObject:
       statType: 9
-      changeValue: 10
+      changeValue: 15
       choiceText: Reload Speed
-      changeValueText: + 10 %
+      changeValueText: + 15 %
       txtColor: {r: 1, g: 1, b: 1, a: 1}
       isPlayerStat: 0
     ratio: 20
   - dungeonObject:
       statType: 9
-      changeValue: 15
+      changeValue: 20
       choiceText: Reload Speed
-      changeValueText: + 15 %
+      changeValueText: + 20 %
       txtColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}
       isPlayerStat: 0
     ratio: 8
   - dungeonObject:
       statType: 9
-      changeValue: 20
+      changeValue: 30
       choiceText: Reload Speed
-      changeValueText: + 20 %
+      changeValueText: + 30 %
       txtColor: {r: 0.60784316, g: 0.23921569, b: 0.8509804, a: 1}
       isPlayerStat: 0
     ratio: 3
   - dungeonObject:
       statType: 9
-      changeValue: 30
+      changeValue: 40
       choiceText: Reload Speed
-      changeValueText: + 30 %
+      changeValueText: + 40 %
       txtColor: {r: 0.8862745, g: 0.49019608, b: 0.07450981, a: 1}
       isPlayerStat: 0
     ratio: 1
   - dungeonObject:
       statType: 10
-      changeValue: 10
+      changeValue: 15
       choiceText: Fire Rate
-      changeValueText: + 10 %
+      changeValueText: + 15 %
       txtColor: {r: 1, g: 1, b: 1, a: 1}
       isPlayerStat: 0
     ratio: 20
   - dungeonObject:
       statType: 10
-      changeValue: 15
+      changeValue: 20
       choiceText: Fire Rate
-      changeValueText: + 15 %
+      changeValueText: + 20 %
       txtColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}
       isPlayerStat: 0
     ratio: 8
   - dungeonObject:
       statType: 10
-      changeValue: 20
+      changeValue: 30
       choiceText: Fire Rate
-      changeValueText: + 20 %
+      changeValueText: + 30 %
       txtColor: {r: 0.60784316, g: 0.23921569, b: 0.8509804, a: 1}
       isPlayerStat: 0
     ratio: 3
   - dungeonObject:
       statType: 10
-      changeValue: 30
+      changeValue: 40
       choiceText: Fire Rate
-      changeValueText: + 30 %
+      changeValueText: + 40 %
       txtColor: {r: 0.8862745, g: 0.49019608, b: 0.07450981, a: 1}
       isPlayerStat: 0
     ratio: 1
