@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Room_Level1_3
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 4327421925113694216, guid: 141f51d0b3eb42c42aa196a721650e96, type: 3}
-  roomName: bossroom
+  roomName: 1-3. Cerulean Chasms
+  roomMusic: {fileID: 11400000, guid: 5ace2fe13d712df4c8cd32df90823973, type: 2}
   isEntrance: 0
   isBossRoom: 1
+  isLastRoom: 0
   lowerBounds: {x: -8, y: 1}
   upperBounds: {x: 54, y: 62}
   playerSpawnPos: {x: -23, y: -22, z: 0}
@@ -95,7 +97,7 @@ MonoBehaviour:
   spawnParameter:
     waveDistance: 30
     waveDuration: 10
-    spawnDistanceInWave: 0.9
-    spawnDistance: 1.2
+    spawnDistanceInWave: 0.7
+    spawnDistance: 1.1
   spawnableBossList:
   - {fileID: 11400000, guid: ffd2aa2d495d0854b9cd94cce4f5f0ae, type: 2}

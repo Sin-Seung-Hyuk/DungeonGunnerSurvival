@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Room_Level4_2
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 4327421925113694216, guid: b04604f793e18b64a92ab7349eeca246, type: 3}
-  roomName: 4-2
+  roomName: 4-2. Scorched Relics
+  roomMusic: {fileID: 11400000, guid: f2e6e1cf23e2fdb4f9da92a88b3cb031, type: 2}
   isEntrance: 0
   isBossRoom: 0
   lowerBounds: {x: -10, y: 7}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IFireable 
 {
-    void InitializeAmmo(float aimAngle, Weapon weapon);
+    void InitializeAmmo(float aimAngle, Weapon weapon, bool isAmmoPattern = false);
 
     GameObject GetGameObject();
 }

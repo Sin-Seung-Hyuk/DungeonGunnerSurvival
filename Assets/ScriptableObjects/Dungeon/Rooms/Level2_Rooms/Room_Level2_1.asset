@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Room_Level2_1
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 4327421925113694216, guid: e2546f369d303f74da21f4b860db53c0, type: 3}
-  roomName: 2-1
+  roomName: 2-1. Sapphire Sanctum
+  roomMusic: {fileID: 11400000, guid: af450ee1402f0be4d93abc44eb6b0b63, type: 2}
   isEntrance: 0
   isBossRoom: 0
+  isLastRoom: 0
   lowerBounds: {x: -15, y: -1}
   upperBounds: {x: 61, y: 71}
   playerSpawnPos: {x: -24, y: -52, z: 0}
@@ -89,6 +91,6 @@ MonoBehaviour:
   spawnParameter:
     waveDistance: 30
     waveDuration: 10
-    spawnDistanceInWave: 0.6
+    spawnDistanceInWave: 0.5
     spawnDistance: 1
   spawnableBossList: []

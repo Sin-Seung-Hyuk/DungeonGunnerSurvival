@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Room_Level3_1
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 4327421925113694216, guid: ff12634fa3fc5464091b23b459033a0a, type: 3}
-  roomName: 3-1
+  roomName: 3-1. Crumbling Ruins
+  roomMusic: {fileID: 11400000, guid: db4a83146a2a4b04eb7ec1e062d5ee20, type: 2}
   isEntrance: 0
   isBossRoom: 0
   lowerBounds: {x: -17, y: -6}

@@ -10,7 +10,7 @@ public class AmmoPattern : MonoBehaviour, IFireable
     private float ammoSpeed;
     private Vector3 fireDirectionVector;
 
-    public void InitializeAmmo(float aimAngle, Weapon weapon)
+    public void InitializeAmmo(float aimAngle, Weapon weapon, bool isAmmoPattern)
     {
         SetFireDirection(aimAngle); // 탄 진행방향
 
@@ -21,7 +21,7 @@ public class AmmoPattern : MonoBehaviour, IFireable
 
         foreach (Ammo ammo in ammoArray) // 배열에 들어있는 각 탄약별로 초기화 진행
         {
-            ammo.InitializeAmmo(aimAngle, weapon);
+            ammo.InitializeAmmo(aimAngle, weapon, true); // isAmmoPattern = true
         }
     }
 
@@ -35,8 +35,6 @@ public class AmmoPattern : MonoBehaviour, IFireable
 
         if (ammoRange < 0f)
         {
-            transform.position = new Vector3(0, 0, 0);
-            transform.rotation = Quaternion.identity;
             gameObject.SetActive(false);
         }
     }

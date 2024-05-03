@@ -65,12 +65,14 @@ MonoBehaviour:
   musicOffSnapshot: {fileID: -3084740370723268673, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   mainMusic: {fileID: 11400000, guid: 6df57fa69585cf9478a2ab8fa069819a, type: 2}
   battleMusic: {fileID: 11400000, guid: 0323ea8d402a49043a16904096a3b3f9, type: 2}
-  ambientMusic: {fileID: 11400000, guid: 36399bea358543f4486ffd7d71809d63, type: 2}
+  entranceMusic: {fileID: 11400000, guid: 36399bea358543f4486ffd7d71809d63, type: 2}
   soundsMasterMixerGroup: {fileID: -4734643798044506327, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   chestOpen: {fileID: 11400000, guid: cf8428f7a9c88164c89498748ec9a635, type: 2}
   healthPickUp: {fileID: 11400000, guid: 761578ad22012b449bbe6fc021abfd7a, type: 2}
   weaponPickUp: {fileID: 11400000, guid: cf80790ae68a33443997166fea9cfcdb, type: 2}
   dungeonClear: {fileID: 11400000, guid: 06542d4b4aa21b5498b0cb9d379de5bf, type: 2}
+  cancle: {fileID: 11400000, guid: eb3160036b5cdc34380f47ca2d869195, type: 2}
+  gold: {fileID: 11400000, guid: 96d42e4f640bfac4e9d7aad2c976212b, type: 2}
   enemyUnwalkableTilesArray:
   - {fileID: 11400000, guid: 37e2c9e0227bfbc409cd632b9bd0c81f, type: 2}
   - {fileID: 11400000, guid: 98f177f8276c38b429705e6720c48672, type: 2}

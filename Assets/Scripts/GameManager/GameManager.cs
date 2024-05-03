@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using Cinemachine;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -115,6 +116,7 @@ public class GameManager : Singleton<GameManager>
         StartCoroutine(Fade(0.75f, 2f));
 
         TxtFade.text = "LEVEL CLEAR!\nPRESS 'ENTER' TO ENTRANCE!";
+        bossRoomImage.gameObject.SetActive(false);
 
         while (!Input.GetKeyDown(KeyCode.Return))
         {   // 리턴 키를 입력할때까지 반복
@@ -136,8 +138,34 @@ public class GameManager : Singleton<GameManager>
         gameState = GameState.InDungeon;
 
         TxtFade.text = "";
+        bossRoomImage.gameObject.SetActive(false);
         yield return new WaitForSeconds(1f);
         yield return StartCoroutine(Fade(0.75f, 2f));
+
+        uIController.SetGameOverUI(); // 게임오버 UI 활성화
+
+        while (!Input.GetKeyDown(KeyCode.Return))
+        {   // 리턴 키를 입력할때까지 반복
+            yield return null;
+        }
+
+        yield return null;
+
+        gameState = GameState.RestartGame;
+    }
+
+    private IEnumerator GameCompleted() // 게임 클리어
+    {
+        prevGameState = GameState.GameCompleted;
+        gameState = GameState.InDungeon;
+
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(Fade(0.75f, 2f));
+
+        bossRoomImage.gameObject.SetActive(false);
+        TxtFade.text = "GAME COMPLETE!!\nYOU COMPLETED ALL DUNGEONS!";
+        yield return new WaitForSeconds(5f);
+        TxtFade.text = "";
 
         uIController.SetGameOverUI(); // 게임오버 UI 활성화
 
@@ -252,6 +280,7 @@ public class GameManager : Singleton<GameManager>
                 break;
 
             case GameState.GameCompleted:
+                StartCoroutine(GameCompleted());
                 break;
 
             case GameState.GameLost:
@@ -300,8 +329,8 @@ public class GameManager : Singleton<GameManager>
 
         if (args.room.isBossRoom) // 보스방 클리어인지 확인
             gameState = GameState.DungeonCompleted;
-        else gameState = GameState.DungeonRoomClear;
-        // 마지막 방인지 확인 (게임클리어)
+        else if (!args.room.isBossRoom) gameState = GameState.DungeonRoomClear;
+        if (args.room.isLastRoom) gameState = GameState.GameCompleted; // 마지막 방인지 확인 (게임클리어)
 
         SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.dungeonClear);
     }

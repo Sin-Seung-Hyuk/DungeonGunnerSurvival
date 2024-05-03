@@ -37,13 +37,13 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
     private void StaticEventHandler_OnRoomChanged(RoomChangedArgs args)
     {
-        MusicManager.Instance.PlayMusic(GameResources.Instance.ambientMusic, 0.2f, 2f); // 방 진입 음악재생
+        MusicManager.Instance.PlayMusic(GameResources.Instance.entranceMusic, 0.2f, 2f); // 방 진입 음악재생
 
         currentRoom = args.room;
         if (args.room.isEntrance) return; // 변경된 방이 입구라면 그대로 리턴
 
         // 전투 음악재생
-        MusicManager.Instance.PlayMusic(GameResources.Instance.battleMusic, 0.2f, 0.5f);
+        MusicManager.Instance.PlayMusic(args.room.roomTemplate.roomMusic, 0.2f, 0.5f);
 
         spawnParameters = args.room.spawnParameter; // 방의 스폰파라미터 받아오기
 

@@ -18,7 +18,7 @@ public class CinemachineTarget : MonoBehaviour
     void Start()
     {
         //// 플레이어 타겟에 추가
-        CinemachineTargetGroup.Target cinemachineGroupTarget_player = new CinemachineTargetGroup.Target { weight = 1f, radius = 3f, target = GameManager.Instance.GetPlayer().transform };
+        CinemachineTargetGroup.Target cinemachineGroupTarget_player = new CinemachineTargetGroup.Target { weight = 1f, radius = 7f, target = GameManager.Instance.GetPlayer().transform };
         //// 마우스 커서 타겟에 추가
         CinemachineTargetGroup.Target cinemachineGroupTarget_cursor = new CinemachineTargetGroup.Target { weight = 1f, radius = 1f, target = mouseCursor };
 

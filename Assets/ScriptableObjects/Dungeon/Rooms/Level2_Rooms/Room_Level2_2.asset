@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Room_Level2_2
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 4327421925113694216, guid: 173cbad07b0ec36489ca153ddbe71db4, type: 3}
-  roomName: 2-2
+  roomName: 2-2. Teal Mysteries
+  roomMusic: {fileID: 11400000, guid: 813f9332efab56c4b9af6e5ac9aaeb02, type: 2}
   isEntrance: 0
   isBossRoom: 0
+  isLastRoom: 0
   lowerBounds: {x: 6, y: 4}
   upperBounds: {x: 46, y: 63}
   playerSpawnPos: {x: -26, y: -33, z: 0}
@@ -86,6 +88,6 @@ MonoBehaviour:
   spawnParameter:
     waveDistance: 30
     waveDuration: 10
-    spawnDistanceInWave: 0.6
-    spawnDistance: 1
+    spawnDistanceInWave: 0.5
+    spawnDistance: 0.9
   spawnableBossList: []

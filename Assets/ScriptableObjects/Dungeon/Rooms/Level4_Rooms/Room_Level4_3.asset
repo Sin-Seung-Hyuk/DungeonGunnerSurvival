@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Room_Level4_3
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 4969719553655747264, guid: d0d6c58f885e6a5478e9eb16743d11ce, type: 3}
-  roomName: 4-3
+  roomName: 4-3. Forsaken Necropolis
+  roomMusic: {fileID: 11400000, guid: 43f2560a20274e04082af10adb18435a, type: 2}
   isEntrance: 0
   isBossRoom: 1
+  isLastRoom: 1
   lowerBounds: {x: -10, y: -9}
   upperBounds: {x: 32, y: 24}
   playerSpawnPos: {x: -12, y: -7, z: 0}
@@ -94,7 +96,7 @@ MonoBehaviour:
     waveDistance: 30
     waveDuration: 10
     spawnDistanceInWave: 0.3
-    spawnDistance: 0.7
+    spawnDistance: 0.6
   spawnableBossList:
   - {fileID: 11400000, guid: 454715ef913d9c742bc14faffb0e61bb, type: 2}
   - {fileID: 11400000, guid: 73dd0adb9e6338e4391d0f50a5980827, type: 2}

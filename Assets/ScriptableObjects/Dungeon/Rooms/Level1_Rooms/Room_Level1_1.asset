@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Room_Level1_1
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 8094615767779393151, guid: 7e84fe8d332adc241b8411986e0a3024, type: 3}
-  roomName: 1-1. Red Cunnel
+  roomName: 1-1. Crimson Depths
+  roomMusic: {fileID: 11400000, guid: 64de765d83bb9d94da3643bfe2cdf1e7, type: 2}
   isEntrance: 0
   isBossRoom: 0
+  isLastRoom: 0
   lowerBounds: {x: -42, y: -30}
   upperBounds: {x: 32, y: 26}
   playerSpawnPos: {x: 0, y: 0, z: 0}
@@ -76,6 +78,6 @@ MonoBehaviour:
   spawnParameter:
     waveDistance: 30
     waveDuration: 10
-    spawnDistanceInWave: 1.7
+    spawnDistanceInWave: 1.5
     spawnDistance: 2.5
   spawnableBossList: []

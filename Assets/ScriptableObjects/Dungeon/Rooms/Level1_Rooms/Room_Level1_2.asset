@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Room_Level1_2
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 4327421925113694216, guid: 3febf765dbadb7240bc6b6e0bbb777eb, type: 3}
-  roomName: test
+  roomName: 1-2. Azure Enigma
+  roomMusic: {fileID: 11400000, guid: e4f9cb0c93e0aac4292e95ebb8f0d57c, type: 2}
   isEntrance: 0
   isBossRoom: 0
+  isLastRoom: 0
   lowerBounds: {x: -44, y: -12}
   upperBounds: {x: 70, y: 62}
   playerSpawnPos: {x: -14, y: -22, z: 0}
@@ -83,6 +85,6 @@ MonoBehaviour:
   spawnParameter:
     waveDistance: 30
     waveDuration: 10
-    spawnDistanceInWave: 1.2
-    spawnDistance: 1.6
+    spawnDistanceInWave: 0.8
+    spawnDistance: 1.5
   spawnableBossList: []

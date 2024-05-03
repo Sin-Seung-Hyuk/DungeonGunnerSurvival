@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Room_Level3_3
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 4327421925113694216, guid: 9e3eb8b820d610e428dda5fbf62c1678, type: 3}
-  roomName: 3-3
+  roomName: 3-3. Ashen Catacombs
+  roomMusic: {fileID: 11400000, guid: dd0a53f8da303a44b9da444ee1472df9, type: 2}
   isEntrance: 0
   isBossRoom: 1
   lowerBounds: {x: 0, y: 5}

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Room_Level4_1
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 4327421925113694216, guid: 2e06030c12b72ff4bae8e1584883bf81, type: 3}
-  roomName: 4-1
+  roomName: 4-1. Petrified Tombs
+  roomMusic: {fileID: 11400000, guid: da270fbbd2a563244a0f699c80a4638a, type: 2}
   isEntrance: 0
   isBossRoom: 0
   lowerBounds: {x: 12, y: 4}

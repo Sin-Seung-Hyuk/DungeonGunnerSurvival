@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Room_Level3_2
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 4327421925113694216, guid: 77ae5c4ef716c1c4eafb69902dc4422b, type: 3}
-  roomName: 3-2
+  roomName: 3-2. Shattered Remnants
+  roomMusic: {fileID: 11400000, guid: 4617ac24592ec284eb1142d5c071a7d5, type: 2}
   isEntrance: 0
   isBossRoom: 0
   lowerBounds: {x: 1, y: -4}

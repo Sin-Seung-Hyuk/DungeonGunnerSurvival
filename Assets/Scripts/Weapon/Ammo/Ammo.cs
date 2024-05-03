@@ -14,9 +14,12 @@ public abstract class Ammo : MonoBehaviour, IFireable // 사격 인터페이스
     protected int ammoDamage; // protected로 상속 가능
     private Vector3 fireDirectionVector;
     private bool isCritic = false; // 치명타 여부
+    private bool isAmmoPattern; // AmmoPattern의 탄인지 여부
 
     void Update()
     {
+        if (isAmmoPattern) return; // AmmoPattern의 탄은 이동 X
+
         Vector3 distanceVector = fireDirectionVector * ammoSpeed * Time.deltaTime;
 
         transform.position += distanceVector;
@@ -63,7 +66,7 @@ public abstract class Ammo : MonoBehaviour, IFireable // 사격 인터페이스
         hitEffect.gameObject.SetActive(true);
     }
 
-    public void InitializeAmmo(float aimAngle, Weapon weapon)
+    public void InitializeAmmo(float aimAngle, Weapon weapon, bool isAmmoPattern)
     {
         SetFireDirection(aimAngle); // 탄 진행방향
 
@@ -71,6 +74,7 @@ public abstract class Ammo : MonoBehaviour, IFireable // 사격 인터페이스
         this.ammoRange = weapon.weaponDetail.weaponRange;
         this.ammoSpeed = weapon.weaponDetail.weaponAmmoSpeed;
         this.ammoDamage = GetAmmoDamage();
+        this.isAmmoPattern = isAmmoPattern;
 
         gameObject.SetActive(true); // 탄 초기화 후 활성화
 

@@ -8,9 +8,11 @@ public class RoomTemplateSO : ScriptableObject
     public GameObject roomPrefab;
 
     public string roomName;
+    public MusicTrackSO roomMusic;
 
     public bool isEntrance;
     public bool isBossRoom;
+    public bool isLastRoom;
 
     public Vector2Int lowerBounds; // ÁÂÃø ÇÏ´Ü ÁÂÇ¥
     public Vector2Int upperBounds; // ¿ìÃø »ó´Ü ÁÂÇ¥

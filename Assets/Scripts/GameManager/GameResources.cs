@@ -37,7 +37,7 @@ public class GameResources : MonoBehaviour
     public AudioMixerSnapshot musicOffSnapshot;
     public MusicTrackSO mainMusic;
     public MusicTrackSO battleMusic;
-    public MusicTrackSO ambientMusic;
+    public MusicTrackSO entranceMusic;
 
     [Space(10)]
     [Header("Sounds")]
@@ -46,6 +46,8 @@ public class GameResources : MonoBehaviour
     public SoundEffectSO healthPickUp;
     public SoundEffectSO weaponPickUp;
     public SoundEffectSO dungeonClear;
+    public SoundEffectSO cancle;
+    public SoundEffectSO gold;
 
     [Space(10)]
     [Header("Tilemap Tiles for AStar")]

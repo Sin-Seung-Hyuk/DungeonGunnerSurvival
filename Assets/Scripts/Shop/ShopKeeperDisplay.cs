@@ -78,7 +78,11 @@ public class ShopKeeperDisplay : MonoBehaviour
     private void BuyItems() // 아이템 구입
     {
         // 돈 부족 or 가방 자리부족
-        if (_playerInventory.PrimaryInventorySystem.Gold < basketTotal) return;
+        if (_playerInventory.PrimaryInventorySystem.Gold < basketTotal)
+        {
+            SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.cancle);
+            return;
+        }
         if (!_playerInventory.PrimaryInventorySystem.CheckInventoryRemaining(_shoppingCart)) return;
 
         foreach (var pair in _shoppingCart)
@@ -94,6 +98,7 @@ public class ShopKeeperDisplay : MonoBehaviour
         _playerInventory.PrimaryInventorySystem.SpendGold(basketTotal); // 플레이어는 돈 소비
         StatisticsManager.Instance.TotalSpentGold += basketTotal; // 총 소모한 골드 증가
 
+        SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.gold);
         RefreshDisplay();
     }
 
@@ -109,6 +114,7 @@ public class ShopKeeperDisplay : MonoBehaviour
             _playerInventory.PrimaryInventorySystem.RemoveItemsFromInventory(pair.Key, pair.Value);
         }
 
+        SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.gold);
         RefreshDisplay();
     }
 
@@ -153,8 +159,11 @@ public class ShopKeeperDisplay : MonoBehaviour
             shopKeeper.SetShopItemList();
             _shopSystem = shopKeeper._shopSystem;
 
+            SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.gold);
             RefreshDisplay();
         }
+        else
+            SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.cancle);
     }
 
 

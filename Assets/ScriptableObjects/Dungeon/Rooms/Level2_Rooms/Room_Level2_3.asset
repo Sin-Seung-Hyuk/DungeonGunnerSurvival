@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Room_Level2_3
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 4327421925113694216, guid: 6d1489550dddb634fb4bfa9e585f9fb2, type: 3}
-  roomName: 2-3
+  roomName: 2-3. Indigo Labyrinths
+  roomMusic: {fileID: 11400000, guid: e128fcb7a5ccd3f4e9112c0ac273677c, type: 2}
   isEntrance: 0
   isBossRoom: 1
+  isLastRoom: 0
   lowerBounds: {x: -41, y: 3}
   upperBounds: {x: 42, y: 68}
   playerSpawnPos: {x: -8, y: -34, z: 0}
@@ -88,7 +90,7 @@ MonoBehaviour:
   spawnParameter:
     waveDistance: 30
     waveDuration: 10
-    spawnDistanceInWave: 0.6
+    spawnDistanceInWave: 0.4
     spawnDistance: 0.8
   spawnableBossList:
   - {fileID: 11400000, guid: c995f3761f6e67140a1b663736b8aff4, type: 2}

@@ -17,6 +17,7 @@ public class Room : MonoBehaviour
 
     [HideInInspector] public bool isEntrance; // 입구인지 판별
     [HideInInspector] public bool isBossRoom; // 보스방 판별
+    [HideInInspector] public bool isLastRoom; // 마지막방 판별
 
     [HideInInspector] public Vector2Int lowerBounds; // 방의 좌하단 (3사분면)
     [HideInInspector] public Vector2Int upperBounds; // 방의 우상단 (1사분면)
@@ -42,6 +43,7 @@ public class Room : MonoBehaviour
 
         isEntrance = roomTemplate.isEntrance;
         isBossRoom = roomTemplate.isBossRoom;
+        isLastRoom = roomTemplate.isLastRoom;
         lowerBounds = roomTemplate.lowerBounds;
         upperBounds = roomTemplate.upperBounds;
         playerSpawnPos = roomTemplate.playerSpawnPos;
