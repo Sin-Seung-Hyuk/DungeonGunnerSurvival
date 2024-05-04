@@ -26,7 +26,7 @@ MonoBehaviour:
   weaponAmmo:
   - {fileID: 4454987432227277477, guid: 6566c2c100613cb468d35fbcd5f8e0cb, type: 3}
   - {fileID: 4454987432227277477, guid: 7f958697e2411234ebd5538a1cbe8391, type: 3}
-  upgradeDescription: 
+  upgradeDescription: A bullet penetrates the enemy
   isTrail: 1
   ammoTrailMaterial: {fileID: 2100000, guid: 48f4966adea5f654bb6bea4ade4b7e8a, type: 2}
   ammoTrailStartWidth: 0.15

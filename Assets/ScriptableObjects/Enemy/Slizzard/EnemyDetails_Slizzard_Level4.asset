@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70d02a05818c8554089107eb2f3ee837, type: 3}
-  m_Name: EnemyDetails_Slizzard
+  m_Name: EnemyDetails_Slizzard_Level4
   m_EditorClassIdentifier: 
   enemyName: Slizzard
   enemyPrefab: {fileID: 3612535418984673539, guid: 6a6e1582888159541a4f2275cebaaffd, type: 3}
@@ -19,12 +19,12 @@ MonoBehaviour:
   runtimeAnimatorController: {fileID: 9100000, guid: 34e8d9a39874e5e4dafae7864069e02b, type: 2}
   speed: 4
   chaseDistance: 7
-  contactDamageAmount: 5
+  contactDamageAmount: 10
   enemyStandardMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   enemyMaterializeTime: 1
   enemyMaterializeShader: {fileID: -6465566751694194690, guid: 5fec8f8e6ea244648a3c6ede24a56288, type: 3}
   enemyMaterializeColor: {r: 8.47419, g: 0, b: 6.122713, a: 1}
-  enemyWeapon: {fileID: 11400000, guid: a3b48b8a2de4c0a43b636e36e4591d6b, type: 2}
+  enemyWeapon: {fileID: 11400000, guid: fbc84b01bd0a6e4469591f72c1cf6d93, type: 2}
   firingInterval: 0.6
   firingDuration: 2
   firingLineOfSightRequired: 1

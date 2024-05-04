@@ -29,7 +29,7 @@ public class EnemyMovementAI : MonoBehaviour
         waitForFixedUpdate = new WaitForFixedUpdate();
 
         // 각 적마다 랜덤으로 경로 재구축 텀 설정. 랜덤으로 결정된 이 수치의 프레임마다 경로재구축 실행
-        targetFrameRateToSpreadPathFindingOver = Random.Range(50, 70);
+        targetFrameRateToSpreadPathFindingOver = Random.Range(40, 80);
 
         // 플레이어 포지션 받아오기
         playerRefPos = GameManager.Instance.GetPlayerPosition();
