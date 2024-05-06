@@ -65,4 +65,9 @@ public class PauseUI : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    public void BtnExitGame()
+    {
+        Application.Quit();
+    }
 }

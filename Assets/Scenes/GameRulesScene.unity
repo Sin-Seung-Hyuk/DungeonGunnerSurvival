@@ -192,7 +192,9 @@ MonoBehaviour:
     - TO USE ITEM  ''1,2,3,4,5,6,7,8,9''
 
     -
-    PAUSE TO ''ESC'''
+    TO ITEM SPLIT / ADD ''ALT''
+
+    - PAUSE TO ''ESC'''
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dfe1ba23c638bec49a583843476bb5c9, type: 2}
   m_sharedMaterial: {fileID: 8120199949304618070, guid: dfe1ba23c638bec49a583843476bb5c9, type: 2}

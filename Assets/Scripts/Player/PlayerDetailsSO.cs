@@ -5,8 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Player_", menuName = "Scriptable Objects/Player/Player")]
 public class PlayerDetailsSO : ScriptableObject
 {
-    public GameObject playerPrefab;
-
     public string characterName; // 플레이어가 아닌 캐릭터 이름
     public RuntimeAnimatorController runtimeAnimatorController;
     public Sprite minimapIcon;

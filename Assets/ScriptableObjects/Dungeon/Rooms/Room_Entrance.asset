@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 2669920366053851494, guid: 7eedeeb27a23afa4789ea06e6fa6f5d9, type: 3}
   roomName: Entrance
+  roomMusic: {fileID: 11400000, guid: 36399bea358543f4486ffd7d71809d63, type: 2}
   isEntrance: 1
   isBossRoom: 0
+  isLastRoom: 0
   lowerBounds: {x: -11, y: -7}
   upperBounds: {x: 12, y: 8}
   playerSpawnPos: {x: -1, y: -4, z: 0}

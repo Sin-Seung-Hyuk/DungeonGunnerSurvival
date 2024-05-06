@@ -36,7 +36,6 @@ public class GameResources : MonoBehaviour
     public AudioMixerSnapshot musicLowSnapshot;
     public AudioMixerSnapshot musicOffSnapshot;
     public MusicTrackSO mainMusic;
-    public MusicTrackSO battleMusic;
     public MusicTrackSO entranceMusic;
 
     [Space(10)]
