@@ -18,7 +18,7 @@ MonoBehaviour:
   spriteColor: {r: 0.3764706, g: 0.5294118, b: 0.8980392, a: 1}
   runtimeAnimatorController: {fileID: 9100000, guid: c584c390b9e9e4e4faab37cd1bfce8b3, type: 2}
   speed: 4
-  chaseDistance: 7
+  chaseDistance: 10
   contactDamageAmount: 15
   enemyStandardMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   enemyMaterializeTime: 1

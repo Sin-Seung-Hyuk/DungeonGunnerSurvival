@@ -73,4 +73,9 @@ public class MainMenuUI : MonoBehaviour
 
         SceneManager.LoadScene("GameRulesScene", LoadSceneMode.Additive);
     }
+
+    public void BtnExitGame()
+    {
+        Application.Quit();
+    }
 }
