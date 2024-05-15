@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// 직렬화,역직렬화를 위한 인터페이스
-public class ItemSlot : ISerializationCallbackReceiver
+public class ItemSlot
 {
     [SerializeField] protected InventoryItemData itemData; // 슬롯에 들어갈 아이템데이터
     [SerializeField] protected int stackSize; // 이 슬롯의 현재스택
@@ -56,19 +55,21 @@ public class ItemSlot : ISerializationCallbackReceiver
         stackSize -= amount;
         if (stackSize <= 0) ClearSlot();
     }
-
-
-    // 아이템 데이터베이스에서 아이템의 ID에 맞는 데이터 가져오기
-    public void OnAfterDeserialize()
-    {
-        if (itemID == -1) return;
-
-        var db = Resources.Load<Database>("Database");
-        itemData = db.GetItem(itemID);
-    }
-
-    public void OnBeforeSerialize()
-    {
-
-    }
 }
+
+
+
+//: ISerializationCallbackReceiver
+//// 아이템 데이터베이스에서 아이템의 ID에 맞는 데이터 가져오기
+//public void OnAfterDeserialize()
+//{
+//    if (itemID == -1) return;
+
+//    var db = Resources.Load<Database>("Database");
+//    itemData = db.GetItem(itemID);
+//}
+
+//public void OnBeforeSerialize()
+//{
+
+//}

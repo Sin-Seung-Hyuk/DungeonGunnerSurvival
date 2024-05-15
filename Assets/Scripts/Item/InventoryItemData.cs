@@ -16,7 +16,7 @@ public class InventoryItemData : ScriptableObject
     public ItemGrade itemGrade; // 등급
     public Color gradeColor; // 등급별 색상
     public ItemType itemType; // 타입
-    public EquipmentType equipmentType; // 타입
+    public EquipmentType equipmentType; // 장비 타입
 
     public List<PlayerStatChangeList> playerStatChangeList; // 장비템 스탯
 }

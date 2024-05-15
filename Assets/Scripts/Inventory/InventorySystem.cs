@@ -14,7 +14,7 @@ public class InventorySystem    // 인벤토리의 슬롯들을 관리하는 인벤토리 시스템
     public int Gold => gold;
     public int InventorySize => inventorySlots.Count;
 
-    public UnityAction<InventorySlot> OnInventorySlotChanged;
+    public UnityAction<InventorySlot> OnInventorySlotChanged; // 인벤토리 슬롯 변경 이벤트
 
 
     public InventorySystem(InventorySlot_UI[] Slots)
@@ -125,10 +125,6 @@ public class InventorySystem    // 인벤토리의 슬롯들을 관리하는 인벤토리 시스템
     public void SpendGold(int basketTotal) // 골드 소모
     {
         gold -= basketTotal;
-    }
-    public void SetGold(int value) // 골드 설정
-    {
-        gold = value;
     }
 
     public Dictionary<InventoryItemData, int> GetAllItem() // 인벤의 모든 아이템 반환

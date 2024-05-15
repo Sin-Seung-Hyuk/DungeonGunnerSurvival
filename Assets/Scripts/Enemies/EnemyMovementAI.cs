@@ -117,7 +117,7 @@ public class EnemyMovementAI : MonoBehaviour
         // 플레이어가 장애물쪽에 있으면 그 근처의 위치로 이동해야함
         Vector3Int playerCellPos = GameManager.Instance.GetPlayerCellPosition();
 
-        // 현재 맵을 기준으로 플레이어 포지션 구하기 (월드포지션이 아닌 맵 위의 좌표)
+        // 현재 맵을 기준으로 플레이어 포지션 구하기 (단순 셀포지션이 아닌 맵 위의 좌표)
         Vector2Int adjustPlayerCellPos = new Vector2Int(playerCellPos.x - currentRoom.lowerBounds.x,
             playerCellPos.y - currentRoom.lowerBounds.y);
 
@@ -125,27 +125,22 @@ public class EnemyMovementAI : MonoBehaviour
         int obstacle = currentRoom.aStarMovementPenalty[adjustPlayerCellPos.x, adjustPlayerCellPos.y];
 
         if (obstacle != 0) return playerCellPos; // 현재 플레이어가 장애물에 위치하지 않음
-        else
-        {
+        else {
             surroundPosList.Clear(); // 장애물에 위치한 플레이어의 근처 좌표
 
-            for (int i = -1; i <= 1; i++)
-            {
-                for (int j = -1; j <= 1; j++)
-                {
+            for (int i = -1; i <= 1; i++) {
+                for (int j = -1; j <= 1; j++) {
                     if (j == 0 && i == 0) continue;
 
                     surroundPosList.Add(new Vector2Int(i, j)); // 8방향 검사하기
                 }
             }
 
-            for (int i = 0; i < 8; i++)
-            {
+            for (int i = 0; i < 8; i++) {
                 obstacle = currentRoom.aStarMovementPenalty[adjustPlayerCellPos.x +
                     surroundPosList[i].x, adjustPlayerCellPos.y + surroundPosList[i].y];
 
-                if (obstacle != 0) // 장애물이 아닌 좌표 발견
-                {
+                if (obstacle != 0) { // 장애물이 아닌 좌표 발견
                     return new Vector3Int(playerCellPos.x + surroundPosList[i].x, playerCellPos.y + surroundPosList[i].y, 0);
                 }
 
