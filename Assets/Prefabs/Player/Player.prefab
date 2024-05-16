@@ -654,17 +654,17 @@ MonoBehaviour:
     ratio: 8
   - dungeonObject:
       statType: 0
-      changeValue: 20
+      changeValue: 25
       choiceText: Max HP
-      changeValueText: + 20
+      changeValueText: + 25
       txtColor: {r: 0.60784316, g: 0.23921569, b: 0.8509804, a: 1}
       isPlayerStat: 1
     ratio: 3
   - dungeonObject:
       statType: 0
-      changeValue: 30
+      changeValue: 40
       choiceText: Max HP
-      changeValueText: + 30
+      changeValueText: + 40
       txtColor: {r: 0.8862745, g: 0.49019608, b: 0.07450981, a: 1}
       isPlayerStat: 1
     ratio: 1
@@ -710,25 +710,25 @@ MonoBehaviour:
     ratio: 20
   - dungeonObject:
       statType: 2
-      changeValue: 7
+      changeValue: 10
       choiceText: Base Armor
-      changeValueText: + 7
+      changeValueText: + 10
       txtColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}
       isPlayerStat: 1
     ratio: 8
   - dungeonObject:
       statType: 2
-      changeValue: 10
+      changeValue: 20
       choiceText: Base Armor
-      changeValueText: + 10
+      changeValueText: + 20
       txtColor: {r: 0.60784316, g: 0.23921569, b: 0.8509804, a: 1}
       isPlayerStat: 1
     ratio: 3
   - dungeonObject:
       statType: 2
-      changeValue: 15
+      changeValue: 30
       choiceText: Base Armor
-      changeValueText: + 15
+      changeValueText: + 30
       txtColor: {r: 0.8862745, g: 0.49019608, b: 0.07450981, a: 1}
       isPlayerStat: 1
     ratio: 1
@@ -742,25 +742,25 @@ MonoBehaviour:
     ratio: 20
   - dungeonObject:
       statType: 3
-      changeValue: 7
+      changeValue: 10
       choiceText: Dodge Chance
-      changeValueText: + 7
+      changeValueText: + 10
       txtColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}
       isPlayerStat: 1
     ratio: 8
   - dungeonObject:
       statType: 3
-      changeValue: 10
+      changeValue: 20
       choiceText: Dodge Chance
-      changeValueText: + 10
+      changeValueText: + 20
       txtColor: {r: 0.60784316, g: 0.23921569, b: 0.8509804, a: 1}
       isPlayerStat: 1
     ratio: 3
   - dungeonObject:
       statType: 3
-      changeValue: 15
+      changeValue: 30
       choiceText: Dodge Chance
-      changeValueText: + 15
+      changeValueText: + 30
       txtColor: {r: 0.8862745, g: 0.49019608, b: 0.07450981, a: 1}
       isPlayerStat: 1
     ratio: 1
@@ -926,33 +926,33 @@ MonoBehaviour:
     ratio: 1
   - dungeonObject:
       statType: 1
-      changeValue: 5
+      changeValue: 10
       choiceText: Base Damage
-      changeValueText: + 5 %
+      changeValueText: + 10 %
       txtColor: {r: 1, g: 1, b: 1, a: 1}
       isPlayerStat: 0
     ratio: 20
   - dungeonObject:
       statType: 1
-      changeValue: 10
+      changeValue: 15
       choiceText: Base Damage
-      changeValueText: + 10 %
+      changeValueText: + 15 %
       txtColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}
       isPlayerStat: 0
     ratio: 8
   - dungeonObject:
       statType: 1
-      changeValue: 15
+      changeValue: 25
       choiceText: Base Damage
-      changeValueText: + 15 %
+      changeValueText: + 25 %
       txtColor: {r: 0.60784316, g: 0.23921569, b: 0.8509804, a: 1}
       isPlayerStat: 0
     ratio: 3
   - dungeonObject:
       statType: 1
-      changeValue: 25
+      changeValue: 40
       choiceText: Base Damage
-      changeValueText: + 25 %
+      changeValueText: + 40 %
       txtColor: {r: 0.8862745, g: 0.49019608, b: 0.07450981, a: 1}
       isPlayerStat: 0
     ratio: 1

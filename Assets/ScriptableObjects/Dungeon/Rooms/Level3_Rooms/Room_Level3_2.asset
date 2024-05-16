@@ -17,6 +17,7 @@ MonoBehaviour:
   roomMusic: {fileID: 11400000, guid: 4617ac24592ec284eb1142d5c071a7d5, type: 2}
   isEntrance: 0
   isBossRoom: 0
+  isLastRoom: 0
   lowerBounds: {x: 1, y: -4}
   upperBounds: {x: 62, y: 48}
   playerSpawnPos: {x: -30, y: -29, z: 0}
@@ -34,7 +35,6 @@ MonoBehaviour:
   - {x: 21, y: 12}
   - {x: 18, y: 9}
   - {x: 18, y: 15}
-  - {x: 30, y: 29}
   spawnableEnemyList:
   - dungeonObject: {fileID: 11400000, guid: 0a31fc3c160b7b640816155832deb468, type: 2}
     ratio: 7
@@ -90,6 +90,6 @@ MonoBehaviour:
   spawnParameter:
     waveDistance: 30
     waveDuration: 10
-    spawnDistanceInWave: 0.4
+    spawnDistanceInWave: 0.3
     spawnDistance: 0.8
   spawnableBossList: []

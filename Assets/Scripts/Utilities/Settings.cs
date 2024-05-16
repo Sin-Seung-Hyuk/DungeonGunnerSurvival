@@ -6,8 +6,8 @@ public static class Settings
 {
     #region PLAYER PARAMETER
     public static float potionDuration = 60f; // 포션 지속시간
-    public static int rerollGold = 100; // 상점 새로고침 비용
-    public static int startExp = 30; // 1레벨 최대경험치
+    public static int rerollGold = 1000; // 상점 새로고침 비용
+    public static int startExp = 25; // 1레벨 최대경험치
     public static int weaponUpgrade = 10; // 무기 업그레이드 레벨
     public static float combatScalingConstant = 50f; // 방어력,회피율 계산을 위한 상수 (수치가 높아질수록 효율이 감소하는 커브)
     public static float burnDamage = 0.5f; // 틱데미지 비율 (공격력의 n%)

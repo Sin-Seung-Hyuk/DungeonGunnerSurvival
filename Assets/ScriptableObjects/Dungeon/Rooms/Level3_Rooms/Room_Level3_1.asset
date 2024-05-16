@@ -17,6 +17,7 @@ MonoBehaviour:
   roomMusic: {fileID: 11400000, guid: db4a83146a2a4b04eb7ec1e062d5ee20, type: 2}
   isEntrance: 0
   isBossRoom: 0
+  isLastRoom: 0
   lowerBounds: {x: -17, y: -6}
   upperBounds: {x: 31, y: 32}
   playerSpawnPos: {x: -12, y: -15, z: 0}
@@ -88,6 +89,6 @@ MonoBehaviour:
   spawnParameter:
     waveDistance: 30
     waveDuration: 10
-    spawnDistanceInWave: 0.4
+    spawnDistanceInWave: 0.3
     spawnDistance: 0.8
   spawnableBossList: []
