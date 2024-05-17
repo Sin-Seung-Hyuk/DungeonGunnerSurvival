@@ -92,5 +92,5 @@ MonoBehaviour:
     waveDistance: 30
     waveDuration: 10
     spawnDistanceInWave: 0.4
-    spawnDistance: 0.8
+    spawnDistance: 0.7
   spawnableBossList: []

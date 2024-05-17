@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70d02a05818c8554089107eb2f3ee837, type: 3}
-  m_Name: EnemyDetails_Hedusa_Red
+  m_Name: EnemyDetails_Orc_Flesh_Red
   m_EditorClassIdentifier: 
-  enemyName: Hedusa Red
-  enemyPrefab: {fileID: 5608039967066705527, guid: 7e8d84ca627068841816fdf5f327c5f6, type: 3}
-  sprite: {fileID: -8023197995696302144, guid: a53e0a6238da01b4a9189f65aeb58998, type: 3}
+  enemyName: Orc
+  enemyPrefab: {fileID: 7648753368459797475, guid: 9a3b505d93bd7b546a88778a47eef655, type: 3}
+  sprite: {fileID: 8614703209417225712, guid: 4a49f6d6d5594ae48bafa9d9a279031f, type: 3}
   spriteColor: {r: 0.9764706, g: 0.34509805, b: 0.27058825, a: 1}
-  runtimeAnimatorController: {fileID: 9100000, guid: 19b6ff9fbadc74e479b63068d33eb245, type: 2}
-  speed: 8
+  runtimeAnimatorController: {fileID: 9100000, guid: cf2b002105910e04a8f79c160b4602a0, type: 2}
+  speed: 3
   chaseDistance: 0.2
-  contactDamageAmount: 12
+  contactDamageAmount: 20
   enemyStandardMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   enemyMaterializeTime: 1
   enemyMaterializeShader: {fileID: -6465566751694194690, guid: 5fec8f8e6ea244648a3c6ede24a56288, type: 3}
@@ -27,9 +27,13 @@ MonoBehaviour:
   enemyWeapon: {fileID: 0}
   firingInterval: 0.1
   firingDuration: 1
-  firingLineOfSightRequired: 0
+  firingLineOfSightRequired: 1
   enemyHealthDetailsArray:
+  - dungeonLevel: {fileID: 11400000, guid: 2fdf2969fd55b514d98d3c3510e6cd12, type: 2}
+    enemyHealthAmount: 60
+  - dungeonLevel: {fileID: 11400000, guid: 2cbef6b9092dbee4a968a9c436942408, type: 2}
+    enemyHealthAmount: 100
   - dungeonLevel: {fileID: 11400000, guid: d21727b925ffcfb4fbca30a2282a4eae, type: 2}
-    enemyHealthAmount: 250
+    enemyHealthAmount: 500
   - dungeonLevel: {fileID: 11400000, guid: fdfb9cf2d30bec446aa451c327ac5547, type: 2}
-    enemyHealthAmount: 350
+    enemyHealthAmount: 900

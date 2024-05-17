@@ -19,7 +19,7 @@ MonoBehaviour:
   runtimeAnimatorController: {fileID: 9100000, guid: a0ee566a387dcf744a5564ef5baa059e, type: 2}
   speed: 5
   chaseDistance: 0.2
-  contactDamageAmount: 13
+  contactDamageAmount: 17
   enemyStandardMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   enemyMaterializeTime: 1
   enemyMaterializeShader: {fileID: -6465566751694194690, guid: 5fec8f8e6ea244648a3c6ede24a56288, type: 3}

@@ -21,7 +21,7 @@ MonoBehaviour:
   weaponAmmoCapacity: 1
   weaponFireRate: 1
   weaponReloadTime: 3
-  weaponRange: 30
+  weaponRange: 40
   weaponAmmoSpeed: 13
   weaponAmmo:
   - {fileID: 4454987432227277477, guid: 6566c2c100613cb468d35fbcd5f8e0cb, type: 3}

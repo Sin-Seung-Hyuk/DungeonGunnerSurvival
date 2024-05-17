@@ -15,12 +15,12 @@ MonoBehaviour:
   weaponName: MP7
   weaponType: 1
   weaponSprite: {fileID: 21300000, guid: a735f74a317b5f944929af56be472cb7, type: 3}
-  weaponBaseDamage: 7
+  weaponBaseDamage: 6
   weaponCriticChance: 10
   weaponCriticDamage: 50
   weaponAmmoCapacity: 30
   weaponFireRate: 0.2
-  weaponReloadTime: 2.6
+  weaponReloadTime: 2.8
   weaponRange: 11
   weaponAmmoSpeed: 14
   weaponAmmo:
