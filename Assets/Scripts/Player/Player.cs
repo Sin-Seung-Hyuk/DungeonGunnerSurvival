@@ -24,13 +24,14 @@ public class Player : MonoBehaviour, IHealthObject
     [HideInInspector] public Animator animator;
     [HideInInspector] public PlayerDetailsSO playerDetails;
     [HideInInspector] public SpriteRenderer spriteRenderer;
-    [HideInInspector] public CircleCollider2D circleRange; // ÀÚ¼®¹üÀ§
-    [HideInInspector] public PlayerStat stat; // Ä³¸¯ÅÍ ½ºÅÈ
-    [HideInInspector] public PlayerCtrl ctrl; // Ä³¸¯ÅÍ ÄÁÆ®·Ñ·¯
+    [HideInInspector] public CircleCollider2D circleRange; // ìì„ë²”ìœ„
+    [HideInInspector] public PlayerStat stat; // ìºë¦­í„° ìŠ¤íƒ¯
+    [HideInInspector] public PlayerCtrl ctrl; // ìºë¦­í„° ì»¨íŠ¸ë¡¤ëŸ¬
     [HideInInspector] public Health health;
     [HideInInspector] public PlayerExp playerExp;
+    [HideInInspector] public Rigidbody2D playerRigid; 
 
-    // ÇÃ·¹ÀÌ¾î°¡ °¡Áö´Â ÀÌº¥Æ®
+    // í”Œë ˆì´ì–´ê°€ ê°€ì§€ëŠ” ì´ë²¤íŠ¸
     [HideInInspector] public IdleEvent idleEvent;
     [HideInInspector] public MovementEvent movementEvent;
     [HideInInspector] public WeaponAimEvent weaponAimEvent;
@@ -44,10 +45,10 @@ public class Player : MonoBehaviour, IHealthObject
     [HideInInspector] public PlayerStatChangedEvent playerStatChangedEvent;
     [HideInInspector] public PlayerLevelUpEvent playerLevelUpEvent;
 
-    public List<Weapon> weaponList { get; private set; } // ¹«±â ¸®½ºÆ®
-    public PlayerInventoryHolder playerInventory { get; private set; } // ÇÃ·¹ÀÌ¾î ÀÎº¥Åä¸®
+    public List<Weapon> weaponList { get; private set; } // ë¬´ê¸° ë¦¬ìŠ¤íŠ¸
+    public PlayerInventoryHolder playerInventory { get; private set; } // í”Œë ˆì´ì–´ ì¸ë²¤í† ë¦¬
 
-    private HorizontalLayoutGroup potionState; // Æ÷¼Ç »ç¿ë½Ã Ã¼·Â¹Ù À§¿¡ ³ªÅ¸³¯ »óÅÂÃ¢
+    private HorizontalLayoutGroup potionState; // í¬ì…˜ ì‚¬ìš©ì‹œ ì²´ë ¥ë°” ìœ„ì— ë‚˜íƒ€ë‚  ìƒíƒœì°½
     private bool isBluePotionUsed = false;
     private bool isGreenPotionUsed = false;
     private bool isLimePotionUsed = false;
@@ -64,6 +65,7 @@ public class Player : MonoBehaviour, IHealthObject
         ctrl = GetComponent<PlayerCtrl>();
         playerExp = GetComponent<PlayerExp>();
         potionState = GetComponentInChildren<HorizontalLayoutGroup>();
+        playerRigid = GetComponent<Rigidbody2D>();
 
         idleEvent = GetComponent<IdleEvent>();
         movementEvent = GetComponent<MovementEvent>();
@@ -125,21 +127,21 @@ public class Player : MonoBehaviour, IHealthObject
         {
             destroyedEvent.CallDestroyedEvent(true, this.transform.position);
         }
-        health.SetHealthBar(); // Ã¼·ÂÀÌ º¯°æµÇ¸é Ã¼·Â¹Ù ¹İ¿µ
+        health.SetHealthBar(); // ì²´ë ¥ì´ ë³€ê²½ë˜ë©´ ì²´ë ¥ë°” ë°˜ì˜
     }
 
     private void PlayerStatChangedEvent_OnPlayerStatChanged(PlayerStatChangedEvent arg1, PlayerStatChangedEventArgs args)
     {
-        stat.ChangePlayerStat(args.statType, args.changeValue); // ½ºÅÈº¯°æ ÇÔ¼ö È£Ãâ
+        stat.ChangePlayerStat(args.statType, args.changeValue); // ìŠ¤íƒ¯ë³€ê²½ í•¨ìˆ˜ í˜¸ì¶œ
 
         switch (args.statType)
         {
             case PlayerStatType.MaxHP:
-                health.SetMaxHealth((int)args.changeValue); // ÃÖ´ëÃ¼·Â º¯°æ
+                health.SetMaxHealth((int)args.changeValue); // ìµœëŒ€ì²´ë ¥ ë³€ê²½
                 health.AddHealth((int)(args.changeValue * 0.5f));
                 break;
 
-            case PlayerStatType.BaseDamage: // Weapon Å¬·¡½º·Î °¡¼­ ¹«±âÀÇ ½ºÅÈ º¯°æ
+            case PlayerStatType.BaseDamage: // Weapon í´ë˜ìŠ¤ë¡œ ê°€ì„œ ë¬´ê¸°ì˜ ìŠ¤íƒ¯ ë³€ê²½
                 ChangePlayerWeaponStat(PlayerStatType.BaseDamage, args.changeValue);
                 break;
             case PlayerStatType.CriticChance:
@@ -150,11 +152,11 @@ public class Player : MonoBehaviour, IHealthObject
                 break;
 
             case PlayerStatType.MoveSpeed:
-                ctrl.moveSpeed = stat.moveSpeed; // ÄÁÆ®·Ñ·¯ÀÇ ÀÌµ¿¼Óµµ º¯°æ
+                ctrl.moveSpeed = stat.moveSpeed; // ì»¨íŠ¸ë¡¤ëŸ¬ì˜ ì´ë™ì†ë„ ë³€ê²½
                 break;
 
             case PlayerStatType.CircleRadius:
-                circleRange.radius = stat.circleRange; // ¾ÆÀÌÅÛ È¹µæ¹üÀ§ Á¶Á¤
+                circleRange.radius = stat.circleRange; // ì•„ì´í…œ íšë“ë²”ìœ„ ì¡°ì •
                 break;
 
             default:
@@ -164,42 +166,42 @@ public class Player : MonoBehaviour, IHealthObject
 
     public Weapon AddWeaponToPlayer(WeaponDetailsSO weaponDetails)
     {
-        // Ãß°¡ÇÒ ¹«±â ÃÊ±âÈ­
+        // ì¶”ê°€í•  ë¬´ê¸° ì´ˆê¸°í™”
         Weapon playerWeapon = gameObject.AddComponent<Weapon>();
         playerWeapon.InitializeWeapon(weaponDetails);
 
-        // ¹«±â Ãß°¡µÇ¸é¼­ Ä³¸¯ÅÍ ½ºÅÈ ¹İ¿µ
+        // ë¬´ê¸° ì¶”ê°€ë˜ë©´ì„œ ìºë¦­í„° ìŠ¤íƒ¯ ë°˜ì˜
         playerWeapon.ChangeWeaponStat(PlayerStatType.BaseDamage, stat.baseDamage, false);
         playerWeapon.ChangeWeaponStat(PlayerStatType.CriticChance, stat.criticChance, false);
         playerWeapon.ChangeWeaponStat(PlayerStatType.CriticDamage, stat.criticDamage, false);
 
-        weaponList.Add(playerWeapon); // ¹«±â ¸®½ºÆ®¿¡ Ãß°¡
-        activeWeaponEvent.CallActiveWeaponEvent(playerWeapon, weaponList.Count-1); // ¹«±â UI Ãß°¡
+        weaponList.Add(playerWeapon); // ë¬´ê¸° ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€
+        activeWeaponEvent.CallActiveWeaponEvent(playerWeapon, weaponList.Count-1); // ë¬´ê¸° UI ì¶”ê°€
 
         return playerWeapon;
     }
 
     private void ChangePlayerWeaponStat(PlayerStatType statType, float value)
     {
-        foreach (Weapon weapon in weaponList)   // ÇÃ·¹ÀÌ¾î°¡ °¡Áø ¸ğµç ¹«±â ½ºÅÈ º¯°æ
+        foreach (Weapon weapon in weaponList)   // í”Œë ˆì´ì–´ê°€ ê°€ì§„ ëª¨ë“  ë¬´ê¸° ìŠ¤íƒ¯ ë³€ê²½
         {
             weapon.ChangeWeaponStat(statType, value, false);
         }
     }
 
 
-    // =================== Interface ±¸Çö =============================================
+    // =================== Interface êµ¬í˜„ =============================================
     #region Interface
     public int TakeDamage(int ammoDamage,out int damageAmount)
     {
-        // ¹æ¾î·Â¸¸Å­ µ¥¹ÌÁö % ±ğ±â (¼öÄ¡°¡ ³ô¾ÆÁú¼ö·Ï È¿À² °¨¼Ò)
+        // ë°©ì–´ë ¥ë§Œí¼ ë°ë¯¸ì§€ % ê¹ê¸° (ìˆ˜ì¹˜ê°€ ë†’ì•„ì§ˆìˆ˜ë¡ íš¨ìœ¨ ê°ì†Œ)
         int armor = Utilities.CombatScaling(stat.baseArmor);
         damageAmount = Utilities.DecreaseByPercent(ammoDamage, armor);
 
         int dodge = Utilities.CombatScaling(stat.dodgeChance);
         if (dodge >= 1)
         {
-            // È¸ÇÇ¿¡ ¼º°ø
+            // íšŒí”¼ì— ì„±ê³µ
             if (Utilities.isSuccess(dodge)) return -1;
         }
 
@@ -222,21 +224,21 @@ public class Player : MonoBehaviour, IHealthObject
         float changeValue = itemData.playerStatChangeList[0].changeValue;
         Sprite potionSprite = itemData.ItemSprite;
 
-        // Æ÷¼ÇÀº ½ºÅÈÀ» ÇÏ³ª¸¸ º¯°æÇØÁÜ
+        // í¬ì…˜ì€ ìŠ¤íƒ¯ì„ í•˜ë‚˜ë§Œ ë³€ê²½í•´ì¤Œ
         switch (statType)
         {
             case PlayerStatType.MaxHP:
-                health.AddHealth((int)changeValue); // Ã¼·ÂÈ¸º¹
+                health.AddHealth((int)changeValue); // ì²´ë ¥íšŒë³µ
                 break;
 
             case PlayerStatType.MoveSpeed:
-                StartCoroutine(PotionRoutine(statType, changeValue, potionSprite)); // Æ÷¼Ç »ç¿ë
+                StartCoroutine(PotionRoutine(statType, changeValue, potionSprite)); // í¬ì…˜ ì‚¬ìš©
                 break;
             case PlayerStatType.CriticChance:
-                StartCoroutine(PotionRoutine(statType, changeValue, potionSprite)); // Æ÷¼Ç »ç¿ë
+                StartCoroutine(PotionRoutine(statType, changeValue, potionSprite)); // í¬ì…˜ ì‚¬ìš©
                 break;
             case PlayerStatType.CriticDamage:
-                StartCoroutine(PotionRoutine(statType, changeValue, potionSprite)); // Æ÷¼Ç »ç¿ë
+                StartCoroutine(PotionRoutine(statType, changeValue, potionSprite)); // í¬ì…˜ ì‚¬ìš©
                 break;
         }
     }
@@ -250,7 +252,7 @@ public class Player : MonoBehaviour, IHealthObject
         GameObject potionStateImage = Instantiate(GameResources.Instance.potionStateImage, potionState.transform);
         potionStateImage.GetComponent<SpriteRenderer>().sprite = potionSprite;
 
-        yield return new WaitForSeconds(Settings.potionDuration); // Æ÷¼Ç Áö¼Ó½Ã°£
+        yield return new WaitForSeconds(Settings.potionDuration); // í¬ì…˜ ì§€ì†ì‹œê°„
 
         playerStatChangedEvent.CallPlayerStatChangedEvent(statType, -changeValue);
         Destroy(potionStateImage);
@@ -258,7 +260,7 @@ public class Player : MonoBehaviour, IHealthObject
     }
     private void SetPotionUsed(PlayerStatType statType, bool isUsed)
     {
-        // ÇØ´ç Å¸ÀÔÀÇ Æ÷¼ÇÀ» »ç¿ëÇß´ÂÁö ¿©ºÎ ¼³Á¤
+        // í•´ë‹¹ íƒ€ì…ì˜ í¬ì…˜ì„ ì‚¬ìš©í–ˆëŠ”ì§€ ì—¬ë¶€ ì„¤ì •
         switch (statType)
         {
             case PlayerStatType.MoveSpeed:
@@ -276,7 +278,7 @@ public class Player : MonoBehaviour, IHealthObject
     }
     public bool CanUsePotion(PlayerStatType statType)
     {
-        // ÇØ´ç Å¸ÀÔÀÇ Æ÷¼ÇÀ» »ç¿ëÇÒ ¼ö ÀÖ´ÂÁö ¹İÈ¯ (°°ÀºÆ÷¼Ç Áßº¹»ç¿ëX, Ã¼·ÂÆ÷¼ÇÀº »ó°üX)
+        // í•´ë‹¹ íƒ€ì…ì˜ í¬ì…˜ì„ ì‚¬ìš©í•  ìˆ˜ ìˆëŠ”ì§€ ë°˜í™˜ (ê°™ì€í¬ì…˜ ì¤‘ë³µì‚¬ìš©X, ì²´ë ¥í¬ì…˜ì€ ìƒê´€X)
         switch (statType)
         {
             case PlayerStatType.MaxHP:
