@@ -17,7 +17,7 @@ public class PlayerExp : MonoBehaviour
         level = 1;
 
         currentExp = 0;
-        maxExp = Settings.startExp; // ½ÃÀÛ °æÇèÄ¡ 
+        maxExp = Settings.startExp; // ì‹œì‘ ê²½í—˜ì¹˜ 
 
         TakeExp(0);
         expBar.SetLevel(level);
@@ -40,11 +40,13 @@ public class PlayerExp : MonoBehaviour
     private void LevelUp()
     {
         currentExp -= maxExp;
-        maxExp = maxExp + (int)(maxExp * 0.1f); // ÃÖ´ë°æÇèÄ¡ 5% Áõ°¡
+        maxExp = maxExp + (int)(maxExp * 0.1f); // ìµœëŒ€ê²½í—˜ì¹˜ 5% ì¦ê°€
 
         expBar.SetLevel(++level);
 
-        player.playerLevelUpEvent.CallPlayerLevelUpEvent(); // ·¹º§¾÷ ÀÌº¥Æ® È£Ãâ
+        player.playerLevelUpEvent.CallPlayerLevelUpEvent(); // ë ˆë²¨ì—… ì´ë²¤íŠ¸ í˜¸ì¶œ
+
+        Debug.Log("ì–¸ì œ í˜¸ì¶œë˜ëŠ”ì§€ íƒ€ì´ë° ê²€ì‚¬");
     }
 }
 
