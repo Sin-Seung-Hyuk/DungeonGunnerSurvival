@@ -69,4 +69,5 @@ public class GameResources : MonoBehaviour
 
     [Header("Game Data")]
     public Database database;
+    public PostProcessingCtrl postProcessingCtrl;
 }

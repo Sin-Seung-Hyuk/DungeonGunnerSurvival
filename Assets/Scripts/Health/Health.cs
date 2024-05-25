@@ -63,6 +63,10 @@ public class Health : MonoBehaviour
     {
         return currentHealth;
     }
+    public float GetCurrentHealthRatio()
+    {
+        return (float)currentHealth / (float)maxHealth;
+    }
 
     public void AddHealth(int healthPercent)
     {

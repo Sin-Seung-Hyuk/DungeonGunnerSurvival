@@ -59,13 +59,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: be654f3fe3fb8f84c8bdc0df859aba03, type: 2}
   - {fileID: 11400000, guid: e5ff22d9233434b42a6422594fbbc492, type: 2}
   potionStateImage: {fileID: 8621863467021509720, guid: cb417a01e2a634045970bc515a8c68e4, type: 3}
-  playerPrefab: {fileID: 7567689591821824905, guid: 4bbb850664de5d34ba6cdef36f9a1052, type: 3}
   musicMasterMixerGroup: {fileID: -7206380732494497733, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   musicOnFullSnapshot: {fileID: 24500006, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   musicLowSnapshot: {fileID: 8893122114324796974, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   musicOffSnapshot: {fileID: -3084740370723268673, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   mainMusic: {fileID: 11400000, guid: 6df57fa69585cf9478a2ab8fa069819a, type: 2}
-  battleMusic: {fileID: 0}
   entranceMusic: {fileID: 11400000, guid: 36399bea358543f4486ffd7d71809d63, type: 2}
   soundsMasterMixerGroup: {fileID: -4734643798044506327, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   chestOpen: {fileID: 11400000, guid: cf8428f7a9c88164c89498748ec9a635, type: 2}
@@ -85,3 +83,4 @@ MonoBehaviour:
   chestItemPrefab: {fileID: 6227206944734826548, guid: 400afa566b45e994a9503768b3329b07, type: 3}
   chestPrefab: {fileID: 2229734922805013933, guid: b0123f06a942dc14eb8334314147fea9, type: 3}
   database: {fileID: 11400000, guid: d58967e9c47ec2c4ead798689de07816, type: 2}
+  postProcessingCtrl: {fileID: 103752871517159662, guid: 8e4439a3dfd80ca4daea28a5ea668f8b, type: 3}

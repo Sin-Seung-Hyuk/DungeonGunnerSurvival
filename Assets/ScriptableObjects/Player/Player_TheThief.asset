@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19314069c2756dc4abd8b782715e2ad1, type: 3}
   m_Name: Player_TheThief
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 5975701987863624188, guid: 3790ba262ad90e849b7ad26dbaf04f02, type: 3}
   characterName: TheThief
   runtimeAnimatorController: {fileID: 9100000, guid: fb0cc3b02f662c74f941f11193bb2c27, type: 2}
   minimapIcon: {fileID: 21300000, guid: 315b2925a8c3976498b2ddde24a0d5be, type: 3}
@@ -34,4 +33,4 @@ MonoBehaviour:
   criticDamage: 0
   moveSpeed: 7
   circleRange: 1
-  expGain: 0
+  expGain: 100

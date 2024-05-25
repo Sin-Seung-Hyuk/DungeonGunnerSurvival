@@ -45,8 +45,6 @@ public class PlayerExp : MonoBehaviour
         expBar.SetLevel(++level);
 
         player.playerLevelUpEvent.CallPlayerLevelUpEvent(); // 레벨업 이벤트 호출
-
-        Debug.Log("언제 호출되는지 타이밍 검사");
     }
 }
 
