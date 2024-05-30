@@ -36,14 +36,14 @@ public class PostProcessingCtrl : MonoBehaviour
     private void Update()
     {
         // 플레이어 체력이 30% 이하 && 코루틴 한번만 실행
-        if (player.health.GetCurrentHealthRatio() < 0.7f && !isVignetteRoutine)
+        if (player.health.GetCurrentHealthRatio() < 0.3f && !isVignetteRoutine)
         {
             isVignetteRoutine = true;
             vignette.active = true;
             vignetteRoutineInstance = StartCoroutine(vignetteRoutine());
         }
 
-        else if (player.health.GetCurrentHealthRatio() >= 0.7f)
+        else if (player.health.GetCurrentHealthRatio() >= 0.3f)
         {
             if (vignetteRoutineInstance != null)
             {
