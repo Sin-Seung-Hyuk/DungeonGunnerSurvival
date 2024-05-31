@@ -184,4 +184,6 @@ public abstract class InventoryDisplay : MonoBehaviour
         clickedSlot.UpdateUISlot();
     }
 
+
+    public abstract void HighlightEquipment();
 }
