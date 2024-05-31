@@ -48,7 +48,7 @@ public class InventorySlot_UI : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private IEnumerator mouseOverRoutine(PointerEventData eventData)
     {
         float timer = 0f;
-        while (timer < 1.5f) // 슬롯에 1.5초 이상 마우스를 갖다대면 활성화
+        while (timer < 1.0f) // 슬롯에 1.0초 이상 마우스를 갖다대면 활성화
         {
             timer += Time.unscaledDeltaTime; // 일시정지에도 영향이 없는 unscaledDeltaTime
             yield return null;
