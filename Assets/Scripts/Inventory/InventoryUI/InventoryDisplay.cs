@@ -57,7 +57,8 @@ public abstract class InventoryDisplay : MonoBehaviour
 
                 // 장비아이템을 클릭했다면 장비창에서 어디에 장착해야하는지 나타나야함
                 if (mouseInventoryItem.AssignedInventorySlot.ItemData.ItemType == ItemType.Equipment) {
-                    
+                    // 인벤토리 슬롯에서 해당 타입의 장비아이템 하이라이트
+                    HighlightEquipment(mouseInventoryItem.AssignedInventorySlot.ItemData.ItemType); 
                 }
                 
                 return;
@@ -185,5 +186,5 @@ public abstract class InventoryDisplay : MonoBehaviour
     }
 
 
-    public abstract void HighlightEquipment();
+    public abstract void HighlightEquipment(ItemType type);
 }
