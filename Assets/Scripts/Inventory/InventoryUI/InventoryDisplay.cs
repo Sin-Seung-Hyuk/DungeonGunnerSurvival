@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using System;
 
 
-// ÀÎº¥Åä¸® µğ½ºÇÃ·¹ÀÌ Ãß»óÅ¬·¡½º : ÀÎº¥Åä¸® UI¿¡ µî·ÏÇÏ¿© È­¸é¿¡ º¸¿©ÁÖ´Â ºÎºĞÀ» °ü¸®
+// ì¸ë²¤í† ë¦¬ ë””ìŠ¤í”Œë ˆì´ ì¶”ìƒí´ë˜ìŠ¤ : ì¸ë²¤í† ë¦¬ UIì— ë“±ë¡í•˜ì—¬ í™”ë©´ì— ë³´ì—¬ì£¼ëŠ” ë¶€ë¶„ì„ ê´€ë¦¬
 public abstract class InventoryDisplay : MonoBehaviour 
 {
     [SerializeField] MouseItemData mouseInventoryItem;
@@ -22,25 +22,25 @@ public abstract class InventoryDisplay : MonoBehaviour
         
     }
 
-    public abstract void AssignSlot(InventorySystem invToDisplay, int offset); // ÀÎº¥Åä¸® ½Ã½ºÅÛÀÇ ½½·ÔÁ¤º¸¸¦ ½½·ÔUi¿¡ º¹ºÙ
+    public abstract void AssignSlot(InventorySystem invToDisplay, int offset); // ì¸ë²¤í† ë¦¬ ì‹œìŠ¤í…œì˜ ìŠ¬ë¡¯ì •ë³´ë¥¼ ìŠ¬ë¡¯Uiì— ë³µë¶™
 
-    protected virtual void UpdateSlot(InventorySlot updateSlot) // ½½·ÔUI ÇÑÄ­À» ¸Å°³º¯¼ö ½½·Ô°ú µ¿ÀÏÇÏ°Ô ÃÊ±âÈ­
+    protected virtual void UpdateSlot(InventorySlot updateSlot) // ìŠ¬ë¡¯UI í•œì¹¸ì„ ë§¤ê°œë³€ìˆ˜ ìŠ¬ë¡¯ê³¼ ë™ì¼í•˜ê²Œ ì´ˆê¸°í™”
     {
         foreach (var slot in SlotDictionary)
         {
-            if (slot.Value == updateSlot) // ½½·ÔUIÀÇ ½½·Ô°ú º¯°æµÈ ½½·ÔÀÌ °°À¸¸é
+            if (slot.Value == updateSlot) // ìŠ¬ë¡¯UIì˜ ìŠ¬ë¡¯ê³¼ ë³€ê²½ëœ ìŠ¬ë¡¯ì´ ê°™ìœ¼ë©´
             {
-                slot.Key.UpdateUISlot(updateSlot); // ½½·ÔUI ¾÷µ¥ÀÌÆ® È£Ãâ
+                slot.Key.UpdateUISlot(updateSlot); // ìŠ¬ë¡¯UI ì—…ë°ì´íŠ¸ í˜¸ì¶œ
             }
         }
     }
 
-    // ÀÎº¥Åä¸® ½½·Ô Å¬¸¯ ÇÔ¼ö ================================================================================================
+    // ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ í´ë¦­ í•¨ìˆ˜ ================================================================================================
     public void SlotClicked(InventorySlot_UI clickedSlotUI)
     {
-        bool isAltPressed = Keyboard.current.leftAltKey.isPressed; // AltÅ° ÀÔ·Â°¨Áö
+        bool isAltPressed = Keyboard.current.leftAltKey.isPressed; // Altí‚¤ ì…ë ¥ê°ì§€
 
-        // Å¬¸¯ÇÑ ½½·ÔUI¿¡ ¾ÆÀÌÅÛµ¥ÀÌÅÍ ÀÖ¾î¾ßÇÏ°í && ¸¶¿ì½º°¡ ÀÌ¹Ì Å¬¸¯ÇØ¼­ °¡Áø ¾ÆÀÌÅÛÁ¤º¸°¡ nullÀÌ¿©¾ßÇÔ
+        // í´ë¦­í•œ ìŠ¬ë¡¯UIì— ì•„ì´í…œë°ì´í„° ìˆì–´ì•¼í•˜ê³  && ë§ˆìš°ìŠ¤ê°€ ì´ë¯¸ í´ë¦­í•´ì„œ ê°€ì§„ ì•„ì´í…œì •ë³´ê°€ nullì´ì—¬ì•¼í•¨
         if (clickedSlotUI.AssignedInventorySlot.ItemData != null &&
             mouseInventoryItem.AssignedInventorySlot.ItemData == null)
         {
@@ -54,11 +54,17 @@ public abstract class InventoryDisplay : MonoBehaviour
             {
                 mouseInventoryItem.UpdateMouseSlot(clickedSlotUI.AssignedInventorySlot);
                 clickedSlotUI.ClearSlot();
+
+                // ì¥ë¹„ì•„ì´í…œì„ í´ë¦­í–ˆë‹¤ë©´ ì¥ë¹„ì°½ì—ì„œ ì–´ë””ì— ì¥ì°©í•´ì•¼í•˜ëŠ”ì§€ ë‚˜íƒ€ë‚˜ì•¼í•¨
+                if (mouseInventoryItem.AssignedInventorySlot.ItemData.ItemType == ItemType.Equipment) {
+                    
+                }
+                
                 return;
             }
         }
 
-        // ºñ¾îÀÖ´Â ½½·Ô¿¡ ¸¶¿ì½º µ¥ÀÌÅÍ°¡ ÀÖ´Â »óÅÂ¿¡¼­ Å¬¸¯ÇÑ´Ù¸é (ÅÛ¿Å±â±â)
+        // ë¹„ì–´ìˆëŠ” ìŠ¬ë¡¯ì— ë§ˆìš°ìŠ¤ ë°ì´í„°ê°€ ìˆëŠ” ìƒíƒœì—ì„œ í´ë¦­í•œë‹¤ë©´ (í…œì˜®ê¸°ê¸°)
         if (clickedSlotUI.AssignedInventorySlot.ItemData == null && mouseInventoryItem.AssignedInventorySlot.ItemData != null)
         {
             clickedSlotUI.AssignedInventorySlot.AssignItem(mouseInventoryItem.AssignedInventorySlot);
@@ -68,12 +74,12 @@ public abstract class InventoryDisplay : MonoBehaviour
             return;
         }
 
-        // Å¬¸¯ÇÑ ½½·Ô¿¡ ¾ÆÀÌÅÛÀÌ ÀÌ¹Ì ÀÖ°í ¸¶¿ì½º¿¡ ¾ÆÀÌÅÛ µé°íÀÖÀ¸¸é (½º¿ÒorÇÕÄ¡±â)
+        // í´ë¦­í•œ ìŠ¬ë¡¯ì— ì•„ì´í…œì´ ì´ë¯¸ ìˆê³  ë§ˆìš°ìŠ¤ì— ì•„ì´í…œ ë“¤ê³ ìˆìœ¼ë©´ (ìŠ¤ì™‘orí•©ì¹˜ê¸°)
         if (clickedSlotUI.AssignedInventorySlot.ItemData != null && mouseInventoryItem.AssignedInventorySlot.ItemData != null)
-        {   // Å¬¸¯ÇÑ ½½·ÔÀÇ ¾ÆÀÌÅÛ°ú ¸¶¿ì½º ¾ÆÀÌÅÛÀÌ °°ÀºÁö ºñ±³
+        {   // í´ë¦­í•œ ìŠ¬ë¡¯ì˜ ì•„ì´í…œê³¼ ë§ˆìš°ìŠ¤ ì•„ì´í…œì´ ê°™ì€ì§€ ë¹„êµ
             bool isSame = clickedSlotUI.AssignedInventorySlot.ItemData == mouseInventoryItem.AssignedInventorySlot.ItemData;
 
-            // ¼­·Î °°Àº ¾ÆÀÌÅÛ, ÇÕÄ¥ ¼ö ÀÖÀ¸¸é ÇÕÄ¡°í ¾÷µ¥ÀÌÆ®
+            // ì„œë¡œ ê°™ì€ ì•„ì´í…œ, í•©ì¹  ìˆ˜ ìˆìœ¼ë©´ í•©ì¹˜ê³  ì—…ë°ì´íŠ¸
             if (isSame && clickedSlotUI.AssignedInventorySlot.RoomLeftInStack(mouseInventoryItem.AssignedInventorySlot.StackSize))
             {
                 clickedSlotUI.AssignedInventorySlot.AssignItem(mouseInventoryItem.AssignedInventorySlot);
@@ -81,13 +87,13 @@ public abstract class InventoryDisplay : MonoBehaviour
 
                 mouseInventoryItem.ClearSlot();
             }
-            // °°Àº ¾ÆÀÌÅÛ, µé°íÀÖ´Â ¼ö·®ÀÌ Ä¿ ÇÕÄ¥ ¼ö ¾øÀ½
+            // ê°™ì€ ì•„ì´í…œ, ë“¤ê³ ìˆëŠ” ìˆ˜ëŸ‰ì´ ì»¤ í•©ì¹  ìˆ˜ ì—†ìŒ
             else if (isSame &&
                 !clickedSlotUI.AssignedInventorySlot.RoomLeftInStack(mouseInventoryItem.AssignedInventorySlot.StackSize, out int leftInStack))
             {
-                if (leftInStack < 1) SwapSlot(clickedSlotUI); // ½ºÅÃÀÌ ²ËÂ÷ÀÖÀ½
+                if (leftInStack < 1) SwapSlot(clickedSlotUI); // ìŠ¤íƒì´ ê½‰ì°¨ìˆìŒ
                 else
-                {   // ¸¶¿ì½º¿¡ µé°íÀÖ´Â ½ºÅÃÀ» Å¬¸¯ÇÑ ½½·Ô¿¡ ³Ö°í ³²Àº ½ºÅÃ
+                {   // ë§ˆìš°ìŠ¤ì— ë“¤ê³ ìˆëŠ” ìŠ¤íƒì„ í´ë¦­í•œ ìŠ¬ë¡¯ì— ë„£ê³  ë‚¨ì€ ìŠ¤íƒ
                     int remainingMouse = mouseInventoryItem.AssignedInventorySlot.StackSize - leftInStack;
 
                     clickedSlotUI.AssignedInventorySlot.AddToStack(leftInStack);
@@ -100,7 +106,7 @@ public abstract class InventoryDisplay : MonoBehaviour
                 }
             }
 
-            else if (!isSame) // ¼­·Î ´Ù¸¥ ¾ÆÀÌÅÛÀÌ¸é ¾ÆÀÌÅÛ ½º¿Ò
+            else if (!isSame) // ì„œë¡œ ë‹¤ë¥¸ ì•„ì´í…œì´ë©´ ì•„ì´í…œ ìŠ¤ì™‘
             {
                 SwapSlot(clickedSlotUI);
                 return;
@@ -110,14 +116,14 @@ public abstract class InventoryDisplay : MonoBehaviour
     }
 
 
-    // ÀåºñÃ¢ ½½·Ô Å¬¸¯ ÇÔ¼ö ================================================================================================
+    // ì¥ë¹„ì°½ ìŠ¬ë¡¯ í´ë¦­ í•¨ìˆ˜ ================================================================================================
     public void SlotClicked(EquipmentSlot_UI clickedSlotUI, EquipmentType slotType)
     {
-        // 0. ¾ÆÀÌÅÛÀ» ÀåÂø/ÇØÁ¦ ÇÒ¶§¿¡ È£ÃâµÇ´Â ÀÌº¥Æ®´Â µ¿ÀÏÇÏ°Ô ÇÏ³ªÀÇ ÀÌº¥Æ®·Î ÀåÂø/ÇØÁ¦ ¿©ºÎ¿¡ µû¶ó ¹İ¿µ¸¸ ´Ù¸£°Ô ÇÏ¸éµÊ
+        // 0. ì•„ì´í…œì„ ì¥ì°©/í•´ì œ í• ë•Œì— í˜¸ì¶œë˜ëŠ” ì´ë²¤íŠ¸ëŠ” ë™ì¼í•˜ê²Œ í•˜ë‚˜ì˜ ì´ë²¤íŠ¸ë¡œ ì¥ì°©/í•´ì œ ì—¬ë¶€ì— ë”°ë¼ ë°˜ì˜ë§Œ ë‹¤ë¥´ê²Œ í•˜ë©´ë¨
 
-        // 1. ½½·ÔÀÌ ºñ¾îÀÖ°í ¸¶¿ì½º ¾ÆÀÌÅÛÀÌ 'Àåºñ'Å¸ÀÔÀÎÁö È®ÀÎ
-        // 1-1. 'Àåºñ'Å¸ÀÔÀÌ¸é ÇØ´ç ½½·Ô¿¡ ¸Â´Â 'ºÎÀ§'ÀÎÁö È®ÀÎ
-        // 1-2. ¸ğµÎ Åë°úµÇ¸é ÀåÂøÇÏ°í ÀÌº¥Æ® È£Ãâ (ÀåºñÀÌº¥Æ®->½ºÅÈ¹İ¿µ)
+        // 1. ìŠ¬ë¡¯ì´ ë¹„ì–´ìˆê³  ë§ˆìš°ìŠ¤ ì•„ì´í…œì´ 'ì¥ë¹„'íƒ€ì…ì¸ì§€ í™•ì¸
+        // 1-1. 'ì¥ë¹„'íƒ€ì…ì´ë©´ í•´ë‹¹ ìŠ¬ë¡¯ì— ë§ëŠ” 'ë¶€ìœ„'ì¸ì§€ í™•ì¸
+        // 1-2. ëª¨ë‘ í†µê³¼ë˜ë©´ ì¥ì°©í•˜ê³  ì´ë²¤íŠ¸ í˜¸ì¶œ (ì¥ë¹„ì´ë²¤íŠ¸->ìŠ¤íƒ¯ë°˜ì˜)
         if (clickedSlotUI.AssignedInventorySlot.ItemData == null &&
             mouseInventoryItem.AssignedInventorySlot.ItemData.itemType == ItemType.Equipment)
         {
@@ -133,13 +139,13 @@ public abstract class InventoryDisplay : MonoBehaviour
             }
         }
 
-        // 2. ½½·Ô¿¡ Àåºñ°¡ ÀåÂøµÇ¾î ÀÖ°í ¸¶¿ì½º°¡ ºñ¾îÀÖ´ÂÁö È®ÀÎ
-        // 2-1. ½½·ÔÀ» ºñ¿ì°í Àåºñ ÀÌº¥Æ® È£Ãâ (ÀåºñÀÌº¥Æ®->½ºÅÈ¹İ¿µ)
-        // 2-2. ¸¶¿ì½º¿¡ ÇØ´ç ÀåºñÀÇ ¾ÆÀÌÅÛÀ¸·Î ÃÊ±âÈ­
+        // 2. ìŠ¬ë¡¯ì— ì¥ë¹„ê°€ ì¥ì°©ë˜ì–´ ìˆê³  ë§ˆìš°ìŠ¤ê°€ ë¹„ì–´ìˆëŠ”ì§€ í™•ì¸
+        // 2-1. ìŠ¬ë¡¯ì„ ë¹„ìš°ê³  ì¥ë¹„ ì´ë²¤íŠ¸ í˜¸ì¶œ (ì¥ë¹„ì´ë²¤íŠ¸->ìŠ¤íƒ¯ë°˜ì˜)
+        // 2-2. ë§ˆìš°ìŠ¤ì— í•´ë‹¹ ì¥ë¹„ì˜ ì•„ì´í…œìœ¼ë¡œ ì´ˆê¸°í™”
         if (clickedSlotUI.AssignedInventorySlot.ItemData != null &&
             mouseInventoryItem.AssignedInventorySlot.ItemData == null)
         {
-            // ÀÌº¥Æ® È£Ãâ
+            // ì´ë²¤íŠ¸ í˜¸ì¶œ
             clickedSlotUI.UnequipItem(clickedSlotUI.AssignedInventorySlot.ItemData.playerStatChangeList);
 
             mouseInventoryItem.UpdateMouseSlot(clickedSlotUI.AssignedInventorySlot);
@@ -147,8 +153,8 @@ public abstract class InventoryDisplay : MonoBehaviour
             return;
         }
 
-        // 3. ½½·Ô¿¡ Àåºñ°¡ ÀåÂøµÇ¾î ÀÖ°í ¸¶¿ì½º¿¡ ¾ÆÀÌÅÛÀÌ µé·ÁÀÖ´Â °æ¿ì
-        // 3-1. ½½·Ô Àåºñ¿Í ¸¶¿ì½º ÀåºñÀÇ Å¸ÀÔÀ» ºñ±³
+        // 3. ìŠ¬ë¡¯ì— ì¥ë¹„ê°€ ì¥ì°©ë˜ì–´ ìˆê³  ë§ˆìš°ìŠ¤ì— ì•„ì´í…œì´ ë“¤ë ¤ìˆëŠ” ê²½ìš°
+        // 3-1. ìŠ¬ë¡¯ ì¥ë¹„ì™€ ë§ˆìš°ìŠ¤ ì¥ë¹„ì˜ íƒ€ì…ì„ ë¹„êµ
         if (clickedSlotUI.AssignedInventorySlot.ItemData != null && mouseInventoryItem.AssignedInventorySlot.ItemData != null)
         {
             if (mouseInventoryItem.AssignedInventorySlot.ItemData.equipmentType == slotType)
@@ -163,16 +169,16 @@ public abstract class InventoryDisplay : MonoBehaviour
     }
 
 
-    // Å¬¸¯ÇÑ ½½·Ô°ú ¾ÆÀÌÅÛ µ¥ÀÌÅÍ ±³Ã¼ÇÏ±â
+    // í´ë¦­í•œ ìŠ¬ë¡¯ê³¼ ì•„ì´í…œ ë°ì´í„° êµì²´í•˜ê¸°
     private void SwapSlot(InventorySlot_UI clickedSlot)
     {
-        // ¸¶¿ì½º°¡ µé°íÀÖ´Â ¾ÆÀÌÅÛ Á¤º¸·Î ÀÓÀÇ ½½·Ô »ı¼º
+        // ë§ˆìš°ìŠ¤ê°€ ë“¤ê³ ìˆëŠ” ì•„ì´í…œ ì •ë³´ë¡œ ì„ì˜ ìŠ¬ë¡¯ ìƒì„±
         var newSlot = new InventorySlot(mouseInventoryItem.AssignedInventorySlot.ItemData, 
             mouseInventoryItem.AssignedInventorySlot.StackSize);
         mouseInventoryItem.ClearSlot();
         mouseInventoryItem.UpdateMouseSlot(clickedSlot.AssignedInventorySlot);
 
-        // Å¬¸¯ÇÑ ½½·ÔÀÇ Á¤º¸¸¦ ¸¶¿ì½º ¾ÆÀÌÅÛÀ¸·Î º¯°æÇÏ°í UI ¾÷µ¥ÀÌÆ®
+        // í´ë¦­í•œ ìŠ¬ë¡¯ì˜ ì •ë³´ë¥¼ ë§ˆìš°ìŠ¤ ì•„ì´í…œìœ¼ë¡œ ë³€ê²½í•˜ê³  UI ì—…ë°ì´íŠ¸
         clickedSlot.ClearSlot();
         clickedSlot.AssignedInventorySlot.AssignItem(newSlot);
         clickedSlot.UpdateUISlot();
