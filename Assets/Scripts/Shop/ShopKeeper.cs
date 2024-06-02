@@ -50,10 +50,13 @@ public class ShopKeeper : MonoBehaviour, IInteractable // 상호작용 대상
             interactSuccessful = false;
             Debug.Log("player inventory null");
         }
+
+        interator.SetInteracting();
     }
 
     public void EndInteraction()
     {
+
     }
 
 }

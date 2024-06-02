@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1019
   DisplayName: Heat-Resistant Boots
-  Description: MoveSpeed + 2
+  Description: MoveSpeed + 3
   ItemSprite: {fileID: 2957340294491796551, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
   GoldValue: 9500
@@ -24,4 +24,4 @@ MonoBehaviour:
   equipmentType: 5
   playerStatChangeList:
   - statType: 6
-    changeValue: 2
+    changeValue: 3

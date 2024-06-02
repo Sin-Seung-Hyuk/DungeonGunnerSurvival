@@ -23,13 +23,30 @@ public class PlayerEquipmentHolder : InventoryDisplay
         SaveLoad.OnLoadGame += LoadInventory;
     }
 
+
     protected override void Start()
     {
         base.Start();
         SaveLoad.OnSaveGame += SaveFile;
 
-        playerSprite.sprite = GameManager.Instance.GetPlayer().playerDetails.playerSprite;
+        StaticEventHandler.OnEquipmentClicked += StaticEventHandler_OnEquipmentClicked;
 
+        playerSprite.sprite = GameManager.Instance.GetPlayer().playerDetails.playerSprite;
+    }
+
+    private void StaticEventHandler_OnEquipmentClicked(EquipmentClickedArgs args)
+    {
+        foreach (var slot in slots)
+        {
+            if (slot.SlotType == args.type)
+            {
+                if (args.isClicked)
+                {
+                    slot.SetBtnColor(Settings.green);
+                }
+                else slot.SetBtnColor(slot.PrevColor);
+            }
+        }
     }
 
     private void SaveFile()

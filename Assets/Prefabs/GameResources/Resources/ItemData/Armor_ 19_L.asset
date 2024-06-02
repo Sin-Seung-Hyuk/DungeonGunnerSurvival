@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1026
   DisplayName: Vortex Aegis
-  Description: 'Dodge + 40
+  Description: 'Dodge + 50
 
-    MoveSpeed + 1'
+    MoveSpeed + 2'
   ItemSprite: {fileID: 9099801601263107796, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
   GoldValue: 10000
@@ -26,6 +26,6 @@ MonoBehaviour:
   equipmentType: 6
   playerStatChangeList:
   - statType: 3
-    changeValue: 40
+    changeValue: 50
   - statType: 6
-    changeValue: 1
+    changeValue: 2

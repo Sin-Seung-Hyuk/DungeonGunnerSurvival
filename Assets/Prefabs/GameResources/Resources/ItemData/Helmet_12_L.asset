@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1002
   DisplayName: Hat of the Archmage
-  Description: ExpGain + 10
+  Description: ExpGain + 20
   ItemSprite: {fileID: -1237275632447729416, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
   GoldValue: 9900
@@ -24,4 +24,4 @@ MonoBehaviour:
   equipmentType: 0
   playerStatChangeList:
   - statType: 8
-    changeValue: 10
+    changeValue: 20

@@ -27,6 +27,14 @@ public static class StaticEventHandler
     {
         OnWeaponStatChanged?.Invoke();
     }
+
+
+    // 장비템 클릭 이벤트
+    public static event Action<EquipmentClickedArgs> OnEquipmentClicked;
+    public static void CallEquipmentClicked(EquipmentType type, bool isClicked)
+    {
+        OnEquipmentClicked?.Invoke(new EquipmentClickedArgs() { type = type, isClicked = isClicked });
+    }
 }
 
 public class RoomChangedArgs : EventArgs
@@ -37,4 +45,10 @@ public class RoomChangedArgs : EventArgs
 public class RoomTimeoutArgs : EventArgs
 {
     public Room room;
+}
+
+public class EquipmentClickedArgs : EventArgs
+{
+    public EquipmentType type;
+    public bool isClicked;
 }

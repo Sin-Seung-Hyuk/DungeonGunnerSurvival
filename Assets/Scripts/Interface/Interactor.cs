@@ -13,6 +13,8 @@ public class Interactor : MonoBehaviour
     public float InteractionPointRadius = 1f;
     public bool IsInteracting { get; private set; }
 
+    private Vector3 interactPosition;
+    private IInteractable interactable;
 
     private void Update()
     {
@@ -24,23 +26,38 @@ public class Interactor : MonoBehaviour
         {
             for (int i=0; i< colliders.Length; ++i)
             {
-                var interactable = colliders[i].GetComponent<IInteractable>();
+                interactable = colliders[i].GetComponent<IInteractable>();
 
                 // 상호작용 가능한 객체에 접근해 상호작용 시작
                 if (interactable != null)
+                {
                     StartInteractable(interactable);
+                    interactPosition = InteractionPoint.position;
+                }
             }
+        }
+
+        if (Vector2.Distance(this.transform.position, interactPosition) > 5.0f && IsInteracting)
+        {
+            EndInteracting(interactable);
         }
     }
 
     private void StartInteractable(IInteractable interactable)
     {
         interactable.Interact(this, out bool interactSuccessful);
-        IsInteracting = true;
     }
 
-    private void EndInteracting()
+    private void EndInteracting(IInteractable interactable)
     {
+        interactable.Interact(this, out bool interactSuccessful);
+        interactPosition = Vector3.zero;
+    }
 
+    public void SetInteracting()
+    {
+        if (IsInteracting)
+            IsInteracting = false;
+        else IsInteracting = true;
     }
 }

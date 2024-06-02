@@ -16,7 +16,7 @@ MonoBehaviour:
   DisplayName: Paladin's Gauntlets
   Description: 'PickUp + 2
 
-    ExpGain + 7'
+    ExpGain + 10'
   ItemSprite: {fileID: 1925680345457781459, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
   GoldValue: 9500
@@ -28,4 +28,4 @@ MonoBehaviour:
   - statType: 7
     changeValue: 2
   - statType: 8
-    changeValue: 7
+    changeValue: 10

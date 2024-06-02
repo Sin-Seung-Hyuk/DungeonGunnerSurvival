@@ -50,5 +50,4 @@ public class StaticInventoryDisplay : InventoryDisplay
             slots[i].itemNumPad.text = (i + 1).ToString();
         }
     }
-
 }

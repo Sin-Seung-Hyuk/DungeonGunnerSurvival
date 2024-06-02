@@ -18,7 +18,7 @@ MonoBehaviour:
     facets refracting brilliance.
   ItemSprite: {fileID: 21300000, guid: efcafb36114411d46aec9e6d9a984af2, type: 3}
   MaxStackSize: 15
-  GoldValue: 1000
+  GoldValue: 2550
   itemGrade: 30
   gradeColor: {r: 0.8862745, g: 0.49019608, b: 0.07450981, a: 1}
   itemType: 1

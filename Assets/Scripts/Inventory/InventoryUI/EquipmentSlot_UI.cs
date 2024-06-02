@@ -7,7 +7,10 @@ public class EquipmentSlot_UI : InventorySlot_UI // 기존 슬롯UI 상속
 {
     [SerializeField] private EquipmentType slotType; // 이 장비슬롯의 장비타입
     [SerializeField] private Button BtnSlot;
+    private Color prevColor = Color.white; // 기본 색상
 
+    public EquipmentType SlotType => slotType;
+    public Color PrevColor => prevColor;
 
     public override void OnUIISlotClick() // 슬롯UI 클릭함수 오버라이딩
     {
@@ -26,7 +29,8 @@ public class EquipmentSlot_UI : InventorySlot_UI // 기존 슬롯UI 상속
         }
 
         // 장착한 아이템의 등급색상으로 장비슬롯 색상 설정
-        SetBtnColor(AssignedInventorySlot.ItemData.gradeColor); 
+        SetBtnColor(AssignedInventorySlot.ItemData.gradeColor);
+        prevColor = AssignedInventorySlot.ItemData.gradeColor;
     }
 
     // 장비 해제
@@ -38,9 +42,10 @@ public class EquipmentSlot_UI : InventorySlot_UI // 기존 슬롯UI 상속
                 .CallPlayerStatChangedEvent(statChangeList.statType, -statChangeList.changeValue);
         }
         SetBtnColor(Color.white);
+        prevColor = Color.white;
     }
 
-    private void SetBtnColor(Color color)
+    public void SetBtnColor(Color color)
     {
         ColorBlock btnColor = BtnSlot.colors;
         btnColor.normalColor = color;

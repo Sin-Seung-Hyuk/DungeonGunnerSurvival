@@ -181,7 +181,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -405,7 +405,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
+  chaseDistance: 0
   updateFrameNumber: 1
+  targetFrameRateToSpreadPathFindingOver: 1
 --- !u!114 &83080581590133181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,6 +448,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 9216
   weaponShootPos: {fileID: 6023116791905893839}
+  enemyDetails: {fileID: 0}
+  firingIntervalTimer: 0
+  firingDurationTimer: 0
 --- !u!114 &3980937675375694204
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -41,6 +41,13 @@ public class MouseItemData : MonoBehaviour  // 마우스로 슬롯UI 클릭하여 아이템 �
             // InputSystem의 Mouse 클래스에서 왼쪽마우스 클릭했는지 검사
             if (Mouse.current.leftButton.wasPressedThisFrame && !IsPointerOverUIObject())
             {
+                // 장비아이템을 클릭했다면 장비창에서 어디에 장착해야하는지 나타나야함
+                if (AssignedInventorySlot.ItemData.itemType == ItemType.Equipment)
+                {
+                    // 장비창에서 해당 타입의 장비아이템 하이라이트, 다시 클릭하여 내려놓은 상태이면 색을 되돌리기
+                    StaticEventHandler.CallEquipmentClicked(AssignedInventorySlot.ItemData.equipmentType, false);
+                }
+
                 ClearSlot(); // 마우스데이터 삭제 (아이템 삭제)
             }
         }

@@ -18,7 +18,7 @@ MonoBehaviour:
 
     PickUp + 1
 
-    ExpGain + 1'
+    ExpGain + 10'
   ItemSprite: {fileID: -1836284059136845187, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
   GoldValue: 9900
@@ -32,4 +32,4 @@ MonoBehaviour:
   - statType: 7
     changeValue: 1
   - statType: 8
-    changeValue: 1
+    changeValue: 10

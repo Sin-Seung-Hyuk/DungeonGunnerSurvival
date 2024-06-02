@@ -87,6 +87,7 @@ MonoBehaviour:
   ctrl: {fileID: 0}
   health: {fileID: 0}
   playerExp: {fileID: 0}
+  playerRigid: {fileID: 0}
   idleEvent: {fileID: 0}
   movementEvent: {fileID: 0}
   weaponAimEvent: {fileID: 0}
@@ -646,25 +647,25 @@ MonoBehaviour:
     ratio: 20
   - dungeonObject:
       statType: 0
-      changeValue: 15
+      changeValue: 20
       choiceText: Max HP
-      changeValueText: + 15
+      changeValueText: + 20
       txtColor: {r: 0.043137256, g: 0.43137255, b: 0.8, a: 1}
       isPlayerStat: 1
     ratio: 8
   - dungeonObject:
       statType: 0
-      changeValue: 25
+      changeValue: 30
       choiceText: Max HP
-      changeValueText: + 25
+      changeValueText: + 30
       txtColor: {r: 0.60784316, g: 0.23921569, b: 0.8509804, a: 1}
       isPlayerStat: 1
     ratio: 3
   - dungeonObject:
       statType: 0
-      changeValue: 40
+      changeValue: 50
       choiceText: Max HP
-      changeValueText: + 40
+      changeValueText: + 50
       txtColor: {r: 0.8862745, g: 0.49019608, b: 0.07450981, a: 1}
       isPlayerStat: 1
     ratio: 1

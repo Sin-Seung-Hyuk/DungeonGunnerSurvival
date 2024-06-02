@@ -18,7 +18,7 @@ MonoBehaviour:
     geometric patterns, humming with spiritual power.
   ItemSprite: {fileID: 21300000, guid: 0c56a3ed4a6fe924e93f411935ec3137, type: 3}
   MaxStackSize: 50
-  GoldValue: 222
+  GoldValue: 280
   itemGrade: 15
   gradeColor: {r: 0.60784316, g: 0.23921569, b: 0.8509804, a: 1}
   itemType: 1

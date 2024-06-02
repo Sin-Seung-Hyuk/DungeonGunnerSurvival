@@ -55,12 +55,8 @@ public abstract class InventoryDisplay : MonoBehaviour
                 mouseInventoryItem.UpdateMouseSlot(clickedSlotUI.AssignedInventorySlot);
                 clickedSlotUI.ClearSlot();
 
-                // 장비아이템을 클릭했다면 장비창에서 어디에 장착해야하는지 나타나야함
-                if (mouseInventoryItem.AssignedInventorySlot.ItemData.ItemType == ItemType.Equipment) {
-                    // 인벤토리 슬롯에서 해당 타입의 장비아이템 하이라이트
-                    HighlightEquipment(mouseInventoryItem.AssignedInventorySlot.ItemData.ItemType); 
-                }
-                
+                EquipmentItemClicked(true); // 장비아이템을 클릭했을 경우 장착부위 초록색으로 표시
+
                 return;
             }
         }
@@ -70,6 +66,8 @@ public abstract class InventoryDisplay : MonoBehaviour
         {
             clickedSlotUI.AssignedInventorySlot.AssignItem(mouseInventoryItem.AssignedInventorySlot);
             clickedSlotUI.UpdateUISlot();
+
+            EquipmentItemClicked(false); // 장비아이템을 내려놓을 경우 장착부위 원래 색상으로 되돌리기
 
             mouseInventoryItem.ClearSlot();
             return;
@@ -186,5 +184,13 @@ public abstract class InventoryDisplay : MonoBehaviour
     }
 
 
-    public abstract void HighlightEquipment(ItemType type);
+    private void EquipmentItemClicked(bool isClicked)
+    {
+        // 장비아이템을 클릭했다면 장비창에서 어디에 장착해야하는지 나타나야함
+        if (mouseInventoryItem.AssignedInventorySlot.ItemData.itemType == ItemType.Equipment)
+        {
+            // 장비창에서 해당 타입의 장비아이템 하이라이트, 다시 클릭하여 내려놓은 상태이면 색을 되돌리기
+            StaticEventHandler.CallEquipmentClicked(mouseInventoryItem.AssignedInventorySlot.ItemData.equipmentType, isClicked);
+        }
+    }
 }

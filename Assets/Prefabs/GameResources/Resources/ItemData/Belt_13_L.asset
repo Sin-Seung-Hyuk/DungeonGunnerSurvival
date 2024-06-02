@@ -18,10 +18,7 @@ MonoBehaviour:
 
     C.Chance + 5
 
-    C.Damage + 10
-
-    ExpGain
-    + 7'
+    C.Damage + 10'
   ItemSprite: {fileID: -7219057145253420768, guid: 530f0ab2e060b704f9f24266f43907e2, type: 3}
   MaxStackSize: 1
   GoldValue: 11000

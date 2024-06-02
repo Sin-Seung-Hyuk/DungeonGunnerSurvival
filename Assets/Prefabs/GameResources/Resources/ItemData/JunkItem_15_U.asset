@@ -18,7 +18,7 @@ MonoBehaviour:
     no light, shrouded in enigma.
   ItemSprite: {fileID: 21300000, guid: d7fd2c3c7c77bb741922dd429d6b8b1a, type: 3}
   MaxStackSize: 50
-  GoldValue: 200
+  GoldValue: 310
   itemGrade: 15
   gradeColor: {r: 0.60784316, g: 0.23921569, b: 0.8509804, a: 1}
   itemType: 1

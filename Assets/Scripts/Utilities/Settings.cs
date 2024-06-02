@@ -65,6 +65,7 @@ public static class Settings
 
     #region UI PARAMETERS
     public static Color32 blue = new Color32(76 ,115, 209,255);
+    public static Color32 green = new Color32(22 ,135, 24, 255);
     public static Color32 red = new Color32(255 ,112, 120, 255);
     public static Color32 legend = new Color32(226 ,125, 19, 255);
     public static Color32 critical = new Color32(255, 102, 2, 255);

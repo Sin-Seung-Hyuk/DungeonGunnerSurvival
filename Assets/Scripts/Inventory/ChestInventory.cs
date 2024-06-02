@@ -52,6 +52,7 @@ public class ChestInventory : InventoryHolder, IInteractable
         OnDynamicInventoryDisplayRequested?.Invoke(primaryInventorySystem,0);
         SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.chestOpen);
         interactSuccessful = true;
+        interator.SetInteracting();
     }
 
     public void EndInteraction()

@@ -18,7 +18,7 @@ MonoBehaviour:
     sheen, radiating an aura of tranquility.
   ItemSprite: {fileID: 21300000, guid: 48898d405c78b4b4e928c482da6de766, type: 3}
   MaxStackSize: 50
-  GoldValue: 210
+  GoldValue: 300
   itemGrade: 15
   gradeColor: {r: 0.60784316, g: 0.23921569, b: 0.8509804, a: 1}
   itemType: 1

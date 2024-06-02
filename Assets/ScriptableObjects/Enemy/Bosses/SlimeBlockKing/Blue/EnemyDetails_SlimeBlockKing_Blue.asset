@@ -30,4 +30,4 @@ MonoBehaviour:
   firingLineOfSightRequired: 1
   enemyHealthDetailsArray:
   - dungeonLevel: {fileID: 11400000, guid: 2cbef6b9092dbee4a968a9c436942408, type: 2}
-    enemyHealthAmount: 30000
+    enemyHealthAmount: 25000
